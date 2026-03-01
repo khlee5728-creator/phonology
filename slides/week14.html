@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 14 – Stress (2): Phrases &amp; Intonation</title>
+
+  <!-- Google Fonts: Noto Sans (IPA-safe) + Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Reveal.js 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" />
+
+  <!-- Shared phonology theme -->
+  <link rel="stylesheet" href="assets/phonology-theme.css" />
+
+  <style>
+    :root { --slide-accent: #c1121f; }  /* Stress — Crimson Red */
+
+    /* Intonation curve via CSS */
+    .intonation-box {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      border-radius: 8px;
+      padding: 0.8em 1.2em;
+      font-family: var(--font-mono);
+      font-size: 0.88em;
+      border-left: 4px solid var(--slide-accent);
+    }
+    .pitch-high { color: #f38ba8; font-size: 0.9em; }
+    .pitch-low  { color: #89b4fa; font-size: 0.9em; }
+    .tonic      { background: rgba(243,139,168,0.25); border-radius:3px; padding:0 3px; }
+    .compound   { color: #c1121f; font-weight: 700; }
+    .phrase-stress { color: #0077b6; font-weight: 700; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 1 — TITLE
+══════════════════════════════════════════════ -->
+<section class="title-slide">
+  <div class="week-badge">Week 14</div>
+  <h1>Stress (2)</h1>
+  <h2>Phrases &amp; Intonation</h2>
+  <p class="subtitle">Applied English Phonology · Ch. 7.6–7.9</p>
+  <aside class="notes">
+    지난 주에는 단어 수준의 강세 규칙(penult/ult rule, 명사-동사 쌍, 접미사 분류)을 다뤘습니다.
+    이번 주는 강세가 단어를 넘어 구(phrase)·문장(sentence) 수준에서 어떻게 작동하는지,
+    그리고 영어의 억양(intonation) 패턴을 살펴봅니다.
+    이번 주로 강세 단원이 마무리되며, 다음 주(15주)는 기말 시험입니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 2 — AGENDA
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Today's Agenda</h2>
+  <ol class="agenda-list">
+    <li>Review: Word-level stress rules</li>
+    <li>Compounds vs. Phrases: stress contrast</li>
+    <li>Nuclear/Tonic Accent in phrases</li>
+    <li>Stress Shift (Rhythm Rule in phrases)</li>
+    <li>AmE vs. BrE stress differences</li>
+    <li>Sentence Stress: New vs. Given Information</li>
+    <li>Intonation: Falling tone</li>
+    <li>Intonation: Rising tone</li>
+    <li>Pragmatics of Intonation</li>
+    <li>Course Summary &amp; Final Exam Preview</li>
+  </ol>
+  <aside class="notes">
+    오늘 수업은 구·문장 강세(compound vs. phrase, 핵 강세, 리듬 규칙)부터 시작하여
+    AmE/BrE 강세 차이, 문장 강세(신정보 초점), 억양 패턴(하강조·상승조)과 화용론적 의미까지 다룹니다.
+    마지막에 기말 시험 범위와 형식을 안내합니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 3 — COMPOUNDS vs PHRASES
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Compounds vs. Phrases</h2>
+  <p style="font-size:0.82em; margin:0.1em 0;">English distinguishes <strong>compounds</strong> from <strong>noun phrases</strong> by stress:</p>
+  <table class="data-table" style="font-size:0.70em; margin-bottom:0.15em">
+    <thead>
+      <tr><th>Type</th><th>Stress Pattern</th><th>Example</th><th>Meaning</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Compound</strong></td>
+        <td><span class="compound">ˈσσ</span> (stress on 1st element)</td>
+        <td><span class="ipa"><span class="compound">ˈblack</span>bird</span></td>
+        <td>a species of bird (Blackbird)</td>
+      </tr>
+      <tr>
+        <td><strong>Noun Phrase</strong></td>
+        <td><span class="phrase-stress">σˈσ</span> (stress on head noun)</td>
+        <td><span class="ipa">ˌblack <span class="phrase-stress">ˈbird</span></span></td>
+        <td>any bird that is black</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="two-col" style="font-size:0.72em; margin-top:0.2em;">
+    <div class="example-box">
+      <p><span class="ipa"><span class="compound">ˈgreen</span>house</span> (a greenhouse)</p>
+      <p><span class="ipa">ˌgreen <span class="phrase-stress">ˈhouse</span></span> (a green house)</p>
+    </div>
+    <div class="example-box">
+      <p><span class="ipa"><span class="compound">ˈwhite</span>board</span> (a whiteboard)</p>
+      <p><span class="ipa">ˌwhite <span class="phrase-stress">ˈboard</span></span> (a white board)</p>
+    </div>
+  </div>
+  <aside class="notes">
+    합성어와 명사구의 강세 차이는 영어에서 의미를 구분하는 중요한 기능을 합니다.
+    합성어: 전체가 하나의 개념을 나타내며, 첫 요소에 강세.
+    명사구: 수식어+핵 명사로, 핵 명사에 강세.
+    ˈblackbird (지빠귀 류의 새 이름) vs. ˌblack ˈbird (검은색인 새)
+    한국어에는 이런 강세에 의한 합성어/구 구별이 없으므로 학습자들이 어려워합니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 4 — MORE COMPOUND EXAMPLES
+══════════════════════════════════════════════ -->
+<section>
+  <h2>More Compound Contrasts</h2>
+  <table class="data-table" style="font-size:0.8em">
+    <thead>
+      <tr><th>Compound</th><th>Noun Phrase</th><th>Meaning contrast</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="ipa">ˈdark room</span></td>
+        <td><span class="ipa">ˌdark ˈroom</span></td>
+        <td>photography darkroom vs. any dark room</td>
+      </tr>
+      <tr>
+        <td><span class="ipa">ˈhot dog</span></td>
+        <td><span class="ipa">ˌhot ˈdog</span></td>
+        <td>frankfurter vs. a dog that is hot</td>
+      </tr>
+      <tr>
+        <td><span class="ipa">ˈEnglish teacher</span></td>
+        <td><span class="ipa">ˌEnglish ˈteacher</span></td>
+        <td>teacher of English vs. teacher who is English</td>
+      </tr>
+      <tr>
+        <td><span class="ipa">ˈsweet heart</span></td>
+        <td><span class="ipa">ˌsweet ˈheart</span></td>
+        <td>a sweetheart (darling) vs. a sweet heart</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.82em; color:#555; margin-top:0.5em">
+    Note: In writing, compounds may be spelled as one word, hyphenated, or two words — stress is the reliable cue.
+  </p>
+  <aside class="notes">
+    "English teacher" 예시는 교사들에게 특히 인상적입니다: 자신이 '영어 교사'인지 '영국 사람인 교사'인지가
+    강세 하나로 구분됩니다. 이 슬라이드를 통해 학생들이 합성어 강세의 실용적 중요성을 느낄 수 있습니다.
+    문어(orthography)로는 구분이 어려울 수 있지만, 음성에서는 강세로 명확히 구분됩니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 5 — NUCLEAR/TONIC ACCENT
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Nuclear Stress / Tonic Accent</h2>
+  <p style="font-size:0.8em;">In a phrase or utterance, one syllable carries the <strong>most prominent stress</strong> — the <em>nuclear stress</em> (or tonic accent).</p>
+  <div class="intonation-box" style="padding:0.5em 0.9em;">
+    <p>"Anna <span class="tonic">BOUGHT</span> a new car."</p>
+    <p>→ Focus on the <strong>action</strong> (contrast: she didn't steal it)</p>
+    <p style="margin-top:0.4em;">"Anna bought a <span class="tonic">NEW</span> car."</p>
+    <p>→ Focus on <strong>newness</strong> (not used)</p>
+    <p style="margin-top:0.4em;">"Anna bought a new <span class="tonic">CAR</span>."</p>
+    <p>→ Focus on the <strong>object</strong> (not a bike)</p>
+  </div>
+  <aside class="notes">
+    핵 강세(nuclear stress) 또는 조성 강세(tonic accent)는 발화에서 가장 두드러진 강세입니다.
+    화자가 '새로운 정보'나 '대조'를 강조하고 싶은 부분에 핵 강세를 배치합니다.
+    이는 담화·화용론적 맥락과 밀접하게 연관되며, 같은 문장이라도 강세 위치에 따라 전달되는 의미가 달라집니다.
+    활동: 같은 문장을 다른 위치에 강세를 주어 읽고 의미 차이를 느껴보게 하세요.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 6 — STRESS SHIFT (RHYTHM RULE)
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Stress Shift: The Rhythm Rule</h2>
+  <p style="font-size:0.8em;">When two primary stresses are adjacent (<em>stress clash</em>), English shifts one stress to avoid the clash:</p>
+  <div class="two-col" style="align-items:start; gap:0.8em; font-size:0.75em;">
+    <div>
+      <h3>Isolated word → Phrase</h3>
+      <div class="example-box" style="font-size:0.85em">
+        <p><em>thirteen</em> alone: <span class="ipa">ˌthirˈTEEN</span></p>
+        <p><em>thirteen men</em>: <span class="ipa">ˈTHIRteen ˌMEN</span> ← shift!</p>
+        <hr style="border:none; border-top:1px solid #ddd; margin:0.4em 0"/>
+        <p><em>Chinese</em> alone: <span class="ipa">ˌChinˈESE</span></p>
+        <p><em>Chinese food</em>: <span class="ipa">ˈCHInese ˌFOOD</span></p>
+      </div>
+    </div>
+    <div>
+      <h3>Why Shift?</h3>
+      <div class="rule-box" style="font-size:0.82em">
+        <pre>Stress Clash: *ˌthirˈTEEN ˈMEN
+               ↑      ↑ ↑ — clash!
+
+Rhythm Rule: ˈTHIRteen ˌMEN
+              ↑        ↑ — alternating ✓</pre>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    강세 충돌 회피(stress clash avoidance)는 영어 운율론의 핵심 원칙 중 하나입니다.
+    'thirteen men'에서 thirteen의 2차 강세 음절 'thir-'이 앞으로 이동하여 1차 강세가 됩니다.
+    이는 영어의 리듬적 교대(iambic → trochaic 전환)를 보여주며,
+    Liberman & Prince (1977)의 Metrical Phonology에서 이론화되었습니다.
+    이 현상은 구어 영어에서 매우 자주 나타나므로 실용적으로 중요합니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 7 — AmE vs BrE STRESS
+══════════════════════════════════════════════ -->
+<section>
+  <h2>AmE vs. BrE: Stress Differences</h2>
+  <p>American and British English sometimes differ in stress placement for the <em>same word</em>:</p>
+  <table class="data-table" style="font-size:0.8em">
+    <thead>
+      <tr><th>Word</th><th>AmE stress</th><th>BrE stress</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><em>garage</em></td><td><span class="ipa">ɡəˈrɑːʒ</span></td><td><span class="ipa">ˈɡær.ɪdʒ</span></td></tr>
+      <tr><td><em>ballet</em></td><td><span class="ipa">bæˈleɪ</span></td><td><span class="ipa">ˈbæl.eɪ</span></td></tr>
+      <tr><td><em>adult</em></td><td><span class="ipa">əˈdʌlt</span></td><td><span class="ipa">ˈæd.ʌlt</span></td></tr>
+      <tr><td><em>address</em> (n.)</td><td><span class="ipa">ˈæd.rɛs</span></td><td><span class="ipa">əˈdrɛs</span></td></tr>
+      <tr><td><em>defense</em></td><td><span class="ipa">dɪˈfɛns</span></td><td><span class="ipa">ˈdiː.fɛns</span></td></tr>
+      <tr><td><em>laboratory</em></td><td><span class="ipa">ˈlæb.rə.tɔːr.i</span></td><td><span class="ipa">ləˈbɒr.ə.tri</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.8em; color:#555; margin-top:0.4em">
+    Also note: BrE often reduces unstressed syllables more aggressively (e.g., <em>secretary</em>: AmE 4 syllables, BrE 3).
+  </p>
+  <aside class="notes">
+    미국 영어와 영국 영어의 강세 차이는 몇 가지 체계적 패턴을 보입니다:
+    - 불어 차용어: 영국 영어는 종종 불어식 마지막 음절 강세를 더 보존 (ballet, garage)
+    - 'laboratory': 미국식은 첫 음절 강세 (4음절), 영국식은 2음절 강세 (3음절로 발음)
+    이러한 차이는 교실에서 학생들의 흥미를 유발하기 좋은 소재입니다.
+    영어 교육 환경(EFL)에서 어느 변종을 기준으로 할지 명확히 하는 것이 좋습니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 8 — SENTENCE STRESS: NEW vs. GIVEN
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Sentence Stress: New vs. Given Information</h2>
+  <div class="two-col" style="align-items:start">
+    <div>
+      <h3>Default: Rightmost Content Word</h3>
+      <div class="intonation-box" style="font-size:0.82em">
+        <p>Q: "What happened?"</p>
+        <p>A: "Anna bought a new <span class="tonic">CAR</span>."</p>
+      </div>
+      <p style="font-size:0.82em; margin-top:0.4em">Rightmost new information = default nuclear stress position</p>
+    </div>
+    <div>
+      <h3>Contrastive Focus</h3>
+      <div class="intonation-box" style="font-size:0.82em">
+        <p>Q: "Did <em>John</em> buy a new car?"</p>
+        <p>A: "No, <span class="tonic">ANNA</span> bought a new car."</p>
+      </div>
+      <p style="font-size:0.82em; margin-top:0.4em">Given info is <em>deaccented</em>; new/contrasted info receives nucleus</p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:0.6em; font-size:0.85em">
+    <strong>Given information</strong> (already mentioned in discourse) is typically <em>unstressed or deaccented</em>.<br/>
+    <strong>New information</strong> receives the <strong>nuclear stress</strong> (tonic accent).
+  </div>
+  <aside class="notes">
+    문장 강세는 담화 맥락에 따라 결정됩니다. 기본적으로 가장 오른쪽의 새로운 내용어에 핵 강세가 오지만,
+    대조·초점이 있을 때는 화자가 강조하고 싶은 부분에 핵 강세를 이동시킵니다.
+    이미 언급된 정보(given information)는 대개 약화(deaccentuation)됩니다.
+    이를 '정보 구조(information structure)' 또는 '초점-배경 구분(focus-background partition)'이라고 합니다.
+    실제 대화에서 강세 오배치는 의사소통 문제를 일으킬 수 있으므로 교육적으로 중요합니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 9 — INTONATION: FALLING TONE
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Intonation: Falling Tone (↘)</h2>
+  <p style="font-size:0.75em;">A <strong>falling tone</strong> (high-to-low pitch movement on the tonic syllable) is used for:</p>
+  <div class="two-col" style="align-items:start; font-size:0.72em;">
+    <div>
+      <h3>Uses of Falling Tone</h3>
+      <ul>
+        <li><strong>Statements</strong> — conveying finality, certainty</li>
+        <li><strong>WH-questions</strong> — genuine information-seeking</li>
+        <li><strong>Commands/Imperatives</strong></li>
+        <li><strong>Exclamations</strong></li>
+      </ul>
+    </div>
+    <div>
+      <div class="intonation-box" style="padding:0.4em 0.8em;">
+        <p>"She's LEAVing tomorrow. ↘"</p>
+        <p class="pitch-high">HIGH ↘ low</p>
+        <p style="margin-top:0.3em;">"WHERE are you going? ↘"</p>
+        <p class="pitch-high">HIGH ↘ low</p>
+        <p style="margin-top:0.3em;">"SIT down! ↘"</p>
+        <p class="pitch-high">HIGH ↘ low</p>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:0.75em; color:#555; margin-top:0.1em">Falling tone signals the speaker has <em>completed</em> the thought and expects no elaboration from the listener.</p>
+  <aside class="notes">
+    하강조(falling tone)는 영어의 가장 기본적인 억양 패턴입니다.
+    평서문: 정보를 완결적으로 전달 ("She's leaving tomorrow.")
+    WH 의문문: 정보를 묻지만 완결적 답을 기대 ("Where are you going?")
+    명령문: 지시를 내림 ("Sit down!")
+    감탄문: 강한 감정 표현 ("What a surprise!")
+    핵 강세 음절에서 음고가 높게 시작하여 뒤로 갈수록 낮아집니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 10 — INTONATION: RISING TONE
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Intonation: Rising Tone (↗)</h2>
+  <p style="font-size:0.75em;">A <strong>rising tone</strong> (low-to-high pitch movement) signals <em>incompleteness</em> or <em>uncertainty</em>:</p>
+  <div class="two-col" style="align-items:start; font-size:0.72em;">
+    <div>
+      <h3>Uses of Rising Tone</h3>
+      <ul>
+        <li><strong>Yes/No questions</strong></li>
+        <li><strong>Non-final list items</strong></li>
+        <li><strong>Non-final clauses</strong> (more to come)</li>
+        <li><strong>Polite requests</strong></li>
+        <li><strong>Tag questions</strong> (genuine uncertainty)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="intonation-box" style="padding:0.4em 0.8em;">
+        <p>"Are you COming? ↗"</p>
+        <p class="pitch-low">low ↗ HIGH</p>
+        <p style="margin-top:0.3em;">"I'll have coffee ↗, tea ↗, and juice. ↘"</p>
+        <p style="margin-top:0.3em;">"When you arRIVE ↗, call me. ↘"</p>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:0.75em; color:#555; margin-top:0.1em">Rising tone invites a response or signals the utterance is not yet complete.</p>
+  <aside class="notes">
+    상승조(rising tone)는 발화가 완결되지 않았거나 답변을 요구하는 신호입니다.
+    Yes/No 의문문: "Are you coming?" — 청자의 반응을 기대
+    비완결적 목록 항목: 더 나올 것이 있음을 신호
+    비완결 절: "When you arrive [↗], call me [↘]" — 조건절은 상승, 주절은 하강
+    주의: 영어 방언에 따라 상승조·하강조 사용 패턴이 다릅니다.
+    특히 일부 영어 변종(New Zealand English, 젊은 세대의 AmE "uptalking")에서 평서문에도 상승조를 씁니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 11 — PRAGMATICS OF INTONATION
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Pragmatics of Intonation</h2>
+  <p>The same words with different intonation = different meaning:</p>
+  <table class="data-table" style="font-size:0.82em">
+    <thead>
+      <tr><th>Utterance</th><th>Tone</th><th>Pragmatic meaning</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><em>"You're coming."</em></td>
+        <td>↘ Falling</td>
+        <td>Statement of fact</td>
+      </tr>
+      <tr>
+        <td><em>"You're coming?"</em></td>
+        <td>↗ Rising</td>
+        <td>Genuine yes/no question</td>
+      </tr>
+      <tr>
+        <td><em>"You're coming."</em></td>
+        <td>↗↘ Rise-Fall</td>
+        <td>Surprise or sarcasm</td>
+      </tr>
+      <tr>
+        <td><em>"It was <span class="tonic">FINE</span>."</em></td>
+        <td>↘ on FINE</td>
+        <td>Genuinely fine</td>
+      </tr>
+      <tr>
+        <td><em>"It was <span class="tonic">FINE</span>."</em></td>
+        <td>↗ on FINE (slow fall)</td>
+        <td>Sarcasm / not really fine</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.8em; color:#555; margin-top:0.4em">
+    Intonation is a crucial channel for conveying <strong>attitude, emotion, and discourse structure</strong> beyond segmental content.
+  </p>
+  <aside class="notes">
+    억양의 화용론적 기능: 동일한 세그먼트 내용이라도 억양에 따라 완전히 다른 의미를 전달합니다.
+    특히 '비꼼(sarcasm)'은 영어에서 종종 억양(특히 지연 하강이나 상승-하강 복합 패턴)으로 표시됩니다.
+    이는 외국어 학습자들이 가장 어려워하는 부분 중 하나입니다.
+    억양은 모국어 화자들이 무의식적으로 처리하지만, L2 학습자에게는 명시적 교수가 필요합니다.
+    참고: Halliday(1967), Cruttenden(1997) 등 억양 연구의 고전적 문헌.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 12 — TAG QUESTIONS INTONATION
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Tag Questions &amp; Intonation</h2>
+  <p>Tag question intonation reveals the speaker's <em>epistemic stance</em>:</p>
+  <div class="two-col" style="align-items:start; gap:1.5em">
+    <div class="card" style="border-top:4px solid #c1121f">
+      <h3>Falling tag ↘ — <em>rhetorical</em></h3>
+      <div class="intonation-box" style="font-size:0.85em">
+        <p>"It's a beautiful day, isn't it? ↘"</p>
+      </div>
+      <p style="font-size:0.82em; margin-top:0.4em">Speaker <strong>knows</strong> the answer; expects agreement. The question is rhetorical.</p>
+    </div>
+    <div class="card" style="border-top:4px solid #0077b6">
+      <h3>Rising tag ↗ — <em>genuine question</em></h3>
+      <div class="intonation-box" style="font-size:0.85em">
+        <p>"She left already, didn't she? ↗"</p>
+      </div>
+      <p style="font-size:0.82em; margin-top:0.4em">Speaker is <strong>uncertain</strong>; genuinely seeking confirmation from the listener.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    부가 의문문(tag question)의 억양이 의미를 결정짓는 좋은 예입니다.
+    하강 태그: 화자가 이미 알고 있으며 동의를 구함 (수사적)
+    상승 태그: 화자가 정말로 모르며 확인을 구함 (진정한 질문)
+    이 구별은 모국어 화자들이 자동적으로 처리하지만, L2 학습자들에게는 명시적으로 가르칠 필요가 있습니다.
+    역할극(role play) 활동: 두 사람이 대화를 나누며 태그 의문문을 연습하면 효과적입니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 13 — COURSE SUMMARY (FULL SEMESTER)
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Course Summary: A Semester at a Glance</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.4em; font-size:0.70em;">
+    <div class="card" style="border-top:4px solid #0077b6">
+      <strong style="color:#0077b6">Phonetics (Wk 2–3)</strong>
+      <ul>
+        <li>IPA, Vocal tract</li>
+        <li>Articulation: Place × Manner</li>
+        <li>Vowels: Height × Backness × Round</li>
+        <li>Suprasegmentals</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid #6a0572">
+      <strong style="color:#6a0572">Phonology (Wk 4–5)</strong>
+      <ul>
+        <li>Phoneme, Allophone</li>
+        <li>Minimal pairs, Distribution</li>
+        <li>Morphophonology</li>
+        <li>Phonological processes</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid #1b7f5e">
+      <strong style="color:#1b7f5e">Consonants (Wk 6–7)</strong>
+      <ul>
+        <li>Stops: Aspiration, Flapping</li>
+        <li>Fricatives, Affricates</li>
+        <li>Sonorants, Dark/Clear /l/</li>
+        <li>Sociophonetic variation</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid #c77b2e">
+      <strong style="color:#c77b2e">Vowels (Wk 9–10)</strong>
+      <ul>
+        <li>Tense vs. Lax</li>
+        <li>Diphthongs, AmE vs. BrE</li>
+        <li>Vowel Reduction, Schwa</li>
+        <li>Connected speech</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid #2d6a4f">
+      <strong style="color:#2d6a4f">Syllables (Wk 11–12)</strong>
+      <ul>
+        <li>Structure, Weight, Sonority</li>
+        <li>MOP, SSP</li>
+        <li>Phonotactics, Gap types</li>
+        <li>L2 / Child language</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid #c1121f">
+      <strong style="color:#c1121f">Stress (Wk 13–14)</strong>
+      <ul>
+        <li>Penult / Ult rules</li>
+        <li>N–V pairs, Affixes</li>
+        <li>Compounds vs. Phrases</li>
+        <li>Intonation patterns</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    한 학기 전체 내용을 색상별 카드로 정리했습니다. 기말 시험 전 총 복습 슬라이드로 활용하세요.
+    각 영역에서 가장 핵심적인 개념들을 강조하고, 학생들이 자신의 약점 영역을 파악할 수 있도록 돕습니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 14 — FINAL EXAM PREVIEW
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Final Exam Preview</h2>
+  <div class="two-col" style="align-items:start">
+    <div>
+      <h3>Format</h3>
+      <ul style="font-size:0.88em">
+        <li>Total: 100 points / 90 minutes</li>
+        <li>Part 1: IPA transcription (20 pts)</li>
+        <li>Part 2: Short answer — phoneme/allophone analysis (25 pts)</li>
+        <li>Part 3: Phonological rule writing (20 pts)</li>
+        <li>Part 4: Syllabification + stress marking (20 pts)</li>
+        <li>Part 5: Data analysis essay (15 pts)</li>
+      </ul>
+    </div>
+    <div class="assignment-box">
+      <h3>Study Tips</h3>
+      <ul style="font-size:0.85em">
+        <li>Review IPA chart (consonants &amp; vowels)</li>
+        <li>Practice complementary distribution analysis</li>
+        <li>Know the Aspiration, Flapping, Nasalization, Tense/Lax distribution rules</li>
+        <li>Practice MOP syllabification with multi-syllable words</li>
+        <li>Penult/Ult rule: know when each applies</li>
+        <li>Review compound vs. phrase stress contrasts</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    기말 시험 안내를 명확하게 해주세요. 시험 형식, 배점, 시험 범위를 학생들이 명확히 알 수 있도록 합니다.
+    LMS에 기말 시험 정보를 올려두고, 오피스아워를 공지하는 것도 좋습니다.
+    학습 조언: IPA 차트 암기, 상보적 분포 분석 연습, 규칙 쓰기 연습이 핵심입니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 15 — CLOSING
+══════════════════════════════════════════════ -->
+<section class="final-slide">
+  <h2>Thank You &amp; Good Luck!</h2>
+  <div style="text-align:center; margin:1em 0">
+    <p style="font-size:1.4em; font-family:'Fira Code', monospace; color: var(--slide-accent)">
+      /ˌæp.laɪd ˌɪŋ.ɡlɪʃ fəˈnɒl.ə.dʒi/
+    </p>
+    <p style="font-size:1em; color:#555; margin-top:0.3em"><em>Applied English Phonology</em></p>
+  </div>
+  <div class="two-col" style="align-items:start; margin-top:1em; font-size:0.88em">
+    <div class="card">
+      <h3>Before the Final Exam</h3>
+      <ul>
+        <li>Review all lecture slides (S key for notes)</li>
+        <li>Re-read Yavaş Ch. 1–4, 6–7</li>
+        <li>Practice IPA transcription daily</li>
+        <li>Office hours: [확인 후 기재]</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>After This Course</h3>
+      <ul>
+        <li>Every English sound has a <strong>systematic reason</strong></li>
+        <li>Language variation is <strong>rule-governed</strong></li>
+        <li>Phonological knowledge → better <strong>teaching &amp; learning</strong></li>
+        <li>Congratulations on completing the course!</li>
+      </ul>
+    </div>
+  </div>
+  <aside class="notes">
+    마지막 수업입니다. 한 학기 동안의 노고에 감사하며 학생들을 격려해 주세요.
+    기말 시험 준비를 위한 실용적 조언(매일 IPA 연습, 교재 재독)을 강조합니다.
+    오피스아워 일정을 LMS에 공지하고, 시험 전 질문을 적극 받도록 안내합니다.
+    '모든 영어 소리에는 체계적인 이유가 있다'는 메시지로 마무리하면 의미 있는 마무리가 됩니다.
+  </aside>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    transitionSpeed: 'fast',
+    plugins: [ RevealNotes, RevealHighlight ],
+    width: 1200,
+    height: 700,
+    margin: 0.04,
+  });
+</script>
+<a class="home-btn" href="../index.html" title="강의 목록으로">← 목록</a>
+<script src="assets/phonology-print.js"></script>
+</body>
+</html>

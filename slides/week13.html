@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 13 – Stress (1): Word-Level Patterns</title>
+
+  <!-- Google Fonts: Noto Sans (IPA-safe) + Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Reveal.js 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" />
+
+  <!-- Shared phonology theme -->
+  <link rel="stylesheet" href="assets/phonology-theme.css" />
+
+  <style>
+    :root { --slide-accent: #c1121f; }  /* Stress — Crimson Red */
+
+    /* Stress mark highlight */
+    .stress-mark { color: #c1121f; font-weight: 700; font-size: 1.1em; }
+    .stress-primary { color: #c1121f; }
+    .stress-secondary { color: #0077b6; }
+
+    /* Affix classification table colors */
+    .affix-shift { background: #fff0f0; }
+    .affix-neutral { background: #f0fff0; }
+    .affix-impose { background: #f0f0ff; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 1 — TITLE
+══════════════════════════════════════════════ -->
+<section class="title-slide">
+  <div class="week-badge">Week 13</div>
+  <h1>Stress (1)</h1>
+  <h2>Word-Level Patterns</h2>
+  <p class="subtitle">Applied English Phonology · Ch. 7.1–7.5</p>
+  <aside class="notes">
+    오늘부터 강세(stress) 단원을 시작합니다. 강세는 영어에서 매우 중요한 음운 현상으로,
+    단어의 의미 변화(명사·동사 구별 등), 리듬, 음절 구조와 밀접하게 연관됩니다.
+    이번 주(13주)는 단어 강세 패턴을 다루고, 다음 주(14주)는 구·문장 강세와 억양을 다룹니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 2 — AGENDA
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Today's Agenda</h2>
+  <ol class="agenda-list">
+    <li>What is stress? Acoustic &amp; phonological definition</li>
+    <li>Stress notation: primary (ˈ) and secondary (ˌ)</li>
+    <li>Stress-conditioned alternations (vowel quality)</li>
+    <li>Noun/Adjective stress: the Penult Rule</li>
+    <li>Verb stress: the Ult Rule</li>
+    <li>Noun–Verb stress pairs</li>
+    <li>Secondary stress patterns</li>
+    <li>Affix classification: Stress-shifting, Neutral, Imposing</li>
+    <li>Practice &amp; Summary</li>
+  </ol>
+  <aside class="notes">
+    수업 흐름: 강세의 정의 → 표기법 → 명사·형용사 강세 규칙(penult) → 동사 강세 규칙(ult) →
+    명사/동사 쌍 → 이차 강세 → 접미사 분류 → 연습 순으로 진행합니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 3 — WHAT IS STRESS?
+══════════════════════════════════════════════ -->
+<section>
+  <h2>What is Stress?</h2>
+  <div class="two-col" style="align-items:start; font-size:0.88em;">
+    <div>
+      <h3>Acoustic Correlates</h3>
+      <ul style="font-size:0.85em">
+        <li><strong>Higher pitch</strong> (F₀ increase)</li>
+        <li><strong>Greater intensity</strong> (louder)</li>
+        <li><strong>Longer duration</strong></li>
+        <li><strong>Fuller vowel quality</strong> (less reduction)</li>
+      </ul>
+      <p style="font-size:0.82em; color:#555; margin-top:0.5em">Duration is the most reliable correlate in English.</p>
+    </div>
+    <div>
+      <h3>Phonological Role</h3>
+      <ul style="font-size:0.85em">
+        <li>English is a <strong>stress-timed</strong> language (cf. mora-timed: Japanese)</li>
+        <li>Stress is <strong>lexically contrastive</strong>: changes word identity</li>
+        <li>Unstressed syllables undergo <strong>vowel reduction</strong> → <span class="ipa">/ə/</span></li>
+      </ul>
+      <div class="example-box" style="margin-top:0.2em; font-size:0.85em">
+        <p><span class="ipa">ˈpɜː.mɪt</span> (noun) vs. <span class="ipa">pɜːˈmɪt</span> (verb)</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    강세는 단순히 '크게 말하는 것'이 아닙니다. 음향적으로 음고(F₀), 강도(dB), 지속(duration),
+    모음 질(vowel quality)의 복합적 효과입니다. 영어에서는 특히 지속 시간이 강세의 가장 안정적인 단서입니다.
+    영어는 stress-timed 언어로, 강세 음절 사이의 시간 간격이 비교적 일정하려는 경향이 있습니다.
+    이는 한국어(syllable-timed)와 다르므로, 한국인 학습자에게 영어 리듬이 어색하게 느껴지는 이유 중 하나입니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 4 — STRESS NOTATION
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Stress Notation</h2>
+  <div class="two-col" style="align-items:start; gap:1.2em; margin-top:0.4em">
+    <div>
+      <h3>IPA Diacritics</h3>
+      <table class="data-table" style="font-size:0.80em">
+        <thead><tr><th>Symbol</th><th>Meaning</th><th>Position</th></tr></thead>
+        <tbody>
+          <tr><td class="stress-primary"><strong>ˈ</strong></td><td>Primary stress</td><td>Before syllable</td></tr>
+          <tr><td class="stress-secondary"><strong>ˌ</strong></td><td>Secondary stress</td><td>Before syllable</td></tr>
+          <tr><td>(unmarked)</td><td>Unstressed</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Examples</h3>
+      <div class="example-box" style="font-size:0.82em">
+        <p><em>banana</em>: <span class="ipa">bəˈnɑː.nə</span></p>
+        <p><em>education</em>: <span class="ipa">ˌɛd.jʊˈkeɪ.ʃən</span></p>
+        <p><em>university</em>: <span class="ipa">ˌjuː.nɪˈvɜː.sɪ.ti</span></p>
+        <p><em>photograph</em>: <span class="ipa">ˈfəʊ.tə.ɡrɑːf</span></p>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:0.82em; color:#555; margin-top:0.5em">
+    <strong>Note:</strong> IPA places stress mark <em>before</em> the stressed syllable (not over the vowel).
+  </p>
+  <aside class="notes">
+    IPA 표기에서 강세 표시는 강세 받는 음절 '앞'에 붙습니다. 한국어 사전식 표기(어깨 위 점)와 다르므로 주의.
+    1차 강세(ˈ)는 단어에서 가장 강한 강세, 2차 강세(ˌ)는 그 다음 단계입니다.
+    모든 단어에는 하나의 1차 강세만 있지만, 긴 단어에는 2차 강세가 하나 이상 있을 수 있습니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 5 — STRESS & VOWEL QUALITY
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Stress and Vowel Quality</h2>
+  <p>Stress and vowel quality are <em>interdependent</em> in English:</p>
+  <div class="two-col" style="align-items:start">
+    <div>
+      <h3>Vowel Reduction (Unstressed → /ə/)</h3>
+      <table class="data-table" style="font-size:0.76em">
+        <thead><tr><th>Stressed form</th><th>Unstressed form</th></tr></thead>
+        <tbody>
+          <tr><td><em>phOtograph</em> <span class="ipa">/ˈfəʊtəɡrɑːf/</span></td><td><em>phoTOgraphy</em> <span class="ipa">/fəˈtɒɡrəfi/</span></td></tr>
+          <tr><td><em>TELegraph</em> <span class="ipa">/ˈtɛlɪɡrɑːf/</span></td><td><em>teLEgraphy</em> <span class="ipa">/tɪˈlɛɡrəfi/</span></td></tr>
+          <tr><td><em>Atom</em> <span class="ipa">/ˈætəm/</span></td><td><em>aTOMic</em> <span class="ipa">/əˈtɒmɪk/</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Key Insight</h3>
+      <p>The same morpheme can have <strong>different vowel realizations</strong> depending on whether it receives stress:</p>
+      <p style="text-align:center; font-size:0.95em; margin:0.2em 0">
+        <span class="ipa">/æ/</span> (stressed) ↔ <span class="ipa">/ə/</span> (unstressed)
+      </p>
+      <p style="font-size:0.82em; color:#555">Cf. <em>atom</em> /ˈæ/ vs. <em>atomic</em> /ə/</p>
+    </div>
+  </div>
+  <aside class="notes">
+    강세와 모음 질은 영어에서 불가분의 관계입니다. 강세가 이동하면 모음도 변합니다.
+    이를 잘 보여주는 예가 photograph/photography/photographic 연쇄입니다:
+    - photograph: ˈfəʊ-tə-ɡrɑːf (1음절 강세)
+    - photography: fə-ˈtɒɡ-rə-fi (2음절 강세 이동, 1음절 /fəʊ/→/fə/ 약화)
+    - photographic: ˌfəʊ-tə-ˈɡræf-ɪk (3음절 강세, 1음절에 2차 강세 복귀)
+    이 현상은 영어 형태론과 음운론의 연결점입니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 6 — PENULT RULE (NOUNS & ADJECTIVES)
+══════════════════════════════════════════════ -->
+<section>
+  <h2>The Penult Rule: Nouns &amp; Adjectives</h2>
+  <div class="rule-box">
+    <span class="feat">Penult Rule</span>: In nouns and adjectives, stress falls on the <strong>penultimate syllable</strong> (second-to-last) if it contains a <em>long vowel, diphthong, or ends in 2+ consonants</em> (= <strong>heavy</strong>); otherwise, stress falls on the <strong>antepenult</strong> (third-to-last).
+  </div>
+  <div class="two-col" style="margin-top:0.6em; font-size:0.85em">
+    <div class="example-box">
+      <p><strong>Penult stressed (heavy penult):</strong></p>
+      <p><em>agenda</em> → <span class="ipa">əˈdʒɛn.də</span> (CVC = heavy)</p>
+      <p><em>agenda</em> → penult = <span class="ipa">ˈdʒɛn</span> ✓</p>
+      <p><em>fantastic</em> → <span class="ipa">fænˈtæs.tɪk</span></p>
+    </div>
+    <div class="example-box">
+      <p><strong>Antepenult stressed (light penult):</strong></p>
+      <p><em>cinema</em> → <span class="ipa">ˈsɪn.ə.mə</span> (penult /ə/ = light)</p>
+      <p><em>America</em> → <span class="ipa">əˈmɛr.ɪ.kə</span></p>
+      <p><em>analysis</em> → <span class="ipa">əˈnæl.ɪ.sɪs</span></p>
+    </div>
+  </div>
+  <aside class="notes">
+    영어 명사·형용사의 강세 규칙: 끝에서 두 번째 음절(penult)이 '무거운 음절'(장모음·이중모음 포함 또는 2개 이상 자음 끝)이면 거기에 강세.
+    가벼운 음절이면 끝에서 세 번째 음절(antepenult)에 강세.
+    이 규칙은 라틴어 강세 규칙에서 유래했으며, 영어에 들어온 많은 라틴어계 단어에 잘 적용됩니다.
+    단, 단음절어·2음절어에는 별도 규칙이 적용됩니다. 예외도 있으므로 '경향'으로 이해하는 것이 좋습니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 7 — ULT RULE (VERBS)
+══════════════════════════════════════════════ -->
+<section>
+  <h2>The Ult Rule: Verbs</h2>
+  <div class="rule-box">
+    <span class="feat">Ult Rule</span>: In verbs, stress falls on the <strong>final syllable (ult)</strong> if it is <em>heavy</em> (long vowel, diphthong, or ends in 2+ consonants); otherwise, stress falls on the <strong>penultimate</strong> syllable.
+  </div>
+  <div class="two-col" style="margin-top:0.6em; font-size:0.85em">
+    <div class="example-box">
+      <p><strong>Ult stressed (heavy ult):</strong></p>
+      <p><em>collapse</em> → <span class="ipa">kəˈlæps</span> (CVC+C)</p>
+      <p><em>maintain</em> → <span class="ipa">meɪnˈteɪn</span> (diphthong)</p>
+      <p><em>exist</em> → <span class="ipa">ɪɡˈzɪst</span></p>
+    </div>
+    <div class="example-box">
+      <p><strong>Penult stressed (light ult):</strong></p>
+      <p><em>enter</em> → <span class="ipa">ˈɛn.tɚ</span> (ult = schwa)</p>
+      <p><em>bother</em> → <span class="ipa">ˈbɒð.ɚ</span></p>
+      <p><em>travel</em> → <span class="ipa">ˈtræv.əl</span></p>
+    </div>
+  </div>
+  <aside class="notes">
+    동사의 경우 '마지막 음절(ult)'이 무거우면 거기에 강세가 옵니다.
+    가벼우면 끝에서 두 번째 음절(penult)에 강세가 옵니다.
+    이 규칙을 통해 많은 영어 동사의 강세 위치를 예측할 수 있습니다.
+    단, 2음절 동사에서 이 규칙이 가장 명확하며, 다음 슬라이드의 명사/동사 쌍에서 실용적 대비를 확인합니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 8 — NOUN/VERB STRESS PAIRS
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Noun–Verb Stress Pairs</h2>
+  <p>Many 2-syllable English words are stressed differently depending on their grammatical category:</p>
+  <table class="data-table" style="font-size:0.82em">
+    <thead>
+      <tr><th>Word</th><th>Noun (ˈσσ)</th><th>Verb (σˈσ)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><em>permit</em></td><td><span class="ipa">ˈpɜː.mɪt</span> <span style="color:#555; font-size:0.85em">"a permit"</span></td><td><span class="ipa">pɜːˈmɪt</span> <span style="color:#555; font-size:0.85em">"to permit"</span></td></tr>
+      <tr><td><em>record</em></td><td><span class="ipa">ˈrɛk.ɔːd</span></td><td><span class="ipa">rɪˈkɔːd</span></td></tr>
+      <tr><td><em>contest</em></td><td><span class="ipa">ˈkɒn.tɛst</span></td><td><span class="ipa">kɒnˈtɛst</span></td></tr>
+      <tr><td><em>protest</em></td><td><span class="ipa">ˈprəʊ.tɛst</span></td><td><span class="ipa">prəˈtɛst</span></td></tr>
+      <tr><td><em>increase</em></td><td><span class="ipa">ˈɪŋ.kriːs</span></td><td><span class="ipa">ɪŋˈkriːs</span></td></tr>
+      <tr><td><em>insult</em></td><td><span class="ipa">ˈɪn.sʌlt</span></td><td><span class="ipa">ɪnˈsʌlt</span></td></tr>
+    </tbody>
+  </table>
+  <aside class="notes">
+    이 명사/동사 강세 대립 쌍은 영어 교육에서 매우 중요합니다. 한국인 학습자들이 자주 혼동하는 부분입니다.
+    일반적으로 2음절 명사는 첫 음절 강세(ˈσσ), 2음절 동사는 둘째 음절 강세(σˈσ)입니다.
+    단, 모든 2음절어가 이 패턴을 따르는 것은 아닙니다. 예: 'promise'는 명사/동사 모두 ˈprɒm.ɪs.
+    Pairs 연습을 문장 맥락과 함께 하면 효과적입니다:
+    "I need to REcord this REcord." (동사 vs. 명사)
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 9 — SECONDARY STRESS
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Secondary Stress</h2>
+  <p>Longer words have a <strong>secondary stress</strong> (ˌ) in addition to the primary stress (ˈ).</p>
+  <div class="two-col" style="align-items:start">
+    <div>
+      <h3>Rhythmic Alternation</h3>
+      <p style="font-size:0.85em">Secondary stress tends to alternate with primary stress, maintaining a <em>rhythm</em>:</p>
+      <div class="example-box" style="font-size:0.82em">
+        <p><em>education</em>: <span class="ipa">ˌɛd.jʊˈkeɪ.ʃən</span></p>
+        <p><em>organization</em>: <span class="ipa">ˌɔː.ɡən.aɪˈzeɪ.ʃən</span></p>
+        <p><em>university</em>: <span class="ipa">ˌjuː.nɪˈvɜː.sɪ.ti</span></p>
+        <p><em>refrigerator</em>: <span class="ipa">rɪˌfrɪdʒ.əˈreɪ.tɚ</span></p>
+      </div>
+    </div>
+    <div>
+      <h3>The Rhythm Rule</h3>
+      <div class="rule-box" style="font-size:0.82em">
+        <pre>ˌ — ˈ — (ˌ) — ˈ …
+Unstressed syllables between
+stress beats create rhythm.</pre>
+      </div>
+      <p style="font-size:0.82em; color:#555; margin-top:0.5em">English avoids <em>stress clash</em> (adjacent primary stresses) → stress shift in phrases (→ Week 14).</p>
+    </div>
+  </div>
+  <aside class="notes">
+    이차 강세는 리듬적 교대(rhythmic alternation) 원칙에 따라 배치됩니다.
+    '강세 충돌(stress clash)' — 두 1차 강세가 인접하는 경우 — 은 영어에서 가능하면 회피됩니다.
+    이것이 구(phrase) 수준에서의 강세 이동(stress shift)을 낳는데, 이는 다음 주(14주)에 자세히 다룹니다.
+    예: 'thirteen' 단독에서는 thirTEEN이지만, 'thirteen men'에서는 THIRteen men으로 이동.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 10 — AFFIX CLASSIFICATION (OVERVIEW)
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Affix Classification: How Suffixes Affect Stress</h2>
+  <p style="font-size:0.7em;">Suffixes can be classified into three types based on their effect on the base word's stress:</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.5em; margin-top:0.2em; font-size:0.75em;">
+    <div class="card" style="border-top:4px solid #c1121f">
+      <h3 style="color:#c1121f">Stress-Shifting</h3>
+      <p>Causes the primary stress to move to a different syllable of the base.</p>
+      <div class="example-box" style="font-size:0.8em">
+        <p><em>-ic</em>, <em>-tion</em>, <em>-ity</em>, <em>-ify</em></p>
+      </div>
+    </div>
+    <div class="card" style="border-top:4px solid #0077b6">
+      <h3 style="color:#0077b6">Stress-Neutral</h3>
+      <p>The base word keeps its original stress unchanged.</p>
+      <div class="example-box" style="font-size:0.8em">
+        <p><em>-ness</em>, <em>-less</em>, <em>-ful</em>, <em>-ly</em>, <em>-er</em></p>
+      </div>
+    </div>
+    <div class="card" style="border-top:4px solid #6a0572">
+      <h3 style="color:#6a0572">Stress-Imposing</h3>
+      <p>The suffix itself attracts primary stress (or stress falls on the syllable before the suffix).</p>
+      <div class="example-box" style="font-size:0.8em">
+        <p><em>-eer</em>, <em>-ette</em>, <em>-esque</em>, <em>-ese</em></p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    접미사의 강세 영향은 영어 어휘 형태론에서 중요한 주제입니다.
+    세 가지 유형:
+    1) 강세 이동(stress-shifting): 어근의 강세 위치를 바꿈 (예: PHOtograph → phoTOgraphy)
+    2) 강세 중립(stress-neutral): 어근의 강세를 그대로 유지 (예: HAPPY → HAPPiness)
+    3) 강세 부과(stress-imposing): 접미사 앞 음절에 강세를 끌어당김 (예: engineEER, cigarETTE)
+    이 분류는 영어 어휘의 발음 예측에 실용적으로 활용됩니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 11 — STRESS-SHIFTING SUFFIXES
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Stress-Shifting Suffixes</h2>
+  <table class="data-table affix-shift" style="font-size:0.72em">
+    <thead>
+      <tr><th>Suffix</th><th>Base (stress)</th><th>Derived (stress shifted)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><em>-ic</em></td><td><span class="ipa">ˈpho.to.graph</span></td><td><span class="ipa">pho.toˈgraph.ic</span></td></tr>
+      <tr><td><em>-ity</em></td><td><span class="ipa">ˈcu.ri.ous</span></td><td><span class="ipa">cu.riˈos.i.ty</span></td></tr>
+      <tr><td><em>-tion/-sion</em></td><td><span class="ipa">ˈed.u.cate</span></td><td><span class="ipa">ˌed.uˈca.tion</span></td></tr>
+      <tr><td><em>-ify</em></td><td><span class="ipa">ˈsol.id</span></td><td><span class="ipa">soˈlid.i.fy</span></td></tr>
+      <tr><td><em>-ial/-ian</em></td><td><span class="ipa">ˈed.i.tor</span></td><td><span class="ipa">ˌed.iˈto.ri.al</span></td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.82em; color:#555; margin-top:0.5em">
+    <strong>Pattern:</strong> Stress often moves to the syllable <em>immediately before</em> the suffix (pre-suffix stress).
+  </p>
+  <aside class="notes">
+    강세 이동 접미사들은 대부분 접미사 바로 앞 음절에 강세를 유발합니다(pre-suffix stress).
+    이는 라틴어·그리스어 기원 접미사들에서 두드러지게 나타납니다.
+    -tion 접미사의 경우: educate → education에서 -tion 앞 음절 ca에 1차 강세 이동.
+    학생들이 파생어를 발음할 때 가장 자주 오류를 내는 부분이므로, 충분한 연습이 필요합니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 12 — STRESS-NEUTRAL & IMPOSING SUFFIXES
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Stress-Neutral &amp; Stress-Imposing Suffixes</h2>
+  <div class="two-col" style="align-items:start">
+    <div>
+      <h3 style="color:#0077b6">Stress-Neutral (base stress preserved)</h3>
+      <table class="data-table" style="font-size:0.8em">
+        <thead><tr><th>Suffix</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><em>-ness</em></td><td><span class="ipa">ˈhap.pi → ˈhap.pi.ness</span></td></tr>
+          <tr><td><em>-less</em></td><td><span class="ipa">ˈhope → ˈhope.less</span></td></tr>
+          <tr><td><em>-ful</em></td><td><span class="ipa">ˈbeaut.y → ˈbeaut.i.ful</span></td></tr>
+          <tr><td><em>-ly</em></td><td><span class="ipa">ˈquick → ˈquick.ly</span></td></tr>
+          <tr><td><em>-er/-est</em></td><td><span class="ipa">ˈfast → ˈfast.er</span></td></tr>
+          <tr><td><em>-ing/-ed</em></td><td><span class="ipa">ˈwalk → ˈwalk.ing</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3 style="color:#6a0572">Stress-Imposing (attract stress)</h3>
+      <table class="data-table" style="font-size:0.8em">
+        <thead><tr><th>Suffix</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><em>-eer</em></td><td><span class="ipa">engi.ˈneer</span></td></tr>
+          <tr><td><em>-ette</em></td><td><span class="ipa">ciga.ˈrette</span></td></tr>
+          <tr><td><em>-esque</em></td><td><span class="ipa">kafka.ˈesque</span></td></tr>
+          <tr><td><em>-ese</em></td><td><span class="ipa">Japan.ˈese</span></td></tr>
+          <tr><td><em>-ation</em></td><td><span class="ipa">informˈation</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    강세 중립 접미사는 주로 게르만어 기원(-ness, -ful, -less, -ly 등)이며, 어근의 강세를 그대로 유지합니다.
+    강세 부과 접미사는 자신 앞 음절에 강세를 끌어당깁니다. 이 중 일부(-ation)는 위 강세 이동 접미사와 겹치는데,
+    관점에 따라 분류가 다를 수 있습니다 (교재마다 약간의 차이 있음).
+    영어 학습자들이 -ness, -ly 추가 시 강세를 바꾸는 오류를 자주 냅니다: *haPPIness가 아닌 HAPpiness.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 13 — PRACTICE
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Practice: Stress Placement</h2>
+  <p>Mark the <strong>primary stress</strong> on each word. Identify the rule applied.</p>
+  <table class="data-table" style="font-size:0.82em">
+    <thead>
+      <tr><th>#</th><th>Word</th><th>Category</th><th>Stress (your answer)</th><th>Rule</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><em>develop</em></td><td>verb</td><td>?</td><td>?</td></tr>
+      <tr><td>2</td><td><em>committee</em></td><td>noun</td><td>?</td><td>?</td></tr>
+      <tr><td>3</td><td><em>beautiful</em></td><td>adjective</td><td>?</td><td>?</td></tr>
+      <tr><td>4</td><td><em>volunteer</em></td><td>noun/verb</td><td>?</td><td>?</td></tr>
+      <tr><td>5</td><td><em>communicate</em></td><td>verb</td><td>?</td><td>?</td></tr>
+      <tr><td>6</td><td><em>communication</em></td><td>noun</td><td>?</td><td>?</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:0.8em; color:#555; margin-top:0.4em">
+    Answers: 1-deˈvelop (ult heavy), 2-comˈmittee (penult heavy), 3-ˈbeautiful (neutral -ful), 4-ˌvolunˈteer (-eer imposing), 5-comˈmunicate (ult rule), 6-comˌmuniˈcation (-tion shifting)
+  </p>
+  <aside class="notes">
+    학생들이 먼저 혼자 풀고 나서 파트너와 비교하게 하세요. 특히 5번과 6번(communicate/communication)은
+    동일 어근에서 접미사에 따라 강세가 어떻게 달라지는지를 보여주는 좋은 예입니다.
+    4번 volunteer는 -eer 접미사가 강세를 부과하는 예시입니다.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 14 — SUMMARY
+══════════════════════════════════════════════ -->
+<section>
+  <h2>Summary</h2>
+  <div class="summary-grid">
+    <div class="summary-item">
+      <div class="summary-icon">🔊</div>
+      <h3>Stress</h3>
+      <p>Pitch + Intensity + Duration + Vowel quality. Duration most reliable in English.</p>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">📝</div>
+      <h3>Penult Rule</h3>
+      <p>Nouns/Adj: stress penult (if heavy) or antepenult (if penult is light)</p>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">🏃</div>
+      <h3>Ult Rule</h3>
+      <p>Verbs: stress ult (if heavy) or penult (if ult is light)</p>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">🔄</div>
+      <h3>N–V Pairs</h3>
+      <p>ˈpermit (N) vs. perˈmit (V) — stress shift signals grammatical category</p>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">➕</div>
+      <h3>Affixes</h3>
+      <p>Stress-shifting (-ic, -ity) · Neutral (-ness, -ly) · Imposing (-eer, -ette)</p>
+    </div>
+    <div class="summary-item">
+      <div class="summary-icon">🎵</div>
+      <h3>Rhythm</h3>
+      <p>Secondary stress creates rhythmic alternation; English avoids stress clash</p>
+    </div>
+  </div>
+  <aside class="notes">
+    이번 주 핵심 요약:
+    1. 강세의 음향적 상관요소: 음고, 강도, 지속, 모음 질 (지속이 가장 신뢰할 수 있는 단서)
+    2. 명사/형용사: penult 규칙 (무거운 penult → 거기에 강세, 가벼운 penult → antepenult에 강세)
+    3. 동사: ult 규칙 (무거운 ult → 거기에 강세, 가벼운 ult → penult에 강세)
+    4. 명사/동사 쌍: 동일 형태에서 강세 위치가 문법 범주를 구별
+    5. 접미사 분류: 강세 이동, 중립, 부과
+    6. 이차 강세와 리듬적 교대
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 15 — NEXT WEEK & ASSIGNMENT
+══════════════════════════════════════════════ -->
+<section class="final-slide">
+  <h2>Next Week &amp; Assignment</h2>
+  <div class="two-col" style="align-items:start">
+    <div>
+      <h3>Week 14 Preview</h3>
+      <p><strong>Stress (2): Phrases &amp; Intonation</strong></p>
+      <ul style="font-size:0.9em">
+        <li>합성어 vs. 구 강세 대비</li>
+        <li>미국영어 vs. 영국영어 강세 차이</li>
+        <li>문장 강세 &amp; Tonic Accent</li>
+        <li>억양 패턴: Falling vs. Rising</li>
+      </ul>
+      <p style="font-size:0.85em; color:#555; margin-top:0.5em">교재: Ch. 7.6–7.9</p>
+    </div>
+    <div class="assignment-box">
+      <h3>과제 (13주차)</h3>
+      <ol style="font-size:0.85em">
+        <li><strong>강세 표기:</strong> 다음 단어 15개에 IPA 강세 기호(ˈ, ˌ)를 표시하고, 적용된 규칙을 명시하시오.
+          (단어 목록: <em>photograph, photography, photographic, economy, economic, economize, admire, admiration, volunteer, parenthesis, analysis, analyze, analytical, comfortable, uncomfortable</em>)</li>
+        <li><strong>명사/동사 쌍:</strong> permit, record, protest, subject, permit, object 각각에 대해 명사와 동사 발음을 IPA로 표기하시오.</li>
+      </ol>
+      <p style="font-size:0.8em; color:#777; margin-top:0.5em">※ 다음 주 수업 시작 전까지 LMS에 제출</p>
+    </div>
+  </div>
+  <aside class="notes">
+    다음 주는 강세의 두 번째 단원으로, 단어 수준을 넘어 구·문장 수준의 강세와 억양을 다룹니다.
+    합성어(blackbird) vs. 구(black bird)의 강세 대비는 학생들이 매우 흥미롭게 느끼는 주제입니다.
+    과제 1번의 photograph-photography-photographic 연쇄는 강세 이동과 모음 변화를 동시에 보여주는 핵심 예시입니다.
+    강세 표기 시 IPA 기호 위치(음절 앞)를 정확히 적용하도록 안내해 주세요.
+  </aside>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    transitionSpeed: 'fast',
+    plugins: [ RevealNotes, RevealHighlight ],
+    width: 1200,
+    height: 700,
+    margin: 0.04,
+  });
+</script>
+<a class="home-btn" href="../index.html" title="강의 목록으로">← 목록</a>
+<script src="assets/phonology-print.js"></script>
+</body>
+</html>

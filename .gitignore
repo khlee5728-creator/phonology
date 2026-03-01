@@ -1,0 +1,10 @@
+# 교재 PDF — 저작권 자료, 공개 저장소 업로드 금지
+docs/
+
+# Claude Code 설정 (개인 환경, 공유 불필요)
+.claude/
+
+# OS 임시 파일
+.DS_Store
+Thumbs.db
+desktop.ini

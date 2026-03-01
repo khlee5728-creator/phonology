@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 4 — Phonology (1) | Applied English Phonology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" />
+  <link rel="stylesheet" href="assets/phonology-theme.css" />
+  <style>:root { --slide-accent: #6a0572; }</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<!-- 1. Title -->
+<section data-background-color="#6a0572">
+  <div style="color:white;text-align:center;padding:1em;">
+    <div class="week-badge" style="background:rgba(255,255,255,0.2);color:white;">Week 4</div>
+    <h1 style="color:white;font-size:1.7em;margin:0.4em 0 0.2em;">Phonology (1)</h1>
+    <p style="color:rgba(255,255,255,0.8);font-size:0.8em;">Contrast &amp; Distribution</p>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.45em;margin-top:1em;font-style:italic;">Ch. 2.1 – 2.3 (Part 1) · Applied English Phonology, 4th Ed.</p>
+  </div>
+  <aside class="notes">오늘부터 음운론(Phonology)이 시작됩니다. 음성학에서 배운 소리들이 특정 언어의 체계 안에서 어떻게 기능하는지를 분석합니다. 핵심 개념은 "음소(phoneme)"와 "이음(allophone)"입니다.</aside>
+</section>
+
+<!-- 2. Agenda -->
+<section>
+  <h2>Today's Agenda</h2>
+  <ul class="agenda-list">
+    <li>From Phonetics to Phonology — the key question</li>
+    <li>Phoneme — the unit of phonological contrast</li>
+    <li>Minimal pairs and the contrast test</li>
+    <li>Phones, Phonemes, and Allophones</li>
+    <li>The Superman / Clark Kent analogy</li>
+    <li>Complementary vs. Overlapping Distribution</li>
+    <li>Phonemic analysis — step by step</li>
+  </ul>
+</section>
+
+<!-- 3. The Key Question -->
+<section>
+  <h2>The Key Question in Phonology</h2>
+  <div class="def-box">
+    <div class="term">Phonetics asked:</div>
+    <p>What sounds do humans produce? How are they articulated, transmitted, perceived?</p>
+  </div>
+  <div class="def-box" style="margin-top:0.6em;border-left-color:#6a0572;">
+    <div class="term" style="color:#6a0572;">Phonology asks:</div>
+    <p>Which sound <strong>differences matter</strong> in a given language? Which differences change meaning?</p>
+  </div>
+  <div class="def-box" style="margin-top:0.6em;background:#fff3cd;border-left-color:#c77b2e;font-size:0.75em;">
+    <strong>Example:</strong> In English, <span class="ipa alp">[pʰ]</span> and <span class="ipa alp">[p]</span> are physically different sounds — but they never change the meaning of a word. In Thai, they DO change meaning. Same sounds, different phonological status in different languages.
+  </div>
+  <aside class="notes">이 슬라이드가 음성학에서 음운론으로 전환하는 핵심입니다. 영어에서는 기식음화된 [pʰ]과 비기식음화된 [p]의 차이가 의미 변별에 영향이 없지만, 태국어에서는 이 차이가 완전히 다른 단어를 만듭니다.</aside>
+</section>
+
+<!-- 4. Phoneme -->
+<section>
+  <h2 style="margin-bottom:0.1em;">Phoneme</h2>
+  <div class="def-box" style="padding:0.15em 0.8em;margin:0;">
+    <div class="term">Phoneme /ˈfoʊniːm/</div>
+    <p>The <strong>minimal abstract unit</strong> of sound in a language that can distinguish meaning. Represented in slashes: <span class="ipa">/p/</span>, <span class="ipa">/b/</span>, <span class="ipa">/t/</span>…</p>
+  </div>
+  <div class="two-col" style="margin-top:0;font-size:0.58em;">
+    <div>
+      <h3>Three related concepts</h3>
+      <div class="def-box" style="padding:0.15em 0.6em;margin:0.05em 0;">
+        <div class="term">Phone <span class="ipa alp">[brackets]</span></div>
+        <p>Any actual, physical speech sound. Language-independent.</p>
+      </div>
+      <div class="def-box" style="margin-top:0.1em;padding:0.15em 0.6em;margin-bottom:0.05em;">
+        <div class="term">Phoneme <span class="ipa">/slashes/</span></div>
+        <p>Abstract sound category in a specific language. Meaning-distinguishing.</p>
+      </div>
+      <div class="def-box" style="margin-top:0.1em;padding:0.15em 0.6em;margin-bottom:0.05em;">
+        <div class="term">Allophone <span class="ipa alp">[brackets]</span></div>
+        <p>A variant of a phoneme. Same phoneme, different surface realization.</p>
+      </div>
+    </div>
+    <div>
+      <h3>English example</h3>
+      <p><strong>Phoneme:</strong> <span class="ipa">/p/</span></p>
+      <p style="margin-top:0.2em;"><strong>Allophones:</strong></p>
+      <div class="example-box" style="grid-template-columns:1fr;margin-top:0.2em;">
+        <div class="ex-item"><span class="word"><span class="ipa alp">[pʰ]</span></span><span class="trans">word-initially: <em>pin</em></span></div>
+        <div class="ex-item"><span class="word"><span class="ipa alp">[p]</span></span><span class="trans">after /s/: <em>spin</em></span></div>
+        <div class="ex-item"><span class="word"><span class="ipa alp">[p̚]</span></span><span class="trans">word-finally: <em>map</em></span></div>
+      </div>
+      <p style="margin-top:0.4em;font-size:0.85em;color:#6c757d;">All three are allophones of <span class="ipa">/p/</span> — never change meaning.</p>
+    </div>
+  </div>
+  <aside class="notes">음소(phoneme)는 추상적 범주이고, 이음(allophone)은 그 범주의 구체적 실현형입니다. /p/라는 음소는 환경에 따라 [pʰ], [p], [p̚]으로 다르게 발음되지만, 영어 화자는 이 차이를 "같은 /p/"로 인식합니다.</aside>
+</section>
+
+<!-- 5. Minimal Pairs -->
+<section>
+  <h2>Minimal Pairs &amp; The Contrast Test</h2>
+  <div class="def-box">
+    <div class="term">Minimal Pair</div>
+    <p>Two words that differ in <strong>exactly one sound</strong> and have <strong>different meanings</strong>. If a minimal pair exists, the two sounds are <em>different phonemes</em>.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.56em;">
+    <div>
+      <h3><span class="ipa">/p/</span> vs. <span class="ipa">/b/</span></h3>
+      <div class="example-box" style="grid-template-columns:1fr 1fr;">
+        <div class="ex-item"><span class="word">pin</span><span class="trans"><span class="ipa">/pɪn/</span></span></div>
+        <div class="ex-item"><span class="word">bin</span><span class="trans"><span class="ipa">/bɪn/</span></span></div>
+        <div class="ex-item"><span class="word">cap</span><span class="trans"><span class="ipa">/kæp/</span></span></div>
+        <div class="ex-item"><span class="word">cab</span><span class="trans"><span class="ipa">/kæb/</span></span></div>
+      </div>
+    </div>
+    <div>
+      <h3><span class="ipa">/s/</span> vs. <span class="ipa">/z/</span></h3>
+      <div class="example-box" style="grid-template-columns:1fr 1fr;">
+        <div class="ex-item"><span class="word">sip</span><span class="trans"><span class="ipa">/sɪp/</span></span></div>
+        <div class="ex-item"><span class="word">zip</span><span class="trans"><span class="ipa">/zɪp/</span></span></div>
+        <div class="ex-item"><span class="word">loose</span><span class="trans"><span class="ipa">/luːs/</span></span></div>
+        <div class="ex-item"><span class="word">lose</span><span class="trans"><span class="ipa">/luːz/</span></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="def-box" style="margin-top:0.2em;font-size:0.65em;padding:0.2em 0.8em;background:#e8f4fd;border-left-color:#0077b6;">
+    <strong>The Contrast Test:</strong> If two sounds form minimal pairs → they are <strong>separate phonemes</strong> in that language.
+  </div>
+  <aside class="notes">최소 대립쌍은 음소 지위를 증명하는 가장 강력한 증거입니다. 학생들에게 /θ/와 /ð/의 최소 대립쌍을 찾아보게 하세요: thigh/thy, ether/either, mouth(N)/mouth(V).</aside>
+</section>
+
+<!-- 6. Distribution Types -->
+<section>
+  <h2>Distribution</h2>
+  <div class="def-box">
+    <div class="term">Distribution</div>
+    <p>The set of phonetic environments in which a sound occurs. Critical for determining phoneme vs. allophone status.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.75em;">
+    <div class="def-box">
+      <div class="term">Complementary Distribution</div>
+      <p style="font-size:0.85em;">Two sounds <strong>never appear in the same environment</strong>. → They are <em>allophones</em> of one phoneme.</p>
+      <p style="font-size:0.75em;margin-top:0.4em;color:#6c757d;">Example: <span class="ipa alp">[pʰ]</span> appears word-initially; <span class="ipa alp">[p]</span> never does (after /s/). They don't overlap.</p>
+    </div>
+    <div class="def-box">
+      <div class="term">Overlapping Distribution</div>
+      <p style="font-size:0.85em;">Two sounds <strong>can appear in the same environment</strong>. → They may be <em>separate phonemes</em> (if minimal pairs exist).</p>
+      <p style="font-size:0.75em;margin-top:0.4em;color:#6c757d;">Example: <span class="ipa">/l/</span> and <span class="ipa">/ɹ/</span> both appear word-initially: <em>light/right</em>, <em>lane/rain</em>.</p>
+    </div>
+  </div>
+  <aside class="notes">상보적 분포(complementary distribution)는 두 음이 절대 같은 환경에 나타나지 않을 때입니다. 겹치는 분포(overlapping distribution)는 같은 환경에 나타날 수 있을 때입니다. 겹치는 분포 + 최소 대립쌍 = 별개의 음소.</aside>
+</section>
+
+<!-- 7. Superman Analogy -->
+<section>
+  <h2>The Superman / Clark Kent Analogy</h2>
+  <div class="two-col" style="font-size:0.88em;">
+    <div style="font-size:0.72em;">
+      <div class="def-box" style="border-left-color:#6a0572;">
+        <div class="term" style="color:#6a0572;">Phoneme = Superman</div>
+        <p>The underlying identity — abstract, theoretical. We write it in <span class="ipa">/slashes/</span>.</p>
+        <p style="margin-top:0.3em;">Example: <span class="ipa">/p/</span> = the phoneme</p>
+      </div>
+      <div class="def-box" style="margin-top:0.3em;border-left-color:#c77b2e;">
+        <div class="term" style="color:#c77b2e;">Allophones = Clark Kent &amp; Superman in costume</div>
+        <p>Different surface appearances of the same underlying identity. We write them in <span class="ipa alp">[brackets]</span>.</p>
+        <p style="margin-top:0.3em;"><span class="ipa alp">[pʰ]</span> · <span class="ipa alp">[p]</span> · <span class="ipa alp">[p̚]</span> = allophones of <span class="ipa">/p/</span></p>
+      </div>
+    </div>
+    <div style="font-size:0.7em;">
+      <div class="def-box" style="background:#f4fdf3;border-left-color:#1b7f5e;">
+        <p><strong>Key insight:</strong> Native speakers perceive allophones as "the same sound" — just as people in Metropolis perceive Clark Kent and Superman as two different people, even though they are actually the same.</p>
+        <p style="margin-top:0.5em;">English speakers know <em>pin</em> and <em>spin</em> use "the same /p/" — even though physically they are different <span class="ipa alp">[pʰ]</span> vs. <span class="ipa alp">[p]</span>.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">이 비유는 교재(Yavaş)에서 사용된 것입니다. 학생들에게 "Superman이 Clark Kent 복장을 하고 있어도 같은 사람이듯, 영어의 [pʰ]과 [p]은 같은 음소 /p/의 다른 모습"이라고 설명하세요.</aside>
+</section>
+
+<!-- 8. Phonemic Analysis Procedure -->
+<section>
+  <h2>Phonemic Analysis — Step by Step</h2>
+  <div style="font-size:0.72em;">
+    <div class="def-box" style="margin-bottom:0.5em;">
+      <div class="term">Step 1: Phonetic similarity</div>
+      <p>Are the two sounds phonetically similar? (Share most features.) If not, they are almost certainly different phonemes.</p>
+    </div>
+    <div class="def-box" style="margin-bottom:0.5em;">
+      <div class="term">Step 2: Distribution</div>
+      <p>List the environments (positions) where each sound occurs. Are they in <strong>complementary</strong> or <strong>overlapping</strong> distribution?</p>
+    </div>
+    <div class="def-box" style="margin-bottom:0.5em;">
+      <div class="term">Step 3: Determine status</div>
+      <p>
+        • Complementary distribution + phonetically similar → <strong>allophones of one phoneme</strong><br>
+        • Overlapping distribution + minimal pairs → <strong>separate phonemes</strong>
+      </p>
+    </div>
+    <div class="def-box" style="background:#f4fdf3;border-left-color:#1b7f5e;">
+      <div class="term" style="color:#1b7f5e;">Step 4: Write the rule</div>
+      <p>State which allophone appears in which environment.</p>
+    </div>
+  </div>
+  <aside class="notes">이 4단계 분석 절차는 음운론 과제의 핵심입니다. 학생들이 이 절차를 따르면 음운 분석 문제를 체계적으로 풀 수 있습니다. 다음 슬라이드에서 실제 예시를 보겠습니다.</aside>
+</section>
+
+<!-- 9. Worked Example: /p/ -->
+<section>
+  <h2>Worked Example: English <span class="ipa">/p/</span></h2>
+  <div class="two-col" style="font-size:0.58em;">
+    <div>
+      <h3>Data</h3>
+      <table>
+        <thead><tr><th>Word</th><th>IPA</th><th>Position of /p/</th></tr></thead>
+        <tbody>
+          <tr><td>pin</td><td><span class="ipa alp">[pʰɪn]</span></td><td>word-initial</td></tr>
+          <tr><td>spin</td><td><span class="ipa alp">[spɪn]</span></td><td>after /s/</td></tr>
+          <tr><td>map</td><td><span class="ipa alp">[mæp̚]</span></td><td>word-final</td></tr>
+          <tr><td>upper</td><td><span class="ipa alp">[ˈʌpɚ]</span></td><td>medial (unstressed)</td></tr>
+          <tr><td>apply</td><td><span class="ipa alp">[əˈpʰlaɪ]</span></td><td>before stressed vowel</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Analysis</h3>
+      <p><strong>Step 1:</strong> <span class="ipa alp">[pʰ]</span>, <span class="ipa alp">[p]</span>, <span class="ipa alp">[p̚]</span> are all voiceless bilabial stops → phonetically similar ✓</p>
+      <p style="margin-top:0.4em;"><strong>Step 2:</strong> Environments don't overlap:<br><span class="ipa alp">[pʰ]</span> = syllable-initial before stressed V<br><span class="ipa alp">[p]</span> = after /s/<br><span class="ipa alp">[p̚]</span> = syllable-final</p>
+      <p style="margin-top:0.4em;"><strong>Step 3:</strong> Complementary distribution → allophones of <span class="ipa">/p/</span></p>
+      <div class="rule-box" style="margin-top:0.4em;">
+        <span class="seg">/p/</span> → <span class="ipa alp">[pʰ]</span> / # <span class="arrow">___</span> <span class="env">V́</span><br>
+        <span class="seg">/p/</span> → <span class="ipa alp">[p̚]</span> / <span class="arrow">___</span> <span class="env">#, C</span><br>
+        <span class="seg">/p/</span> → <span class="ipa alp">[p]</span> / elsewhere
+      </div>
+    </div>
+  </div>
+  <aside class="notes">이 예시를 단계별로 천천히 설명하세요. 특히 "상보적 분포" 확인 방법인 환경 목록 작성 → 겹치는 환경 없음 확인 → 이음 결론 도출의 과정을 명확히 보여주세요.</aside>
+</section>
+
+<!-- 10. Practice -->
+<section>
+  <h2>Practice</h2>
+  <div class="practice-header">Analysis Activity</div>
+  <p style="font-size:0.72em;margin-bottom:0.7em;">Are <span class="ipa">/l/</span> and <span class="ipa">/ɹ/</span> allophones of one phoneme, or separate phonemes in English?</p>
+  <div style="font-size:0.68em;">
+    <h3>Given data</h3>
+    <div class="example-box" style="grid-template-columns:repeat(4,1fr);">
+      <div class="ex-item"><span class="word">light</span><span class="trans"><span class="ipa alp">[laɪt]</span></span></div>
+      <div class="ex-item"><span class="word">right</span><span class="trans"><span class="ipa alp">[ɹaɪt]</span></span></div>
+      <div class="ex-item"><span class="word">lane</span><span class="trans"><span class="ipa alp">[leɪn]</span></span></div>
+      <div class="ex-item"><span class="word">rain</span><span class="trans"><span class="ipa alp">[ɹeɪn]</span></span></div>
+      <div class="ex-item"><span class="word">lead</span><span class="trans"><span class="ipa alp">[liːd]</span></span></div>
+      <div class="ex-item"><span class="word">read</span><span class="trans"><span class="ipa alp">[ɹiːd]</span></span></div>
+    </div>
+    <div class="fragment" style="margin-top:0.8em;">
+      <div class="def-box" style="border-left-color:#1b7f5e;background:#f4fdf3;">
+        <strong>Answer:</strong> Both <span class="ipa">/l/</span> and <span class="ipa">/ɹ/</span> appear word-initially before vowels (overlapping distribution). Minimal pairs exist (light/right, lane/rain). → They are <strong>separate phonemes</strong> in English. /l/ ≠ /ɹ/
+      </div>
+    </div>
+  </div>
+  <aside class="notes">학생들이 먼저 4단계 절차를 따라 스스로 분석해보게 하세요. Fragment를 클릭해 정답을 공개합니다. /l/과 /ɹ/은 한국어에서 동일한 음소(/ㄹ/)의 이음으로 처리되지만, 영어에서는 별개의 음소입니다. 이것이 한국어 화자가 l과 r을 구분하기 어려운 이유입니다!</aside>
+</section>
+
+<!-- 11. Summary -->
+<section>
+  <h2>Summary</h2>
+  <div class="summary-box">
+    <h4>Key Concepts — Week 4</h4>
+    <ul style="font-size:0.78em;line-height:1.9;">
+      <li><span class="key">Phoneme</span>: abstract, meaning-distinguishing sound unit; written in <span class="ipa">/slashes/</span></li>
+      <li><span class="key">Phone</span>: any physical sound; <span class="key">Allophone</span>: variant of a phoneme</li>
+      <li><span class="key">Minimal pair</span> → two sounds are separate phonemes</li>
+      <li><span class="key">Complementary distribution</span> → allophones of one phoneme</li>
+      <li><span class="key">Overlapping distribution</span> → possibly separate phonemes (check for minimal pairs)</li>
+      <li>Analysis: phonetic similarity → distribution check → conclusion → rule</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 12. Next Week -->
+<section>
+  <h2>Next Week — Week 5</h2>
+  <div class="next-week-banner">
+    <div class="label">다음 수업</div>
+    <p><strong>Phonology (2): Analysis &amp; Processes</strong><br>Ch. 2.3 (Part 2) – 2.6</p>
+  </div>
+  <ul style="font-size:0.72em;line-height:1.9;margin-top:0.8em;">
+    <li>Mini phonemic analysis demo (Korean/English data)</li>
+    <li>Free Variation</li>
+    <li>Morphophonology — past tense <em>-ed</em>, plural <em>-s</em></li>
+    <li>Practical applications of phonology</li>
+  </ul>
+  <div class="next-week-banner" style="margin-top:0.8em;">
+    <div class="label">예습 권장</div>
+    <p>교재 Ch. 2.3 (Part 2) – 2.6 (pp. 46–56) 읽어오기</p>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash:true, slideNumber:'c/t', progress:true, center:false, transition:'slide', transitionSpeed:'fast', plugins:[] });
+</script>
+<a class="home-btn" href="../index.html" title="강의 목록으로">← 목록</a>
+<script src="assets/phonology-print.js"></script>
+</body>
+</html>

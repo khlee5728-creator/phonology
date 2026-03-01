@@ -1,0 +1,612 @@
+/* ============================================================
+   Applied English Phonology — Custom Reveal.js Theme
+   Author: Course Materials
+   Fonts: Noto Sans (IPA-safe), Noto Serif, Fira Code
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+/* ── CSS Custom Properties ────────────────────────────────── */
+:root {
+  --color-base:        #ffffff;
+  --color-bg-alt:      #f8f9fa;
+  --color-text:        #1a1a2e;
+  --color-subtle:      #6c757d;
+  --color-border:      #dee2e6;
+
+  /* Domain accent colours */
+  --color-ot:          #1a1a2e;   /* Week 1  – Orientation */
+  --color-phonetics:   #0077b6;   /* Week 2–3 */
+  --color-phonology:   #6a0572;   /* Week 4–5 */
+  --color-consonants:  #1b7f5e;   /* Week 6–7 */
+  --color-vowels:      #c77b2e;   /* Week 9–10 */
+  --color-syllables:   #2d6a4f;   /* Week 11–12 */
+  --color-stress:      #c1121f;   /* Week 13–14 */
+
+  /* IPA box colours */
+  --ipa-phonemic-bg:   #e8f4fd;
+  --ipa-phonemic-bdr:  #0077b6;
+  --ipa-allophonic-bg: #fdf3e8;
+  --ipa-allophonic-bdr:#c77b2e;
+  --ipa-orthographic-bg:#f4fdf3;
+  --ipa-orthographic-bdr:#1b7f5e;
+
+  --font-main:   'Noto Sans', 'Segoe UI', sans-serif;
+  --font-serif:  'Noto Serif', Georgia, serif;
+  --font-mono:   'Fira Code', 'Consolas', monospace;
+}
+
+/* ── Reveal.js Overrides ──────────────────────────────────── */
+.reveal {
+  font-family: var(--font-main);
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--color-text);
+  background: var(--color-base);
+}
+
+.reveal .slides {
+  text-align: left;
+}
+
+/* ── Headings ─────────────────────────────────────────────── */
+.reveal h1, .reveal h2, .reveal h3,
+.reveal h4, .reveal h5, .reveal h6 {
+  font-family: var(--font-main);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--slide-accent, var(--color-ot));
+  margin-bottom: 0.3em;
+}
+
+.reveal h1 { font-size: 1.8em; }
+.reveal h2 { font-size: 1.4em; }
+.reveal h3 { font-size: 1.1em; border-bottom: 2px solid var(--slide-accent, var(--color-ot)); padding-bottom: 0.15em; margin-bottom: 0.25em; }
+.reveal h4 { font-size: 0.95em; color: var(--color-subtle); font-weight: 600; }
+
+/* ── Title Slide ──────────────────────────────────────────── */
+.reveal .title-slide {
+  text-align: center;
+  padding: 2em;
+}
+.reveal .title-slide h1 {
+  font-size: 1.6em;
+  margin-bottom: 0.3em;
+}
+.reveal .title-slide .week-badge {
+  display: inline-block;
+  background: var(--slide-accent, var(--color-ot));
+  color: #fff;
+  font-size: 0.5em;
+  font-weight: 700;
+  padding: 0.3em 1em;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1em;
+}
+.reveal .title-slide .subtitle {
+  font-size: 0.7em;
+  color: var(--color-subtle);
+  margin-top: 0.5em;
+}
+.reveal .title-slide .textbook-ref {
+  font-size: 0.45em;
+  color: var(--color-subtle);
+  margin-top: 1.5em;
+  font-style: italic;
+}
+
+/* ── IPA Notation Boxes ───────────────────────────────────── */
+/* Phonemic /slash/ notation — blue */
+.ipa {
+  font-family: var(--font-main);
+  background: var(--ipa-phonemic-bg);
+  border: 1px solid var(--ipa-phonemic-bdr);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+  font-size: 1em;
+  color: #004f7c;
+  display: inline-block;
+}
+
+/* Allophonic [bracket] notation — amber */
+.ipa.alp {
+  background: var(--ipa-allophonic-bg);
+  border-color: var(--ipa-allophonic-bdr);
+  color: #7a4a00;
+}
+
+/* Orthographic <angle> notation — green */
+.ipa.orth {
+  background: var(--ipa-orthographic-bg);
+  border-color: var(--ipa-orthographic-bdr);
+  color: #1a4d36;
+  font-style: italic;
+}
+
+/* Large standalone IPA display */
+.ipa-display {
+  font-family: var(--font-main);
+  font-size: 1.4em;
+  text-align: center;
+  letter-spacing: 0.05em;
+  padding: 0.4em 1em;
+  background: var(--ipa-phonemic-bg);
+  border-left: 4px solid var(--ipa-phonemic-bdr);
+  border-radius: 0 8px 8px 0;
+  margin: 0.5em 0;
+}
+.ipa-display.alp {
+  background: var(--ipa-allophonic-bg);
+  border-left-color: var(--ipa-allophonic-bdr);
+}
+
+/* ── Phonological Rule Box ────────────────────────────────── */
+.rule-box {
+  font-family: var(--font-mono);
+  font-size: 0.75em;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 8px;
+  padding: 0.6em 1em;
+  margin: 0.3em 0;
+  border-left: 4px solid var(--slide-accent, var(--color-ot));
+  line-height: 1.6;
+}
+.rule-box .arrow { color: #89dceb; font-weight: 700; }
+.rule-box .env   { color: #a6e3a1; }
+.rule-box .seg   { color: #fab387; }
+.rule-box .feat  { color: #f5c2e7; }
+
+/* ── Callout / Definition Box ─────────────────────────────── */
+.def-box {
+  border-left: 4px solid var(--slide-accent, var(--color-ot));
+  background: var(--color-bg-alt);
+  padding: 0.45em 0.9em;
+  border-radius: 0 8px 8px 0;
+  margin: 0.3em 0;
+  font-size: 0.8em;
+}
+.def-box .term {
+  font-weight: 700;
+  color: var(--slide-accent, var(--color-ot));
+  font-size: 1.05em;
+}
+
+/* ── Key Term Highlight ───────────────────────────────────── */
+.key {
+  font-weight: 700;
+  color: var(--slide-accent, var(--color-ot));
+  border-bottom: 2px solid currentColor;
+}
+
+/* ── Example / Minimal Pair Box ──────────────────────────── */
+.example-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5em;
+  margin: 0.5em 0;
+}
+.example-box .ex-item {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.5em 0.8em;
+  text-align: center;
+  font-size: 0.8em;
+}
+.example-box .ex-item .word {
+  font-size: 1.2em;
+  font-weight: 700;
+  display: block;
+}
+.example-box .ex-item .trans {
+  font-family: var(--font-main);
+  color: var(--color-subtle);
+  font-size: 0.9em;
+}
+
+/* ── Articulation Feature Table ──────────────────────────── */
+.reveal table {
+  border-collapse: collapse;
+  font-size: 0.7em;
+  width: 100%;
+  margin: 0.3em 0;
+}
+.reveal table th {
+  background: var(--slide-accent, var(--color-ot));
+  color: white;
+  padding: 0.3em 0.6em;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+.reveal table td {
+  padding: 0.25em 0.55em;
+  border: 1px solid var(--color-border);
+  text-align: center;
+  vertical-align: middle;
+}
+.reveal table tr:nth-child(even) td {
+  background: var(--color-bg-alt);
+}
+.reveal table tr:hover td {
+  background: #e8f4fd;
+}
+
+/* ── Two-column Layout ────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2em;
+  align-items: start;
+}
+.two-col.wide-left  { grid-template-columns: 2fr 1fr; }
+.two-col.wide-right { grid-template-columns: 1fr 2fr; }
+
+/* ── Agenda / Objectives List ─────────────────────────────── */
+.agenda-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.agenda-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.35em 0;
+  font-size: 0.78em;
+  border-bottom: 1px solid var(--color-border);
+}
+.agenda-list li:last-child { border-bottom: none; }
+.agenda-list li::before {
+  content: '';
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: var(--slide-accent, var(--color-ot));
+  flex-shrink: 0;
+}
+
+/* ── Summary / Takeaway Box ───────────────────────────────── */
+.summary-box {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--slide-accent, var(--color-ot)) 8%, white),
+    var(--color-base));
+  border: 1.5px solid var(--slide-accent, var(--color-ot));
+  border-radius: 12px;
+  padding: 0.8em 1.2em;
+  font-size: 0.75em;
+}
+.summary-box h4 {
+  margin-top: 0;
+  font-size: 1em;
+  color: var(--slide-accent, var(--color-ot));
+}
+
+/* ── Practice / Exercise Slide ────────────────────────────── */
+.practice-header {
+  background: var(--slide-accent, var(--color-ot));
+  color: white;
+  border-radius: 8px;
+  padding: 0.4em 1em;
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.6em;
+}
+
+/* ── Assignment / Next Week Banner ───────────────────────── */
+.next-week-banner {
+  background: var(--color-bg-alt);
+  border-radius: 8px;
+  padding: 0.8em 1em;
+  font-size: 0.7em;
+  border-top: 3px solid var(--slide-accent, var(--color-ot));
+  margin-top: 0.5em;
+}
+.next-week-banner .label {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+  color: var(--slide-accent, var(--color-ot));
+}
+
+/* ── Korean annotation (supplementary) ───────────────────── */
+.ko {
+  font-size: 0.75em;
+  color: var(--color-subtle);
+  font-style: normal;
+}
+.ko::before { content: '※ '; }
+
+/* ── Sonority Scale SVG helper ────────────────────────────── */
+.sonority-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.2em;
+  height: 4.5em;
+  margin: 0.3em 0;
+}
+.sonority-bar .bar {
+  flex: 1;
+  border-radius: 4px 4px 0 0;
+  background: var(--slide-accent, var(--color-ot));
+  opacity: 0.75;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 0.3em;
+  font-size: 0.5em;
+  color: white;
+  font-weight: 700;
+}
+
+/* ── Reveal.js progress & controls tint ──────────────────── */
+.reveal .progress {
+  color: var(--slide-accent, var(--color-ot));
+}
+.reveal .controls {
+  color: var(--slide-accent, var(--color-ot));
+}
+
+/* ── Slide Number ─────────────────────────────────────────── */
+.reveal .slide-number {
+  font-size: 0.5em;
+  color: var(--color-subtle);
+  background: transparent;
+}
+
+/* ── Fragment animations ──────────────────────────────────── */
+.reveal .fragment.highlight-current-ipa.current-fragment .ipa {
+  background: #fff3cd;
+  border-color: #c77b2e;
+  transform: scale(1.05);
+}
+
+/* ── Footnote / source reference ─────────────────────────── */
+.footnote {
+  font-size: 0.45em;
+  color: var(--color-subtle);
+  position: absolute;
+  bottom: 0.5em;
+  right: 1em;
+  font-style: italic;
+}
+
+/* ── Card / Summary / Assignment UI ──────────────────────── */
+.card {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.6em 0.9em;
+}
+.card h3 { margin-top: 0; }
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6em;
+  font-size: 0.76em;
+  margin-top: 0.4em;
+}
+
+.summary-item {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.5em 0.7em;
+  text-align: center;
+}
+.summary-item h3 {
+  font-size: 0.95em;
+  border-bottom: none;
+  margin-bottom: 0.2em;
+}
+.summary-item p {
+  font-size: 0.88em;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.summary-icon {
+  font-size: 1.3em;
+  margin-bottom: 0.1em;
+  display: block;
+}
+
+.assignment-box {
+  background: #fff8e1;
+  border-left: 4px solid var(--slide-accent, var(--color-ot));
+  border-radius: 0 8px 8px 0;
+  padding: 0.6em 0.9em;
+  font-size: 0.82em;
+}
+.assignment-box h3 {
+  color: var(--slide-accent, var(--color-ot));
+  margin-top: 0;
+}
+
+.final-slide h2 { margin-bottom: 0.25em; }
+
+/* ── Home Button ──────────────────────────────────────────── */
+.home-btn {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--slide-accent, var(--color-ot));
+  border: 1.5px solid var(--slide-accent, var(--color-ot));
+  border-radius: 20px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  opacity: 0.7;
+  transition: opacity 0.2s, background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+  backdrop-filter: blur(4px);
+}
+.home-btn:hover {
+  opacity: 1;
+  background: var(--slide-accent, var(--color-ot));
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+/* ── PDF Print Button ──────────────────────────────────────── */
+.pdf-btn {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--slide-accent, #1a1a2e);
+  border: 1.5px solid var(--slide-accent, #1a1a2e);
+  border-radius: 20px;
+  font-family: var(--font-main, 'Noto Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  opacity: 0.7;
+  transition: opacity 0.2s, background 0.2s, color 0.2s,
+              box-shadow 0.2s, transform 0.2s;
+  backdrop-filter: blur(4px);
+}
+.pdf-btn:hover {
+  opacity: 1;
+  background: var(--slide-accent, #1a1a2e);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+/* ── PDF 저장 안내 오버레이 ─────────────────────────────────── */
+.print-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.print-overlay__box {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.4em 2.8em;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
+}
+.print-overlay__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  color: #aaaaaa;
+  cursor: pointer;
+  line-height: 1;
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+.print-overlay__close:hover {
+  color: #333333;
+  background: #f0f0f0;
+}
+.print-overlay__icon {
+  font-size: 2.8em;
+  margin-bottom: 0.3em;
+}
+.print-overlay__title {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin: 0 0 0.4em;
+  color: #1a1a2e;
+}
+.print-overlay__sub {
+  color: #555555;
+  font-size: 0.95em;
+  margin-bottom: 1.2em;
+}
+.print-overlay__steps {
+  text-align: left;
+  font-size: 0.92em;
+  line-height: 1.85;
+  padding-left: 1.4em;
+  margin-bottom: 1.4em;
+  color: #333333;
+}
+.print-overlay__steps kbd {
+  background: #f0f0f0;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 0.9em;
+  font-family: monospace;
+}
+.print-overlay__steps strong {
+  color: #1a1a2e;
+}
+.print-overlay__btn {
+  display: inline-block;
+  padding: 0.7em 2em;
+  background: #1a1a2e;
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  font-size: 1.05em;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s, transform 0.15s;
+  font-family: var(--font-main, 'Noto Sans', sans-serif);
+}
+.print-overlay__btn:hover {
+  background: #2d2d4e;
+  transform: translateY(-2px);
+}
+.print-overlay__hint {
+  font-size: 0.8em;
+  color: #999999;
+  margin-top: 0.8em;
+  margin-bottom: 0;
+}
+
+/* ── 인쇄/PDF 저장 시 오버레이·버튼 숨김 ─────────────────── */
+@media print {
+  .home-btn,
+  .pdf-btn,
+  .print-overlay { display: none !important; }
+}
+
+/* ── Responsive adjustments ───────────────────────────────── */
+/* Reveal.js scales slides via CSS transform, so media queries fire at viewport width.
+   Only collapse to single column on very small viewports (phones), not typical laptops. */
+@media (max-width: 480px) {
+  .two-col { grid-template-columns: 1fr; }
+  .example-box { grid-template-columns: 1fr; }
+  .summary-grid { grid-template-columns: 1fr 1fr; }
+}

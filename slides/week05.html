@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Week 5 — Phonology (2) | Applied English Phonology</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" />
+  <link rel="stylesheet" href="assets/phonology-theme.css" />
+  <style>:root { --slide-accent: #6a0572; }</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<!-- 1. Title -->
+<section data-background-color="#6a0572">
+  <div style="color:white;text-align:center;padding:1em;">
+    <div class="week-badge" style="background:rgba(255,255,255,0.2);color:white;">Week 5</div>
+    <h1 style="color:white;font-size:1.7em;margin:0.4em 0 0.2em;">Phonology (2)</h1>
+    <p style="color:rgba(255,255,255,0.8);font-size:0.8em;">Analysis &amp; Processes</p>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.45em;margin-top:1em;font-style:italic;">Ch. 2.3 (Part 2) – 2.6 · Applied English Phonology, 4th Ed.</p>
+  </div>
+  <aside class="notes">지난 주의 음소/이음 분석을 심화하고, 형태음운론(Morphophonology)으로 이어집니다. 특히 영어 과거형 -ed와 복수형 -s의 발음 규칙은 실제 교수 현장에서 매우 중요합니다.</aside>
+</section>
+
+<!-- 2. Agenda -->
+<section>
+  <h2>Today's Agenda</h2>
+  <ul class="agenda-list">
+    <li>Review: phoneme vs. allophone</li>
+    <li>Phonemic analysis mini-demo (Korean data)</li>
+    <li>Free Variation</li>
+    <li>Morphophonology — how morphology affects phonology</li>
+    <li>Past tense -ed: three allomorphs</li>
+    <li>Plural -s: three allomorphs</li>
+    <li>Practical applications of phonology</li>
+  </ul>
+</section>
+
+<!-- 3. Review -->
+<section>
+  <h2>Quick Review</h2>
+  <div class="two-col" style="font-size:0.72em;">
+    <div class="def-box">
+      <div class="term">Phoneme <span class="ipa">/slashes/</span></div>
+      <p>Abstract, meaning-distinguishing unit. Language-specific.</p>
+    </div>
+    <div class="def-box">
+      <div class="term">Allophone <span class="ipa alp">[brackets]</span></div>
+      <p>Surface variant of a phoneme. Predictable from environment.</p>
+    </div>
+  </div>
+  <div class="def-box" style="margin-top:0.7em;font-size:0.72em;">
+    <div class="term">Key decision</div>
+    <p>
+      Complementary distribution + phonetic similarity → <strong>allophones of one phoneme</strong><br>
+      Overlapping distribution + minimal pairs → <strong>separate phonemes</strong>
+    </p>
+  </div>
+  <aside class="notes">오늘 수업을 시작하기 전 5분간 복습합니다. 학생들에게 "이음이란 무엇인가?"를 한 문장으로 설명해보게 하세요.</aside>
+</section>
+
+<!-- 4. Korean Demo -->
+<section>
+  <h2>Phonemic Analysis Demo: Korean</h2>
+  <p style="font-size:0.65em;color:#6c757d;margin-bottom:0.5em;">Are <span class="ipa">/p/</span> and <span class="ipa">/pʰ/</span> allophones or separate phonemes in Korean?</p>
+  <div class="two-col" style="font-size:0.68em;">
+    <div>
+      <h3>Korean Data</h3>
+      <table>
+        <thead><tr><th>Word</th><th>Gloss</th><th>IPA</th></tr></thead>
+        <tbody>
+          <tr><td>불 (bul)</td><td>'fire'</td><td><span class="ipa">/pul/</span></td></tr>
+          <tr><td>풀 (pul)</td><td>'grass'</td><td><span class="ipa">/pʰul/</span></td></tr>
+          <tr><td>발 (bal)</td><td>'foot'</td><td><span class="ipa">/pal/</span></td></tr>
+          <tr><td>팔 (pal)</td><td>'arm'</td><td><span class="ipa">/pʰal/</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Analysis</h3>
+      <p><strong>Step 1:</strong> Phonetically similar (both voiceless bilabial stops) ✓</p>
+      <p style="margin-top:0.3em;"><strong>Step 2:</strong> Both occur word-initially before vowels → <strong>overlapping</strong> distribution</p>
+      <p style="margin-top:0.3em;"><strong>Step 3:</strong> Minimal pairs: 불/풀, 발/팔 → meaning difference!</p>
+      <div class="def-box" style="margin-top:0.4em;background:#f4fdf3;border-left-color:#1b7f5e;font-size:0.9em;">
+        <strong>Conclusion:</strong> In Korean, <span class="ipa">/p/</span> and <span class="ipa">/pʰ/</span> are <strong>separate phonemes</strong>. Unlike English, aspiration is contrastive!
+      </div>
+    </div>
+  </div>
+  <aside class="notes">이 예시는 음소와 이음의 언어 특수성(language-specificity)을 완벽하게 보여줍니다. 영어에서 이음인 [pʰ]과 [p]가 한국어에서는 별개의 음소입니다. 한국어 화자 학생들이 있다면 직접 발음 시연을 부탁해보세요.</aside>
+</section>
+
+<!-- 5. Free Variation -->
+<section>
+  <h2>Free Variation</h2>
+  <div class="def-box" style="padding:0.15em 0.8em;margin:0;">
+    <div class="term">Free Variation</div>
+    <p>When two (or more) sounds occur in the <strong>same environment</strong> without <strong>any change in meaning</strong>. Neither is predictable from the environment — speakers choose freely.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.72em;">
+    <div>
+      <h3>Examples in English</h3>
+      <ul style="line-height:1.6;">
+        <li>Word-final /t/ → <span class="ipa alp">[t]</span> or <span class="ipa alp">[ʔ]</span>: <em>bat</em> <span class="ipa alp">[bæt ~ bæʔ]</span></li>
+        <li>Word-final /t/ → <span class="ipa alp">[ɾ]</span> before pause: <em>what?</em></li>
+        <li>Pre-nasal /æ/ → <span class="ipa alp">[æ̃]</span> or <span class="ipa alp">[æ]</span> (optional nasalization)</li>
+        <li>Syllable-final /l/ → clear or dark in some dialects</li>
+      </ul>
+    </div>
+    <div>
+      <h3>vs. Complementary Distribution</h3>
+      <div class="def-box" style="font-size:0.85em;">
+        <p><strong>Comp. distribution:</strong> predictable — environment determines which allophone</p>
+        <p style="margin-top:0.3em;"><strong>Free variation:</strong> unpredictable — speaker choice, no meaning change</p>
+      </div>
+      <p style="font-size:0.82em;color:#6c757d;margin-top:0.4em;">Both result in allophones, but the conditioning is different.</p>
+    </div>
+  </div>
+  <aside class="notes">자유 변이는 같은 환경에서 두 발음이 교체될 수 있지만 의미 변화가 없는 경우입니다. 이는 상보적 분포와 다릅니다 — 자유 변이는 환경으로 예측이 불가능합니다. 영어 화자들은 'bat'을 [bæt]으로도 [bæʔ]으로도 발음하지만 같은 단어입니다.</aside>
+</section>
+
+<!-- 6. Morphophonology Intro -->
+<section>
+  <h2>Morphophonology</h2>
+  <div class="def-box">
+    <div class="term">Morphophonology</div>
+    <p>The study of how <strong>morphological processes</strong> (adding affixes, forming compounds) interact with <strong>phonological rules</strong>.</p>
+  </div>
+  <div class="def-box" style="margin-top:0.6em;border-left-color:#6a0572;font-size:0.78em;">
+    <strong>Key insight:</strong> A single morpheme may have different phonological forms (allomorphs) depending on its phonological environment.
+  </div>
+  <div class="example-box" style="margin-top:0.7em;font-size:0.72em;grid-template-columns:repeat(3,1fr);">
+    <div class="ex-item"><span class="word">kiss<strong>ed</strong></span><span class="trans"><span class="ipa alp">[kɪst]</span> — /t/</span></div>
+    <div class="ex-item"><span class="word">live<strong>d</strong></span><span class="trans"><span class="ipa alp">[lɪvd]</span> — /d/</span></div>
+    <div class="ex-item"><span class="word">want<strong>ed</strong></span><span class="trans"><span class="ipa alp">[ˈwɑntɪd]</span> — /ɪd/</span></div>
+  </div>
+  <p style="font-size:0.65em;text-align:center;color:#6c757d;margin-top:0.4em;">Same morpheme {-ed} → three different pronunciations</p>
+  <aside class="notes">형태음운론의 핵심은 "같은 형태소가 환경에 따라 다르게 발음된다"는 것입니다. -ed 과거 시제 형태소는 하나이지만 앞에 오는 소리에 따라 [t], [d], [ɪd] 세 가지로 실현됩니다.</aside>
+</section>
+
+<!-- 7. Past Tense -ed -->
+<section>
+  <h2>English Past Tense <em>-ed</em></h2>
+  <p style="font-size:0.6em;color:#6c757d;margin-bottom:0.4em;">Three allomorphs: phonologically conditioned</p>
+  <table style="font-size:0.6em;">
+    <thead>
+      <tr><th>Allomorph</th><th>Environment</th><th>Examples</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="ipa alp">[t]</span></td>
+        <td>After voiceless consonants (except /t/)</td>
+        <td>kiss<u>ed</u> /kɪst/, walk<u>ed</u> /wɔːkt/, laugh<u>ed</u> /læft/, watch<u>ed</u> /wɑtʃt/</td>
+      </tr>
+      <tr>
+        <td><span class="ipa alp">[d]</span></td>
+        <td>After voiced consonants and vowels (except /d/)</td>
+        <td>live<u>d</u> /lɪvd/, name<u>d</u> /neɪmd/, play<u>ed</u> /pleɪd/, hug<u>ged</u> /hʌgd/</td>
+      </tr>
+      <tr>
+        <td><span class="ipa alp">[ɪd]</span></td>
+        <td>After /t/ or /d/</td>
+        <td>want<u>ed</u> /wɑntɪd/, need<u>ed</u> /niːdɪd/, start<u>ed</u> /stɑrtɪd/</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="rule-box" style="margin-top:0.6em;font-size:0.65em;">
+    <span class="seg">{-ed}</span> → <span class="ipa alp">[ɪd]</span> / <span class="env">{t, d}</span> <span class="arrow">___</span><br>
+    <span class="seg">{-ed}</span> → <span class="ipa alp">[t]</span> &nbsp; / <span class="feat">[-voice]</span> <span class="arrow">___</span><br>
+    <span class="seg">{-ed}</span> → <span class="ipa alp">[d]</span> &nbsp; / elsewhere (voiced C or V)
+  </div>
+  <aside class="notes">[ɪd]가 /t d/ 뒤에 오는 이유: /t/+[t]나 /d/+[d]는 연속된 동일 자음이 되어 발음하기 어렵습니다. 그래서 모음 [ɪ]가 삽입됩니다. 이것은 동화(assimilation) + 삽입(insertion)의 결합입니다. 학생들에게 'wanted'를 /wɑntd/로 발음해보게 하면 어색함을 느낄 것입니다.</aside>
+</section>
+
+<!-- 8. Plural -s -->
+<section>
+  <h2>English Plural <em>-s</em></h2>
+  <table style="font-size:0.65em;">
+    <thead>
+      <tr><th>Allomorph</th><th>Environment</th><th>Examples</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="ipa alp">[s]</span></td>
+        <td>After voiceless non-sibilants</td>
+        <td>cat<u>s</u> /kæts/, cup<u>s</u> /kʌps/, book<u>s</u> /bʊks/</td>
+      </tr>
+      <tr>
+        <td><span class="ipa alp">[z]</span></td>
+        <td>After voiced non-sibilants and vowels</td>
+        <td>dog<u>s</u> /dɔgz/, day<u>s</u> /deɪz/, bee<u>s</u> /biːz/</td>
+      </tr>
+      <tr>
+        <td><span class="ipa alp">[ɪz]</span></td>
+        <td>After sibilants /s z ʃ ʒ tʃ dʒ/</td>
+        <td>bu<u>ses</u> /ˈbʌsɪz/, ros<u>es</u> /ˈɹoʊzɪz/, church<u>es</u> /ˈtʃɝtʃɪz/</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="def-box" style="margin-top:0.6em;font-size:0.72em;background:#fff3cd;border-left-color:#c77b2e;">
+    <strong>Same pattern</strong> applies to: 3rd person singular (<em>he walks/runs/watches</em>), possessive 's (<em>Tom's, Pat's, Liz's</em>)
+  </div>
+  <aside class="notes">복수형 -s의 세 가지 이음도 과거형 -ed와 정확히 같은 조건화 원리입니다: 마찰 저항이 있는 소리(치찰음) 뒤에서는 모음 삽입, 무성음 뒤에서는 무성, 유성음 뒤에서는 유성. 학생들이 이 패턴을 한 번 이해하면 -ed와 -s 모두 자연스럽게 이해됩니다.</aside>
+</section>
+
+<!-- 9. Practice: Morphophonology -->
+<section>
+  <h2>Practice: Classify the Forms</h2>
+  <div class="practice-header">Activity</div>
+  <p style="font-size:0.72em;margin-bottom:0.7em;">Identify whether the bolded suffix is pronounced <span class="ipa alp">[t]</span>, <span class="ipa alp">[d]</span>, <span class="ipa alp">[ɪd]</span>, <span class="ipa alp">[s]</span>, <span class="ipa alp">[z]</span>, or <span class="ipa alp">[ɪz]</span>.</p>
+  <div class="example-box" style="grid-template-columns:repeat(4,1fr);font-size:0.65em;">
+    <div class="ex-item"><span class="word">laugh<strong>ed</strong></span><span class="trans">→ ?</span></div>
+    <div class="ex-item"><span class="word">judge<strong>d</strong></span><span class="trans">→ ?</span></div>
+    <div class="ex-item"><span class="word">land<strong>ed</strong></span><span class="trans">→ ?</span></div>
+    <div class="ex-item"><span class="word">rob<strong>bed</strong></span><span class="trans">→ ?</span></div>
+    <div class="ex-item"><span class="word">match<strong>es</strong></span><span class="trans">→ ?</span></div>
+    <div class="ex-item"><span class="word">map<strong>s</strong></span><span class="trans">→ ?</span></div>
+    <div class="ex-item"><span class="word">buzz<strong>es</strong></span><span class="trans">→ ?</span></div>
+    <div class="ex-item"><span class="word">rib<strong>s</strong></span><span class="trans">→ ?</span></div>
+  </div>
+  <div class="fragment" style="margin-top:0.7em;">
+    <div class="def-box" style="font-size:0.65em;">
+      <strong>Answers:</strong> laughed [t] · judged [d] · landed [ɪd] · robbed [d] ·
+      matches [ɪz] · maps [s] · buzzes [ɪz] · ribs [z]
+    </div>
+  </div>
+  <aside class="notes">이 연습은 학생들이 형태음운론 규칙을 실제로 적용해보는 중요한 활동입니다. 오답이 나오면 "그 단어 끝소리가 유성인지 무성인지, 치찰음인지" 확인하도록 유도하세요.</aside>
+</section>
+
+<!-- 10. English Phonological Processes -->
+<section>
+  <h2>Overview: English Phonological Processes</h2>
+  <table style="font-size:0.65em;">
+    <thead><tr><th>Process</th><th>Definition</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Assimilation</strong></td>
+        <td>Sound becomes more like a neighbor</td>
+        <td>in + possible → im<strong>p</strong>ossible (/n/ → [m] before labial)</td>
+      </tr>
+      <tr>
+        <td><strong>Deletion (Elision)</strong></td>
+        <td>A sound is omitted</td>
+        <td>han<del>d</del>bag, <del>p</del>sychology, cam<del>e</del>ra [ˈkæmrə]</td>
+      </tr>
+      <tr>
+        <td><strong>Insertion (Epenthesis)</strong></td>
+        <td>A sound is added</td>
+        <td>want<strong>e</strong>d [ˈwɑntɪd] — /ɪ/ inserted between /t/ and /d/</td>
+      </tr>
+      <tr>
+        <td><strong>Metathesis</strong></td>
+        <td>Sounds swap positions</td>
+        <td>ask → [æks] (common in many dialects); nuclear → /ˈnjuːkjʊlɚ/</td>
+      </tr>
+      <tr>
+        <td><strong>Flapping</strong></td>
+        <td>/t d/ → [ɾ] between vowels</td>
+        <td>butter [ˈbʌɾɚ], ladder [ˈlæɾɚ]</td>
+      </tr>
+    </tbody>
+  </table>
+  <aside class="notes">이 다섯 가지 음운 과정은 영어에서 매우 흔하게 일어납니다. 6주차에서 자세히 다룰 flapping/aspiration 등이 이 분류에 포함됩니다. 음운 과정의 핵심은 모두 "조음 편의성(articulatory ease)"이나 "발음 명확성"과 연관됩니다.</aside>
+</section>
+
+<!-- 11. Practical Applications -->
+<section>
+  <h2>Practical Applications of Phonology</h2>
+  <div class="two-col" style="font-size:0.72em;">
+    <div>
+      <div class="def-box">
+        <div class="term">1. Spelling System Design</div>
+        <p>Phonological analysis informs orthographic reform. A good writing system maps phonemes, not allophones.</p>
+        <p style="margin-top:0.3em;font-size:0.85em;color:#6c757d;">English spelling is partially etymological — hence the inconsistency.</p>
+      </div>
+      <div class="def-box" style="margin-top:0.5em;">
+        <div class="term">2. Lexicography</div>
+        <p>Dictionaries provide phonemic transcriptions to guide pronunciation.</p>
+      </div>
+    </div>
+    <div>
+      <div class="def-box">
+        <div class="term">3. Speech-Language Pathology</div>
+        <p>Phonological analysis helps diagnose disorders (e.g., systemic substitution of /θ/ → /f/ in children = phonological process, not random error).</p>
+      </div>
+      <div class="def-box" style="margin-top:0.5em;">
+        <div class="term">4. L2 Teaching</div>
+        <p>Predict learner errors based on L1 phonology. Korean learners' /l-r/ difficulty is phonological, not perceptual alone.</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">이 슬라이드는 음운론이 단순한 이론이 아닌 실제 응용 분야와 긴밀히 연결되어 있음을 보여줍니다. 영어교육 전공 학생들에게는 L2 teaching 부분을, 언어치료 관련 학생들에게는 SLP 부분을 강조하세요.</aside>
+</section>
+
+<!-- 12. Summary -->
+<section>
+  <h2>Summary</h2>
+  <div class="summary-box">
+    <h4>Key Concepts — Week 5</h4>
+    <ul style="font-size:0.78em;line-height:1.9;">
+      <li><span class="key">Free variation</span>: same environment, no meaning change, unpredictable</li>
+      <li><span class="key">Morphophonology</span>: morpheme pronunciation depends on phonological environment</li>
+      <li>Past tense <em>-ed</em>: <span class="ipa alp">[t]</span> after voiceless · <span class="ipa alp">[d]</span> after voiced · <span class="ipa alp">[ɪd]</span> after /t d/</li>
+      <li>Plural <em>-s</em>: <span class="ipa alp">[s]</span> after voiceless · <span class="ipa alp">[z]</span> after voiced · <span class="ipa alp">[ɪz]</span> after sibilants</li>
+      <li>Phonological <span class="key">processes</span>: Assimilation, Deletion, Insertion, Metathesis, Flapping</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 13. Next Week -->
+<section>
+  <h2>Next Week — Week 6</h2>
+  <div class="next-week-banner">
+    <div class="label">다음 수업</div>
+    <p><strong>English Consonants (1): Obstruents</strong><br>Ch. 3.1 – 3.2</p>
+  </div>
+  <ul style="font-size:0.72em;line-height:1.9;margin-top:0.8em;">
+    <li>Stops: Aspiration, Unreleased stops, Glottal stop</li>
+    <li>Flapping / Tapping in American English</li>
+    <li>Fricatives and the sibilant system</li>
+    <li>Suffix-conditioned sibilant alternation</li>
+  </ul>
+  <div class="next-week-banner" style="margin-top:0.8em;">
+    <div class="label">예습 권장</div>
+    <p>교재 Ch. 3.1 – 3.2 (pp. 58–70) 읽어오기</p>
+  </div>
+</section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({ hash:true, slideNumber:'c/t', progress:true, center:false, transition:'slide', transitionSpeed:'fast', plugins:[] });
+</script>
+<a class="home-btn" href="../index.html" title="강의 목록으로">← 목록</a>
+<script src="assets/phonology-print.js"></script>
+</body>
+</html>
