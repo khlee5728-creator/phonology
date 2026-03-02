@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 프로젝트 가이드 — 영어 음운론</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-ot:         #1a1a2e;
+      --color-phonetics:  #0077b6;
+      --color-phonology:  #6a0572;
+      --color-consonants: #1b7f5e;
+      --color-vowels:     #c77b2e;
+      --color-syllables:  #2d6a4f;
+      --color-stress:     #c1121f;
+      --font: 'Noto Sans', 'Segoe UI', sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: white;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+    header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    header .subtitle {
+      font-size: 0.95rem;
+      opacity: 0.75;
+      margin-bottom: 1rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      position: absolute;
+      top: 1.2rem;
+      left: 1.4rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 999px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .back-link:hover {
+      background: rgba(255,255,255,0.15);
+      color: white;
+    }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    .section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6c757d;
+      margin: 2.2rem 0 0.9rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    /* ── Step Cards ── */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .step-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+    }
+    .step-badge {
+      flex-shrink: 0;
+      width: 2.2rem;
+      height: 2.2rem;
+      background: var(--color-ot);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-top: 0.1rem;
+    }
+    .step-body { flex: 1; }
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 0.35rem;
+    }
+    .step-desc {
+      font-size: 0.8rem;
+      color: #495057;
+      line-height: 1.7;
+    }
+    .step-desc ul {
+      padding-left: 1.1em;
+      margin-top: 0.2rem;
+    }
+    .step-desc li {
+      margin-bottom: 0.15rem;
+    }
+    .step-desc .hl {
+      background: #eef2ff;
+      color: #3730a3;
+      padding: 0 4px;
+      border-radius: 3px;
+      font-size: 0.78em;
+      font-weight: 600;
+    }
+
+    /* ── Mission Grid ── */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 0.8rem;
+    }
+    .mission-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      border-top: 3px solid var(--color-phonology);
+    }
+    .mission-card:nth-child(2) { border-top-color: var(--color-consonants); }
+    .mission-card:nth-child(3) { border-top-color: var(--color-vowels); }
+    .mission-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+    .mission-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 0.35rem;
+    }
+    .mission-desc {
+      font-size: 0.76rem;
+      color: #6c757d;
+      line-height: 1.6;
+    }
+
+    /* ── Required List ── */
+    .required-list {
+      background: white;
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      counter-reset: req;
+    }
+    .req-item {
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .req-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .req-num {
+      flex-shrink: 0;
+      width: 1.6rem;
+      height: 1.6rem;
+      background: var(--color-ot);
+      color: white;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-top: 0.1rem;
+    }
+    .req-body { flex: 1; }
+    .req-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 0.2rem;
+    }
+    .req-desc {
+      font-size: 0.76rem;
+      color: #6c757d;
+      line-height: 1.6;
+    }
+    .req-desc ul { padding-left: 1em; margin-top: 0.15rem; }
+
+    /* ── Tools ── */
+    .tools-box {
+      background: white;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    }
+    .tools-row {
+      margin-bottom: 0.9rem;
+    }
+    .tools-row:last-child { margin-bottom: 0; }
+    .tools-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #6c757d;
+      margin-bottom: 0.45rem;
+    }
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .tool-tag {
+      background: #f0f2f5;
+      color: #1a1a2e;
+      font-size: 0.74rem;
+      font-weight: 600;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #dee2e6;
+    }
+
+    /* ── Grading ── */
+    .grading-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 0.8rem;
+    }
+    .grading-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+    .grading-pct {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-ot);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .grading-card:nth-child(2) .grading-pct { color: var(--color-phonology); }
+    .grading-card:nth-child(3) .grading-pct { color: var(--color-consonants); }
+    .grading-card:nth-child(4) .grading-pct { color: var(--color-vowels); }
+    .grading-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 0.25rem;
+    }
+    .grading-desc {
+      font-size: 0.72rem;
+      color: #6c757d;
+      line-height: 1.5;
+    }
+
+    /* ── Warning Box ── */
+    .warning-box {
+      background: #fff8e1;
+      border: 1.5px solid #f59e0b;
+      border-radius: 12px;
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+    }
+    .warning-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+    .warning-text {
+      font-size: 0.82rem;
+      color: #92400e;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.7rem;
+      color: #adb5bd;
+    }
+
+    @media (max-width: 540px) {
+      header h1 { font-size: 1.4rem; }
+      .back-link { position: static; display: inline-flex; margin-bottom: 1rem; }
+      header { padding-top: 1.5rem; }
+      .grading-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="back-link" href="index.html">← 강의 허브</a>
+  <div class="badge">2026학년도 1학기</div>
+  <h1>AI 도구 활용 창의적 학습 프로젝트</h1>
+  <p class="subtitle">영어 음운론 — 발표 &amp; 과제 가이드</p>
+</header>
+
+<main>
+
+  <!-- ── Step by Step ── -->
+  <p class="section-title">프로젝트 수행 단계</p>
+  <div class="step-list">
+
+    <div class="step-card">
+      <div class="step-badge">1</div>
+      <div class="step-body">
+        <div class="step-title">교재 내용 숙지 및 문제 해결</div>
+        <div class="step-desc">
+          <ul>
+            <li>발표 범위의 교재 내용을 깊이 있게 이해하고 요약합니다.</li>
+            <li>교재 내 연습문제의 답안을 작성하며 이론적 토대를 마련합니다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-badge">2</div>
+      <div class="step-body">
+        <div class="step-title">프로젝트 기획 (5W1H 기반)</div>
+        <div class="step-desc">
+          <ul>
+            <li><strong>기획안 작성</strong>: 누가, 언제, 어디서, 무엇을, 왜, 어떻게(5W1H) 사용할 것인지 정의합니다.</li>
+            <li><strong>요구 명세서</strong>: 구체적이고 명확하게 프로젝트의 목적과 기능을 기술합니다.<br>
+              예: <span class="hl">"한국인의 [r] 발음 오류를 교정해 주는 AI 가이드를 만든다"</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-badge">3</div>
+      <div class="step-body">
+        <div class="step-title">AI Tool 기반 개발</div>
+        <div class="step-desc">
+          <ul>
+            <li>작성한 명세서를 바탕으로 AI 도구를 활용해 결과물을 구현합니다.</li>
+            <li>단순 생성이 아닌, AI와의 협업을 통해 교재 내용을 <strong>확장·추가·변형·확대 적용</strong>합니다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-badge">4</div>
+      <div class="step-body">
+        <div class="step-title">비판적 검증 (Hallucination 체크)</div>
+        <div class="step-desc">
+          AI가 생성한 음운론적 분석이나 IPA 기호 등이 교재의 이론과 일치하는지 대조하고 수정합니다.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Challenge Missions ── -->
+  <p class="section-title">특화 도전 미션 예시</p>
+  <div class="mission-grid">
+
+    <div class="mission-card">
+      <div class="mission-icon">🎙️</div>
+      <div class="mission-title">AI 발음 분석기</div>
+      <div class="mission-desc">
+        특정 음운 규칙(예: Flapping, Nasalization)이 적용된 음성을 AI로 생성하고 이론과 대조 분석합니다.
+      </div>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-icon">🎨</div>
+      <div class="mission-title">조음 시각화 인포그래픽</div>
+      <div class="mission-desc">
+        AI 이미지 생성 도구를 활용해 특정 음소의 조음 위치를 정밀하게 시각화합니다.
+      </div>
+    </div>
+
+    <div class="mission-card">
+      <div class="mission-icon">🔊</div>
+      <div class="mission-title">음성 합성 비교</div>
+      <div class="mission-desc">
+        다양한 AI 엔진별 음성 합성 결과의 음운론적 특징을 비교 분석합니다.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Required Contents ── -->
+  <p class="section-title">발표 자료 필수 포함 내용</p>
+  <div class="required-list">
+
+    <div class="req-item">
+      <div class="req-num">1</div>
+      <div class="req-body">
+        <div class="req-title">교재 내용 요약</div>
+        <div class="req-desc">발표 범위의 핵심 이론 설명 및 연습문제 풀이</div>
+      </div>
+    </div>
+
+    <div class="req-item">
+      <div class="req-num">2</div>
+      <div class="req-body">
+        <div class="req-title">확장 및 변형 내용</div>
+        <div class="req-desc">이론을 실생활이나 새로운 분야에 적용한 사례</div>
+      </div>
+    </div>
+
+    <div class="req-item">
+      <div class="req-num">3</div>
+      <div class="req-body">
+        <div class="req-title">개발 프로세스 기록</div>
+        <div class="req-desc">
+          <ul>
+            <li>사용한 AI 도구 리스트 및 실제 입력한 <strong>주요 프롬프트(Prompt)</strong></li>
+            <li>AI 답변의 오류를 직접 찾아내어 수정한 이력</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="req-item">
+      <div class="req-num">4</div>
+      <div class="req-body">
+        <div class="req-title">시험 문제 출제</div>
+        <div class="req-desc">동료들이 학습 내용을 점검할 수 있는 문제(객관식/주관식) 2~3개 및 해설</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Tools & Format ── -->
+  <p class="section-title">도구 및 제출 포맷</p>
+  <div class="tools-box">
+    <div class="tools-row">
+      <div class="tools-label">AI Tools</div>
+      <div class="tool-tags">
+        <span class="tool-tag">ChatGPT</span>
+        <span class="tool-tag">Gemini</span>
+        <span class="tool-tag">Claude</span>
+        <span class="tool-tag">AI Studio</span>
+        <span class="tool-tag">Cursor</span>
+        <span class="tool-tag">Antigravity</span>
+        <span class="tool-tag">Claude Code</span>
+        <span class="tool-tag">Canva</span>
+        <span class="tool-tag">젠스파크</span>
+      </div>
+    </div>
+    <div class="tools-row">
+      <div class="tools-label">제출 포맷</div>
+      <div class="tool-tags">
+        <span class="tool-tag">PPT</span>
+        <span class="tool-tag">HTML</span>
+        <span class="tool-tag">Google Slides</span>
+        <span class="tool-tag">ZIP (코드 포함 시)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Grading Criteria ── -->
+  <p class="section-title">평가 기준</p>
+  <div class="grading-grid">
+
+    <div class="grading-card">
+      <div class="grading-pct">30%</div>
+      <div class="grading-name">이해력</div>
+      <div class="grading-desc">교재 이론을 정확히 파악하고 있는가?</div>
+    </div>
+
+    <div class="grading-card">
+      <div class="grading-pct">30%</div>
+      <div class="grading-name">창의적 확장</div>
+      <div class="grading-desc">AI를 통해 이론을 새로운 가치로 발전시켰는가?</div>
+    </div>
+
+    <div class="grading-card">
+      <div class="grading-pct">20%</div>
+      <div class="grading-name">과정의 투명성</div>
+      <div class="grading-desc">프롬프트 및 수정 기록이 구체적인가?</div>
+    </div>
+
+    <div class="grading-card">
+      <div class="grading-pct">20%</div>
+      <div class="grading-name">완성도</div>
+      <div class="grading-desc">발표 자료 및 시험 문제의 퀄리티</div>
+    </div>
+
+  </div>
+
+  <!-- ── Warning ── -->
+  <p class="section-title">주의사항</p>
+  <div class="warning-box">
+    <div class="warning-icon">⚠️</div>
+    <div class="warning-text">
+      AI 결과물 단순 복제는 인정되지 않습니다. 반드시 본인의 분석과 수정 과정이 포함되어야 합니다.
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Applied English Phonology · 2026학년도 1학기 · AI 도구 활용 창의적 학습 프로젝트 가이드
+</footer>
+
+</body>
+</html>

@@ -209,6 +209,45 @@
       color: #6c757d;
     }
 
+    /* ── Guide Card ── */
+    .guide-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: white;
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--color-ot);
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .guide-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    .guide-card__icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    .guide-card__body { flex: 1; }
+    .guide-card__title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 0.2rem;
+    }
+    .guide-card__desc {
+      font-size: 0.75rem;
+      color: #6c757d;
+    }
+    .guide-card__arrow {
+      font-size: 1.1rem;
+      color: #adb5bd;
+      flex-shrink: 0;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -240,9 +279,19 @@
       <li>발표자료는 브라우저에서 직접 열어 사용합니다. <strong>← / → 키</strong> 또는 마우스 클릭으로 슬라이드를 전환하세요.</li>
       <li>발표자 노트 보기: <kbd>S</kbd> 키 (별도 창)</li>
       <li>전체화면: <kbd>F</kbd> 키 / 슬라이드 개요: <kbd>ESC</kbd> 키</li>
-      <li>PDF 출력: URL 끝에 <code>?print-pdf</code> 추가 후 브라우저 인쇄(Ctrl+P)</li>
     </ul>
   </div>
+
+  <!-- ── AI Project Guide ── -->
+  <p class="section-title">발표 &amp; 과제 안내</p>
+  <a class="guide-card" href="guide.html">
+    <div class="guide-card__icon">🤖</div>
+    <div class="guide-card__body">
+      <div class="guide-card__title">AI 도구 활용 창의적 학습 프로젝트 가이드</div>
+      <div class="guide-card__desc">수행 단계 · 도전 미션 · 발표 필수 내용 · 평가 기준 안내</div>
+    </div>
+    <div class="guide-card__arrow">→</div>
+  </a>
 
   <!-- ── Week grid ── -->
   <p class="section-title">주차별 강의 자료</p>
@@ -469,10 +518,6 @@
     <div class="resource-card">
       <div class="rc-label">발표자 노트 보기</div>
       <div class="rc-desc">슬라이드에서 <kbd>S</kbd> 키 → 별도 창 열림<br>한국어 보충 설명 포함</div>
-    </div>
-    <div class="resource-card">
-      <div class="rc-label">PDF 출력</div>
-      <div class="rc-desc">슬라이드 URL에 <code>?print-pdf</code> 추가<br>후 Ctrl+P로 인쇄</div>
     </div>
   </div>
 
