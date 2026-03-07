@@ -65,32 +65,40 @@
 
 <!-- 4. Korean Demo -->
 <section>
-  <h2>Phonemic Analysis Demo: Korean</h2>
-  <p style="font-size:0.65em;color:#6c757d;margin-bottom:0.5em;">Are <span class="ipa">/p/</span> and <span class="ipa">/pʰ/</span> allophones or separate phonemes in Korean?</p>
-  <div class="two-col" style="font-size:0.68em;">
+  <h2>Phonemic Analysis Demo: Korean [s, z, ʃ]</h2>
+  <div class="two-col" style="font-size:0.58em;margin-top:0.2em;">
     <div>
       <h3>Korean Data</h3>
       <table>
-        <thead><tr><th>Word</th><th>Gloss</th><th>IPA</th></tr></thead>
+        <thead><tr><th>IPA</th><th>Gloss</th><th>Environment</th></tr></thead>
         <tbody>
-          <tr><td>불 (bul)</td><td>'fire'</td><td><span class="ipa">/pul/</span></td></tr>
-          <tr><td>풀 (pul)</td><td>'grass'</td><td><span class="ipa">/pʰul/</span></td></tr>
-          <tr><td>발 (bal)</td><td>'foot'</td><td><span class="ipa">/pal/</span></td></tr>
-          <tr><td>팔 (pal)</td><td>'arm'</td><td><span class="ipa">/pʰal/</span></td></tr>
+          <tr><td><span class="ipa alp">[sek]</span></td><td>"color"</td><td><span class="ipa"># __ e</span></td></tr>
+          <tr><td><span class="ipa alp">[saram]</span></td><td>"person"</td><td><span class="ipa"># __ a</span></td></tr>
+          <tr><td><span class="ipa alp">[sul]</span></td><td>"wine"</td><td><span class="ipa"># __ u</span></td></tr>
+          <tr style="background:#f0f8ff;"><td><span class="ipa alp">[ʃi]</span></td><td>"poem"</td><td><span class="ipa"># __ <strong>i</strong></span></td></tr>
+          <tr style="background:#f0f8ff;"><td><span class="ipa alp">[maʃi]</span></td><td>"delicious"</td><td><span class="ipa">a __ <strong>i</strong></span></td></tr>
+          <tr style="background:#f0f8ff;"><td><span class="ipa alp">[ʃigan]</span></td><td>"time"</td><td><span class="ipa"># __ <strong>i</strong></span></td></tr>
+          <tr style="background:#fff3cd;"><td><span class="ipa alp">[paŋzək]</span></td><td>"cushion"</td><td><span class="ipa"><strong>ŋ</strong> __ ə</span></td></tr>
+          <tr style="background:#fff3cd;"><td><span class="ipa alp">[inza]</span></td><td>"greetings"</td><td><span class="ipa"><strong>n</strong> __ a</span></td></tr>
         </tbody>
       </table>
     </div>
     <div>
-      <h3>Analysis</h3>
-      <p><strong>Step 1:</strong> Phonetically similar (both voiceless bilabial stops) ✓</p>
-      <p style="margin-top:0.3em;"><strong>Step 2:</strong> Both occur word-initially before vowels → <strong>overlapping</strong> distribution</p>
-      <p style="margin-top:0.3em;"><strong>Step 3:</strong> Minimal pairs: 불/풀, 발/팔 → meaning difference!</p>
-      <div class="def-box" style="margin-top:0.4em;background:#f4fdf3;border-left-color:#1b7f5e;font-size:0.9em;">
-        <strong>Conclusion:</strong> In Korean, <span class="ipa">/p/</span> and <span class="ipa">/pʰ/</span> are <strong>separate phonemes</strong>. Unlike English, aspiration is contrastive!
+      <h3>Distribution Analysis</h3>
+      <p style="margin-bottom:0.3em;"><strong>[s] vs. [ʃ]:</strong> same preceding environment (#), but <em>following vowel differs</em> — [ʃ] occurs only before <span class="ipa">[i]</span>, [s] never does. → <strong>Complementary</strong> ✓</p>
+      <p style="margin-bottom:0.3em;"><strong>[s] vs. [z]:</strong> [z] occurs only after nasals; [s] never after nasals. → <strong>Complementary</strong> ✓</p>
+      <div class="rule-box" style="margin-top:0.4em;font-size:0.9em;">
+        <span class="ipa">[ʃ]</span> before <span class="ipa">[i]</span><br>
+        <span class="ipa">/s/</span> → <span class="ipa">[z]</span> after nasals<br>
+        <span class="ipa">[s]</span> elsewhere
+      </div>
+      <div class="def-box" style="margin-top:0.4em;background:#f4fdf3;border-left-color:#1b7f5e;font-size:0.85em;">
+        <strong>Conclusion:</strong> In Korean, <span class="ipa">[s, z, ʃ]</span> are all <strong>allophones of one phoneme /s/</strong>.<br>
+        In English: <em>sip–zip–ship</em> → 3 <strong>separate phonemes</strong> (/s/, /z/, /ʃ/).
       </div>
     </div>
   </div>
-  <aside class="notes">이 예시는 음소와 이음의 언어 특수성(language-specificity)을 완벽하게 보여줍니다. 영어에서 이음인 [pʰ]과 [p]가 한국어에서는 별개의 음소입니다. 한국어 화자 학생들이 있다면 직접 발음 시연을 부탁해보세요.</aside>
+  <aside class="notes">교재 Ch. 2.3 (pp. 38–40)의 실제 데모입니다. 같은 [s, z, ʃ] 세 소리가 영어에서는 별개 음소이지만 한국어에서는 하나의 음소 /s/의 이음입니다. [ʃ]가 [i] 앞에서만 나타나는 것은 /i/의 조음 위치(구개)가 인접한 자음을 구개음화하기 때문입니다(역행 동화). [z]가 비음 뒤에서만 나타나는 것은 비음의 유성이 다음 자음에 영향을 미치기 때문입니다(순행 동화). 참고: Yavaş (2020), Ch. 2, p. 38.</aside>
 </section>
 
 <!-- 5. Free Variation -->
@@ -152,18 +160,18 @@
     <tbody>
       <tr>
         <td><span class="ipa alp">[t]</span></td>
-        <td>After voiceless consonants (except /t/)</td>
-        <td>kiss<u>ed</u> /kɪst/, walk<u>ed</u> /wɔːkt/, laugh<u>ed</u> /læft/, watch<u>ed</u> /wɑtʃt/</td>
+        <td>After voiceless non-alveolar-stops</td>
+        <td>walk<u>ed</u> <span class="ipa alp">[wɔkt]</span>, push<u>ed</u> <span class="ipa alp">[pʊʃt]</span>, sipp<u>ed</u> <span class="ipa alp">[sɪpt]</span></td>
       </tr>
       <tr>
         <td><span class="ipa alp">[d]</span></td>
-        <td>After voiced consonants and vowels (except /d/)</td>
-        <td>live<u>d</u> /lɪvd/, name<u>d</u> /neɪmd/, play<u>ed</u> /pleɪd/, hug<u>ged</u> /hʌgd/</td>
+        <td>After voiced sounds (consonants / vowels), except /d/</td>
+        <td>robb<u>ed</u> <span class="ipa alp">[rɑbd]</span>, seem<u>ed</u> <span class="ipa alp">[simd]</span>, sway<u>ed</u> <span class="ipa alp">[swed]</span></td>
       </tr>
       <tr>
-        <td><span class="ipa alp">[ɪd]</span></td>
-        <td>After /t/ or /d/</td>
-        <td>want<u>ed</u> /wɑntɪd/, need<u>ed</u> /niːdɪd/, start<u>ed</u> /stɑrtɪd/</td>
+        <td><span class="ipa alp">[əd]</span></td>
+        <td>After alveolar stops /t/ or /d/ (schwa insertion)</td>
+        <td>attempt<u>ed</u> <span class="ipa alp">[ətεmtəd]</span>, blend<u>ed</u> <span class="ipa alp">[blεndəd]</span>, test<u>ed</u> <span class="ipa alp">[tεstəd]</span></td>
       </tr>
     </tbody>
   </table>
@@ -208,26 +216,42 @@
 
 <!-- 9. Practice: Morphophonology -->
 <section>
-  <h2>Practice: Classify the Forms</h2>
-  <div class="practice-header">Activity</div>
-  <p style="font-size:0.72em;margin-bottom:0.7em;">Identify whether the bolded suffix is pronounced <span class="ipa alp">[t]</span>, <span class="ipa alp">[d]</span>, <span class="ipa alp">[ɪd]</span>, <span class="ipa alp">[s]</span>, <span class="ipa alp">[z]</span>, or <span class="ipa alp">[ɪz]</span>.</p>
-  <div class="example-box" style="grid-template-columns:repeat(4,1fr);font-size:0.65em;">
-    <div class="ex-item"><span class="word">laugh<strong>ed</strong></span><span class="trans">→ ?</span></div>
-    <div class="ex-item"><span class="word">judge<strong>d</strong></span><span class="trans">→ ?</span></div>
-    <div class="ex-item"><span class="word">land<strong>ed</strong></span><span class="trans">→ ?</span></div>
-    <div class="ex-item"><span class="word">rob<strong>bed</strong></span><span class="trans">→ ?</span></div>
-    <div class="ex-item"><span class="word">match<strong>es</strong></span><span class="trans">→ ?</span></div>
-    <div class="ex-item"><span class="word">map<strong>s</strong></span><span class="trans">→ ?</span></div>
-    <div class="ex-item"><span class="word">buzz<strong>es</strong></span><span class="trans">→ ?</span></div>
-    <div class="ex-item"><span class="word">rib<strong>s</strong></span><span class="trans">→ ?</span></div>
-  </div>
-  <div class="fragment" style="margin-top:0.7em;">
-    <div class="def-box" style="font-size:0.65em;">
-      <strong>Answers:</strong> laughed [t] · judged [d] · landed [ɪd] · robbed [d] ·
-      matches [ɪz] · maps [s] · buzzes [ɪz] · ribs [z]
+  <h2>Practice</h2>
+  <div class="two-col" style="font-size:0.60em;margin-top:0.3em;gap:1.2em;">
+    <div>
+      <h3>-ed / -s allomorphs</h3>
+      <p style="font-size:0.88em;color:#555;margin-bottom:0.3em;">Identify the pronunciation of each bolded suffix.</p>
+      <table style="font-size:0.92em;">
+        <thead><tr><th>Word</th><th>Allomorph</th></tr></thead>
+        <tbody>
+          <tr><td><em>laugh<strong>ed</strong></em></td><td class="fragment"><span class="ipa alp">[t]</span></td></tr>
+          <tr><td><em>blend<strong>ed</strong></em></td><td class="fragment"><span class="ipa alp">[əd]</span></td></tr>
+          <tr><td><em>robb<strong>ed</strong></em></td><td class="fragment"><span class="ipa alp">[d]</span></td></tr>
+          <tr><td><em>match<strong>es</strong></em></td><td class="fragment"><span class="ipa alp">[ɪz]</span></td></tr>
+          <tr><td><em>map<strong>s</strong></em></td><td class="fragment"><span class="ipa alp">[s]</span></td></tr>
+          <tr><td><em>rib<strong>s</strong></em></td><td class="fragment"><span class="ipa alp">[z]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Morphophonemic Alternations (Ex. 5)</h3>
+      <p style="font-size:0.88em;color:#555;margin-bottom:0.3em;">Identify the alternating sounds in each pair.</p>
+      <table style="font-size:0.92em;">
+        <thead><tr><th>Pair</th><th>Alternation</th></tr></thead>
+        <tbody>
+          <tr><td><em>profane – profanity</em></td><td class="fragment"><span class="ipa">/eɪ/ ~ /æ/</span></td></tr>
+          <tr><td><em>serene – serenity</em></td><td class="fragment"><span class="ipa">/iː/ ~ /ɛ/</span></td></tr>
+          <tr><td><em>mine – mineral</em></td><td class="fragment"><span class="ipa">/aɪ/ ~ /ɪ/</span></td></tr>
+          <tr><td><em>sign – signature</em></td><td class="fragment"><span class="ipa">/aɪ/ + silent g ~ /ɪ/ + /g/</span></td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <aside class="notes">이 연습은 학생들이 형태음운론 규칙을 실제로 적용해보는 중요한 활동입니다. 오답이 나오면 "그 단어 끝소리가 유성인지 무성인지, 치찰음인지" 확인하도록 유도하세요.</aside>
+  <aside class="notes">
+    왼쪽: laughed[t] — final /f/ voiceless; blended[əd] — ends in /d/; robbed[d] — /b/ voiced; matches[ɪz] — /tʃ/ is sibilant; maps[s] — /p/ voiceless; ribs[z] — /b/ voiced.
+    오른쪽 (교재 Ex. 5): 형태소 경계를 넘나드는 교체. profane[proʊfeɪn]–profanity[prəfænɪti]: /eɪ/~[æ] 강세 이동에 따른 모음 교체; serene[səriːn]–serenity[sərɛnɪti]: /iː/~[ɛ]; mine[maɪn]–mineral[mɪnərəl]: /aɪ/~[ɪ]; sign[saɪn]–signature[sɪgnɪtʃər]: 묵음 g가 나타남.
+    참고: Yavaş (2020), Ch. 2, Ex. 5
+  </aside>
 </section>
 
 <!-- 10. English Phonological Processes -->
