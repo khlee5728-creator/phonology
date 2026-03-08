@@ -62,45 +62,49 @@
   <!-- Each circle is placed at the anatomical structure it represents.     -->
   <!-- Positions calibrated to the vocal tract cross-section above.         -->
 
-  <!-- 1 · Lips (Labia) — mouth opening, leftmost face area -->
-  <circle class="lbl-circle" cx="72" cy="193" r="11"/>
-  <text   class="lbl-text"   x="72"  y="193">1</text>
+  <!-- Positions calibrated using getBBox() of each anatomy path:
+       path2991 (palate surface): y=185  · path3015 (tongue): y=207–390
+       path3021/3023 (vocal folds): y=313–344  · path3017 (trachea): y=293–390  -->
+
+  <!-- 1 · Lips — mouth opening (front of face, left side) -->
+  <circle class="lbl-circle" cx="72"  cy="200" r="11"/>
+  <text   class="lbl-text"   x="72"  y="200">1</text>
 
   <!-- 2 · Teeth — just inside the lips -->
-  <circle class="lbl-circle" cx="112" cy="194" r="11"/>
-  <text   class="lbl-text"   x="112" y="194">2</text>
+  <circle class="lbl-circle" cx="98"  cy="192" r="11"/>
+  <text   class="lbl-text"   x="98"  y="192">2</text>
 
-  <!-- 3 · Alveolar ridge — upper palate just behind teeth -->
-  <circle class="lbl-circle" cx="154" cy="168" r="11"/>
-  <text   class="lbl-text"   x="154" y="168">3</text>
+  <!-- 3 · Alveolar ridge — front of palate, just behind upper teeth -->
+  <circle class="lbl-circle" cx="118" cy="177" r="11"/>
+  <text   class="lbl-text"   x="118" y="177">3</text>
 
-  <!-- 4 · Hard palate — centre of the palatal arch -->
-  <circle class="lbl-circle" cx="196" cy="118" r="11"/>
-  <text   class="lbl-text"   x="196" y="118">4</text>
+  <!-- 4 · Hard palate — centre of bony palate (path2991 mid-point) -->
+  <circle class="lbl-circle" cx="145" cy="174" r="11"/>
+  <text   class="lbl-text"   x="145" y="174">4</text>
 
-  <!-- 5 · Velum (soft palate) — posterior palate -->
-  <circle class="lbl-circle" cx="238" cy="112" r="11"/>
-  <text   class="lbl-text"   x="238" y="112">5</text>
+  <!-- 5 · Velum (soft palate) — posterior edge of palate -->
+  <circle class="lbl-circle" cx="185" cy="190" r="11"/>
+  <text   class="lbl-text"   x="185" y="190">5</text>
 
-  <!-- 6 · Uvula — hanging from velum -->
-  <circle class="lbl-circle" cx="252" cy="152" r="11"/>
-  <text   class="lbl-text"   x="252" y="152">6</text>
+  <!-- 6 · Uvula — hanging below velum into pharynx -->
+  <circle class="lbl-circle" cx="202" cy="215" r="11"/>
+  <text   class="lbl-text"   x="202" y="215">6</text>
 
-  <!-- 7 · Tongue — body of tongue in oral cavity -->
-  <circle class="lbl-circle" cx="160" cy="258" r="11"/>
-  <text   class="lbl-text"   x="160" y="258">7</text>
+  <!-- 7 · Tongue — body of tongue (path3015 upper region) -->
+  <circle class="lbl-circle" cx="105" cy="265" r="11"/>
+  <text   class="lbl-text"   x="105" y="265">7</text>
 
-  <!-- 8 · Larynx / Glottis — laryngeal region -->
-  <circle class="lbl-circle" cx="200" cy="360" r="11"/>
-  <text   class="lbl-text"   x="200" y="360">8</text>
+  <!-- 8 · Larynx / Glottis — laryngeal region (path3017) -->
+  <circle class="lbl-circle" cx="192" cy="368" r="11"/>
+  <text   class="lbl-text"   x="192" y="368">8</text>
 
-  <!-- 9 · Vocal folds — between the two fold paths (path3021/3023) -->
-  <circle class="lbl-circle" cx="176" cy="328" r="11"/>
-  <text   class="lbl-text"   x="176" y="328">9</text>
+  <!-- 9 · Vocal folds — at path3021/path3023 (y≈313–344) -->
+  <circle class="lbl-circle" cx="173" cy="328" r="11"/>
+  <text   class="lbl-text"   x="173" y="328">9</text>
 
-  <!-- 10 · Nasal cavity — above the hard palate -->
-  <circle class="lbl-circle" cx="150" cy="60" r="12"/>
-  <text   class="lbl-text"   x="150" y="60">10</text>
+  <!-- 10 · Nasal cavity — above hard palate (y<185), inside head -->
+  <circle class="lbl-circle" cx="110" cy="128" r="12"/>
+  <text   class="lbl-text"   x="110" y="128">10</text>
 
   <!-- Attribution -->
   <text class="attrib" x="376" y="397">Based on Tavin, CC BY 3.0 · Wikimedia Commons</text>
