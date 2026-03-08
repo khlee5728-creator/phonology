@@ -62,33 +62,39 @@
   <!-- 1-7 correspond to table rows: Bilabial, Labiodental, Interdental,
        Alveolar, Palatal, Velar, Glottal                                -->
 
-  <!-- 1 · Bilabial — lip contact (양순음) -->
-  <circle class="lbl-circle" cx="42"  cy="213" r="11"/>
-  <text   class="lbl-text"   x="42"  y="213">1</text>
+  <!-- Positions calibrated from getPointAtLength() on path2989 (palate inner surface):
+       72%=(52,160) teeth/alveolar front  74%=(74,148) alveolar ridge
+       76%=(98,145) hard palate          78%=(123,145) hard palate mid
+       80%=(147,153) velum               82%=(161,173) uvula
+       path2991 floor front: (40,196)    path3021/3023 vocal folds: centre≈(174,329) -->
 
-  <!-- 2 · Labiodental — lower lip + upper teeth (순치음) -->
-  <circle class="lbl-circle" cx="62"  cy="200" r="11"/>
-  <text   class="lbl-text"   x="62"  y="200">2</text>
+  <!-- 1 · Bilabial — both lips meet at mouth opening (양순음) -->
+  <circle class="lbl-circle" cx="42"  cy="210" r="11"/>
+  <text   class="lbl-text"   x="42"  y="210">1</text>
 
-  <!-- 3 · Interdental — tongue tip between teeth (치간음) -->
-  <circle class="lbl-circle" cx="76"  cy="188" r="11"/>
-  <text   class="lbl-text"   x="76"  y="188">3</text>
+  <!-- 2 · Labiodental — upper front teeth (palate 72%≈y160, teeth ~8px below) (순치음) -->
+  <circle class="lbl-circle" cx="55"  cy="168" r="11"/>
+  <text   class="lbl-text"   x="55"  y="168">2</text>
 
-  <!-- 4 · Alveolar — tongue tip/blade + alveolar ridge (치조음) -->
-  <circle class="lbl-circle" cx="90"  cy="175" r="11"/>
-  <text   class="lbl-text"   x="90"  y="175">4</text>
+  <!-- 3 · Interdental — tongue tip between teeth; at lower-dental level (치간음) -->
+  <circle class="lbl-circle" cx="70"  cy="188" r="11"/>
+  <text   class="lbl-text"   x="70"  y="188">3</text>
 
-  <!-- 5 · Palatal — tongue body + hard palate (경구개음) -->
-  <circle class="lbl-circle" cx="118" cy="162" r="11"/>
-  <text   class="lbl-text"   x="118" y="162">5</text>
+  <!-- 4 · Alveolar — alveolar ridge (path2989 74%=(74,148), label ~7px inside) (치조음) -->
+  <circle class="lbl-circle" cx="80"  cy="155" r="11"/>
+  <text   class="lbl-text"   x="80"  y="155">4</text>
 
-  <!-- 6 · Velar — tongue body + velum/soft palate (연구개음) -->
-  <circle class="lbl-circle" cx="152" cy="155" r="11"/>
-  <text   class="lbl-text"   x="152" y="155">6</text>
+  <!-- 5 · Palatal — hard palate (path2989 76-78%≈y145, label ~8px inside) (경구개음) -->
+  <circle class="lbl-circle" cx="110" cy="153" r="11"/>
+  <text   class="lbl-text"   x="110" y="153">5</text>
 
-  <!-- 7 · Glottal — at the glottis / vocal folds (성문음) -->
-  <circle class="lbl-circle" cx="178" cy="330" r="11"/>
-  <text   class="lbl-text"   x="178" y="330">7</text>
+  <!-- 6 · Velar — velum/soft palate (path2989 80%=(147,153), label ~10px inside) (연구개음) -->
+  <circle class="lbl-circle" cx="148" cy="163" r="11"/>
+  <text   class="lbl-text"   x="148" y="163">6</text>
+
+  <!-- 7 · Glottal — vocal folds centre (path3021/3023 avg≈(174,329)) (성문음) -->
+  <circle class="lbl-circle" cx="174" cy="329" r="11"/>
+  <text   class="lbl-text"   x="174" y="329">7</text>
 
   <!-- Attribution -->
   <text class="attrib" x="376" y="397">Based on Tavin, CC BY 3.0 · Wikimedia Commons</text>
