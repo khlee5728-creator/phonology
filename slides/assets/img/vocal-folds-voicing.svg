@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Vocal Fold States: Voiced vs. Voiceless
+  Superior (laryngoscopic top-down) schematic view of the glottis.
+  Left panel  : Voiced  — folds adducted, narrow glottal slit, vibration
+  Right panel : Voiceless — folds abducted, wide triangular glottis, airflow
+  Author  : for phonology course slides
+  License : CC0 1.0 Public Domain Dedication
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="380" height="178" viewBox="0 0 380 178">
+
+  <defs>
+    <!-- Arrowhead for airflow arrow -->
+    <marker id="arr" markerWidth="7" markerHeight="7"
+            refX="3.5" refY="3.5" orient="auto">
+      <polygon points="0 0, 7 3.5, 0 7" fill="#3355bb"/>
+    </marker>
+    <style>
+      text { font-family: Arial, sans-serif; }
+      .ptitle-v  { font-size:11.5px; font-weight:bold; fill:#1a6b2a; text-anchor:middle; }
+      .ptitle-vl { font-size:11.5px; font-weight:bold; fill:#c1121f; text-anchor:middle; }
+      .psub      { font-size:8.5px;  fill:#444;        text-anchor:middle; }
+      .plbl      { font-size:7.5px;  fill:#777;        text-anchor:middle; font-style:italic; }
+      .glbl      { font-size:7px;    fill:#ccc;        text-anchor:start; }
+      .attrib    { font-size:6.5px;  fill:#bbb;        text-anchor:end; }
+    </style>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════════
+       PANEL 1 — VOICED (유성음)
+       ═══════════════════════════════════════════════════ -->
+  <rect x="1" y="1" width="183" height="175" rx="9"
+        fill="#f2fbf2" stroke="#88bb88" stroke-width="1.5"/>
+  <text x="92" y="17"  class="ptitle-v">Voiced (유성음)</text>
+  <text x="92" y="29"  class="psub">성대 내전(adducted) · 진동</text>
+
+  <!-- Tracheal/laryngeal lumen — dark background (air space) -->
+  <circle cx="92" cy="105" r="56" fill="#2b3748" stroke="#44556a" stroke-width="1"/>
+
+  <!-- Orientation labels -->
+  <text x="92" y="46"  class="plbl">anterior ↓</text>
+  <text x="92" y="170" class="plbl">↑ posterior</text>
+
+  <!-- LEFT vocal fold (Voiced): nearly adducted, medial edge close to center -->
+  <!-- Lateral edge: anterior-commissure → curves left → arytenoid (posterior) -->
+  <!-- Medial  edge: arytenoid → stays near x=87–92 → anterior-commissure   -->
+  <path d="M 92,51
+           C 71,61 51,81 51,105
+           C 51,128 67,145 81,152
+           C 83,144 86,126 87,105
+           C 88,84  91,63  92,51 Z"
+        fill="#f5c8b0" stroke="#b07848" stroke-width="1.5"/>
+
+  <!-- RIGHT vocal fold (Voiced): mirror of left -->
+  <path d="M 92,51
+           C 113,61 133,81 133,105
+           C 133,128 117,145 103,152
+           C 101,144 98,126  97,105
+           C 96,84  93,63   92,51 Z"
+        fill="#f5c8b0" stroke="#b07848" stroke-width="1.5"/>
+
+  <!-- Vibration markers (≈) on lateral fold surfaces — indicate active vibration -->
+  <text x="66"  y="108" font-size="12" fill="#cc2222"
+        text-anchor="middle" font-family="Arial">≈</text>
+  <text x="118" y="108" font-size="12" fill="#cc2222"
+        text-anchor="middle" font-family="Arial">≈</text>
+
+  <!-- Glottis pointer (narrow slit between medial edges at y≈105, x=87–97) -->
+  <line x1="92" y1="105" x2="122" y2="85"
+        stroke="#aaa" stroke-width="0.8" stroke-dasharray="2,1.5"/>
+  <text x="124" y="83" class="glbl">glottis</text>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       PANEL 2 — VOICELESS (무성음)
+       ═══════════════════════════════════════════════════ -->
+  <rect x="196" y="1" width="183" height="175" rx="9"
+        fill="#fdf2f2" stroke="#cc8888" stroke-width="1.5"/>
+  <text x="288" y="17"  class="ptitle-vl">Voiceless (무성음)</text>
+  <text x="288" y="29"  class="psub">성대 외전(abducted) · 개방</text>
+
+  <!-- Tracheal lumen -->
+  <circle cx="288" cy="105" r="56" fill="#2b3748" stroke="#44556a" stroke-width="1"/>
+
+  <!-- Orientation labels -->
+  <text x="288" y="46"  class="plbl">anterior ↓</text>
+  <text x="288" y="170" class="plbl">↑ posterior</text>
+
+  <!-- LEFT vocal fold (Voiceless): abducted — medial edge far from center -->
+  <path d="M 288,51
+           C 263,62 237,84 237,105
+           C 237,126 251,145 263,152
+           C 266,143 267,124 268,105
+           C 269,86  275,64  288,51 Z"
+        fill="#f5c8b0" stroke="#b07848" stroke-width="1.5"/>
+
+  <!-- RIGHT vocal fold (Voiceless): mirror -->
+  <path d="M 288,51
+           C 313,62 339,84 339,105
+           C 339,126 325,145 313,152
+           C 310,143 309,124 308,105
+           C 307,86  301,64  288,51 Z"
+        fill="#f5c8b0" stroke="#b07848" stroke-width="1.5"/>
+
+  <!-- Airflow arrow rising through the wide-open glottis (anterior direction) -->
+  <line x1="288" y1="145" x2="288" y2="67"
+        stroke="#3355bb" stroke-width="2.2" stroke-dasharray="5,3.5"
+        marker-end="url(#arr)"/>
+  <text x="297" y="108" font-size="7.5" fill="#3355bb"
+        font-family="Arial" text-anchor="start">airflow</text>
+
+  <!-- Attribution -->
+  <text x="378" y="176" class="attrib">Custom SVG · CC0</text>
+
+</svg>
