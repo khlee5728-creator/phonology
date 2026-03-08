@@ -199,6 +199,7 @@
       padding: 0.9rem 1rem;
       box-shadow: 0 1px 4px rgba(0,0,0,0.06);
       font-size: 0.78rem;
+      border: 1.5px solid transparent;
     }
     .resource-card .rc-label {
       font-weight: 700;
@@ -208,6 +209,19 @@
     .resource-card .rc-desc {
       color: #6c757d;
     }
+    a.resource-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: box-shadow 0.2s, transform 0.15s, border-color 0.2s;
+      cursor: pointer;
+    }
+    a.resource-card:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+      border-color: var(--color-ot);
+    }
+    a.resource-card:hover .rc-label { color: var(--color-phonetics); }
 
     /* ── Guide Card ── */
     .guide-card {
@@ -511,10 +525,14 @@
       <div class="rc-label">교재</div>
       <div class="rc-desc">Applied English Phonology, 4th Ed.<br>Mehmet Yavaş (2020, Wiley-Blackwell)</div>
     </div>
-    <div class="resource-card">
-      <div class="rc-label">IPA Chart</div>
-      <div class="rc-desc">International Phonetic Association 공식 차트<br>ipa.ac/chart</div>
-    </div>
+    <a class="resource-card" href="https://www.internationalphoneticassociation.org/content/ipa-chart" target="_blank" rel="noopener">
+      <div class="rc-label">IPA Chart (공식) ↗</div>
+      <div class="rc-desc">International Phonetic Association 공식 차트<br>PDF · PNG 다운로드 제공 (CC BY-SA 4.0)</div>
+    </a>
+    <a class="resource-card" href="https://www.ipachart.com" target="_blank" rel="noopener">
+      <div class="rc-label">대화형 IPA Chart ↗</div>
+      <div class="rc-desc">기호 클릭 시 발음 청취 가능<br>ipachart.com</div>
+    </a>
     <div class="resource-card">
       <div class="rc-label">발표자 노트 보기</div>
       <div class="rc-desc">슬라이드에서 <kbd>S</kbd> 키 → 별도 창 열림<br>한국어 보충 설명 포함</div>
