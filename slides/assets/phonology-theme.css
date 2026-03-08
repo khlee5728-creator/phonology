@@ -595,6 +595,22 @@
   margin-bottom: 0;
 }
 
+/* ── Slide Images (Wikimedia Commons CC) ─────────────────── */
+.slide-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  object-fit: contain;
+}
+.slide-img-caption {
+  font-size: 0.55em;
+  color: #aaa;
+  text-align: right;
+  margin-top: 0.2em;
+  line-height: 1.3;
+}
+
 /* ── 인쇄/PDF 저장 시 오버레이·버튼 숨김 ─────────────────── */
 @media print {
   .home-btn,
