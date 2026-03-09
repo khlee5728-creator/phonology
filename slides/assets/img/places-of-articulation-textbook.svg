@@ -2,8 +2,8 @@
 <!--
   Derivative work based on "PhoneticsVocalTract-withNumbers.svg"
   Original author: Tavin (CC BY 3.0) via Wikimedia Commons
-  Modification: Replaced IPA-zone numbering with 7 English places
-                of articulation (1 Bilabial → 7 Glottal) for classroom use.
+  Modification: Replaced IPA-zone numbering with 8 English places
+                of articulation (1 Bilabial → 8 Glottal) for classroom use.
   Derivative author: for phonology course slides
   License: CC BY 3.0 (share-alike with original)
 -->
@@ -18,7 +18,7 @@
   <defs id="defs6">
     <style>
       .lbl-circle { fill:#1e4b82; stroke:#fff; stroke-width:1.5; }
-      .lbl-text   { fill:#fff; font-family:Arial,sans-serif; font-size:11px;
+      .lbl-text   { fill:#fff; font-family:Arial,sans-serif; font-size:9px;
                     font-weight:bold; text-anchor:middle; dominant-baseline:central; }
       .attrib     { fill:#999; font-family:Arial,sans-serif; font-size:7px;
                     text-anchor:end; }
@@ -59,8 +59,8 @@
   </g>
 
   <!-- ── Places of Articulation 1–7 Labels ── -->
-  <!-- 1-7 correspond to table rows: Bilabial, Labiodental, Interdental,
-       Alveolar, Palatal, Velar, Glottal                                -->
+  <!-- 1-8 correspond to table rows: Bilabial, Labiodental, Interdental,
+       Alveolar, Palato-alveolar, Palatal, Velar, Glottal               -->
 
   <!-- Positions calibrated from getPointAtLength() on path2989 (palate inner surface):
        72%=(52,160) teeth/alveolar front  74%=(74,148) alveolar ridge
@@ -69,32 +69,36 @@
        path2991 floor front: (40,196)    path3021/3023 vocal folds: centre≈(174,329) -->
 
   <!-- 1 · Bilabial — both lips meet at mouth opening (양순음) -->
-  <circle class="lbl-circle" cx="42"  cy="210" r="11"/>
+  <circle class="lbl-circle" cx="42"  cy="210" r="9"/>
   <text   class="lbl-text"   x="42"  y="210">1</text>
 
   <!-- 2 · Labiodental — upper front teeth (palate 72%≈y160, teeth ~8px below) (순치음) -->
-  <circle class="lbl-circle" cx="55"  cy="168" r="11"/>
+  <circle class="lbl-circle" cx="55"  cy="168" r="9"/>
   <text   class="lbl-text"   x="55"  y="168">2</text>
 
   <!-- 3 · Interdental — tongue tip between teeth; at lower-dental level (치간음) -->
-  <circle class="lbl-circle" cx="70"  cy="188" r="11"/>
+  <circle class="lbl-circle" cx="70"  cy="188" r="9"/>
   <text   class="lbl-text"   x="70"  y="188">3</text>
 
   <!-- 4 · Alveolar — alveolar ridge (path2989 74%=(74,148), label ~7px inside) (치조음) -->
-  <circle class="lbl-circle" cx="80"  cy="155" r="11"/>
+  <circle class="lbl-circle" cx="80"  cy="155" r="9"/>
   <text   class="lbl-text"   x="80"  y="155">4</text>
 
-  <!-- 5 · Palatal — hard palate (path2989 76-78%≈y145, label ~8px inside) (경구개음) -->
-  <circle class="lbl-circle" cx="110" cy="153" r="11"/>
-  <text   class="lbl-text"   x="110" y="153">5</text>
+  <!-- 5 · Palato-alveolar — postalveolar region (path2989 ~75%≈(87,146)) (구개치조음) -->
+  <circle class="lbl-circle" cx="100" cy="147" r="9"/>
+  <text   class="lbl-text"   x="100" y="147">5</text>
 
-  <!-- 6 · Velar — velum/soft palate (path2989 80%=(147,153), label ~10px inside) (연구개음) -->
-  <circle class="lbl-circle" cx="148" cy="163" r="11"/>
-  <text   class="lbl-text"   x="148" y="163">6</text>
+  <!-- 6 · Palatal — hard palate mid (path2989 78%≈(123,145), label ~8px inside) (경구개음) -->
+  <circle class="lbl-circle" cx="122" cy="151" r="9"/>
+  <text   class="lbl-text"   x="122" y="151">6</text>
 
-  <!-- 7 · Glottal — vocal folds centre (path3021/3023 avg≈(174,329)) (성문음) -->
-  <circle class="lbl-circle" cx="174" cy="329" r="11"/>
-  <text   class="lbl-text"   x="174" y="329">7</text>
+  <!-- 7 · Velar — velum/soft palate (path2989 80%=(147,153), label ~10px inside) (연구개음) -->
+  <circle class="lbl-circle" cx="148" cy="163" r="9"/>
+  <text   class="lbl-text"   x="148" y="163">7</text>
+
+  <!-- 8 · Glottal — vocal folds centre (path3021/3023 avg≈(174,329)) (성문음) -->
+  <circle class="lbl-circle" cx="174" cy="329" r="9"/>
+  <text   class="lbl-text"   x="174" y="329">8</text>
 
   <!-- Attribution -->
   <text class="attrib" x="376" y="397">Based on Tavin, CC BY 3.0 · Wikimedia Commons</text>
