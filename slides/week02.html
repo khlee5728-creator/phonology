@@ -10,7 +10,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css" />
   <link rel="stylesheet" href="assets/phonology-theme.css" />
-  <style>:root { --slide-accent: #0077b6; }</style>
+  <style>
+    :root { --slide-accent: #0077b6; }
+    /* Push controls up so the ↓ arrow isn't clipped by overflow:hidden */
+    .reveal .controls { bottom: 16px !important; }
+  </style>
 </head>
 <body>
 <div class="reveal"><div class="slides">
