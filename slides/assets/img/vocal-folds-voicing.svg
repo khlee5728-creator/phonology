@@ -39,8 +39,8 @@
   <circle cx="92" cy="105" r="56" fill="#2b3748" stroke="#44556a" stroke-width="1"/>
 
   <!-- Orientation labels -->
-  <text x="92" y="46"  class="plbl">anterior ↓</text>
-  <text x="92" y="170" class="plbl">↑ posterior</text>
+  <text x="92" y="46"  class="plbl">Ant. commissure</text>
+  <text x="92" y="170" class="plbl">Arytenoids (post.)</text>
 
   <!-- LEFT vocal fold (Voiced): nearly adducted, medial edge close to center -->
   <!-- Lateral edge: anterior-commissure → curves left → arytenoid (posterior) -->
@@ -84,8 +84,8 @@
   <circle cx="288" cy="105" r="56" fill="#2b3748" stroke="#44556a" stroke-width="1"/>
 
   <!-- Orientation labels -->
-  <text x="288" y="46"  class="plbl">anterior ↓</text>
-  <text x="288" y="170" class="plbl">↑ posterior</text>
+  <text x="288" y="46"  class="plbl">Ant. commissure</text>
+  <text x="288" y="170" class="plbl">Arytenoids (post.)</text>
 
   <!-- LEFT vocal fold (Voiceless): abducted — medial edge far from center -->
   <path d="M 288,51
