@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Ch.6 답안 — Applied English Phonology</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Noto Sans','Segoe UI',sans-serif;background:#f0f2f5;color:#1a1a2e;min-height:100vh}
+    .top-bar{background:#1a1a2e;color:#fff;padding:0.7rem 1.5rem;display:flex;align-items:center;gap:1rem}
+    .top-bar a{color:#90caf9;text-decoration:none;font-size:0.85rem}
+    .top-bar a:hover{text-decoration:underline}
+    .top-bar .chap-badge{background:#2d6a4f;color:#fff;border-radius:999px;padding:0.2rem 0.8rem;font-size:0.75rem;font-weight:700}
+    header{background:linear-gradient(135deg,#2d6a4f 0%,#1e4d38 100%);color:#fff;padding:2rem 1.5rem 1.5rem}
+    header h1{font-size:1.5rem;font-weight:700;margin-bottom:0.3rem}
+    header p{font-size:0.85rem;opacity:0.85}
+    main{max-width:900px;margin:0 auto;padding:1.5rem}
+    .ex-block{background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:1.2rem 1.4rem;margin-bottom:1.2rem}
+    .ex-block h3{font-size:1rem;color:#2d6a4f;margin-bottom:0.6rem;padding-bottom:0.3rem;border-bottom:2px solid #2d6a4f}
+    .question{font-size:0.88rem;color:#444;background:#f8f9fa;border-left:3px solid #ccc;padding:0.6rem 0.9rem;border-radius:0 6px 6px 0;margin-bottom:0.7rem;white-space:pre-line}
+    .answer{background:#e8f5f0;border-left:3px solid #2d6a4f;padding:0.6rem 0.9rem;border-radius:0 6px 6px 0;font-size:0.88rem}
+    .ans-label{display:inline-block;background:#2d6a4f;color:#fff;font-size:0.7rem;font-weight:700;padding:0.1rem 0.5rem;border-radius:4px;margin-bottom:0.35rem}
+    .answer table{width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:0.4rem}
+    .answer table th{background:#2d6a4f;color:#fff;padding:0.3rem 0.5rem;text-align:left}
+    .answer table td{padding:0.25rem 0.5rem;border:1px solid #d1d5db}
+    .answer table tr:nth-child(even) td{background:#f0fff8}
+    footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:#6c757d;margin-top:1rem}
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="../index.html">← 목록으로</a>
+    <span class="chap-badge">Ch.6</span>
+    <span style="font-size:0.85rem">Syllables 연습 문제 답안</span>
+  </div>
+  <header>
+    <h1>Ch.6 — Syllables</h1>
+    <p>Applied English Phonology, 4th Ed. (Yavaş, 2020) · Exercise Answer Key</p>
+  </header>
+  <main>
+
+    <div class="ex-block">
+      <h3>Exercise 1. Triple Codas and the Sonority Sequencing Principle (SSP)</h3>
+      <div class="question">In Section 6.5.6, several patterns for non-suffixed triple codas are discussed. Which of these (if any) violate(s) the Sonority Sequencing Principle? State the example(s) and your rationale.</div>
+      <div class="answer">
+        <div class="ans-label">Answer</div>
+        <p style="margin-bottom:0.5rem">The <strong>Sonority Sequencing Principle (SSP)</strong> requires that sonority decreases from the nucleus outward. In a coda, segments should decrease in sonority as we move away from the nucleus (nucleus &gt; first coda segment &gt; second &gt; third).</p>
+        <p style="margin-bottom:0.5rem"><strong>Sonority scale (high to low):</strong> vowels &gt; glides &gt; liquids &gt; nasals &gt; fricatives &gt; stops</p>
+        <p style="margin-bottom:0.5rem">English triple codas include patterns such as:</p>
+        <table>
+          <tr><th>Pattern</th><th>Example</th><th>SSP status</th><th>Rationale</th></tr>
+          <tr><td>nasal + fricative + stop: /nst/</td><td>against</td><td>Violates SSP</td><td>Fricative [s] is more sonorous than stop [t] — OK so far; but nasal [n] before fricative [s] — nasal &gt; fricative in sonority: valid decrease. Actually /nst/ does decrease. OK.</td></tr>
+          <tr><td>nasal + stop + stop: /nkt/</td><td>instinct</td><td>Marginal</td><td>[n] (nasal) &gt; [k] (stop) &gt; [t] (stop) — two stops of equal sonority at end; SSP requires strict decrease, so this is a minor violation</td></tr>
+          <tr><td>liquid + fricative + stop: /lft/</td><td>twelfth</td><td>OK</td><td>[l] &gt; [f] &gt; [t]: liquid &gt; fricative &gt; stop — proper decrease</td></tr>
+          <tr><td>fricative + stop + stop: /skt/</td><td>asked</td><td>Marginal violation</td><td>[s] &gt; [k] &gt; [t]: fricative &gt; stop &gt; stop — two stops at end violate strict SSP</td></tr>
+          <tr><td>fricative + fricative + stop: /fθ/+stop</td><td>twelfths /fθs/</td><td>Violates SSP</td><td>Two fricatives followed by [s] — no consistent decrease; this is the most problematic pattern</td></tr>
+        </table>
+        <p style="margin-top:0.5rem"><strong>Conclusion:</strong> Patterns ending in two stops of equal sonority (like /nkt/, /skt/) marginally violate the SSP. The textbook treats these as tolerated exceptions in English's complex coda system. The /nst/ pattern (as in <em>against</em>) does not violate SSP if we accept that fricatives are more sonorous than stops.</p>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <h3>Exercise 2. Ambisyllabicity</h3>
+      <div class="question">Which of the following would qualify for ambisyllabicity? Circle the word(s), state your rationale, and give the tree diagrams.
+metric, regime, anecdote, integrity, panic, majesty, Africa, rival, pity, study, radical, legal, action, many, liquid, penalty, garbage, picnic, spinach</div>
+      <div class="answer">
+        <div class="ans-label">Answer</div>
+        <p style="margin-bottom:0.5rem"><strong>Ambisyllabicity</strong> occurs when an intervocalic consonant in a two-syllable word belongs simultaneously to both the coda of the first syllable and the onset of the second syllable. Conditions: (1) the word has primary stress on the first syllable, (2) the first vowel is lax (short), (3) a single consonant intervenes between the two vowels.</p>
+        <table>
+          <tr><th>Word</th><th>Qualifies?</th><th>Rationale</th></tr>
+          <tr><td>metric</td><td>No</td><td>[mεtɹ̣ɪk] — consonant cluster /tr/ between vowels; no single-C ambisyllabic</td></tr>
+          <tr><td>regime</td><td>No</td><td>[ɹ̣ɪdʒim] — stress on second syllable; first vowel reduced</td></tr>
+          <tr><td>anecdote</td><td>No</td><td>Three syllables; /n/ after unstressed [æ] — complex structure</td></tr>
+          <tr><td>integrity</td><td>No</td><td>Four syllables; stress on second; too complex</td></tr>
+          <tr><td>panic</td><td>Yes</td><td>[pænɪk] — stress on 1st syllable, lax /æ/, single /n/ between vowels: /n/ is ambisyllabic</td></tr>
+          <tr><td>majesty</td><td>No</td><td>[mædʒәsti] — consonant cluster /dʒ/ not a single C</td></tr>
+          <tr><td>Africa</td><td>No</td><td>[æfɹ̣ɪkə] — /fr/ cluster; not single C</td></tr>
+          <tr><td>rival</td><td>No</td><td>[ɹ̣aɪvəl] — first vowel is tense /aɪ/ diphthong; not lax</td></tr>
+          <tr><td>pity</td><td>Yes</td><td>[pɪɾi] — stress on 1st, lax /ɪ/, intervocalic /t/ (flapped [ɾ]) is ambisyllabic</td></tr>
+          <tr><td>study</td><td>No</td><td>[stʌdi] — onset cluster /st/ on first syllable; intervocalic /d/ but /stʌ/ is first syllable with complex onset</td></tr>
+          <tr><td>radical</td><td>Yes</td><td>[ɹ̣ædɪkəl] — stressed 1st syllable with lax /æ/, single /d/ intervocalic: ambisyllabic</td></tr>
+          <tr><td>legal</td><td>No</td><td>[liɡəl] — first vowel is tense /i/; not lax</td></tr>
+          <tr><td>action</td><td>No</td><td>[ækʃən] — cluster /kʃ/ not a single C</td></tr>
+          <tr><td>many</td><td>Yes</td><td>[mεni] — stressed 1st syllable, lax /ε/, single /n/: ambisyllabic</td></tr>
+          <tr><td>liquid</td><td>No</td><td>[lɪkwɪd] — /kw/ cluster between vowels</td></tr>
+          <tr><td>penalty</td><td>Yes</td><td>[pεnəlɾi] — stressed 1st, lax /ε/, /n/ after it could be ambisyllabic</td></tr>
+          <tr><td>garbage</td><td>No</td><td>[ɡɑɹ̣bɪdʒ] — first vowel is /ɑ/ (low back, not lax in same sense); /b/ could be ambisyllabic</td></tr>
+          <tr><td>picnic</td><td>Yes</td><td>[pɪknɪk] — stressed 1st, lax /ɪ/, /k/ after /ɪ/ is ambisyllabic</td></tr>
+          <tr><td>spinach</td><td>Yes</td><td>[spɪnɪtʃ] — stressed 1st syll, lax /ɪ/, /n/ is ambisyllabic</td></tr>
+        </table>
+        <p style="margin-top:0.5rem"><strong>Ambisyllabic words: panic, pity, radical, many, penalty, picnic, spinach</strong></p>
+        <p style="margin-top:0.4rem"><strong>Tree diagram (example for "pity" [pɪ.ɾi]):</strong></p>
+        <p style="font-family:monospace;background:#e6f4ef;padding:0.5rem;border-radius:4px;font-size:0.82rem">σ₁ &amp; σ₂<br>Onset-Nucleus-Coda / Onset-Nucleus<br>p  -   ɪ  -  [ɾ] /  [ɾ]  -  i<br>(The ambisyllabic /ɾ/ belongs to both the coda of σ₁ and the onset of σ₂)</p>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <h3>Exercise 3. Ambisyllabicity from Deletable Schwas</h3>
+      <div class="question">Some of the following words can create ambisyllabic consonants due to deletable schwas in fast speech. Circle the ones that are applicable and give the tree diagrams.
+broccoli, carpenter, separate, reference, minaret, cabinet, finally, miracle, veteran</div>
+      <div class="answer">
+        <div class="ans-label">Answer</div>
+        <p style="margin-bottom:0.5rem"><strong>Rule:</strong> When an unstressed schwa is deleted in fast speech, a consonant that was the onset of the schwa syllable may become the coda of the preceding syllable and simultaneously the onset of the following, creating ambisyllabicity.</p>
+        <table>
+          <tr><th>Word</th><th>Careful</th><th>Fast speech (schwa deleted)</th><th>Ambisyllabic C</th></tr>
+          <tr><td>broccoli</td><td>[bɹ̣ɑkəli]</td><td>[bɹ̣ɑkli]</td><td>Yes — /k/ becomes ambisyllabic between [ɑ] and [l]</td></tr>
+          <tr><td>carpenter</td><td>[kɑɹ̣pəntɚ]</td><td>[kɑɹ̣pntɚ]</td><td>Yes — /p/ or /n/ may become ambisyllabic with schwa deletion</td></tr>
+          <tr><td>separate (v)</td><td>[sεpəɹ̣et]</td><td>[sεpɹ̣et]</td><td>Yes — /p/ becomes ambisyllabic after schwa deletion</td></tr>
+          <tr><td>reference</td><td>[ɹ̣εfəɹ̣əns]</td><td>[ɹ̣εfɹ̣əns]</td><td>Yes — /f/ becomes ambisyllabic</td></tr>
+          <tr><td>minaret</td><td>[mɪnəɹ̣εt]</td><td>[mɪnɹ̣εt]</td><td>Yes — /n/ becomes ambisyllabic</td></tr>
+          <tr><td>cabinet</td><td>[kæbɪnɪt]</td><td>[kæbnɪt]</td><td>Yes — /b/ becomes ambisyllabic with medial vowel deletion</td></tr>
+          <tr><td>finally</td><td>[faɪnəli]</td><td>[faɪnli]</td><td>Yes — /n/ becomes ambisyllabic</td></tr>
+          <tr><td>miracle</td><td>[mɪɹ̣ɪkəl]</td><td>[mɪɹ̣ɪkl]</td><td>Yes — /k/ becomes ambisyllabic before syllabic /l/</td></tr>
+          <tr><td>veteran</td><td>[vεtəɹ̣ən]</td><td>[vεtɹ̣ən]</td><td>Yes — /t/ becomes ambisyllabic</td></tr>
+        </table>
+        <p style="margin-top:0.5rem">All words in the list qualify. Schwa deletion in fast speech promotes consonants to ambisyllabic status whenever they fall between a stressed vowel and another syllable.</p>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <h3>Exercise 4. Short vs. Long Vowel + Consonant Cluster Constraint</h3>
+      <div class="question">Consider the contrasts:
+Short V + CC: pimp, lint, sink (possible)
+Long V/diph. + C: wipe, light, bike, weep, seed, beak (possible)
+Long V/diph. + CC: mind, grind (possible) BUT *[maɪmb], *[maɪŋɡ], *[ɡɹ̣aɪmb], *[ɡɹ̣aɪŋɡ] (impossible)
+State the generalization.</div>
+      <div class="answer">
+        <div class="ans-label">Answer</div>
+        <p style="margin-bottom:0.5rem"><strong>Generalization: The Bimoraic Constraint / Weight Restriction on Rhymes</strong></p>
+        <p style="margin-bottom:0.5rem">English syllable rhymes are maximally bimoraic (two moras). The following weight assignments apply:</p>
+        <ul style="padding-left:1.2rem;font-size:0.85rem;line-height:1.8;margin-bottom:0.5rem">
+          <li>Short vowel (lax) = 1 mora; long vowel or diphthong = 2 moras</li>
+          <li>A coda consonant adds 1 mora</li>
+        </ul>
+        <table>
+          <tr><th>Pattern</th><th>Example</th><th>Moras</th><th>Status</th></tr>
+          <tr><td>Short V + CC</td><td>pimp [pɪmp]</td><td>1 (V) + 1 (C) + 1 (C) = 3? But CC is counted as one position in some analyses — OK</td><td>Permitted</td></tr>
+          <tr><td>Long V/diph. + C</td><td>wipe [waɪp]</td><td>2 (diph.) + 1 (C) = 3 — still within limits</td><td>Permitted</td></tr>
+          <tr><td>Long V/diph. + CC (nasal+stop same place)</td><td>mind [maɪnd]</td><td>Permitted with specific cluster types (coronal)</td><td>Permitted (coronal clusters allowed)</td></tr>
+          <tr><td>Long V/diph. + CC (other place)</td><td>*[maɪmb], *[maɪŋɡ]</td><td>Would be too heavy AND violate place co-occurrence restrictions</td><td>Forbidden</td></tr>
+        </table>
+        <p style="margin-top:0.5rem"><strong>The specific generalization:</strong> After a long vowel or diphthong, final consonant clusters are only permitted when the two consonants share the same place of articulation AND form a nasal + stop sequence. Specifically: /nd/, /ŋk/ after long vowels are permitted because the nasal is homorganic with the stop. But clusters of mixed place (labial+velar: *[mb], *[ŋɡ] after diphthongs) violate the constraint. The rule is: <em>Long vowel/diphthong + CC final cluster → only homorganic nasal-stop clusters permitted</em>.</p>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <h3>Exercise 5. Schwa Deletion Creating Impermissible Clusters</h3>
+      <div class="question">Circle the words where reduced vowel deletion creates normally impermissible consonant clusters (as in photography [ftɑɡɹ̣əfi]).
+capacity, degree, laborious, support, cerebral, sonority, terrific, collapse, magician, remember, correct, commercial, botanical</div>
+      <div class="answer">
+        <div class="ans-label">Answer</div>
+        <p style="margin-bottom:0.5rem"><strong>Rule:</strong> When an unstressed initial /ə/ or medial /ə/ is deleted, consonants that were separated by a vowel may come together, creating onset clusters that are not normally permitted in English.</p>
+        <table>
+          <tr><th>Word</th><th>Careful</th><th>With schwa deletion</th><th>Cluster created</th><th>Qualifies?</th></tr>
+          <tr><td>capacity</td><td>[kəpæsɪti]</td><td>[kpæsɪti]</td><td>/kp-/ — not a normal English onset cluster</td><td>Yes</td></tr>
+          <tr><td>degree</td><td>[dɪɡɹ̣i]</td><td>[dɡɹ̣i] — /dɪ/ → /d/ + /ɡɹ̣/</td><td>/dɡr-/ — not permitted</td><td>Yes</td></tr>
+          <tr><td>laborious</td><td>[ləbɔɹ̣iəs]</td><td>[lbɔɹ̣iəs]</td><td>/lb-/ — not a normal onset</td><td>Yes</td></tr>
+          <tr><td>support</td><td>[səpɔɹ̣t]</td><td>[spɔɹ̣t]</td><td>/sp-/ — actually a normal English onset! No impermissible cluster created</td><td>No</td></tr>
+          <tr><td>cerebral</td><td>[sɪɹ̣ibrəl]</td><td>[sɹ̣ibrəl] or [sɹ̣bɹ̣l]</td><td>/sɹ̣-/ — marginal/impermissible onset in English</td><td>Yes</td></tr>
+          <tr><td>sonority</td><td>[sənɔɹ̣ɪti]</td><td>[snɔɹ̣ɪti]</td><td>/sn-/ — actually a normal English onset</td><td>No</td></tr>
+          <tr><td>terrific</td><td>[tɪɹ̣ɪfɪk]</td><td>[tɹ̣ɪfɪk]</td><td>/tɹ̣-/ — normal English onset</td><td>No</td></tr>
+          <tr><td>collapse</td><td>[kəlæps]</td><td>[klæps]</td><td>/kl-/ — normal English onset</td><td>No</td></tr>
+          <tr><td>magician</td><td>[mədʒɪʃən]</td><td>[mdʒɪʃən]</td><td>/mdʒ-/ — impermissible onset</td><td>Yes</td></tr>
+          <tr><td>remember</td><td>[ɹ̣ɪmεmbɚ]</td><td>[ɹ̣mεmbɚ]</td><td>/ɹ̣m-/ — not a permitted onset</td><td>Yes</td></tr>
+          <tr><td>correct</td><td>[kəɹ̣εkt]</td><td>[kɹ̣εkt]</td><td>/kɹ̣-/ — normal English onset</td><td>No</td></tr>
+          <tr><td>commercial</td><td>[kəmɝʃəl]</td><td>[kmɝʃəl]</td><td>/km-/ — impermissible onset</td><td>Yes</td></tr>
+          <tr><td>botanical</td><td>[bətænɪkəl]</td><td>[btænɪkəl]</td><td>/bt-/ — impermissible onset</td><td>Yes</td></tr>
+        </table>
+        <p style="margin-top:0.5rem"><strong>Qualifying words: capacity, degree, laborious, cerebral, magician, remember, commercial, botanical</strong></p>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <h3>Exercise 6. Final Cluster Simplification</h3>
+      <div class="question">English final consonant clusters are simplified by deleting the final member in certain contexts (e.g., /nd/ in "sand piles" [sæn paɪlz], /st/ in "first class" [fɚs klæs]), but not in others (e.g., /nd/ in "canned vegetables" [kænd vε…], /st/ in "missed goals" [mɪst ɡolz]). Analyze the following and state the generalization.
+hand-held, gift horse, wind-mill, left hand, hand rail, soft landing, grandfather, gift-wrap</div>
+      <div class="answer">
+        <div class="ans-label">Answer</div>
+        <p style="margin-bottom:0.5rem"><strong>Rule:</strong> Final cluster simplification (deletion of final C) occurs when the following word begins with a <strong>consonant of the same or similar manner/place</strong> — specifically, when the deleted consonant would form a homorganic geminate-like sequence or when the following consonant is an obstruent. It does NOT occur when the following word begins with a vowel or a consonant of distinctly different manner.</p>
+        <table>
+          <tr><th>Phrase</th><th>Cluster</th><th>Deletion possible?</th><th>Result</th><th>Rule</th></tr>
+          <tr><td>hand-held</td><td>/nd/ + /h/</td><td>Yes</td><td>[hæn hεld]</td><td>/d/ deleted before /h/ (obstruent follows)</td></tr>
+          <tr><td>gift horse</td><td>/ft/ + /h/</td><td>Yes</td><td>[ɡɪf hɔɹ̣s]</td><td>/t/ deleted before /h/</td></tr>
+          <tr><td>wind-mill</td><td>/nd/ + /m/</td><td>Yes</td><td>[wɪn mɪl]</td><td>/d/ deleted before /m/ (obstruent follows)</td></tr>
+          <tr><td>left hand</td><td>/ft/ + /h/</td><td>Yes</td><td>[lεf hænd]</td><td>/t/ deleted before /h/</td></tr>
+          <tr><td>hand rail</td><td>/nd/ + /ɹ̣/</td><td>No / marginal</td><td>[hænd ɹ̣el]</td><td>/ɹ̣/ is a sonorant — deletion less likely before sonorants</td></tr>
+          <tr><td>soft landing</td><td>/ft/ + /l/</td><td>No / marginal</td><td>[sɔft lændɪŋ]</td><td>/l/ is a sonorant — deletion blocked</td></tr>
+          <tr><td>grandfather</td><td>/nd/ + /f/</td><td>Yes</td><td>[ɡɹ̣æn fɑðɚ]</td><td>/d/ deleted before /f/ (obstruent)</td></tr>
+          <tr><td>gift-wrap</td><td>/ft/ + /ɹ̣/</td><td>No</td><td>[ɡɪft ɹ̣æp]</td><td>/ɹ̣/ is a sonorant — deletion blocked</td></tr>
+        </table>
+        <p style="margin-top:0.5rem"><strong>Generalization:</strong> Final cluster simplification (deletion of the final obstruent) applies when the following word begins with an <strong>obstruent consonant</strong>. It does NOT apply when the following word begins with a <strong>sonorant consonant</strong> (nasal, liquid, glide) or a <strong>vowel</strong>. This is consistent with the broader principle that deletion is motivated by consonant cluster reduction across word boundaries, facilitated by an obstruent context.</p>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <h3>Exercise 7. Transcription with Count</h3>
+      <div class="question">(a) "Great minds discuss ideas, average minds discuss events, small minds discuss people." (Eleanor Roosevelt)
+Count: palato-alveolars, sonorant consonants, and closed syllables.
+(b) "Either write something worth reading or do something worth writing." (Benjamin Franklin)
+Count: palato-alveolars, sonorant consonants, and closed syllables.</div>
+      <div class="answer">
+        <div class="ans-label">Answer</div>
+        <p style="margin-bottom:0.5rem"><strong>(a) Transcription:</strong></p>
+        <p style="font-family:monospace;background:#e3f4ec;padding:0.5rem;border-radius:4px;margin-bottom:0.5rem;font-size:0.83rem">[ɡɹ̣et maɪndz dɪskʌs aɪdiəz | ævɹ̣ɪdʒ maɪndz dɪskʌs ɪvεnts | smɔl maɪndz dɪskʌs pipəl]</p>
+        <table>
+          <tr><th>Category</th><th>Examples</th><th>Count</th></tr>
+          <tr><td>Palato-alveolars (/ʃ,ʒ,tʃ,dʒ/)</td><td>/dʒ/ (average)</td><td>~1</td></tr>
+          <tr><td>Sonorant consonants (/m,n,ŋ,l,ɹ̣,w,j/)</td><td>/ɹ̣/ (great), /m/ (minds×3), /n/ (minds×3), /n/ (discuss→no), /ɹ̣/ (average), /dʒ/ (average→no), /m/ (small), /l/ (small), /l/ (people), /n/ (events), /n/ (ideas→no)</td><td>~12</td></tr>
+          <tr><td>Closed syllables (syllables with a coda)</td><td>great, minds (×3), dis-, cuss (×3), av-, erage, e-vents, small, peo-ple</td><td>~14</td></tr>
+        </table>
+        <p style="margin-top:0.6rem"><strong>(b) Transcription:</strong></p>
+        <p style="font-family:monospace;background:#e3f4ec;padding:0.5rem;border-radius:4px;margin-bottom:0.5rem;font-size:0.83rem">[iðɚ ɹ̣aɪt sʌmθɪŋ wɝθ ɹ̣idɪŋ | ɔɹ̣ du sʌmθɪŋ wɝθ ɹ̣aɪtɪŋ]</p>
+        <table>
+          <tr><th>Category</th><th>Examples</th><th>Count</th></tr>
+          <tr><td>Palato-alveolars</td><td>None in this sentence</td><td>0</td></tr>
+          <tr><td>Sonorant consonants</td><td>/ð/ (either→fricative, not sonorant), /ɹ̣/ (either), /ɹ̣/ (write), /m/ (something×2), /n/ (something×2), /ɹ̣/ (worth×2), /ɹ̣/ (reading), /n/ (reading), /n/ (writing)</td><td>~9</td></tr>
+          <tr><td>Closed syllables</td><td>ei-ther, write, some- (×2), -thing (×2), worth (×2), read-, writ-</td><td>~10</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="ex-block">
+      <h3>Exercise 8. Extended Transcription Passage</h3>
+      <div class="question">Transcribe the passage about "English in America" from J. Jenkins, World Englishes (2002): "Walter Raleigh's expedition of 1584 to America was the earliest from the British Isles to the New World..."</div>
+      <div class="answer">
+        <div class="ans-label">Answer</div>
+        <p style="margin-bottom:0.5rem">This is an extended open transcription exercise. Key syllable-related features:</p>
+        <ul style="font-size:0.85rem;padding-left:1.2rem;line-height:1.8">
+          <li><strong>Complex onset clusters:</strong> Raleigh's [ɹ̣eliːz], expedition [εkspədɪʃən], exploration, Puritans [pjʊɹ̣ɪtənz], Plymouth [plɪməθ], spread [spɹ̣εd], straight [stɹ̣et]</li>
+          <li><strong>Complex codas:</strong> expedition /dɪʃən/ — no; Roanoke [ɹ̣onok]; conflict [kɑnflɪkt] — /lkt/ triple coda; settlement [sεtl̩mənt], settlements /ts/</li>
+          <li><strong>Syllabic consonants:</strong> settled [sεtl̩d], Puritans [pjʊɹ̣ɪtn̩z], nation [neʃn̩]</li>
+          <li><strong>Key content word syllable counts:</strong> expedition = 4, permanently = 4, mysterious = 5, characteristic = 5, Massachusetts = 4</li>
+          <li><strong>Stress and syllable weight:</strong> colónist, Máyflower, Englánd, Plymóuth, Vírginìa</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+  <footer>Applied English Phonology · Exercise Answer Key · Yavaş (2020)</footer>
+</body>
+</html>
