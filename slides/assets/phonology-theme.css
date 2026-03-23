@@ -720,13 +720,28 @@
 }
 .answer-item th { background: #e9ecef; font-weight: 600; }
 
+/* ── IPA 오디오 버튼 ──────────────────────────────────────── */
+.ipa-audio-btn {
+  display: inline-block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75em;
+  padding: 0 0.15em;
+  vertical-align: middle;
+  opacity: 0.45;
+  transition: opacity 0.2s;
+}
+.ipa-audio-btn:hover { opacity: 1; }
+
 /* ── 인쇄/PDF 저장 시 오버레이·버튼 숨김 ─────────────────── */
 @media print {
   .home-btn,
   .pdf-btn,
   .print-overlay,
   .answer-btn,
-  .answer-overlay { display: none !important; }
+  .answer-overlay,
+  .ipa-audio-btn { display: none !important; }
 }
 
 /* ── Responsive adjustments ───────────────────────────────── */
