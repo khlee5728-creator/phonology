@@ -387,6 +387,7 @@
           <tr><td><em>neither – seizure</em></td><td class="fragment">(b)</td></tr>
         </tbody>
       </table>
+      <button class="answer-btn" data-target="answers-w04-pairs">문제풀이</button>
     </div>
   </div>
   <aside class="notes">
@@ -439,5 +440,98 @@
 </script>
 <a class="home-btn" href="../index.html" title="강의 목록으로">← 목록</a>
 <script src="assets/phonology-print.js"></script>
+
+<!-- 문제풀이 오버레이: Minimal or Near-Minimal? -->
+<div class="answer-overlay" id="answers-w04-pairs" style="display:none;">
+  <div class="answer-overlay__box">
+    <button class="answer-overlay__close" title="닫기">&#10005;</button>
+    <h2 class="answer-overlay__title">문제풀이 — Minimal or Near-Minimal?</h2>
+    <p style="font-size:0.85em;color:#555;margin-bottom:1em;">
+      (a) minimal pair: 음소 하나만 다르고 나머지 모두 동일 &nbsp;·&nbsp;
+      (b) near-minimal: 거의 유사하나 추가 차이 존재 &nbsp;·&nbsp;
+      (c) neither: 공통점이 너무 적어 대조 분석에 부적합
+    </p>
+    <div class="answer-overlay__content">
+
+      <div class="answer-item">
+        <h4>1. bathe – beige → (b) near-minimal</h4>
+        <table>
+          <thead><tr><th>요소</th><th>bathe</th><th>beige</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>초성</td><td><span class="ipa">/b/</span></td><td><span class="ipa">/b/</span></td><td>&#10004;</td></tr>
+            <tr><td>모음</td><td><span class="ipa">/eɪ/</span></td><td><span class="ipa">/eɪ/</span></td><td>&#10004;</td></tr>
+            <tr><td>말음</td><td><span class="ipa">/ð/</span></td><td><span class="ipa">/ʒ/</span></td><td>&#10060;</td></tr>
+          </tbody>
+        </table>
+        <p><span class="ipa">/ð/</span> (유성 치간 마찰음) vs. <span class="ipa">/ʒ/</span> (유성 경구개 마찰음) — 음소 하나만 다르지만,
+        beige는 프랑스어 차용어로 강세·음절감이 달라 near-minimal로 분류합니다.</p>
+      </div>
+
+      <div class="answer-item">
+        <h4>2. seal – eels → (c) neither</h4>
+        <table>
+          <thead><tr><th>요소</th><th>seal</th><th>eels</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>초성</td><td><span class="ipa">/s/</span></td><td>(없음)</td><td>&#10060;</td></tr>
+            <tr><td>모음</td><td><span class="ipa">/iː/</span></td><td><span class="ipa">/iː/</span></td><td>&#10004;</td></tr>
+            <tr><td>말음</td><td><span class="ipa">/l/</span></td><td><span class="ipa">/lz/</span></td><td>&#10060;</td></tr>
+            <tr><td>음소 수</td><td>3개</td><td>4개</td><td>&#10060;</td></tr>
+          </tbody>
+        </table>
+        <p>음소 개수 자체가 다릅니다 (<span class="ipa">/s/</span> 유무, <span class="ipa">/z/</span> 추가).
+        철자를 뒤집은 것처럼 보이지만 음운론적 대칭이 없어 대조 분석에 부적합합니다.</p>
+      </div>
+
+      <div class="answer-item">
+        <h4>3. ether – either → (b) near-minimal</h4>
+        <table>
+          <thead><tr><th>요소</th><th>ether</th><th>either</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>모음1</td><td><span class="ipa">/iː/</span></td><td><span class="ipa">/iː/</span></td><td>&#10004;</td></tr>
+            <tr><td>자음</td><td><span class="ipa">/θ/</span></td><td><span class="ipa">/ð/</span></td><td>&#10060;</td></tr>
+            <tr><td>말음</td><td><span class="ipa">/ər/</span></td><td><span class="ipa">/ər/</span></td><td>&#10004;</td></tr>
+          </tbody>
+        </table>
+        <p><span class="ipa">/θ/</span> vs. <span class="ipa">/ð/</span> 단 하나의 음소 차이입니다. 미국식 발음 기준으로는
+        minimal pair에 매우 가깝지만, 영국식 either = <span class="ipa alp">[ˈaɪðər]</span>로 모음까지 달라지므로
+        방언 변이를 고려하여 near-minimal로 분류합니다. <span class="ipa">/θ/</span>–<span class="ipa">/ð/</span> 대조 훈련에는 유용한 쌍입니다.</p>
+      </div>
+
+      <div class="answer-item">
+        <h4>4. sill – zeal → (b) near-minimal</h4>
+        <table>
+          <thead><tr><th>요소</th><th>sill</th><th>zeal</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>초성</td><td><span class="ipa">/s/</span></td><td><span class="ipa">/z/</span></td><td>&#10060;</td></tr>
+            <tr><td>모음</td><td><span class="ipa">/ɪ/</span></td><td><span class="ipa">/iː/</span></td><td>&#10060;</td></tr>
+            <tr><td>말음</td><td><span class="ipa">/l/</span></td><td><span class="ipa">/l/</span></td><td>&#10004;</td></tr>
+          </tbody>
+        </table>
+        <p>초성 <span class="ipa">/s/</span>(무성) vs. <span class="ipa">/z/</span>(유성)와 모음 <span class="ipa">/ɪ/</span>(단모음) vs.
+        <span class="ipa">/iː/</span>(장모음) — 두 가지가 동시에 달라 minimal pair가 아닙니다.
+        만약 <i>seal</i> <span class="ipa">/siːl/</span> vs. <i>zeal</i> <span class="ipa">/ziːl/</span>이었다면 완전한 minimal pair입니다.</p>
+      </div>
+
+      <div class="answer-item">
+        <h4>5. neither – seizure → (b) near-minimal</h4>
+        <table>
+          <thead><tr><th>요소</th><th>neither</th><th>seizure</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>초성</td><td><span class="ipa">/n/</span></td><td><span class="ipa">/s/</span></td><td>&#10060;</td></tr>
+            <tr><td>모음1</td><td><span class="ipa">/iː/</span></td><td><span class="ipa">/iː/</span></td><td>&#10004;</td></tr>
+            <tr><td>중간자음</td><td><span class="ipa">/ð/</span></td><td><span class="ipa">/ʒ/</span></td><td>&#10060;</td></tr>
+            <tr><td>말음</td><td><span class="ipa">/ər/</span></td><td><span class="ipa">/ər/</span></td><td>&#10004;</td></tr>
+            <tr><td>음절 수</td><td>2</td><td>2</td><td>&#10004;</td></tr>
+          </tbody>
+        </table>
+        <p>초성과 중간 자음, 두 군데가 다릅니다. 그러나 음절 수, 강세 패턴, 모음 <span class="ipa">/iː/</span>,
+        말음 <span class="ipa">/ər/</span>을 모두 공유하므로 near-minimal로 분류합니다.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="assets/phonology-answers.js"></script>
 </body>
 </html>
