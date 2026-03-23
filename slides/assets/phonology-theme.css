@@ -611,6 +611,31 @@
   line-height: 1.3;
 }
 
+/* ── IPA 툴팁 ─────────────────────────────────────────────── */
+.ipa-tip {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dotted #888;
+}
+.ipa-tip::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 0.3em 0.7em;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 10;
+}
+.ipa-tip:hover::after { opacity: 1; }
+
 /* ── 문제풀이 오버레이 (Answer Overlay) ────────────────────── */
 .answer-btn {
   display: inline-block;
