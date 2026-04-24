@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>응용 영어 음운론 중간고사 — 학생용</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --color-main:#1b7f5e;
+    --color-main-dark:#155f47;
+  }
+  body{font-family:'Noto Sans','Segoe UI',sans-serif;background:#f0f2f5;color:#1a1a2e;min-height:100vh;line-height:1.5}
+
+  /* Top bar */
+  .top-bar{background:#1a1a2e;color:#fff;padding:0.7rem 1.5rem;display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:100}
+  .top-bar .badge{background:var(--color-main);color:#fff;border-radius:999px;padding:0.2rem 0.8rem;font-size:0.75rem;font-weight:700}
+  .top-bar .label{font-size:0.85rem}
+  .top-bar .spacer{flex:1}
+  .pdf-btn{background:#fff;color:#1a1a2e;border:none;padding:0.4rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem}
+  .pdf-btn:hover{background:#f0f0f0}
+
+  /* Header */
+  header{background:linear-gradient(135deg,var(--color-main) 0%,var(--color-main-dark) 100%);color:#fff;padding:2rem 1.5rem 1.7rem}
+  header h1{font-size:1.6rem;font-weight:700;margin-bottom:0.4rem;text-align:center}
+  header .subtitle{font-size:0.9rem;opacity:0.85;text-align:center;margin-bottom:1rem}
+  .info-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;font-size:0.78rem}
+  .info-card{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:0.5rem 0.7rem}
+  .info-card .lab{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;opacity:0.7;display:block;margin-bottom:0.15rem}
+  .info-card .val{font-weight:600}
+
+  main{max-width:900px;margin:0 auto;padding:1.5rem}
+
+  /* Notation guide box */
+  .guide-box{background:#fff3cd;border-left:4px solid #c77b2e;border-radius:6px;padding:0.8rem 1rem;margin-bottom:1.2rem;font-size:0.83rem}
+  .guide-box h3{color:#854d0e;font-size:0.92rem;margin-bottom:0.4rem}
+  .guide-box code{background:#fff;padding:0.05rem 0.3rem;border-radius:3px;font-family:'Noto Serif',serif;color:var(--color-main-dark);font-weight:600}
+
+  /* Student info */
+  .student-info{background:#fff;border-radius:8px;padding:0.9rem 1.1rem;margin-bottom:1.2rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0.6rem;font-size:0.82rem;border-top:3px solid var(--color-main)}
+  .student-info label{font-size:0.7rem;color:#6c757d;display:block;margin-bottom:0.15rem;font-weight:600}
+  .student-info .field{border-bottom:1.5px solid #ced4da;min-height:1.4rem;padding:0.05rem 0.2rem}
+
+  /* Section header */
+  .section-header{background:var(--color-main);color:#fff;padding:0.55rem 1rem;border-radius:6px;margin:1.5rem 0 0.8rem;display:flex;align-items:center;justify-content:space-between}
+  .section-header h2{font-size:1.05rem;font-weight:700}
+  .section-header .pts{font-size:0.78rem;background:rgba(255,255,255,0.2);padding:0.15rem 0.6rem;border-radius:999px}
+
+  /* Question block */
+  .q-block{background:#fff;border-radius:8px;padding:1rem 1.2rem;margin-bottom:0.9rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);page-break-inside:avoid}
+  .q-block .q-head{display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:0.5rem}
+  .q-num{background:var(--color-main);color:#fff;font-weight:700;font-size:0.78rem;padding:0.18rem 0.55rem;border-radius:4px;flex-shrink:0;min-width:2.4rem;text-align:center}
+  .q-text{flex:1;font-size:0.9rem;color:#212529;line-height:1.55}
+  .q-text .ipa{font-family:'Noto Serif','Doulos SIL','Charis SIL',serif;font-style:normal;background:#e7f3ff;padding:0.05rem 0.25rem;border-radius:3px;color:#0050b3;font-size:0.92em}
+  .q-text .ipa-alp{font-family:'Noto Serif','Doulos SIL','Charis SIL',serif;font-style:normal;background:#fff4e6;padding:0.05rem 0.25rem;border-radius:3px;color:#c77b2e;font-size:0.92em}
+  .q-pts{font-size:0.7rem;color:#6c757d;font-weight:600;flex-shrink:0;align-self:center}
+
+  /* Options for MCQ */
+  .options{margin-left:3rem;margin-top:0.4rem;display:grid;grid-template-columns:1fr 1fr;gap:0.25rem 1rem;font-size:0.85rem}
+  .options.full{grid-template-columns:1fr}
+  .opt{padding:0.15rem 0;color:#495057}
+  .opt-label{font-weight:600;color:#495057;margin-right:0.4rem}
+
+  /* Answer field */
+  .ans-field{margin-left:3rem;margin-top:0.5rem;border-bottom:1.5px solid #ced4da;min-height:1.6rem;padding-bottom:0.15rem}
+  .ans-field.long{min-height:5rem;border:1.5px solid #e2e6ea;border-radius:4px;padding:0.4rem 0.6rem}
+  .ans-field.box{display:inline-block;min-width:5rem;border-bottom:1.5px solid #495057;padding:0.05rem 0.3rem;margin:0 0.15rem}
+
+  /* T/F field */
+  .tf-field{margin-left:3rem;margin-top:0.4rem;display:flex;gap:1.2rem;font-size:0.92rem}
+  .tf-opt{display:inline-flex;align-items:center;gap:0.4rem}
+  .tf-circle{display:inline-block;width:1.1rem;height:1.1rem;border:1.5px solid #495057;border-radius:50%}
+
+  /* Footer */
+  footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:#6c757d;margin-top:1rem;border-top:1px solid #dee2e6}
+
+  /* Print styles */
+  @media print{
+    body{background:#fff}
+    .top-bar{display:none}
+    header{padding:1rem 1rem 0.8rem;background:none !important;color:#000 !important;border-bottom:3px solid #000}
+    header h1{color:#000;font-size:1.4rem}
+    header .subtitle{color:#444}
+    .info-card{background:#f5f5f5 !important;color:#000;border:1px solid #ccc}
+    .info-card .lab,.info-card .val{color:#000}
+    main{max-width:100%;padding:0.6rem 0.8rem}
+    .q-block{box-shadow:none;border:1px solid #d1d5db;page-break-inside:avoid;margin-bottom:0.6rem;padding:0.7rem 0.9rem}
+    .q-num{background:#000 !important;color:#fff !important}
+    .section-header{background:#000 !important;color:#fff !important;page-break-after:avoid}
+    .ipa,.ipa-alp{background:transparent !important;color:#000 !important;border:1px solid #999}
+    @page{margin:1.5cm 1.2cm}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="badge">중간고사</span>
+  <span class="label">학생용 — Student Version</span>
+  <span class="spacer"></span>
+  <button class="pdf-btn" onclick="window.print()">💾 PDF 다운로드 / 인쇄</button>
+</div>
+
+<header>
+  <h1>응용 영어 음운론 — 중간고사 (Midterm Exam)</h1>
+  <p class="subtitle">Applied English Phonology · 2026학년도 1학기 · 교재 Ch. 1 – Ch. 3</p>
+  <div class="info-grid">
+    <div class="info-card"><span class="lab">Date</span><span class="val">Week 8</span></div>
+    <div class="info-card"><span class="lab">Duration</span><span class="val">60 minutes</span></div>
+    <div class="info-card"><span class="lab">Total Questions</span><span class="val">43</span></div>
+    <div class="info-card"><span class="lab">Total Points</span><span class="val">100</span></div>
+  </div>
+</header>
+
+<main>
+
+<div class="student-info">
+  <div><label>학번 (ID)</label><div class="field"></div></div>
+  <div><label>이름 (Name)</label><div class="field"></div></div>
+  <div><label>전공 (Major)</label><div class="field"></div></div>
+  <div><label>점수 (Score)</label><div class="field"></div></div>
+</div>
+
+<div class="guide-box">
+  <h3>📌 답안 작성 안내 (Notation Guide)</h3>
+  <p>음소(phoneme)는 슬래시로 표기합니다: <code>/p/</code>, <code>/ɹ̣/</code>, <code>/ŋ/</code>. <br>
+  이음(allophone) 또는 음성 전사(phonetic transcription)는 대괄호로 표기합니다: <code>[pʰ]</code>, <code>[ɫ]</code>, <code>[ɾ]</code>. <br>
+  표기 규칙을 지키지 않으면 부분 감점됩니다.</p>
+</div>
+
+<!-- ═════════════════ SECTION I: Multiple Choice ═════════════════ -->
+<div class="section-header">
+  <h2>I. 객관식 (Multiple Choice)</h2>
+  <span class="pts">13문항 × 2점 = 26점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q1</div>
+    <div class="q-text">Which of the following is the place of articulation for the initial consonant of <em>shoe</em>?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> alveolar</div>
+    <div class="opt"><span class="opt-label">b)</span> palato-alveolar</div>
+    <div class="opt"><span class="opt-label">c)</span> palatal</div>
+    <div class="opt"><span class="opt-label">d)</span> velar</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q2</div>
+    <div class="q-text">Which manner of articulation describes the initial consonant of <em>judge</em>?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> stop</div>
+    <div class="opt"><span class="opt-label">b)</span> fricative</div>
+    <div class="opt"><span class="opt-label">c)</span> affricate</div>
+    <div class="opt"><span class="opt-label">d)</span> approximant</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q3</div>
+    <div class="q-text">Which of the following vowels is correctly described as <strong>high, front, lax, unrounded</strong>?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> <span class="ipa">/i/</span></div>
+    <div class="opt"><span class="opt-label">b)</span> <span class="ipa">/ɪ/</span></div>
+    <div class="opt"><span class="opt-label">c)</span> <span class="ipa">/ε/</span></div>
+    <div class="opt"><span class="opt-label">d)</span> <span class="ipa">/æ/</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q4</div>
+    <div class="q-text">According to the four-way VOT classification of stops, which English allophone has VOT around 0 ms (between 0 and ~30 ms)?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> fully voiced</div>
+    <div class="opt"><span class="opt-label">b)</span> partially voiced</div>
+    <div class="opt"><span class="opt-label">c)</span> voiceless unaspirated</div>
+    <div class="opt"><span class="opt-label">d)</span> voiceless aspirated</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q5</div>
+    <div class="q-text">Two sounds that are in <strong>complementary distribution</strong> and <strong>phonetically similar</strong> are best analyzed as:</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> two separate phonemes</div>
+    <div class="opt"><span class="opt-label">b)</span> allophones of the same phoneme</div>
+    <div class="opt"><span class="opt-label">c)</span> in free variation</div>
+    <div class="opt"><span class="opt-label">d)</span> a minimal pair</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q6</div>
+    <div class="q-text">In English, the plural suffix in <em>buses</em> <span class="ipa-alp">[bʌsɪz]</span> is selected because the stem-final consonant is:</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> a voiceless non-sibilant</div>
+    <div class="opt"><span class="opt-label">b)</span> a voiced non-sibilant</div>
+    <div class="opt"><span class="opt-label">c)</span> a sibilant</div>
+    <div class="opt"><span class="opt-label">d)</span> a sonorant</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q7</div>
+    <div class="q-text">Which English pair is a <strong>minimal pair</strong>?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> <em>seal</em> – <em>eels</em></div>
+    <div class="opt"><span class="opt-label">b)</span> <em>sip</em> – <em>zip</em></div>
+    <div class="opt"><span class="opt-label">c)</span> <em>ether</em> – <em>either</em></div>
+    <div class="opt"><span class="opt-label">d)</span> <em>neither</em> – <em>seizure</em></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q8</div>
+    <div class="q-text">In American English, <span class="ipa">/t/</span> is realized as a flap <span class="ipa-alp">[ɾ]</span> in which environment?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> word-initially before a stressed vowel</div>
+    <div class="opt"><span class="opt-label">b)</span> intervocalically when the second vowel is unstressed</div>
+    <div class="opt"><span class="opt-label">c)</span> word-finally before a pause</div>
+    <div class="opt"><span class="opt-label">d)</span> in a consonant cluster after /s/</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q9</div>
+    <div class="q-text">In the phrase <em>ten girls</em>, the underlined nasal /n/ assimilates to which sound in casual speech?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> <span class="ipa-alp">[m]</span></div>
+    <div class="opt"><span class="opt-label">b)</span> <span class="ipa-alp">[n]</span></div>
+    <div class="opt"><span class="opt-label">c)</span> <span class="ipa-alp">[ŋ]</span></div>
+    <div class="opt"><span class="opt-label">d)</span> <span class="ipa-alp">[ɱ]</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q10</div>
+    <div class="q-text">Which of the following is true about clear <span class="ipa-alp">[l]</span> vs. dark <span class="ipa-alp">[ɫ]</span> in American English?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options full">
+    <div class="opt"><span class="opt-label">a)</span> Clear <span class="ipa-alp">[l]</span> appears before consonants and word-finally; dark <span class="ipa-alp">[ɫ]</span> appears before vowels.</div>
+    <div class="opt"><span class="opt-label">b)</span> Clear <span class="ipa-alp">[l]</span> appears before vowels (onset); dark <span class="ipa-alp">[ɫ]</span> appears before consonants and word-finally (coda).</div>
+    <div class="opt"><span class="opt-label">c)</span> American English uses only clear <span class="ipa-alp">[l]</span> in all positions.</div>
+    <div class="opt"><span class="opt-label">d)</span> The two are in free variation regardless of position.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q11</div>
+    <div class="q-text">In Labov's (1972) New York City department store study, which sociolinguistic variable was investigated?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> word-initial /h/ deletion</div>
+    <div class="opt"><span class="opt-label">b)</span> postvocalic /ɹ̣/</div>
+    <div class="opt"><span class="opt-label">c)</span> /θ/ → [t] substitution</div>
+    <div class="opt"><span class="opt-label">d)</span> -ing → -in' alternation</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q12</div>
+    <div class="q-text">Which of the following provides evidence that English affricates <span class="ipa">/tʃ/</span> and <span class="ipa">/dʒ/</span> are <strong>single phonemes</strong> rather than stop+fricative clusters?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options full">
+    <div class="opt"><span class="opt-label">a)</span> They consist phonetically of two separable gestures.</div>
+    <div class="opt"><span class="opt-label">b)</span> English allows stop+fricative onset clusters in many words.</div>
+    <div class="opt"><span class="opt-label">c)</span> In speech errors (spoonerisms), affricates move as a single unit (e.g., <em>key chain</em> <span class="ipa-alp">[ki tʃen]</span> → <span class="ipa-alp">[tʃi ken]</span>).</div>
+    <div class="opt"><span class="opt-label">d)</span> Their durations are always longer than corresponding stop+fricative sequences.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q13</div>
+    <div class="q-text">다음 영어 데이터에서 <span class="ipa-alp">[pʰ]</span>와 <span class="ipa-alp">[p]</span>의 분포를 분석하고 가장 옳은 결론을 고르시오:<br>
+    <span style="display:inline-block;margin:0.3rem 0;font-style:italic;font-size:0.95em">pin <span class="ipa-alp">[pʰɪn]</span>, spin <span class="ipa-alp">[spɪn]</span>, appear <span class="ipa-alp">[əpʰɪɹ̣]</span>, pepper <span class="ipa-alp">[pʰεpɚ]</span>, compact <span class="ipa-alp">[kəmpʰækt]</span>, happy <span class="ipa-alp">[hæpi]</span></span></div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options full">
+    <div class="opt"><span class="opt-label">a)</span> <span class="ipa-alp">[pʰ]</span>와 <span class="ipa-alp">[p]</span>는 별개의 phoneme으로서 minimal pair로 구별된다.</div>
+    <div class="opt"><span class="opt-label">b)</span> <span class="ipa-alp">[pʰ]</span>와 <span class="ipa-alp">[p]</span>는 동일 환경에서 의미 차이 없이 교체되는 자유 변이(free variation) 관계이다.</div>
+    <div class="opt"><span class="opt-label">c)</span> <span class="ipa-alp">[pʰ]</span>는 강세 음절 onset에서, <span class="ipa-alp">[p]</span>는 그 외 환경에서 나타나는 동일 phoneme <span class="ipa">/p/</span>의 allophone이다.</div>
+    <div class="opt"><span class="opt-label">d)</span> <span class="ipa-alp">[pʰ]</span>는 항상 word-initial position에서만 나타나며, <span class="ipa-alp">[p]</span>는 word-medial에서만 나타난다.</div>
+  </div>
+</div>
+
+<!-- ═════════════════ SECTION II: True/False ═════════════════ -->
+<div class="section-header">
+  <h2>II. O / X (True or False)</h2>
+  <span class="pts">6문항 × 1점 = 6점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q14</div>
+    <div class="q-text">In the IPA, the symbol <span class="ipa">/j/</span> represents the initial sound of the English word <em>jeep</em>.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q15</div>
+    <div class="q-text">Speakers of a language tend to be more consciously aware of phonemic contrasts than of allophonic variation.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q16</div>
+    <div class="q-text">Two sounds in a minimal pair always belong to distinct phonemes.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q17</div>
+    <div class="q-text">The English velar nasal <span class="ipa">/ŋ/</span> can occur freely in word-initial position (e.g., as the first sound of an English word).</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q18</div>
+    <div class="q-text">In rhotic dialects of English (e.g., AmE, IrE, ScE), postvocalic /ɹ̣/ is pronounced; in non-rhotic dialects (e.g., BE RP, Australian, New Zealand English), /ɹ̣/ occurs only before vowels.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q19</div>
+    <div class="q-text">English voiceless stops (/p, t, k/) are aspirated whenever they occur, regardless of position.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<!-- ═════════════════ SECTION III: Fill in the Blank ═════════════════ -->
+<div class="section-header">
+  <h2>III. 빈칸 채우기 (Fill in the Blank)</h2>
+  <span class="pts">12문항 × 3점 = 36점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q20</div>
+    <div class="q-text">The vocal organ that vibrates to produce voicing is called the <span class="ans-field box"></span>.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q21</div>
+    <div class="q-text">The English consonants <span class="ipa">/t, d, n, s, z, l/</span> all share the same place of articulation. This place is called <span class="ans-field box"></span>.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q22</div>
+    <div class="q-text">Approximants <span class="ipa">/l/</span> and <span class="ipa">/ɹ̣/</span> are collectively called <span class="ans-field box"></span>, while <span class="ipa">/j/</span> and <span class="ipa">/w/</span> are called <span class="ans-field box"></span>.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q23</div>
+    <div class="q-text">When two phonetically similar sounds <strong>never</strong> appear in the same phonetic environment, they are said to be in <span class="ans-field box"></span> distribution.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q24</div>
+    <div class="q-text">The English past tense morpheme <em>-ed</em> has three allomorphs: <span class="ipa-alp">[-d]</span> after voiced sounds (other than /d/), <span class="ipa-alp">[-t]</span> after voiceless sounds (other than /t/), and <span class="ans-field box"></span> after the alveolar stops /t/ and /d/.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q25</div>
+    <div class="q-text">Voiceless (fortis) stops are aspirated when they occur at the beginning of a <span class="ans-field box"></span> syllable.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q26</div>
+    <div class="q-text">In words like <em>tenth</em> <span class="ipa-alp">[tεn̪θ]</span> or <em>width</em> <span class="ipa-alp">[wɪṯθ]</span>, alveolar consonants become <span class="ans-field box"></span> when followed by an interdental fricative.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q27</div>
+    <div class="q-text">When the first member of an onset cluster is a voiceless obstruent, approximants <span class="ipa">/l, ɹ̣, j, w/</span> are (partially) <span class="ans-field box"></span> (e.g., <em>play</em> <span class="ipa-alp">[pl̥e]</span>, <em>try</em> <span class="ipa-alp">[tɹ̣̊aɪ]</span>).</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q28</div>
+    <div class="q-text">Vowels and other sonorants are <span class="ans-field box"></span> (longer/shorter) before a voiced (lenis) obstruent than before a voiceless (fortis) obstruent in the same syllable.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q29</div>
+    <div class="q-text">When two sounds alternate freely in the same environment without changing meaning (e.g., the final stop of <em>stop</em> being released or unreleased), they are said to be in <span class="ans-field box"></span>.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q30</div>
+    <div class="q-text">English fricatives <span class="ipa">/s, z, ʃ, ʒ/</span> that have particularly intense, high-frequency acoustic energy are collectively called <span class="ans-field box"></span>.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q31</div>
+    <div class="q-text">Sounds produced with the vibration of the vocal cords (folds) are called <span class="ans-field box"></span> sounds.</div>
+    <div class="q-pts">3pt</div>
+  </div>
+</div>
+
+<!-- ═════════════════ SECTION IV: Short Answer & Applied ═════════════════ -->
+<div class="section-header">
+  <h2>IV. 단답형 주관식 (Short Answer)</h2>
+  <span class="pts">6문항 × 4–5점 = 26점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q32</div>
+    <div class="q-text">다음 영어 단어의 올바른 phonemic 전사를 보기에서 골라 알파벳으로 답하시오.<br>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.5rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;line-height:1.7;">
+      <strong>[보기]</strong> &nbsp;
+      A. <span class="ipa">/θɹ̣i/</span> &nbsp;|&nbsp;
+      B. <span class="ipa">/θri/</span> &nbsp;|&nbsp;
+      C. <span class="ipa">/sri/</span> &nbsp;|&nbsp;
+      D. <span class="ipa">/dʒʌdʒ/</span> &nbsp;|&nbsp;
+      E. <span class="ipa">/jʌdʒ/</span> &nbsp;|&nbsp;
+      F. <span class="ipa">/dzʌdz/</span> &nbsp;|&nbsp;
+      G. <span class="ipa">/læŋɡwɪdʒ/</span> &nbsp;|&nbsp;
+      H. <span class="ipa">/læŋwɪdʒ/</span> &nbsp;|&nbsp;
+      I. <span class="ipa">/lænɡwɪdʒ/</span> &nbsp;|&nbsp;
+      J. <span class="ipa">/næk/</span> &nbsp;|&nbsp;
+      K. <span class="ipa">/knæk/</span> &nbsp;|&nbsp;
+      L. <span class="ipa">/nεk/</span>
+    </span><br>
+      &nbsp;&nbsp;(a) <em>three</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (b) <em>judge</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (c) <em>language</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (d) <em>knack</em> → <span class="ans-field box"></span></div>
+    <div class="q-pts">4pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q33</div>
+    <div class="q-text">다음 영어 동사의 과거형 어미(<em>-ed</em>) 발음을 보기에서 골라 알파벳으로 답하시오.<br>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.4rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;">
+      <strong>[보기]</strong> &nbsp;
+      A. <span class="ipa-alp">[t]</span> &nbsp;&nbsp;
+      B. <span class="ipa-alp">[d]</span> &nbsp;&nbsp;
+      C. <span class="ipa-alp">[əd]</span>
+    </span><br>
+      &nbsp;&nbsp;(a) <em>stopped</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (b) <em>judged</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (c) <em>hated</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (d) <em>climbed</em> → <span class="ans-field box"></span></div>
+    <div class="q-pts">4pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q34</div>
+    <div class="q-text">영어에서 <span class="ipa-alp">[pʰ]</span>와 <span class="ipa-alp">[p]</span>는 <strong>동일 phoneme</strong>의 <strong>allophone</strong>이고, <span class="ipa-alp">[s]</span>와 <span class="ipa-alp">[ʃ]</span>는 <strong>별개 phoneme</strong>이다. 다음에 답하시오:<br>
+      &nbsp;&nbsp;(a) 영어 <span class="ipa-alp">[pʰ]</span>와 <span class="ipa-alp">[p]</span>를 별개 phoneme으로 구별하는 minimal pair가 존재하는가? (Yes/No) (1pt) <br>
+      &nbsp;&nbsp;<span class="ans-field box"></span><br>
+      &nbsp;&nbsp;(b) 영어 <span class="ipa-alp">[s]</span>와 <span class="ipa-alp">[ʃ]</span>를 별개 phoneme으로 구별하는 영어 minimal pair 한 쌍을 쓰시오. (2pt) <br>
+      &nbsp;&nbsp;<span class="ans-field box" style="min-width:15rem"></span><br>
+      &nbsp;&nbsp;(c) 영어에서 <span class="ipa-alp">[t]</span>와 <span class="ipa-alp">[ɾ]</span> (flap, 예: <em>butter</em> <span class="ipa-alp">[bʌɾɚ]</span>, <em>city</em> <span class="ipa-alp">[sɪɾi]</span>)의 관계는 앞 (a)(b)의 <strong>[pʰ]/[p]</strong> 또는 <strong>[s]/[ʃ]</strong> 중 어느 쪽과 유사한가? (2pt) <br>
+      &nbsp;&nbsp;<span class="ans-field box" style="min-width:12rem"></span></div>
+    <div class="q-pts">5pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q35</div>
+    <div class="q-text">다음 어린이 화자의 발화 자료를 보고, 보기에서 골라 알파벳으로 답하시오.<br>
+    <span style="display:inline-block;margin:0.3rem 0;font-style:italic;font-size:0.95em">sail <span class="ipa-alp">[ʃel]</span>, seek <span class="ipa-alp">[ʃik]</span>, Sam <span class="ipa-alp">[ʃæm]</span>, gas <span class="ipa-alp">[ɡæs]</span>, fasten <span class="ipa-alp">[fæsәn]</span>, Irish <span class="ipa-alp">[aɪɹ̣ɪs]</span></span><br>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.5rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;line-height:1.7;">
+      <strong>[보기]</strong> &nbsp;
+      A. word-initial position &nbsp;|&nbsp;
+      B. word-medial / word-final position &nbsp;|&nbsp;
+      C. intervocalic position only &nbsp;|&nbsp;
+      D. before stressed vowels only &nbsp;|&nbsp;
+      E. complementary distribution &nbsp;|&nbsp;
+      F. contrastive distribution &nbsp;|&nbsp;
+      G. free variation &nbsp;|&nbsp;
+      H. overlapping distribution &nbsp;|&nbsp;
+      I. allophones of the same phoneme (동일 음소의 이음) &nbsp;|&nbsp;
+      J. separate phonemes (별개 음소)
+    </span><br>
+      &nbsp;&nbsp;(a) <span class="ipa-alp">[ʃ]</span>가 나타나는 환경: <span class="ans-field box"></span> (1pt)<br>
+      &nbsp;&nbsp;(b) <span class="ipa-alp">[s]</span>가 나타나는 환경: <span class="ans-field box"></span> (1pt)<br>
+      &nbsp;&nbsp;(c) <span class="ipa-alp">[s]</span>와 <span class="ipa-alp">[ʃ]</span>의 분포 유형: <span class="ans-field box"></span> (1pt)<br>
+      &nbsp;&nbsp;(d) 이 화자에게 두 음의 관계: <span class="ans-field box"></span> (1pt)</div>
+    <div class="q-pts">4pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q36</div>
+    <div class="q-text">다음 영어 단어들 중 (a) <strong>syllabic nasal</strong> <span class="ipa-alp">[n̩, m̩]</span>이 발음되는 단어, (b) <strong>syllabic liquid</strong> <span class="ipa-alp">[l̩]</span>이 발음되는 단어를 모두 골라 쓰시오. (단, 일반적인 American English casual speech 기준)<br>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.4rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;">
+      <strong>[단어]</strong> &nbsp; button, apple, channel, listen, eagle, season, pickle, bottle, taken
+    </span><br>
+      &nbsp;&nbsp;(a) Syllabic nasal: <span class="ans-field box" style="min-width:18rem"></span> (1pt)<br>
+      &nbsp;&nbsp;(b) Syllabic liquid: <span class="ans-field box" style="min-width:18rem"></span> (1pt)<br>
+      &nbsp;&nbsp;(c) (a)와 (b) 두 부류의 <strong>음운 환경 차이</strong>를 한 문장으로 설명하시오. (2pt) <br>
+      &nbsp;&nbsp;<span class="ans-field box" style="min-width:25rem"></span></div>
+    <div class="q-pts">4pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q37</div>
+    <div class="q-text">다음 단어/구의 밑줄친 비음(<span class="ipa">/n/</span>)이 casual speech에서 어떤 음으로 동화되는지, 보기에서 골라 알파벳으로 답하시오.<br>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.4rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;">
+      <strong>[보기]</strong> &nbsp;
+      A. <span class="ipa-alp">[m]</span> (bilabial) &nbsp;
+      B. <span class="ipa-alp">[n]</span> (변화 없음) &nbsp;
+      C. <span class="ipa-alp">[ŋ]</span> (velar) &nbsp;
+      D. <span class="ipa-alp">[ɱ]</span> (labio-dental) &nbsp;
+      E. <span class="ipa-alp">[n̪]</span> (dental)
+    </span><br>
+      &nbsp;&nbsp;(a) <em>i<u>n</u> March</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (b) <em>te<u>n</u> guys</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (c) <em>i<u>n</u>fant</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (d) <em>te<u>n</u>th</em> → <span class="ans-field box"></span> &nbsp;&nbsp;
+      (e) <em>ru<u>n</u> back</em> → <span class="ans-field box"></span></div>
+    <div class="q-pts">5pt (각 1pt)</div>
+  </div>
+</div>
+
+<!-- ═════════════════ SECTION V: Student-Created Questions ═════════════════ -->
+<div class="section-header">
+  <h2>V. 학생 출제 문제 (Student-Created Questions)</h2>
+  <span class="pts">6문항 × 1점 = 6점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q38</div>
+    <div class="q-text">Cardinal vowels의 가장 중요한 기능은?</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">A)</span> 영어 모음 자체를 뜻함</div>
+    <div class="opt"><span class="opt-label">B)</span> reference vowels로 쓰임</div>
+    <div class="opt"><span class="opt-label">C)</span> 자음 분류 기준임</div>
+    <div class="opt"><span class="opt-label">D)</span> 강세 표시용임</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q39</div>
+    <div class="q-text">다음 중 <strong>성격이 다른 하나</strong>를 고르시오.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">1)</span> <span class="ipa">/p/</span></div>
+    <div class="opt"><span class="opt-label">2)</span> <span class="ipa">/m/</span></div>
+    <div class="opt"><span class="opt-label">3)</span> <span class="ipa">/v/</span></div>
+    <div class="opt"><span class="opt-label">4)</span> <span class="ipa">/tʃ/</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q40</div>
+    <div class="q-text">다음 단어의 끝소리 발음 기호로 알맞은 것은? &nbsp; <strong style="font-size:1.1em;">John's</strong></div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">1)</span> <span class="ipa-alp">[s]</span></div>
+    <div class="opt"><span class="opt-label">2)</span> <span class="ipa-alp">[z]</span></div>
+    <div class="opt"><span class="opt-label">3)</span> <span class="ipa-alp">[əz]</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q41</div>
+    <div class="q-text">In which of the following words does <strong>"Nasal Plosion"</strong> NOT occur?</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">①</span> Button <span class="ipa-alp">[bʌtn̩]</span></div>
+    <div class="opt"><span class="opt-label">②</span> Sudden <span class="ipa-alp">[sʌdn̩]</span></div>
+    <div class="opt"><span class="opt-label">③</span> Taken <span class="ipa-alp">[teɪkŋ̩]</span></div>
+    <div class="opt"><span class="opt-label">④</span> Captain <span class="ipa-alp">[kæptɪn]</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q42</div>
+    <div class="q-text">Which of the following is the correct environment for <strong>"Flapping"</strong> to occur in American English?</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options full">
+    <div class="opt"><span class="opt-label">①</span> When /t, d/ are at the beginning of a syllable and receive primary stress.</div>
+    <div class="opt"><span class="opt-label">②</span> When /t, d/ are between two vowels, and the following vowel is unstressed.</div>
+    <div class="opt"><span class="opt-label">③</span> When /t, d/ are placed after a consonant.</div>
+    <div class="opt"><span class="opt-label">④</span> When /t, d/ occur at the end of a word before a pause.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q43</div>
+    <div class="q-text">다음 중 <strong>approximants</strong> (<span class="ipa">/l, ɹ̣, j, w/</span>)에 대한 설명으로 옳은 것은?</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options full">
+    <div class="opt"><span class="opt-label">A)</span> fricatives보다 더 좁은 공기 통로를 가진다</div>
+    <div class="opt"><span class="opt-label">B)</span> 공기 흐름이 완전히 차단되어 발음된다</div>
+    <div class="opt"><span class="opt-label">C)</span> 마찰 없이 비교적 자유로운 공기 흐름을 가진다</div>
+    <div class="opt"><span class="opt-label">D)</span> 항상 무성음으로만 실현된다</div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  Applied English Phonology · 2026학년도 1학기 · 중간고사 (학생용) · 총 43문항 100점 · 60분
+</footer>
+
+</body>
+</html>
