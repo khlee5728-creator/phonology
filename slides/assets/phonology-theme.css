@@ -301,6 +301,12 @@
   display: inline-block;
   margin-bottom: 0.6em;
 }
+/* Preserve IPA case inside practice-header (avoid [æ]→[Æ], [i]→[I] etc.) */
+.practice-header .ipa,
+.practice-header .ipa.alp,
+.practice-header .ipa-alp {
+  text-transform: none;
+}
 
 /* ── Assignment / Next Week Banner ───────────────────────── */
 .next-week-banner {
