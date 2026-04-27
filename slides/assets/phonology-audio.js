@@ -45,19 +45,21 @@
     }
   });
 
-  /* ── 2. table td em — 테이블 내 이탤릭 단어/쌍 ─────── */
+  /* ── 2. table td em — 테이블 내 이탤릭 단어/쌍 (em마다 1버튼) ─────── */
   document.querySelectorAll('table td em').forEach(function (el) {
-    var td = el.closest('td');
-    if (!td || hasBtn(td)) return;
+    if (!el.closest('td')) return;
+    // 이미 다음 형제로 버튼이 붙어 있으면 스킵 (중복 방지)
+    var next = el.nextElementSibling;
+    if (next && next.classList && next.classList.contains('ipa-audio-btn')) return;
     var text = el.textContent.trim();
     if (!text || !isEnglishWord(text.replace(/\s*[\u2013\u2014\u002D]\s*/g, ' '))) return;
 
     if (/[\u2013\u2014]/.test(text)) {
       // "bite – light" 쌍 → pause 넣어서 읽기
       var spoken = text.replace(/\s*[\u2013\u2014]\s*/g, ' ... ');
-      td.appendChild(createBtn(spoken));
+      el.after(createBtn(spoken));
     } else if (text.length > 1) {
-      td.appendChild(createBtn(text));
+      el.after(createBtn(text));
     }
   });
 
