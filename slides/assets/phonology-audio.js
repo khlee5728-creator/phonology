@@ -69,7 +69,7 @@
     el.appendChild(createBtn(el.dataset.speak));
   });
 
-  /* ── 4. li > em/i — 리스트 내 영어 단어 ────────────────── */
+  /* ── 4. li > em/i — 비활성화 (def-box 리스트의 과도한 버튼 제거) ──
   document.querySelectorAll('li > em, li > i').forEach(function (el) {
     if (el.closest('table')) return;
     var li = el.closest('li');
@@ -79,6 +79,7 @@
       el.after(createBtn(text));
     }
   });
+  */
 
   /* ── 5. Practice grid em — 연습 문제 단어 그리드 ────────── */
   document.querySelectorAll('div[style*="grid"] em, div[style*="grid"] i').forEach(function (el) {
