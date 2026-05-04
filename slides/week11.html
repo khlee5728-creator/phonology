@@ -30,20 +30,19 @@
 <section>
   <h2>Today's Agenda</h2>
   <ul class="agenda-list">
-    <li>What is a syllable? — intuition and definition</li>
+    <li>What is a syllable?</li>
     <li>Syllable structure: Onset, Rhyme, Nucleus, Coda</li>
     <li>Open vs. Closed syllables</li>
     <li>The Skeletal Tier (X-tier)</li>
-    <li>Syllable weight: light vs. heavy</li>
+    <li>Number of syllables: when counting disagrees</li>
     <li>Sonority and the Sonority Hierarchy</li>
-    <li>Sonority Sequencing Principle</li>
     <li>Syllabification: the Maximal Onset Principle</li>
   </ul>
 </section>
 
 <!-- 3. What is a syllable? -->
 <section>
-  <h2>What is a Syllable?</h2>
+  <h2>§6.1 Introduction <span style="font-size:0.65em;color:#666;font-weight:400;">— What is a Syllable?</span></h2>
   <div class="def-box" style="font-size:0.78em; padding:0.15em 0.8em;">
     <div class="term">Syllable (σ)</div>
     <p>A unit of speech typically organized around a single vowel (or sonorous peak). Often described as a "beat" or "pulse" of speech.</p>
@@ -73,7 +72,7 @@
 
 <!-- 4. Syllable Structure Tree -->
 <section>
-  <h2>Syllable Structure</h2>
+  <h2>§6.1 Introduction <span style="font-size:0.65em;color:#666;font-weight:400;">— Onset, Rhyme, Nucleus, Coda</span></h2>
   <div class="two-col">
     <div>
       <pre style="font-family:'Fira Code',monospace;font-size:0.65em;line-height:1.6;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.8em;border-left:4px solid #2d6a4f;">
@@ -112,7 +111,7 @@
 
 <!-- 5. Open vs. Closed Syllables -->
 <section>
-  <h2>Open vs. Closed Syllables</h2>
+  <h2>§6.1 Introduction <span style="font-size:0.65em;color:#666;font-weight:400;">— Open vs. Closed Syllables</span></h2>
   <div class="two-col">
     <div class="def-box">
       <div class="term">Open Syllable (CV)</div>
@@ -141,49 +140,77 @@
 
 <!-- 6. Skeletal Tier -->
 <section>
-  <h2>The Skeletal Tier (X-tier)</h2>
+  <h2>§6.1 Introduction <span style="font-size:0.65em;color:#666;font-weight:400;">— Skeletal Tier (X-slots)</span></h2>
   <div class="def-box" style="padding:0.15em 0.8em;margin:0;">
     <div class="term">Skeletal Tier</div>
     <p>Timing units represented as X slots. Each X = one timing position. Allows formal representation of long vs. short segments.</p>
   </div>
-  <div style="margin-top:0.3em;font-size:0.7em;">
-    <pre style="font-family:'Fira Code',monospace;font-size:0.9em;line-height:1.5;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.8em;border-left:4px solid #2d6a4f;">
+  <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1.2em;">
+    <div>
+      <h3 style="font-size:1em;margin-bottom:0.2em;">Long vs. short vowels</h3>
+      <pre style="font-family:'Fira Code',monospace;font-size:0.95em;line-height:1.4;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.6em;border-left:4px solid #2d6a4f;margin:0;">
 σ               σ
 |               |  \
 X  X  X         X   X   X
 |  |  |         |   |   |
 p  ɪ  t         b   iː  t
-"pit"           "beat" (long vowel = 2 X)
-    </pre>
-    <p style="margin-top:0.5em;color:#6c757d;">Long vowels (tense, /ː/) occupy 2 X-slots; short vowels occupy 1.</p>
-    <p style="color:#6c757d;">Diphthongs also occupy 2 X-slots: /aɪ/ = X-X</p>
+"pit"           "beat" (long V = 2 X)
+      </pre>
+      <p style="margin-top:0.4em;color:#6c757d;font-size:0.95em;">Long vowels and diphthongs (<span class="ipa">/aɪ/</span>) occupy 2 X-slots; short vowels occupy 1.</p>
+    </div>
+    <div>
+      <h3 style="font-size:1em;margin-bottom:0.2em;">Affricates: phonetically complex, phonologically simple</h3>
+      <pre style="font-family:'Fira Code',monospace;font-size:0.95em;line-height:1.4;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.6em;border-left:4px solid #c77b2e;margin:0;">
+σ                  σ
+|  \               |  \
+X   X  X  X        X   X  X  X  X
+|   |  |  |        |   |  |  |  |
+tʃ  ɑ  ɹ  t        d   ɹ  ɛ  n  tʃ
+"chart"            "drench"
+      </pre>
+      <p style="margin-top:0.4em;color:#6c757d;font-size:0.95em;">Affricates <span class="ipa alp">[tʃ]</span>, <span class="ipa alp">[dʒ]</span> = <strong>1 X-slot</strong> (despite two-segment articulation).</p>
+    </div>
   </div>
   <aside class="notes">X-tier(골격층)는 분절음을 시간 단위로 표시하는 방법입니다. 장모음이 두 개의 X-slot을 차지한다는 것은 음절 무게(syllable weight) 계산에 중요합니다. 이중모음도 두 X-slot을 차지합니다.</aside>
 </section>
 
-<!-- 7. Syllable Weight -->
+<!-- §6.2 Number of Syllables -->
 <section>
-  <h2>Syllable Weight</h2>
-  <div class="def-box">
-    <div class="term">Syllable Weight</div>
-    <p>Determined by the content of the Rhyme (Nucleus + Coda). Important for stress assignment — heavy syllables attract stress.</p>
+  <h2>§6.2 Number of Syllables <span style="font-size:0.65em;color:#666;font-weight:400;">— When Counting Disagrees</span></h2>
+  <div class="def-box" style="font-size:0.7em;padding:0.15em 0.8em;">
+    <div class="term">Speakers usually agree, but some words show disagreement</div>
+    <p style="margin:0.1em 0;">Most words give unanimous counts: <em>consumptiveness</em>, <em>docility</em>, <em>divinatory</em> (4 syllables); <em>cosmographical</em> (5). Disagreement is limited to certain groups.</p>
   </div>
-  <table style="font-size:0.65em;margin-top:0.7em;">
-    <thead><tr><th>Type</th><th>Structure</th><th>Example</th><th>Weight</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Light</strong></td><td>CV (short V, open)</td><td><em>ba</em> in "banana"</td><td>Light (morae: 1)</td></tr>
-      <tr><td><strong>Heavy</strong></td><td>CVV (long V or diphthong)</td><td><em>bay</em> <span class="ipa">/beɪ/</span></td><td>Heavy (morae: 2)</td></tr>
-      <tr><td><strong>Heavy</strong></td><td>CVC (short V + coda)</td><td><em>bet</em> <span class="ipa">/bɛt/</span></td><td>Heavy (morae: 2)</td></tr>
-      <tr><td><strong>Superheavy</strong></td><td>CVVC / CVCC</td><td><em>beams, belts</em></td><td>Superheavy (morae: 3)</td></tr>
-    </tbody>
-  </table>
-  <p style="font-size:0.62em;color:#6c757d;margin-top:0.5em;">Stress in English tends to fall on <strong>heavy syllables</strong>. (More in Week 13!)</p>
-  <aside class="notes">음절 무게는 강세 할당의 핵심 요소입니다. 중음절(Heavy)은 경음절(Light)보다 강세를 끌어당깁니다. "banana"에서 강세가 중간 음절 /næ/에 오는 것은 그 음절이 가장 무거운 CVV 구조를 갖기 때문입니다.</aside>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1em;align-items:start;">
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
+        <div class="term" style="font-size:0.95em;">Sources of disagreement</div>
+        <ul style="margin:0.1em 0;padding-left:1.3em;line-height:1.5;">
+          <li><strong>Dialectal differences</strong><br>
+          <em>military</em> <span class="ipa alp">[mɪ.lə.tɛ.ɹi]</span> (AmE, 4) vs. <span class="ipa alp">[mɪ.lə.tɹi]</span> (BrE, 3)</li>
+          <li style="margin-top:0.3em;"><strong>Schwa deletion</strong><br>
+          <em>veteran</em> <span class="ipa alp">[vɛ.tə.ɹən]</span> (3) or <span class="ipa alp">[vɛ.tɹən]</span> (2)<br>
+          <em>management</em> 3 or 2</li>
+          <li style="margin-top:0.3em;"><strong>Sonorant consonants</strong><br>
+          <em>chasm</em>, <em>fire</em>, <em>real</em>, <em>male</em> — 1 or 2?</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#e8f4fd;border-left-color:#0077b6;">
+        <div class="term" style="font-size:0.95em;">Yavaš's solution: peaks of sonority</div>
+        <p style="margin:0.1em 0;">Define syllables based on <strong>sonority peaks</strong>:</p>
+        <p style="margin:0.4em 0;font-size:1.1em;text-align:center;font-style:italic;color:#0077b6;">Number of syllables<br>= number of sonority peaks</p>
+        <p style="margin:0.15em 0;color:#6c757d;font-size:0.92em;">→ Each sonority peak in a word corresponds to one syllable. Sonority becomes the central concept in the next section (§6.3).</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">교재 §6.2. 화자들은 보통 음절 수에 동의하지만 (consumptiveness, docility, divinatory 4음절; cosmographical 5음절), 일부 단어는 의견이 갈림: (1) 방언 차이 — military (AmE 4 vs BrE 3); (2) Schwa 삭제 — veteran (3 vs 2), management (3 vs 2); (3) Sonorant consonants의 모호성 — chasm, fire, real, male이 1음절인지 2음절인지. Yavaš의 해법: 음절 = sonority peak 수. 이 정의가 다음 섹션 §6.3 Sonority로 자연스럽게 이어짐. 학생들에게 fire/hire를 천천히 발음시키며 [faɪɚ] 한 음절로 들리는지 [faɪ.ɚ] 두 음절로 들리는지 직관 테스트 권장.</aside>
 </section>
 
-<!-- 8. Sonority -->
+<!-- 9. Sonority -->
 <section>
-  <h2>Sonority</h2>
+  <h2>§6.3 Sonority <span style="font-size:0.65em;color:#666;font-weight:400;">— Hierarchy</span></h2>
   <div class="two-col" style="gap:1.2em;margin-top:0.2em;font-size:0.62em;">
     <div>
       <div class="def-box" style="padding:0.2em 0.8em;margin-bottom:0.3em;">
@@ -219,64 +246,44 @@ p  ɪ  t         b   iː  t
       </table>
     </div>
   </div>
+  <div class="def-box" style="margin-top:0.4em;font-size:0.66em;background:#fff3cd;border-left-color:#c77b2e;padding:0.3em 0.8em;">
+    <div class="term" style="font-size:0.95em;">Syllabic consonants — when there is no vowel</div>
+    <p style="margin:0.1em 0;">When a syllable has no vowel, the <strong>most sonorous consonant</strong> becomes the syllable peak (= <em>syllabic consonant</em>). Confined to <strong>unstressed</strong> syllables.</p>
+    <p style="margin:0.1em 0;">Examples: <em>pickle</em> <span class="ipa alp">[pɪ.kl̩]</span> (lateral [l] is peak), <em>sudden</em> <span class="ipa alp">[sʌ.dn̩]</span> (nasal [n] is peak)</p>
+  </div>
   <aside class="notes">공명도 수치 척도는 Hogg &amp; McCully (1987)의 10점 척도로, 교재 Yavaş(2020) p.158에 제시된 것입니다. 수치가 높을수록 공명도가 높습니다. 이 척도를 이용해 'play'의 두음 /pl/ 을 계산하면: /p/(1) → /l/(6) → /eɪ/(9) 로 계속 상승합니다(SSP 만족). 반면 */lp/ 는 /l/(6) → /p/(1) 로 하강하므로 유효한 두음이 아닙니다.</aside>
 </section>
 
-<!-- 9. Sonority Sequencing Principle -->
-<section>
-  <h2>Sonority Sequencing Principle (SSP)</h2>
-  <div class="def-box" style="padding:0.15em 0.8em;margin:0;">
-    <div class="term">SSP</div>
-    <p>Within a syllable, sonority <strong>rises</strong> toward the nucleus and <strong>falls</strong> away from it. The nucleus is the sonority peak.</p>
-  </div>
-  <div class="two-col" style="margin-top:0.3em;font-size:0.65em;">
-    <div>
-      <h3>Valid onsets (rising sonority)</h3>
-      <div class="example-box" style="grid-template-columns:1fr;">
-        <div class="ex-item"><span class="word">/pl-/</span><span class="trans">stop [p] &lt; liquid [l] ✓</span></div>
-        <div class="ex-item"><span class="word">/fr-/</span><span class="trans">fricative [f] &lt; liquid [r] ✓</span></div>
-        <div class="ex-item"><span class="word">/sm-/</span><span class="trans">fricative [s] &lt; nasal [m] ✓</span></div>
-      </div>
-    </div>
-    <div>
-      <h3>Invalid onsets (violate SSP)</h3>
-      <div class="example-box" style="grid-template-columns:1fr;">
-        <div class="ex-item"><span class="word">*/lp-/</span><span class="trans">liquid [l] &gt; stop [p] ✗</span></div>
-        <div class="ex-item"><span class="word">*/ml-/</span><span class="trans">nasal [m] &gt; liquid [l] ✗</span></div>
-        <div class="ex-item"><span class="word">*/nt-/</span><span class="trans">nasal [n] &gt; stop [t] ✗</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="def-box" style="margin-top:0.2em;font-size:0.68em;background:#fff3cd;border-left-color:#c77b2e;">
-    <strong>Exception: /s/ in English!</strong> /st-, sp-, sk-, str-, spl-/ all violate SSP — /s/ is less sonorous than a stop but can precede one. These are "extrasyllabic" or "appendix" consonants.
-  </div>
-  <aside class="notes">SSP는 음절 구조의 보편 원리이지만, 영어의 /s-stop/ 결합은 예외입니다. 이를 설명하기 위해 /s/가 음절 외부(extrasyllabic) 또는 부록(appendix) 위치에 있다고 분석하기도 합니다. 이것은 언어 보편론과 언어 특수성 사이의 흥미로운 긴장을 보여줍니다.</aside>
-</section>
 
 <!-- 10. Maximal Onset Principle -->
 <section>
-  <h2>Syllabification: Maximal Onset Principle</h2>
+  <h2>§6.4 Syllabification <span style="font-size:0.65em;color:#666;font-weight:400;">— Maximal Onset Principle</span></h2>
   <div class="def-box">
     <div class="term">Maximal Onset Principle (MOP)</div>
     <p>When a consonant is between two vowels, assign it to the <strong>onset of the following syllable</strong> rather than the coda of the preceding one — subject to phonotactic well-formedness.</p>
   </div>
-  <div class="two-col" style="margin-top:0.7em;font-size:0.7em;">
+  <div class="two-col" style="margin-top:0.4em;font-size:0.62em;gap:1em;">
     <div>
-      <h3>MOP applies</h3>
+      <h3 style="font-size:1em;margin-bottom:0.2em;">MOP applies</h3>
       <div class="example-box" style="grid-template-columns:1fr;">
-        <div class="ex-item"><span class="word">extra</span><span class="trans">/ɛk.strə/ not */ɛks.trə/ — /str/ is valid onset ✓</span></div>
-        <div class="ex-item"><span class="word">phonology</span><span class="trans">/fə.ˈnɑ.lə.dʒi/ — each medial C goes to next onset</span></div>
+        <div class="ex-item"><span class="word">extra</span><span class="trans">/ɛk.strə/ not */ɛks.trə/: /str/ is a valid onset ✓</span></div>
+        <div class="ex-item"><span class="word">phonology</span><span class="trans">/fə.ˈnɑ.lə.dʒi/: each medial C goes to next onset</span></div>
       </div>
     </div>
     <div>
-      <h3>MOP blocked by phonotactics</h3>
+      <h3 style="font-size:1em;margin-bottom:0.2em;">MOP blocked by phonotactics</h3>
       <div class="example-box" style="grid-template-columns:1fr;">
-        <div class="ex-item"><span class="word">winter</span><span class="trans">/wɪn.tɚ/ — /nt/ is not a valid English onset → /n/ stays as coda</span></div>
-        <div class="ex-item"><span class="word">monster</span><span class="trans">/mɑn.stɚ/ — /nst/ invalid onset → /n/ goes to coda</span></div>
+        <div class="ex-item"><span class="word">winter</span><span class="trans">/wɪn.tɚ/: /nt/ is not a valid English onset → /n/ stays as coda</span></div>
+        <div class="ex-item"><span class="word">monster</span><span class="trans">/mɑn.stɚ/: /nst/ invalid onset → /n/ goes to coda</span></div>
       </div>
     </div>
   </div>
-  <aside class="notes">MOP는 "두음을 최대화하라"는 원칙입니다. 하지만 음소배열론 규칙을 위반하면 안 됩니다. "winter"에서 /nt/가 영어의 허용 두음이 아니기 때문에 /n/은 앞 음절의 코다(coda)로 남습니다. 형태소 경계도 MOP를 차단할 수 있습니다(다음 주 12주차 내용).</aside>
+  <div class="def-box" style="margin-top:0.3em;font-size:0.65em;background:#e8f4fd;border-left-color:#0077b6;padding:0.3em 0.8em;">
+    <div class="term" style="font-size:0.95em;">Same [mp] sequence, different syllabification</div>
+    <p style="margin:0.1em 0;"><em>complain</em> <span class="ipa alp">[kəm.plen]</span>: /pl/ is a <strong>valid onset</strong> → [p] joins next syllable's onset.</p>
+    <p style="margin:0.1em 0;"><em>temptation</em> <span class="ipa alp">[tɛmp.te.ʃən]</span>: /pt/ is <strong>not a valid onset</strong> → [p] stays as part of the first syllable's coda.</p>
+  </div>
+  <aside class="notes">MOP는 "두음을 최대화하라"는 원칙입니다. 하지만 음소배열론 규칙을 위반하면 안 됩니다. "winter"에서 /nt/가 영어의 허용 두음이 아니기 때문에 /n/은 앞 음절의 코다(coda)로 남습니다. 형태소 경계도 MOP를 차단할 수 있습니다(다음 주 12주차 내용). 교재 §6.4 핵심 예시: complain vs temptation — 같은 [mp] 시퀀스이지만 [pl]은 valid onset이라 complain은 [kəm.plen]으로 syllabify, [pt]는 invalid onset이라 temptation은 [tɛmp.te.ʃən]으로 [mp] 모두 coda에 남음. MOP가 phonotactic 제약과 어떻게 상호작용하는지 보여주는 best 예시.</aside>
 </section>
 
 <!-- 11. MOP Practice -->
@@ -304,9 +311,9 @@ p  ɪ  t         b   iː  t
         <span><em>legal</em></span><span><em>action</em></span><span><em>picnic</em></span>
       </div>
       <div class="fragment" style="margin-top:0.35em;">
-        <div class="def-box" style="font-size:0.88em;line-height:1.6;">
-          ✓ Ambisyllabic: metric [mε(t)trɪk], panic [pæ(n)nɪk], pity [pɪ(t)tɪ], study [stʌ(d)dɪ], picnic, radical, legal, action<br>
-          ✗ Not: regime <span class="ipa alp">/reɪˈʒim/</span> — stressed vowel <span class="ipa alp">/eɪ/</span> is <strong>tense</strong> (not lax); rival <span class="ipa alp">/ˈraɪvəl/</span> — <span class="ipa alp">/aɪ/</span> is tense
+        <div class="def-box" style="font-size:0.9em;line-height:1.55;">
+          <div>✓ metric [mε(t)trɪk], panic [pæ(n)nɪk], pity [pɪ(t)tɪ], study [stʌ(d)dɪ], picnic, radical, legal, action</div>
+          <div style="color:#888;margin-top:0.45em;">✗ regime <span class="ipa alp">[reɪˈʒim]</span>, rival <span class="ipa alp">[ˈraɪvəl]</span>: stressed vowel must be lax for ambisyllabicity</div>
         </div>
       </div>
     </div>
@@ -323,9 +330,7 @@ p  ɪ  t         b   iː  t
       <li><span class="key">Syllable structure</span>: σ → Onset + Rhyme (Nucleus + Coda)</li>
       <li><span class="key">Open syllable</span>: no coda (CV); <span class="key">Closed syllable</span>: has coda (CVC)</li>
       <li><span class="key">Skeletal Tier</span>: X-slots represent timing; long V = 2 slots</li>
-      <li><span class="key">Syllable weight</span>: CV=Light; CVV, CVC=Heavy → affects stress</li>
       <li><span class="key">Sonority Hierarchy</span>: Stops &lt; Fricatives &lt; Nasals &lt; Liquids &lt; Glides &lt; Vowels</li>
-      <li><span class="key">SSP</span>: sonority rises to nucleus, falls in coda</li>
       <li><span class="key">MOP</span>: maximize onset, subject to phonotactic legality</li>
     </ul>
   </div>
