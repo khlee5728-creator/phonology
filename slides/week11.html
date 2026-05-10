@@ -138,40 +138,94 @@
   <aside class="notes">개음절(open syllable)과 폐음절(closed syllable)의 구분은 강세 규칙과 이완 모음 분포 제약에 직접 연결됩니다. "banana"의 세 음절이 모두 개음절이라는 점을 주목하게 하세요.</aside>
 </section>
 
-<!-- 6. Skeletal Tier -->
+<!-- 5b. Consonant Phonotactic Restrictions -->
+<section>
+  <h2>§6.1 Introduction <span style="font-size:0.65em;color:#666;font-weight:400;">— Consonant Phonotactic Restrictions</span></h2>
+  <div class="def-box" style="padding:0.15em 0.8em;margin:0;">
+    <div class="term">Positional restrictions on consonants</div>
+    <p>Onsets and codas may be empty or filled with consonant(s), but <strong>certain consonants are restricted to a single position</strong> — a first glimpse of phonotactics (§6.5).</p>
+  </div>
+  <div class="two-col" style="margin-top:0.4em;font-size:0.62em;gap:1em;align-items:start;">
+    <div class="def-box" style="padding:0.3em 0.7em;border-left-color:#2d6a4f;">
+      <div class="term" style="font-size:0.95em;color:#2d6a4f;">Onset-only consonants</div>
+      <ul style="margin:0.2em 0;padding-left:1.3em;line-height:1.5;">
+        <li><span class="ipa">/h/</span> — only word-initial / syllable-initial<br>
+          <span style="color:#6c757d;">✓ <em>hat</em>, <em>ahead</em> &nbsp; ✗ *<em>bah</em>(/bæh/), *<em>oh</em>(/oʊh/)</span></li>
+        <li style="margin-top:0.3em;"><span class="ipa">/j/</span>, <span class="ipa">/w/</span> — glides, primarily onset<br>
+          <span style="color:#6c757d;">✓ <em>yes</em> /jɛs/, <em>wet</em> /wɛt/ &nbsp; ✗ syllable-final */-j/, */-w/ (analyzed as part of diphthong)</span></li>
+        <li style="margin-top:0.3em;"><span class="ipa">/ʒ/</span> — rarely word-initial<br>
+          <span style="color:#6c757d;">Mostly loanwords: <em>genre</em>, <em>Zsa Zsa</em>; typically word-medial: <em>vision</em></span></li>
+      </ul>
+    </div>
+    <div class="def-box" style="padding:0.3em 0.7em;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.95em;color:#c77b2e;">Coda-only consonants</div>
+      <ul style="margin:0.2em 0;padding-left:1.3em;line-height:1.5;">
+        <li><span class="ipa">/ŋ/</span> — never word/syllable-initial<br>
+          <span style="color:#6c757d;">✓ <em>sing</em> /sɪŋ/, <em>finger</em> /fɪŋgɚ/ &nbsp; ✗ *<em>ngat</em> (illegal English onset)</span></li>
+        <li style="margin-top:0.3em;"><strong>Cross-linguistic note:</strong> Vietnamese, Cantonese etc. allow <span class="ipa">/ŋ/</span> in onset (e.g., Vietnamese <em>nguyễn</em>).</li>
+      </ul>
+      <div style="margin-top:0.4em;padding:0.3em 0.5em;background:#fff3cd;border-left:3px solid #c77b2e;font-size:0.92em;">
+        <strong>Key point:</strong> Which consonants may occur in which position is a <strong>language-specific phonotactic constraint</strong> — a core part of syllable structure.
+      </div>
+    </div>
+  </div>
+  <p style="margin:0.5em 0 0 0;font-size:0.62em;color:#6c757d;">→ Consonant cluster legality and sequencing constraints are treated fully in §6.5 Phonotactics (SSP, MOP).</p>
+  <aside class="notes">§6.1에서는 음절 구조의 기본 골격(O, R, N, C)을 소개한 뒤, 자음의 위치적 제약(positional restrictions)을 간단히 언급합니다. /h/와 /ŋ/의 보충적 분포(complementary distribution by position)는 영어 음운론의 대표적인 phonotactic fact이며, 이는 §6.5에서 SSP·MOP과 함께 자음군 phonotactics로 이어집니다. 학생들이 cross-linguistic 차이(예: 베트남어 /ŋ/ onset)를 인식하도록 강조하세요.</aside>
+</section>
+
+<!-- 6. Skeletal Tier — textbook examples -->
 <section>
   <h2>§6.1 Introduction <span style="font-size:0.65em;color:#666;font-weight:400;">— Skeletal Tier (X-slots)</span></h2>
   <div class="def-box" style="padding:0.15em 0.8em;margin:0;">
     <div class="term">Skeletal Tier</div>
     <p>Timing units represented as X slots. Each X = one timing position. Allows formal representation of long vs. short segments.</p>
   </div>
-  <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1.2em;">
-    <div>
-      <h3 style="font-size:1em;margin-bottom:0.2em;">Long vs. short vowels</h3>
-      <pre style="font-family:'Fira Code',monospace;font-size:0.95em;line-height:1.4;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.6em;border-left:4px solid #2d6a4f;margin:0;">
-σ               σ
-|               |  \
-X  X  X         X   X   X
-|  |  |         |   |   |
-p  ɪ  t         b   iː  t
-"pit"           "beat" (long V = 2 X)
-      </pre>
-      <p style="margin-top:0.4em;color:#6c757d;font-size:0.95em;">Long vowels and diphthongs (<span class="ipa">/aɪ/</span>) occupy 2 X-slots; short vowels occupy 1.</p>
-    </div>
-    <div>
-      <h3 style="font-size:1em;margin-bottom:0.2em;">Affricates: phonetically complex, phonologically simple</h3>
-      <pre style="font-family:'Fira Code',monospace;font-size:0.95em;line-height:1.4;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.6em;border-left:4px solid #c77b2e;margin:0;">
-σ                  σ
-|  \               |  \
-X   X  X  X        X   X  X  X  X
-|   |  |  |        |   |  |  |  |
-tʃ  ɑ  ɹ  t        d   ɹ  ɛ  n  tʃ
-"chart"            "drench"
-      </pre>
-      <p style="margin-top:0.4em;color:#6c757d;font-size:0.95em;">Affricates <span class="ipa alp">[tʃ]</span>, <span class="ipa alp">[dʒ]</span> = <strong>1 X-slot</strong> (despite two-segment articulation).</p>
-    </div>
+  <div style="margin-top:0.4em;font-size:0.62em;">
+    <h3 style="font-size:1em;margin:0 0 0.2em 0;">Syllable structure with X-tier — textbook examples (Yavaš p. 155)</h3>
+    <pre style="font-family:'Fira Code',monospace;font-size:0.95em;line-height:1.3;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.5em 0.7em;border-left:4px solid #2d6a4f;margin:0;">
+       σ                  σ                    σ
+      / \                / \                  / \
+     O   R              O   R                O   R
+    /\   |              |   /\              /\   /\
+   X  X  N              |  N  C            X  X N  C
+   |  | /\              |  |  /\           |  | /\ /\
+   |  | X X             X  X X  X          |  |X X X X
+   |  |  \/             |  | |  |          |  | \/ | |
+   b  l  u              w  ɪ n  d          g  ɹ̣ aʊ n d
+
+   "blue" — long V      "wind" — short V    "ground" — diphthong
+   (CCV, no C)          (CVCC, C branches)  (CCVCC, O+N+C all branch)
+    </pre>
+    <p style="margin:0.4em 0 0 0;color:#6c757d;font-size:0.92em;">Long V (<span class="ipa">/u/</span> in <em>blue</em>) & diphthongs (<span class="ipa">/aʊ/</span> in <em>ground</em>) = <strong>2 X-slots</strong> (branching N); short V (<span class="ipa">/ɪ/</span> in <em>wind</em>) = 1 X-slot. → 음절 무게(weight, §6.7) 계산의 기반.</p>
   </div>
-  <aside class="notes">X-tier(골격층)는 분절음을 시간 단위로 표시하는 방법입니다. 장모음이 두 개의 X-slot을 차지한다는 것은 음절 무게(syllable weight) 계산에 중요합니다. 이중모음도 두 X-slot을 차지합니다.</aside>
+  <aside class="notes">X-tier(골격층)는 분절음을 시간 단위로 표시하는 방법입니다. 교재 p. 155 예시: blue (장모음 /u/, branching N), wind (단모음 /ɪ/, branching C), ground (이중모음 /aʊ/, branching O+N+C 모두). 장모음과 이중모음 모두 2 X-slot을 차지하며, 이는 음절 무게(syllable weight, §6.7) 계산에 중요합니다.</aside>
+</section>
+
+<!-- 6b. Skeletal Tier — Affricates -->
+<section>
+  <h2>§6.1 Introduction <span style="font-size:0.65em;color:#666;font-weight:400;">— Affricates &amp; the X-tier</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;margin:0;border-left-color:#c77b2e;font-size:0.78em;">
+    <div class="term" style="color:#c77b2e;">Affricates: phonetically complex, phonologically simple</div>
+    <p style="margin:0.1em 0;">Affricates <span class="ipa alp">[tʃ]</span>, <span class="ipa alp">[dʒ]</span> have <strong>two phonetic components</strong> (stop + fricative) but occupy <strong>1 X-slot</strong> — they pattern as single segments in syllable structure.</p>
+  </div>
+  <div style="margin-top:0.3em;font-size:0.6em;">
+    <pre style="font-family:'Fira Code',monospace;font-size:0.92em;line-height:1.25;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.4em 0.6em;border-left:4px solid #c77b2e;margin:0;">
+       σ                       σ
+      / \                     / \
+     O   R                   O    R
+     |   /\                  /\   /\
+     |  N  C                X X  N  C
+     |  |  /\               | |  |  /\
+     X  X X  X              | |  X X  X
+     |  | |  |              | |  | |  |
+     tʃ ɑ ɹ̣  t              d ɹ̣  ɛ n  tʃ
+
+  "chart" — affricate onset           "drench" — affricate coda
+  (O = 1 X; tʃ occupies single X)     (C branches: n + tʃ; tʃ = 1 X)
+    </pre>
+    <p style="margin:0.3em 0 0 0;color:#6c757d;font-size:0.92em;">Compare: a regular cluster like <span class="ipa">/dr/</span> = <strong>2 X-slots</strong> (branching onset), but affricate <span class="ipa alp">[tʃ]</span> = <strong>1 X-slot</strong> — treated as a single segment.</p>
+  </div>
+  <aside class="notes">파찰음(affricate)은 음성적으로는 정지(stop)와 마찰(fricative) 두 요소가 결합되어 있지만, 음운론적으로는 단일 분절음으로 취급되어 X-tier에서 1 X-slot을 차지합니다. 이는 자음군(consonant cluster)이 2 X-slot을 차지하는 것과 대조됩니다. 영어 단음절어에서 chart의 onset과 drench의 coda 둘 다 단일 X-slot에 매핑됩니다.</aside>
 </section>
 
 <!-- §6.2 Number of Syllables -->
@@ -187,9 +241,9 @@ tʃ  ɑ  ɹ  t        d   ɹ  ɛ  n  tʃ
         <div class="term" style="font-size:0.95em;">Sources of disagreement</div>
         <ul style="margin:0.1em 0;padding-left:1.3em;line-height:1.5;">
           <li><strong>Dialectal differences</strong><br>
-          <em>military</em> <span class="ipa alp">[mɪ.lə.tɛ.ɹi]</span> (AmE, 4) vs. <span class="ipa alp">[mɪ.lə.tɹi]</span> (BrE, 3)</li>
+          <em>military</em> <span class="ipa alp">[mɪ.lə.tɛ.ɹ̣i]</span> (AmE, 4) vs. <span class="ipa alp">[mɪ.lə.tɹ̣i]</span> (BrE, 3)</li>
           <li style="margin-top:0.3em;"><strong>Schwa deletion</strong><br>
-          <em>veteran</em> <span class="ipa alp">[vɛ.tə.ɹən]</span> (3) or <span class="ipa alp">[vɛ.tɹən]</span> (2)<br>
+          <em>veteran</em> <span class="ipa alp">[vɛ.tə.ɹ̣ən]</span> (3) or <span class="ipa alp">[vɛ.tɹ̣ən]</span> (2)<br>
           <em>management</em> 3 or 2</li>
           <li style="margin-top:0.3em;"><strong>Sonorant consonants</strong><br>
           <em>chasm</em>, <em>fire</em>, <em>real</em>, <em>male</em> — 1 or 2?</li>
@@ -246,79 +300,256 @@ tʃ  ɑ  ɹ  t        d   ɹ  ɛ  n  tʃ
       </table>
     </div>
   </div>
-  <div class="def-box" style="margin-top:0.4em;font-size:0.66em;background:#fff3cd;border-left-color:#c77b2e;padding:0.3em 0.8em;">
-    <div class="term" style="font-size:0.95em;">Syllabic consonants — when there is no vowel</div>
-    <p style="margin:0.1em 0;">When a syllable has no vowel, the <strong>most sonorous consonant</strong> becomes the syllable peak (= <em>syllabic consonant</em>). Confined to <strong>unstressed</strong> syllables.</p>
-    <p style="margin:0.1em 0;">Examples: <em>pickle</em> <span class="ipa alp">[pɪ.kl̩]</span> (lateral [l] is peak), <em>sudden</em> <span class="ipa alp">[sʌ.dn̩]</span> (nasal [n] is peak)</p>
-  </div>
-  <aside class="notes">공명도 수치 척도는 Hogg &amp; McCully (1987)의 10점 척도로, 교재 Yavaş(2020) p.158에 제시된 것입니다. 수치가 높을수록 공명도가 높습니다. 이 척도를 이용해 'play'의 두음 /pl/ 을 계산하면: /p/(1) → /l/(6) → /eɪ/(9) 로 계속 상승합니다(SSP 만족). 반면 */lp/ 는 /l/(6) → /p/(1) 로 하강하므로 유효한 두음이 아닙니다.</aside>
+  <aside class="notes">공명도 수치 척도는 Hogg &amp; McCully (1987)의 10점 척도로, 교재 Yavaş(2020) p.158에 제시된 것입니다. 수치가 높을수록 공명도가 높습니다. 이 척도를 이용해 'play'의 두음 /pl/ 을 계산하면: /p/(1) → /l/(6) → /eɪ/(9) 로 계속 상승합니다(SSP 만족). 반면 */lp/ 는 /l/(6) → /p/(1) 로 하강하므로 유효한 두음이 아닙니다. Syllabic consonant(자음 음절)은 다음 슬라이드(§6.3 Peaks &amp; Profiles)에서 pickle, sudden 예시와 함께 다룹니다.</aside>
 </section>
 
 
-<!-- 10. Maximal Onset Principle -->
+<!-- 9b. Sonority Profile Visualization -->
+<section>
+  <h2>§6.3 Sonority <span style="font-size:0.65em;color:#666;font-weight:400;">— Peaks &amp; Profiles (Yavaš pp. 158–160)</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;margin:0;background:#e8f4fd;border-left-color:#0077b6;font-size:0.7em;">
+    <p style="margin:0.1em 0;"><strong style="color:#0077b6;">Sonority profile</strong> = sonority value plotted across segments. Each <strong>peak</strong> = one syllable nucleus → number of syllables = number of peaks.</p>
+  </div>
+  <!-- Section A: Vowel peaks (publicity, condemnation) -->
+  <div class="two-col" style="grid-template-columns:1fr 1.18fr;gap:0.6em;margin-top:0.3em;font-size:0.55em;align-items:start;">
+    <!-- Profile 1: publicity -->
+    <div>
+      <h3 style="font-size:1em;margin:0 0 0.15em 0;text-align:center;"><em>publicity</em> <span class="ipa">/pʌb.lɪ.sə.ti/</span> — 4 syllables</h3>
+      <svg viewBox="0 0 320 165" style="width:100%;max-height:130px;background:#fafafa;border:1px solid #ddd;border-radius:6px;">
+        <line x1="25" y1="15" x2="25" y2="135" stroke="#999" stroke-width="1"/>
+        <line x1="25" y1="135" x2="310" y2="135" stroke="#999" stroke-width="1"/>
+        <text x="20" y="20" text-anchor="end" font-size="9" fill="#666">10</text>
+        <text x="20" y="78" text-anchor="end" font-size="9" fill="#666">5</text>
+        <text x="20" y="138" text-anchor="end" font-size="9" fill="#666">1</text>
+        <line x1="25" y1="20" x2="310" y2="20" stroke="#eee" stroke-width="1"/>
+        <line x1="25" y1="78" x2="310" y2="78" stroke="#eee" stroke-width="1"/>
+        <!-- p(1)=135, ʌ(9)=39, b(2)=123, l(6)=75, ɪ(8)=51, s(3)=111, ə(9)=39, t(1)=135, i(8)=51 -->
+        <polyline points="50,135 80,39 110,123 140,75 170,51 200,111 230,39 260,135 290,51" fill="none" stroke="#2d6a4f" stroke-width="2.5"/>
+        <circle cx="50" cy="135" r="3" fill="#2d6a4f"/>
+        <circle cx="80" cy="39" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="110" cy="123" r="3" fill="#2d6a4f"/>
+        <circle cx="140" cy="75" r="3" fill="#2d6a4f"/>
+        <circle cx="170" cy="51" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="200" cy="111" r="3" fill="#2d6a4f"/>
+        <circle cx="230" cy="39" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="260" cy="135" r="3" fill="#2d6a4f"/>
+        <circle cx="290" cy="51" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <line x1="80" y1="39" x2="80" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="170" y1="51" x2="170" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="230" y1="39" x2="230" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="290" y1="51" x2="290" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="50" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">p</text>
+        <text x="80" y="150" text-anchor="middle" font-size="10" fill="#c77b2e" font-style="italic" font-weight="700">ʌ</text>
+        <text x="110" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">b</text>
+        <text x="140" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">l</text>
+        <text x="170" y="150" text-anchor="middle" font-size="10" fill="#c77b2e" font-style="italic" font-weight="700">ɪ</text>
+        <text x="200" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">s</text>
+        <text x="230" y="150" text-anchor="middle" font-size="10" fill="#c77b2e" font-style="italic" font-weight="700">ə</text>
+        <text x="260" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">t</text>
+        <text x="290" y="150" text-anchor="middle" font-size="10" fill="#c77b2e" font-style="italic" font-weight="700">i</text>
+      </svg>
+      <p style="margin:0.15em 0 0 0;text-align:center;color:#6c757d;font-size:0.9em;"><strong>4 peaks</strong> (ʌ, ɪ, ə, i) = 4 syllables</p>
+    </div>
+    <!-- Profile 2: condemnation -->
+    <div>
+      <h3 style="font-size:1em;margin:0 0 0.15em 0;text-align:center;"><em>condemnation</em> <span class="ipa">/ˌkɑn.dəm.ˈneɪ.ʃən/</span> — 4 syllables</h3>
+      <svg viewBox="0 0 380 165" style="width:100%;max-height:130px;background:#fafafa;border:1px solid #ddd;border-radius:6px;">
+        <line x1="25" y1="15" x2="25" y2="135" stroke="#999" stroke-width="1"/>
+        <line x1="25" y1="135" x2="370" y2="135" stroke="#999" stroke-width="1"/>
+        <text x="20" y="20" text-anchor="end" font-size="9" fill="#666">10</text>
+        <text x="20" y="78" text-anchor="end" font-size="9" fill="#666">5</text>
+        <text x="20" y="138" text-anchor="end" font-size="9" fill="#666">1</text>
+        <line x1="25" y1="20" x2="370" y2="20" stroke="#eee" stroke-width="1"/>
+        <line x1="25" y1="78" x2="370" y2="78" stroke="#eee" stroke-width="1"/>
+        <!-- k(1)=135, ɑ(10)=27, n(5)=87, d(2)=123, ə(9)=39, m(5)=87, n(5)=87, eɪ(9)=39, ʃ(3)=111, ə(9)=39, n(5)=87 -->
+        <polyline points="50,135 80,27 110,87 140,123 170,39 200,87 230,87 260,39 290,111 320,39 350,87" fill="none" stroke="#2d6a4f" stroke-width="2.5"/>
+        <circle cx="50" cy="135" r="3" fill="#2d6a4f"/>
+        <circle cx="80" cy="27" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="110" cy="87" r="3" fill="#2d6a4f"/>
+        <circle cx="140" cy="123" r="3" fill="#2d6a4f"/>
+        <circle cx="170" cy="39" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="200" cy="87" r="3" fill="#2d6a4f"/>
+        <circle cx="230" cy="87" r="3" fill="#2d6a4f"/>
+        <circle cx="260" cy="39" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="290" cy="111" r="3" fill="#2d6a4f"/>
+        <circle cx="320" cy="39" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="350" cy="87" r="3" fill="#2d6a4f"/>
+        <line x1="80" y1="27" x2="80" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="170" y1="39" x2="170" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="260" y1="39" x2="260" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="320" y1="39" x2="320" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="50" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">k</text>
+        <text x="80" y="150" text-anchor="middle" font-size="10" fill="#c77b2e" font-style="italic" font-weight="700">ɑ</text>
+        <text x="110" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">n</text>
+        <text x="140" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">d</text>
+        <text x="170" y="150" text-anchor="middle" font-size="10" fill="#c77b2e" font-style="italic" font-weight="700">ə</text>
+        <text x="200" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">m</text>
+        <text x="230" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">n</text>
+        <text x="260" y="150" text-anchor="middle" font-size="10" fill="#c77b2e" font-style="italic" font-weight="700">eɪ</text>
+        <text x="290" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">ʃ</text>
+        <text x="320" y="150" text-anchor="middle" font-size="10" fill="#c77b2e" font-style="italic" font-weight="700">ə</text>
+        <text x="350" y="150" text-anchor="middle" font-size="10" fill="#333" font-style="italic">n</text>
+      </svg>
+      <p style="margin:0.15em 0 0 0;text-align:center;color:#6c757d;font-size:0.9em;"><strong>4 peaks</strong> (ɑ, ə, eɪ, ə) = 4 syllables</p>
+    </div>
+  </div>
+  <!-- Section B: Syllabic consonants (pickle, sudden) -->
+  <div class="def-box" style="margin-top:0.25em;padding:0.1em 0.8em;background:#fff3cd;border-left-color:#c77b2e;font-size:0.68em;">
+    <p style="margin:0.1em 0;"><strong style="color:#c77b2e;">Syllabic consonants — when there is no vowel:</strong> the most sonorous consonant becomes the peak (= <em>syllabic consonant</em>, e.g., <span class="ipa alp">[l̩]</span>, <span class="ipa alp">[n̩]</span>). Confined to <strong>unstressed</strong> syllables.</p>
+  </div>
+  <div class="two-col" style="grid-template-columns:1fr 1fr;gap:0.6em;margin-top:0.3em;font-size:0.55em;align-items:start;">
+    <!-- Profile 3: pickle -->
+    <div>
+      <h3 style="font-size:1em;margin:0 0 0.15em 0;text-align:center;"><em>pickle</em> <span class="ipa">/pɪ.kl̩/</span> — 2 syllables (peak = syllabic <em>l̩</em>)</h3>
+      <svg viewBox="0 0 220 165" style="width:100%;max-height:120px;background:#fafafa;border:1px solid #ddd;border-radius:6px;">
+        <line x1="25" y1="15" x2="25" y2="135" stroke="#999" stroke-width="1"/>
+        <line x1="25" y1="135" x2="210" y2="135" stroke="#999" stroke-width="1"/>
+        <text x="20" y="20" text-anchor="end" font-size="9" fill="#666">10</text>
+        <text x="20" y="78" text-anchor="end" font-size="9" fill="#666">5</text>
+        <text x="20" y="138" text-anchor="end" font-size="9" fill="#666">1</text>
+        <line x1="25" y1="20" x2="210" y2="20" stroke="#eee" stroke-width="1"/>
+        <line x1="25" y1="78" x2="210" y2="78" stroke="#eee" stroke-width="1"/>
+        <!-- p(1)=135, ɪ(8)=51, k(1)=135, l(6)=75 -->
+        <polyline points="60,135 110,51 160,135 200,75" fill="none" stroke="#2d6a4f" stroke-width="2.5"/>
+        <circle cx="60" cy="135" r="3" fill="#2d6a4f"/>
+        <circle cx="110" cy="51" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="160" cy="135" r="3" fill="#2d6a4f"/>
+        <circle cx="200" cy="75" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <line x1="110" y1="51" x2="110" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="200" y1="75" x2="200" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="110" y="42" text-anchor="middle" font-size="9" fill="#c77b2e" font-weight="700">peak</text>
+        <text x="200" y="66" text-anchor="middle" font-size="9" fill="#c77b2e" font-weight="700">peak (syllabic)</text>
+        <text x="60" y="150" text-anchor="middle" font-size="11" fill="#333" font-style="italic">p</text>
+        <text x="110" y="150" text-anchor="middle" font-size="11" fill="#c77b2e" font-style="italic" font-weight="700">ɪ</text>
+        <text x="160" y="150" text-anchor="middle" font-size="11" fill="#333" font-style="italic">k</text>
+        <text x="200" y="150" text-anchor="middle" font-size="11" fill="#c77b2e" font-style="italic" font-weight="700">l̩</text>
+      </svg>
+      <p style="margin:0.15em 0 0 0;text-align:center;color:#6c757d;font-size:0.9em;">Lateral [l̩] is the 2nd peak — no vowel.</p>
+    </div>
+    <!-- Profile 4: sudden -->
+    <div>
+      <h3 style="font-size:1em;margin:0 0 0.15em 0;text-align:center;"><em>sudden</em> <span class="ipa">/sʌ.dn̩/</span> — 2 syllables (peak = syllabic <em>n̩</em>)</h3>
+      <svg viewBox="0 0 220 165" style="width:100%;max-height:120px;background:#fafafa;border:1px solid #ddd;border-radius:6px;">
+        <line x1="25" y1="15" x2="25" y2="135" stroke="#999" stroke-width="1"/>
+        <line x1="25" y1="135" x2="210" y2="135" stroke="#999" stroke-width="1"/>
+        <text x="20" y="20" text-anchor="end" font-size="9" fill="#666">10</text>
+        <text x="20" y="78" text-anchor="end" font-size="9" fill="#666">5</text>
+        <text x="20" y="138" text-anchor="end" font-size="9" fill="#666">1</text>
+        <line x1="25" y1="20" x2="210" y2="20" stroke="#eee" stroke-width="1"/>
+        <line x1="25" y1="78" x2="210" y2="78" stroke="#eee" stroke-width="1"/>
+        <!-- s(3)=111, ʌ(9)=39, d(2)=123, n(5)=87 -->
+        <polyline points="60,111 110,39 160,123 200,87" fill="none" stroke="#2d6a4f" stroke-width="2.5"/>
+        <circle cx="60" cy="111" r="3" fill="#2d6a4f"/>
+        <circle cx="110" cy="39" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <circle cx="160" cy="123" r="3" fill="#2d6a4f"/>
+        <circle cx="200" cy="87" r="5" fill="#c77b2e" stroke="#fff" stroke-width="1.5"/>
+        <line x1="110" y1="39" x2="110" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="200" y1="87" x2="200" y2="135" stroke="#c77b2e" stroke-width="1" stroke-dasharray="3,2"/>
+        <text x="110" y="30" text-anchor="middle" font-size="9" fill="#c77b2e" font-weight="700">peak</text>
+        <text x="200" y="78" text-anchor="middle" font-size="9" fill="#c77b2e" font-weight="700">peak (syllabic)</text>
+        <text x="60" y="150" text-anchor="middle" font-size="11" fill="#333" font-style="italic">s</text>
+        <text x="110" y="150" text-anchor="middle" font-size="11" fill="#c77b2e" font-style="italic" font-weight="700">ʌ</text>
+        <text x="160" y="150" text-anchor="middle" font-size="11" fill="#333" font-style="italic">d</text>
+        <text x="200" y="150" text-anchor="middle" font-size="11" fill="#c77b2e" font-style="italic" font-weight="700">n̩</text>
+      </svg>
+      <p style="margin:0.15em 0 0 0;text-align:center;color:#6c757d;font-size:0.9em;">Nasal [n̩] is the 2nd peak — no vowel.</p>
+    </div>
+  </div>
+  <aside class="notes">교재 Yavaš (2020) §6.3 pp. 158–160의 sonority profile 시각화. publicity /pʌb.lɪ.sə.ti/와 condemnation /ˌkɑn.dəm.ˈneɪ.ʃən/은 각각 4개의 vowel peak를 보여주며, 각 peak가 syllable nucleus에 해당하므로 두 단어 모두 4음절. condemnation의 [mn] 시퀀스는 sonority가 동일(5)하게 평탄하지만 음절 경계는 그 사이에 위치 (m은 앞 syllable coda, n은 뒤 syllable onset). pickle [pɪ.kl̩]와 sudden [sʌ.dn̩]은 syllabic consonant 사례 — 모음 없이 가장 sonorous한 자음(l, n)이 syllable peak가 됨. 비강세 음절에서만 발생. SSP는 §6.5에서 cluster 적합성 판정에 적용됩니다.</aside>
+</section>
+
+
+<!-- 10a. MOP — Definition & Step-by-Step -->
 <section>
   <h2>§6.4 Syllabification <span style="font-size:0.65em;color:#666;font-weight:400;">— Maximal Onset Principle</span></h2>
-  <div class="def-box">
+  <div class="def-box" style="padding:0.15em 0.8em;margin:0;">
     <div class="term">Maximal Onset Principle (MOP)</div>
     <p>When a consonant is between two vowels, assign it to the <strong>onset of the following syllable</strong> rather than the coda of the preceding one — subject to phonotactic well-formedness.</p>
   </div>
-  <div class="two-col" style="margin-top:0.4em;font-size:0.62em;gap:1em;">
-    <div>
-      <h3 style="font-size:1em;margin-bottom:0.2em;">MOP applies</h3>
-      <div class="example-box" style="grid-template-columns:1fr;">
-        <div class="ex-item"><span class="word">extra</span><span class="trans">/ɛk.strə/ not */ɛks.trə/: /str/ is a valid onset ✓</span></div>
-        <div class="ex-item"><span class="word">phonology</span><span class="trans">/fə.ˈnɑ.lə.dʒi/: each medial C goes to next onset</span></div>
-      </div>
+  <div style="margin-top:0.5em;font-size:0.7em;">
+    <h3 style="font-size:1em;margin:0 0 0.3em 0;">MOP Step-by-Step: <em>publicity</em></h3>
+    <div class="rule-box" style="font-size:0.95em;line-height:1.7;padding:0.5em 1em;">
+      <span class="ipa">[p ʌ b l ɪ s ə t i]</span> — 4 nuclei → 4 syllables<br>
+      <strong>Step 1:</strong> identify nuclei → <span class="ipa">/ʌ/ /ɪ/ /ə/ /i/</span><br>
+      <strong>Step 2</strong> (right → left): <span class="ipa">/ti/</span> = valid onset ✓ → <span class="ipa">...ti</span><br>
+      <strong>Step 3:</strong> <span class="ipa">/sə/</span> = valid ✓ → <span class="ipa">...sə.ti</span><br>
+      <strong>Step 4:</strong> <span class="ipa">/bl/</span> before /ɪ/ = valid onset ✓ → <span class="ipa">...blɪ.sə.ti</span><br>
+      <strong>Result:</strong> <span class="ipa alp" style="background:#fff3cd;padding:0.1em 0.4em;border-radius:3px;">[pʌb.lɪ.sə.ti]</span>
     </div>
-    <div>
-      <h3 style="font-size:1em;margin-bottom:0.2em;">MOP blocked by phonotactics</h3>
-      <div class="example-box" style="grid-template-columns:1fr;">
-        <div class="ex-item"><span class="word">winter</span><span class="trans">/wɪn.tɚ/: /nt/ is not a valid English onset → /n/ stays as coda</span></div>
-        <div class="ex-item"><span class="word">monster</span><span class="trans">/mɑn.stɚ/: /nst/ invalid onset → /n/ goes to coda</span></div>
-      </div>
-    </div>
+    <p style="margin:0.5em 0 0 0;color:#6c757d;font-size:0.92em;">→ Apply MOP <strong>right to left</strong>, maximizing each onset subject to phonotactic legality. Next slide: examples where MOP applies vs. is blocked.</p>
   </div>
-  <div class="def-box" style="margin-top:0.3em;font-size:0.65em;background:#e8f4fd;border-left-color:#0077b6;padding:0.3em 0.8em;">
-    <div class="term" style="font-size:0.95em;">Same [mp] sequence, different syllabification</div>
-    <p style="margin:0.1em 0;"><em>complain</em> <span class="ipa alp">[kəm.plen]</span>: /pl/ is a <strong>valid onset</strong> → [p] joins next syllable's onset.</p>
-    <p style="margin:0.1em 0;"><em>temptation</em> <span class="ipa alp">[tɛmp.te.ʃən]</span>: /pt/ is <strong>not a valid onset</strong> → [p] stays as part of the first syllable's coda.</p>
-  </div>
-  <aside class="notes">MOP는 "두음을 최대화하라"는 원칙입니다. 하지만 음소배열론 규칙을 위반하면 안 됩니다. "winter"에서 /nt/가 영어의 허용 두음이 아니기 때문에 /n/은 앞 음절의 코다(coda)로 남습니다. 형태소 경계도 MOP를 차단할 수 있습니다(다음 주 12주차 내용). 교재 §6.4 핵심 예시: complain vs temptation — 같은 [mp] 시퀀스이지만 [pl]은 valid onset이라 complain은 [kəm.plen]으로 syllabify, [pt]는 invalid onset이라 temptation은 [tɛmp.te.ʃən]으로 [mp] 모두 coda에 남음. MOP가 phonotactic 제약과 어떻게 상호작용하는지 보여주는 best 예시.</aside>
+  <aside class="notes">MOP는 "두음을 최대화하라"는 원칙입니다. 단계별 적용: (1) 핵 확인, (2) 오른쪽에서 시작해 음소배열론 적합성을 확인하며 왼쪽으로 자음 분배. publicity의 경우 [pʌb.lɪ.sə.ti]로 분음절. 학생들에게 가능한 onset cluster (str, bl 등)를 사전 검토하게 하면 적용이 수월해집니다.</aside>
 </section>
 
-<!-- 11. MOP Practice -->
+<!-- 10b. MOP — Applies vs. Blocked -->
 <section>
-  <h2>Practice: Syllabification</h2>
-  <div class="two-col" style="font-size:0.59em;gap:1.2em;margin-top:0.2em;">
+  <h2>§6.4 Syllabification <span style="font-size:0.65em;color:#666;font-weight:400;">— MOP Applies vs. Blocked</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;margin:0;font-size:0.78em;">
+    <p style="margin:0.1em 0;"><strong>Recall:</strong> MOP assigns medial Cs to the next onset <em>only if</em> the resulting cluster is a phonotactically legal onset. Otherwise, the C stays as coda of the preceding syllable.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.4em;font-size:0.65em;gap:1em;align-items:start;">
     <div>
-      <div class="practice-header" style="font-size:1em;margin-bottom:0.3em;">MOP Step-by-Step: <em>publicity</em></div>
-      <div class="rule-box" style="font-size:0.88em;line-height:1.7;padding:0.3em 0.8em;">
-        <span class="ipa">[p ʌ b l ɪ s ə t i]</span> — 4 syllables<br>
-        Step 1: identify nuclei → <span class="ipa">/ʌ/ /ɪ/ /ə/ /i/</span><br>
-        Step 2 (from right): /ti/ = valid onset ✓ → <span class="ipa">...tì</span><br>
-        Step 3: <span class="ipa">/sə/</span> = valid ✓ → <span class="ipa">...sə.ti</span><br>
-        Step 4: <span class="ipa">/bl/</span> before /ɪ/ = valid onset ✓ → <span class="ipa">...blɪ.sə.ti</span><br>
-        Result: <strong><span class="ipa alp">[pʌb.lɪ.sə.ti]</span></strong>
+      <h3 style="font-size:1em;margin:0 0 0.2em 0;color:#2d6a4f;">MOP applies ✓</h3>
+      <div class="example-box" style="grid-template-columns:1fr;font-size:0.95em;">
+        <div class="ex-item" style="background:#e8f4ea;"><span class="word" style="color:#2d6a4f;">extra</span><span class="trans"><span class="ipa">/ɛk.stɹ̣ə/</span> not */ɛks.tɹ̣ə/: /stɹ̣/ is a valid onset ✓</span></div>
+        <div class="ex-item" style="background:#e8f4ea;"><span class="word" style="color:#2d6a4f;">phonology</span><span class="trans">/fə.ˈnɑ.lə.dʒi/: each medial C → next onset</span></div>
       </div>
-      <p style="margin-top:0.3em;font-size:0.88em;color:#6c757d;">MOP: assign medial Cs to the right (next onset) as long as phonotactically legal</p>
     </div>
     <div>
-      <div class="practice-header" style="font-size:1em;margin-bottom:0.3em;">Ex. 2 — Which qualify for ambisyllabicity?</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.2em 0.5em;line-height:1.7;">
-        <span><em>metric</em></span><span><em>regime</em></span><span><em>anecdote</em></span>
-        <span><em>panic</em></span><span><em>majesty</em></span><span><em>rival</em></span>
-        <span><em>pity</em></span><span><em>study</em></span><span><em>radical</em></span>
-        <span><em>legal</em></span><span><em>action</em></span><span><em>picnic</em></span>
-      </div>
-      <div class="fragment" style="margin-top:0.35em;">
-        <div class="def-box" style="font-size:0.9em;line-height:1.55;">
-          <div>✓ metric [mε(t)trɪk], panic [pæ(n)nɪk], pity [pɪ(t)tɪ], study [stʌ(d)dɪ], picnic, radical, legal, action</div>
-          <div style="color:#888;margin-top:0.45em;">✗ regime <span class="ipa alp">[reɪˈʒim]</span>, rival <span class="ipa alp">[ˈraɪvəl]</span>: stressed vowel must be lax for ambisyllabicity</div>
-        </div>
+      <h3 style="font-size:1em;margin:0 0 0.2em 0;color:#c77b2e;">MOP blocked ✗</h3>
+      <div class="example-box" style="grid-template-columns:1fr;font-size:0.95em;">
+        <div class="ex-item" style="background:#fbe9e7;"><span class="word" style="color:#c77b2e;">winter</span><span class="trans">/wɪn.tɚ/: /nt/ is not a valid English onset → /n/ stays coda</span></div>
+        <div class="ex-item" style="background:#fbe9e7;"><span class="word" style="color:#c77b2e;">monster</span><span class="trans">/mɑn.stɚ/: /nst/ invalid onset → /n/ goes coda</span></div>
       </div>
     </div>
   </div>
-  <aside class="notes">교재 Yavaş(2020) Ch.6.4 공시화: publicity 단계별 MOP 적용을 보여줍니다. 모든 음절은 오른쪽에서 시작해 음소배열론 제약을 확인하면서 왼쪽으로 진행합니다. Ex.2는 교재 p.176의 연습문제입니다. 양음절적 자음(ambisyllabic C)은 강세 받은 이완 모음(lax vowel) 다음의 자음에서 나타납니다: metric /ε/ + /t/, panic /æ/ + /n/, pity /ɪ/ + /t/ 등. 반면 regime의 /iː/는 장모음(tense)이므로 해당 없습니다.</aside>
+  <div class="def-box" style="margin-top:0.5em;font-size:0.7em;background:#e8f4fd;border-left-color:#0077b6;padding:0.3em 0.8em;">
+    <div class="term" style="font-size:0.95em;">Same [mp] sequence, different syllabification</div>
+    <p style="margin:0.15em 0;"><em>complain</em> <span class="ipa alp">[kəm.plen]</span>: /pl/ is a <strong>valid onset</strong> → [p] joins the next syllable's onset.</p>
+    <p style="margin:0.15em 0;"><em>temptation</em> <span class="ipa alp">[tɛmp.te.ʃən]</span>: /pt/ is <strong>not a valid onset</strong> → [p] stays as part of the first syllable's coda.</p>
+  </div>
+  <aside class="notes">MOP가 음소배열론 제약과 어떻게 상호작용하는지 보여주는 핵심 예시. winter의 /nt/는 영어의 허용 두음이 아니므로 /n/은 앞 음절의 coda로 남음. complain [kəm.plen] vs temptation [tɛmp.te.ʃən] — 같은 [mp] 시퀀스이지만 후속 자음 호환성에 따라 분음절이 달라짐. 형태소 경계도 MOP를 차단할 수 있음 (다음 주 12주차).</aside>
+</section>
+
+<!-- 11. Practice: Ambisyllabicity -->
+<section>
+  <h2>Practice: Ambisyllabicity <span style="font-size:0.65em;color:#666;font-weight:400;">— Exercise 2 (Yavaš p. 176)</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;margin:0;background:#e8f4fd;border-left-color:#0077b6;font-size:0.78em;">
+    <p style="margin:0.1em 0;"><strong style="color:#0077b6;">Condition (recall §6.7):</strong> a single C right after a <strong>stressed lax vowel</strong> is <em>ambisyllabic</em> (coda of preceding + onset of following). Does <strong>not</strong> occur after tense vowels.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.4em;font-size:0.62em;gap:1em;align-items:start;">
+    <div>
+      <div class="practice-header" style="font-size:1em;margin-bottom:0.3em;">Exercise (2). Examine the following words and decide which qualify as having ambisyllabic consonants.</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0.25em 0.6em;line-height:1.55;font-size:1.05em;text-align:center;padding:0.4em 0.6em;background:#fafafa;border-radius:6px;border:1px solid #ddd;">
+        <span><em>metric</em></span><span><em>regime</em></span>
+        <span><em>anecdote</em></span><span><em>panic</em></span>
+        <span><em>majesty</em></span><span><em>rival</em></span>
+        <span><em>pity</em></span><span><em>study</em></span>
+        <span><em>radical</em></span><span><em>legal</em></span>
+        <span><em>action</em></span><span><em>picnic</em></span>
+      </div>
+      <p style="margin:0.4em 0 0 0;font-size:0.92em;color:#6c757d;">Step 1: identify stressed vowel. Step 2: tense or lax? Step 3: if lax + single C → ambisyllabic.</p>
+    </div>
+    <div class="fragment">
+      <div class="def-box" style="padding:0.3em 0.7em;border-left-color:#2d6a4f;margin:0;">
+        <div class="term" style="font-size:0.95em;color:#2d6a4f;">✓ Ambisyllabic (lax stressed V)</div>
+        <ul style="margin:0.15em 0;padding-left:1.2em;line-height:1.45;font-size:0.95em;">
+          <li>metric <span class="ipa alp">[mɛ(t)tɹ̣ɪk]</span>, panic <span class="ipa alp">[pæ(n)nɪk]</span></li>
+          <li>pity <span class="ipa alp">[pɪ(t)ti]</span>, study <span class="ipa alp">[stʌ(d)di]</span></li>
+          <li>radical, legal, action, picnic</li>
+          <li>anecdote (1st syll. stressed /æ/), majesty (/æ/)</li>
+        </ul>
+      </div>
+      <div class="def-box" style="padding:0.3em 0.7em;border-left-color:#c77b2e;margin-top:0.35em;">
+        <div class="term" style="font-size:0.95em;color:#c77b2e;">✗ Not ambisyllabic (tense stressed V)</div>
+        <ul style="margin:0.15em 0;padding-left:1.2em;line-height:1.45;font-size:0.95em;">
+          <li>regime <span class="ipa alp">[reɪˈʒim]</span> — stressed /i(ː)/ is tense</li>
+          <li>rival <span class="ipa alp">[ˈraɪvəl]</span> — stressed /aɪ/ is a diphthong</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">교재 Yavaş(2020) p. 176 연습문제. 양음절 자음(ambisyllabic C)은 강세를 받은 이완 모음 다음 단일 자음에서 발생합니다: metric /ɛ/ + /t/, panic /æ/ + /n/, pity /ɪ/ + /t/, study /ʌ/ + /d/. regime는 강세 모음이 /iː/ 장모음이므로 양음절 조건 불만족; rival도 강세 모음이 /aɪ/ 이중모음이라 제외. anecdote의 경우 첫 음절 강세 /æ/ 다음 /n/이 양음절 후보. 학생들에게 강세 모음의 tense/lax 판별을 먼저 시키고, 이후 양음절 여부를 결정하도록 지도하세요.</aside>
 </section>
 
 <!-- 12. Summary -->
