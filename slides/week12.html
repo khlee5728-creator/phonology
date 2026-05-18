@@ -69,29 +69,29 @@
      SLIDE 3 — QUICK REVIEW
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>Quick Review</h2>
+  <h2>Quick Review <span style="font-size:0.65em;color:#666;font-weight:400;">— From Week 11</span></h2>
   <div class="two-col" style="align-items:start; font-size:0.62em; margin-top:0.1em;">
     <div>
-      <h3>Maximal Onset Principle</h3>
+      <h3>Maximal Onset Principle (§6.4)</h3>
       <p>Assign as many consonants as possible to the <em>onset</em> of the following syllable, as long as the result is a <strong>legal onset</strong>.</p>
       <div class="example-box">
         <p><span class="ipa">/ˈsiː.krɪt/</span> ← <em>secret</em> (not <span class="ipa">/ˈsiːk.rɪt/</span>)</p>
         <p><span class="ipa">/ˈɛks.trə/</span> ← <em>extra</em></p>
+        <p><span class="ipa">/ˈwɪn.tɚ/</span> ← <em>winter</em> (/nt/ invalid onset → /n/ stays coda)</p>
       </div>
     </div>
     <div>
-      <h3>Sonority Sequencing Principle</h3>
-      <p>Within a syllable, sonority must <strong>rise</strong> toward the nucleus and <strong>fall</strong> away from it.</p>
+      <h3>Sonority Hierarchy (§6.3)</h3>
+      <p>Sounds rank by <strong>relative openness</strong>; nucleus = sonority peak. Number of peaks = number of syllables.</p>
       <div class="example-box">
-        <p><strong>OK:</strong> <span class="ipa">str-</span> (fricative → trill → vowel ↑)</p>
-        <p><strong>*:</strong> <span class="ipa">tsr-</span> (reversal before vowel)</p>
+        <p style="font-size:0.92em;"><strong>Stops &lt; Fricatives &lt; Nasals &lt; Liquids &lt; Glides &lt; Vowels</strong></p>
+        <p style="font-size:0.88em;color:#6c757d;">10-point scale: low V=10, mid V=9, high V/glide=8, flap=7, lateral=6, nasal=5, voiced fric=4, voiceless fric=3, voiced stop=2, voiceless stop=1.</p>
+        <p style="font-size:0.88em;">→ This week: how does sonority constrain English clusters? (SSP, §6.5.2)</p>
       </div>
     </div>
   </div>
   <aside class="notes">
-    지난 주 핵심 두 원칙을 간단히 복습합니다. MOP는 합법적 시작부를 전제로 하며,
-    SSP는 음절 내 공명도 기울기를 규제합니다. 이번 주는 '합법적 시작부·끝음절이 무엇인가'를
-    영어 데이터로 구체화합니다.
+    지난주(Week 11) 핵심 복습. (1) §6.4 MOP — 가능한 한 자음을 다음 음절 onset에 배치하되 영어의 합법적 onset이어야 함 (winter는 /nt/가 valid onset 아니므로 /n/이 coda에 남음). (2) §6.3 Sonority Hierarchy — 10점 척도로 음의 공명도 측정, 각 peak이 syllable nucleus. 이번 주는 이 sonority 개념이 영어 cluster 제약에 어떻게 적용되는지 (SSP)를 본격적으로 다룸. SSP는 새로운 개념이지만 sonority 개념 자체는 이미 학습.
   </aside>
 </section>
 
@@ -99,29 +99,36 @@
      SLIDE 4 — PHONOTACTICS INTRO
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>What is Phonotactics?</h2>
-  <blockquote>
-    <strong>Phonotactics</strong> — the rules governing which sound sequences are <em>permissible</em> in a language.
-  </blockquote>
-  <div class="two-col" style="margin-top:0.4em">
-    <div class="card">
-      <h3>Language-Specific</h3>
-      <p>English allows <span class="ipa">/str-/</span> onsets (<em>street</em>), but Japanese does not.</p>
-      <p>Japanese allows <span class="ipa">/ts-/</span> (<em>tsunami</em>), which is not a legal English onset.</p>
+  <h2>§6.5 English Syllable Phonotactics <span style="font-size:0.65em;color:#666;font-weight:400;">— Introduction</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.78em;">
+    <div class="term">Language-specific syllabification</div>
+    <p style="margin:0.1em 0;">E.g., <em>acne</em> <span class="ipa">/ækni/</span> — English splits as /æk.ni/ (since /kn/ is not a legal onset). Other languages allow /kn/: Norwegian <em>Knut</em>, Hebrew <em>Knesset</em>, Russian <em>kniga</em>, German <em>Knabe</em>.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.6em;gap:1em;align-items:start;">
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
+        <div class="term" style="font-size:0.95em;">General formula for English syllables</div>
+        <p style="text-align:center;margin:0.3em 0;font-size:1.2em;"><strong>(C) (C) (C) V (C) (C) (C) {C}</strong></p>
+        <p style="margin:0.1em 0;font-size:0.9em;">V (vowel/diphthong) is the only <strong>obligatory</strong> element. The 4th coda C is bracketed because it must come from a <em>suffix</em> (e.g., <em>bursts</em> /bɝsts/).</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>Two Types of Gaps</h3>
-      <ul>
-        <li><strong>Accidental gap</strong> — a phonotactically legal sequence that happens to have no word (e.g., <span class="ipa">/blɪk/</span>)</li>
-        <li><strong>Systematic gap</strong> — a sequence that <em>cannot</em> exist by phonotactic rule (e.g., <span class="ipa">*/bnɪk/</span>)</li>
-      </ul>
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#e8f4fd;border-left-color:#0077b6;">
+        <div class="term" style="font-size:0.95em;color:#0077b6;">Structure examples (Yavaş p. 161–162)</div>
+        <table style="font-size:0.85em;width:100%;line-height:1.3;">
+          <tr><td><strong>CV</strong></td><td><em>say</em> [se]</td><td><strong>VC</strong></td><td><em>at</em> [æt]</td></tr>
+          <tr><td><strong>CCV</strong></td><td><em>pray</em> [pɹe]</td><td><strong>VCC</strong></td><td><em>act</em> [ækt]</td></tr>
+          <tr><td><strong>CCCV</strong></td><td><em>spray</em> [spɹe]</td><td><strong>VCCC</strong></td><td><em>next</em> [nɛkst]</td></tr>
+          <tr><td><strong>CVC</strong></td><td><em>beat</em> [bit]</td><td><strong>CVCC</strong></td><td><em>text</em> [tɛkst]</td></tr>
+          <tr><td><strong>CCVC</strong></td><td><em>break</em> [bɹek]</td><td><strong>CCVCC</strong></td><td><em>print</em> [pɹɪnt]</td></tr>
+          <tr><td><strong>CCCVC</strong></td><td><em>strike</em> [stɹaɪk]</td><td><strong>CVCCC</strong></td><td><em>sphinx</em> [sfɪŋks]</td></tr>
+        </table>
+        <p style="margin:0.2em 0 0;font-size:0.88em;color:#6c757d;">With suffix: <em>sprints</em> (CCCVCCC), <em>worlds</em> (CVCCCC), <em>twelfths</em> (CCVCCCC).</p>
+      </div>
     </div>
   </div>
   <aside class="notes">
-    음소배열론(phonotactics)은 한 언어에서 허용되는 음 연쇄를 규정하는 규칙입니다.
-    '우연적 공백'은 규칙상 허용되지만 실제 단어가 없는 것, '체계적 공백'은 규칙 자체가 허용하지 않는 것입니다.
-    예: /blɪk/는 영어에서 합법적(블록, 블링크 등과 유사)이지만 사전에 없음 → 우연적 공백.
-    */bnɪk/는 /bn-/ 시작부 자체가 불법 → 체계적 공백.
+    §6.5 도입 (교재 pp.161–162). 핵심 메시지 두 가지: (1) syllabification은 언어별 — 'acne' /ækni/는 영어에서 /æk.ni/로 분음절(/kn/ onset 불가), 그러나 노르웨이어 Knut, 히브리어 Knesset, 러시아어 kniga, 독일어 Knabe는 /kn/ onset 허용. (2) 영어 syllable의 일반 공식 (C)(C)(C)V(C)(C)(C){C} — V만 obligatory, 4번째 coda는 접미사일 때만 가능 (예: bursts /bɝsts/). 다양한 구조: CV(say), CCV(pray), CCCV(spray), VC(at), VCC(act), VCCC(next), CVC(beat), CCVC(break), CCCVC(strike), CVCC(text), CCVCCC(print), CVCCCC(sphinx); 접미사 포함: sprints(CCCVCCC), worlds(CVCCCC), twelfths(CCVCCCC). 다음 슬라이드부터 onset/coda 각각의 세부 제약 다룸.
   </aside>
 </section>
 
@@ -129,22 +136,20 @@
      SLIDE 5 — §6.5.1 SINGLE ONSETS
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§6.5.1 Single Onsets <span style="font-size:0.65em;color:#666;font-weight:400;">— Restricted Consonants</span></h2>
-  <p>Most English consonants can serve as a single onset. Three exceptions:</p>
-  <div class="two-col" style="margin-top:0.4em;font-size:0.78em;gap:1em;">
-    <div class="card">
-      <h3><span class="ipa">/ŋ/</span> — never in onset</h3>
-      <p>Restricted to <strong>coda position</strong> only (<em>sing, ring, finger</em>).</p>
-      <p style="font-size:0.85em;color:#555;">No English word begins with /ŋ-/.</p>
+  <h2>§6.5.1 Single onsets <span style="font-size:0.65em;color:#666;font-weight:400;">— Restricted Consonants</span></h2>
+  <p style="margin:0.2em 0 0.3em;font-size:0.85em;">Most English consonants can serve as a single onset. Three exceptions:</p>
+  <div class="two-col" style="margin-top:0.2em;font-size:0.7em;gap:0.8em;">
+    <div class="card" style="padding:0.4em 0.7em;">
+      <h3 style="margin:0 0 0.2em;"><span class="ipa">/ŋ/</span> — never in onset</h3>
+      <p style="margin:0.1em 0;">Restricted to <strong>coda position</strong> only (<em>sing, ring, finger</em>). No English word begins with /ŋ-/.</p>
     </div>
-    <div class="card">
-      <h3><span class="ipa">/ʒ/</span> — restricted onset</h3>
-      <p>Doesn't begin native English words. Occurs in foreign loans (<em>genre</em>, <em>Zhivago</em>) and word-internally (<em>vision</em> <span class="ipa alp">[vɪʒən]</span>, <em>measure</em> <span class="ipa alp">[mɛʒɚ]</span>).</p>
+    <div class="card" style="padding:0.4em 0.7em;">
+      <h3 style="margin:0 0 0.2em;"><span class="ipa">/ʒ/</span> — restricted onset</h3>
+      <p style="margin:0.1em 0;">Doesn't begin native English words. Occurs in foreign loans (<em>genre</em>, <em>Zhivago</em>) and word-internally (<em>vision</em>, <em>measure</em>).</p>
     </div>
-    <div class="card">
-      <h3><span class="ipa">/ð/</span> — function words only</h3>
-      <p>Word-initial /ð-/ found only in <strong>grammatical function words</strong>: <em>the</em>, <em>then</em>, <em>there</em>, <em>this</em>, <em>that</em>.</p>
-      <p style="font-size:0.85em;color:#555;">Lexical/content words begin with /θ/ instead (<em>think</em>, <em>thank</em>).</p>
+    <div class="card" style="padding:0.4em 0.7em;">
+      <h3 style="margin:0 0 0.2em;"><span class="ipa">/ð/</span> — function words only</h3>
+      <p style="margin:0.1em 0;">Word-initial /ð-/ only in <strong>grammatical function words</strong>: <em>the, then, there, this, that</em>. Content words begin with /θ/ (<em>think, thank</em>).</p>
     </div>
   </div>
   <aside class="notes">
@@ -159,43 +164,62 @@
      SLIDE 6 — ENGLISH ONSET CLUSTERS
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>English Onset Clusters</h2>
-  <h3>Two-consonant onsets (C₁C₂-)</h3>
-  <table class="data-table" style="font-size:0.72em">
-    <thead>
-      <tr><th>C₁</th><th>C₂ options</th><th>Examples</th></tr>
-    </thead>
-    <tbody>
-      <tr><td><span class="ipa">/p, b/</span></td><td><span class="ipa">/l, r, j/</span></td><td><em>play, brew, pure</em></td></tr>
-      <tr><td><span class="ipa">/t, d/</span></td><td><span class="ipa">/r, w, j/</span></td><td><em>try, dwell, tune</em></td></tr>
-      <tr><td><span class="ipa">/k, ɡ/</span></td><td><span class="ipa">/l, r, w, j/</span></td><td><em>clue, grow, queen, cute</em></td></tr>
-      <tr><td><span class="ipa">/f/</span></td><td><span class="ipa">/l, r, j/</span></td><td><em>fly, fry, few</em></td></tr>
-      <tr><td><span class="ipa">/s/</span></td><td><span class="ipa">/p, t, k, m, n, l, w, j/</span></td><td><em>spin, stop, ski, smile, sneak, slow, swim, suit</em></td></tr>
-      <tr><td><span class="ipa">/θ/</span></td><td><span class="ipa">/r, w/</span></td><td><em>three, thwart</em></td></tr>
-      <tr><td><span class="ipa">/ʃ/</span></td><td><span class="ipa">/r/</span></td><td><em>shrimp</em></td></tr>
-    </tbody>
-  </table>
-  <p style="margin-top:0.5em; font-size:0.8em; color:#555">
-    <strong>Restriction:</strong> C₁ must be higher in the sonority scale than C₂… except the <span class="ipa">/s/</span>-exception.
-  </p>
-  <aside class="notes">
-    영어 2자음 시작부에서 C₁은 대체로 C₂보다 공명도가 낮아야 합니다 (SSP 적용).
-    단, /s/는 예외: /sp-, st-, sk-/는 SSP를 위반하지만 영어에서 허용됩니다.
-    이를 '외부 공명도(appendix/extrasyllabic)' 또는 언어별 예외로 처리합니다.
-    학생들이 자주 혼동하는 부분: /sr-/은 영어에서 불가 (*/sray/).
-  </aside>
+  <h2>§6.5.2 Double onsets <span style="font-size:0.65em;color:#666;font-weight:400;">— English Inventory &amp; Restrictions</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.72em;">
+    <p style="margin:0.1em 0;"><strong>Affricates</strong> are the only class of consonants that <strong>do not appear</strong> in onset clusters. Beyond that, several restrictions on C₁ and C₂ apply (Table 6.1, Yavaş p. 163).</p>
+  </div>
+  <div class="two-col" style="margin-top:0.25em;font-size:0.58em;gap:0.9em;align-items:start;">
+    <div>
+      <div class="def-box" style="padding:0.25em 0.6em;font-size:0.95em;">
+        <div class="term" style="font-size:0.95em;">Common C₁ → C₂ patterns</div>
+        <table style="font-size:0.92em;width:100%;line-height:1.4;">
+          <thead><tr><th>C₁</th><th>Possible C₂</th><th>Examples</th></tr></thead>
+          <tbody>
+            <tr><td><span class="ipa">/p, b/</span></td><td><span class="ipa">/l, ɹ, j/</span></td><td><em>play, brew, pure</em></td></tr>
+            <tr><td><span class="ipa">/t, d/</span></td><td><span class="ipa">/ɹ, w, j/</span></td><td><em>try, dwell, tune</em></td></tr>
+            <tr><td><span class="ipa">/k, ɡ/</span></td><td><span class="ipa">/l, ɹ, w, j/</span></td><td><em>clue, grow, queen, cute</em></td></tr>
+            <tr><td><span class="ipa">/f/</span></td><td><span class="ipa">/l, ɹ, j/</span></td><td><em>fly, fry, few</em></td></tr>
+            <tr><td><span class="ipa">/s/</span></td><td><span class="ipa">/p, t, k, m, n, l, w, j/</span></td><td><em>spin, stop, ski, smile, sneak, slow, swim, suit</em></td></tr>
+            <tr><td><span class="ipa">/θ/</span></td><td><span class="ipa">/ɹ, w/</span></td><td><em>three, thwart</em></td></tr>
+            <tr><td><span class="ipa">/ʃ/</span></td><td><span class="ipa">/ɹ/</span></td><td><em>shrimp</em></td></tr>
+            <tr><td><span class="ipa">/v/</span></td><td><span class="ipa">/j/</span> only</td><td><em>view</em></td></tr>
+            <tr><td><span class="ipa">/h, m/</span></td><td><span class="ipa">/j/</span> only</td><td><em>huge, music</em></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div class="def-box" style="padding:0.25em 0.6em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;">
+        <div class="term" style="font-size:0.95em;color:#c77b2e;">Key restrictions (Yavaş p. 162)</div>
+        <ul style="margin:0.05em 0;padding-left:1.2em;line-height:1.45;font-size:0.9em;">
+          <li>No <strong>voiced fricatives</strong> as C₂ (/v/ only as C₁ + /j/)</li>
+          <li>No <strong>voiced stop</strong> as C₂</li>
+          <li>No fricative other than /f/ as C₂ (rare /sf-/ in <em>sphere</em>)</li>
+          <li>No stops/nasals as C₂ <em>except after /s/</em></li>
+          <li><span class="ipa">/θ/</span> precedes <strong>only</strong> /ɹ, w/ (<em>three, thwart</em>)</li>
+          <li>Labials don't cluster with labial approximant</li>
+          <li>No <strong>geminates</strong> (doubled C sounds)</li>
+          <li><strong>Alveolar stops</strong> (/t, d/) don't cluster with /l/ (✗ /tl-, dl-/)</li>
+        </ul>
+      </div>
+      <div class="def-box" style="padding:0.25em 0.6em;font-size:0.95em;background:#e8f4fd;border-left-color:#0077b6;margin-top:0.3em;">
+        <p style="margin:0.1em 0;font-size:0.92em;"><strong>Summary</strong>: English double onsets = (a) <strong>/s/ + C</strong>, or (b) <strong>obstruent + approximant</strong>. The second pattern follows SSP (next slide); /s/-clusters violate it as "adjuncts."</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">교재 §6.5.2 (pp.162–163) + Table 6.1. 영어 double onset 핵심 정리: Affricates는 onset cluster에 절대 안 옴. Table 6.1은 15 C₁ × 9 C₂ 매트릭스. 주요 제약: (1) 유성 마찰음은 C₂ 불가 (/v/는 C₁ + /j/만), (2) 유성 폐쇄음 C₂ 불가, (3) /f/ 외 마찰음 C₂ 불가, (4) 폐쇄음·비음 C₂는 /s/ 뒤에만, (5) /s/와 /ʃ/는 complementary (/s/는 /ɹ/ 앞 안 됨; /ʃ/는 /ɹ/ 앞만 — shrimp), (6) /h/, /m/은 /j/ 앞에만 (huge, music), (7) /θ/는 /ɹ, w/만 (three, thwart), (8) labial + labial approx 안 됨, (9) geminate 없음, (10) 치경 폐쇄음 /t, d/는 /l/과 결합 안 됨. 요약: 영어 double onset = (a) /s/+C 또는 (b) obstruent+approximant. (b) 패턴이 SSP를 따르고 (다음 슬라이드), /s/-cluster는 SSP 위반이지만 'adjunct'로 처리.</aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
      SLIDE 7 — §6.5.2 SSP
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§6.5.2 Sonority Sequencing Principle (SSP)</h2>
-  <div class="def-box" style="padding:0.15em 0.8em;margin:0;">
-    <div class="term">SSP — Selkirk (1984)</div>
-    <p>Within a syllable, sonority <strong>rises</strong> toward the nucleus and <strong>falls</strong> away from it. The nucleus is the sonority peak.</p>
+  <h2>§6.5.2 Double onsets <span style="font-size:0.65em;color:#666;font-weight:400;">— Sonority Sequencing Principle (SSP)</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;margin:0;font-size:0.78em;">
+    <div class="term">SSP — Selkirk (1984: 116)</div>
+    <p style="margin:0.1em 0;">"...a segment constituting a sonority peak ... preceded and/or followed by a sequence of segments with progressively decreasing sonority values."</p>
   </div>
-  <div class="two-col" style="margin-top:0.3em;font-size:0.65em;">
+  <div class="two-col" style="margin-top:0.25em;font-size:0.6em;">
     <div>
       <h3>Valid onsets (rising sonority)</h3>
       <div class="example-box" style="grid-template-columns:1fr;">
@@ -224,99 +248,212 @@
      SLIDE 8 — THREE-CONSONANT ONSETS
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>Three-Consonant Onsets</h2>
-  <p>English allows <span class="ipa">/s/ + stop + liquid/glide</span> triples:</p>
-  <div class="two-col" style="font-size:0.82em; margin-top:0.3em;">
-    <div class="example-box">
-      <p><span class="ipa">/spl-/</span> &nbsp; <em>splash, split</em></p>
-      <p><span class="ipa">/spr-/</span> &nbsp; <em>spring, spray</em></p>
-      <p><span class="ipa">/str-/</span> &nbsp; <em>street, stress</em></p>
-      <p><span class="ipa">/skr-/</span> &nbsp; <em>scream, script</em></p>
-      <p><span class="ipa">/skw-/</span> &nbsp; <em>square, squeeze</em></p>
-      <p><span class="ipa">/skj-/</span> &nbsp; <em>skew</em> (BrE)</p>
+  <h2>§6.5.3 Triple onsets <span style="font-size:0.65em;color:#666;font-weight:400;">— /s/ + voiceless stop + approximant</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.78em;">
+    <div class="term">Template: C₁ = /s/, C₂ = voiceless stop, C₃ = approximant</div>
+    <p style="margin:0.1em 0;">12 logical combinations, but <strong>only 7 occur</strong> in English (Yavaş p. 164).</p>
+  </div>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.65em;gap:1em;align-items:start;">
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
+        <div class="term" style="font-size:0.95em;">The 7 occurring triple onsets</div>
+        <table style="font-size:0.95em;width:100%;line-height:1.5;">
+          <thead><tr><th>C₂</th><th>C₃ = /ɹ/</th><th>C₃ = /l/</th><th>C₃ = /j/</th><th>C₃ = /w/</th></tr></thead>
+          <tbody>
+            <tr><td><strong>/p/</strong></td><td><em>spring</em></td><td><em>splash</em></td><td><em>spew</em></td><td>✗</td></tr>
+            <tr><td><strong>/t/</strong></td><td><em>string</em></td><td>✗</td><td>✗</td><td>✗</td></tr>
+            <tr><td><strong>/k/</strong></td><td><em>scrape</em></td><td>(rare: <em>sclerosis</em>)</td><td><em>skewer</em></td><td><em>squeeze</em></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <div class="card">
-      <h3>Template</h3>
-      <p style="text-align:center; font-size:1.0em">
-        <span class="ipa">/s/</span> + <span class="ipa">{p,t,k}</span> + <span class="ipa">{l,r,w,j}</span>
-      </p>
-      <p>Any deviation → systematic gap:</p>
-      <p><span class="ipa">*/snr-/</span>, <span class="ipa">*/sbr-/</span>, <span class="ipa">*/trl-/</span> ✗</p>
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#e8f4fd;border-left-color:#0077b6;">
+        <div class="term" style="font-size:0.95em;color:#0077b6;">Conditional rules on C₃</div>
+        <ul style="margin:0.1em 0;padding-left:1.3em;line-height:1.6;">
+          <li>If C₂ = <span class="ipa">/p/</span> → C₃ <strong>cannot</strong> be <span class="ipa">/w/</span> (*/spw-/)</li>
+          <li>If C₂ = <span class="ipa">/t/</span> → C₃ <strong>must</strong> be <span class="ipa">/ɹ/</span> only (no /tl, tj, tw/)</li>
+          <li>If C₂ = <span class="ipa">/k/</span> → C₃ <strong>cannot</strong> be <span class="ipa">/l/</span> (rare exception: <em>sclerosis</em>)</li>
+        </ul>
+      </div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;margin-top:0.4em;">
+        <p style="margin:0.1em 0;"><strong>Why /tl-/ excluded?</strong> Alveolar stops do not cluster with /l/ (carries over from double-onset restriction). <strong>Why /tj-/?</strong> /tj/ non-existent for most speakers.</p>
+      </div>
     </div>
   </div>
-  <aside class="notes">
-    영어의 3자음 시작부는 반드시 /s/ + 무성 정지음 + 공명음(유음·활음) 구조를 따릅니다.
-    이 외의 조합은 체계적 공백입니다. /str-/은 한국어 학습자에게 어렵습니다:
-    한국어에는 자음군 시작부가 없어서 epenthesis(삽입)이 일어나기 쉽습니다 (예: 'street' → [sɨtɨriːtɨ]).
-  </aside>
+  <aside class="notes">교재 §6.5.3 (p. 164). 영어 triple onset 구조: C₁=/s/, C₂=무성폐쇄음 /p,t,k/, C₃=approximant /ɹ, l, j, w/. 12개 logical combination 중 7개만 실현: spring, splash, spew, string, scrape, skewer, squeeze. /spw-/는 /w/가 labial 뒤에 안 옴; /stl-, stj-, stw-/는 alveolar stop+approx 제약; /skl-/는 sclerosis 등 매우 드묾. 3개 conditional rule: (1) C₂=/p/ → C₃≠/w/; (2) C₂=/t/ → C₃=/ɹ/만; (3) C₂=/k/ → C₃≠/l/.</aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
      SLIDE 7 — CODA CLUSTERS
 ══════════════════════════════════════════════ -->
+<!-- §6.5.4 Single Codas -->
 <section>
-  <h2>English Coda Clusters</h2>
-  <p>Codas are more complex than onsets — up to <strong>4 consonants</strong> in some words.</p>
-  <table class="data-table" style="font-size:0.75em">
-    <thead>
-      <tr><th>Cluster size</th><th>Example</th><th>Phonemic transcription</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>-C</td><td><em>cat</em></td><td><span class="ipa">/kæt/</span></td></tr>
-      <tr><td>-CC</td><td><em>belt</em></td><td><span class="ipa">/bɛlt/</span></td></tr>
-      <tr><td>-CCC</td><td><em>texts</em></td><td><span class="ipa">/tɛksts/</span></td></tr>
-      <tr><td>-CCCC</td><td><em>sixths</em></td><td><span class="ipa">/sɪksθs/</span></td></tr>
-    </tbody>
-  </table>
-  <div class="card" style="margin-top:0.7em; font-size:0.85em">
-    <strong>Coda constraint (general):</strong> sonority must <em>decrease</em> away from nucleus.<br/>
-    <strong>Common suffixes</strong> add extra codas: <em>-s</em> (plural/3sg), <em>-t/-d</em> (past), <em>-θ</em> (ordinal → <em>sixth</em> /sɪksθ/).
+  <h2>§6.5.4 Codas <span style="font-size:0.65em;color:#666;font-weight:400;">— Single Codas (Restrictions)</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.78em;">
+    <div class="term">Most consonants can occur in coda — with a few exceptions</div>
+    <p style="margin:0.1em 0;">Coda phonotactics are more permissive than onset phonotactics.</p>
   </div>
-  <aside class="notes">
-    끝음절도 공명도 감소 원칙(SSP)을 따라야 하지만, 영어의 형태론적 접미사(-s, -t, -d, -θ 등)는
-    이를 복잡하게 만듭니다. 'sixths /sɪksθs/'는 4자음 끝음절의 극단적 예입니다.
-    한국어 학습자는 끝음절 자음군을 단순화하는 경향이 있습니다 (예: 'texts' → [tɛktɨ]).
-  </aside>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.65em;gap:1em;align-items:start;">
+    <div class="def-box" style="padding:0.3em 0.7em;border-left-color:#c1121f;">
+      <div class="term" style="font-size:0.95em;color:#c1121f;"><span class="ipa">/h/</span> — never in coda</div>
+      <p style="margin:0.1em 0;">Mirror image of /ŋ/: /h/ is onset-only, /ŋ/ is coda-only.</p>
+    </div>
+    <div class="def-box" style="padding:0.3em 0.7em;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.95em;color:#c77b2e;"><span class="ipa">/ʒ/</span> — less solid in coda</div>
+      <p style="margin:0.1em 0;"><em>garage</em> <span class="ipa alp">[gəˈɹɑdʒ]</span>, <em>massage</em> <span class="ipa alp">[məˈsɑdʒ]</span> — some speakers realize as <span class="ipa">[dʒ]</span>.</p>
+    </div>
+    <div class="def-box" style="padding:0.3em 0.7em;border-left-color:#0077b6;">
+      <div class="term" style="font-size:0.95em;color:#0077b6;"><span class="ipa">/j/</span>, <span class="ipa">/w/</span> — debated</div>
+      <p style="margin:0.1em 0;">Often said to be excluded from coda, but diphthong endings <span class="ipa">/aɪ ɔɪ aʊ/</span> are essentially equivalent to <span class="ipa">/j w/</span> (some transcribe <span class="ipa">/aj aw ɔj/</span>).</p>
+    </div>
+  </div>
+  <aside class="notes">교재 §6.5.4 (p. 165). 영어 단일 coda 제약: (1) /h/는 절대 coda 불가 (onset-only) — /ŋ/와 거울상. (2) /ʒ/는 다소 약한 위치 — garage, massage에서 [dʒ]로도 실현됨. (3) /j/, /w/는 종종 coda 불가로 언급되지만 이중모음 /aɪ ɔɪ aʊ/의 끝부분이 /j w/와 사실상 동일 — 일부 표기 체계는 /aj aw ɔj/로 표기.</aside>
+</section>
+
+<!-- §6.5.5 Double Codas -->
+<section>
+  <h2>§6.5.5 Double codas <span style="font-size:0.65em;color:#666;font-weight:400;">— Non-suffixed CC Combinations</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.78em;">
+    <div class="term">Four generalizations for non-suffixed double codas</div>
+    <p style="margin:0.1em 0;">Table 6.2 (Yavaş p. 166) lists permissible C₁C₂ pairings. The patterns generalize as follows:</p>
+  </div>
+  <div style="margin-top:0.3em;font-size:0.62em;">
+    <ol style="margin:0.1em 0 0.3em;padding-left:1.5em;line-height:1.55;">
+      <li><strong>(a)</strong> C₁ = nasal, C₂ = obstruent — homorganic; no voiced obstruent except /d, z, dʒ/. <em>e.g.</em> <em>jump</em> /dʒʌmp/, <em>sink</em> /sɪŋk/, <em>land</em> /lænd/.</li>
+      <li><strong>(b)</strong> If C₁ = /s/, then C₂ = voiceless stop. <em>e.g.</em> <em>ask</em> /æsk/, <em>list</em> /lɪst/.</li>
+      <li><strong>(c)</strong> C₁ = liquid (/l, ɹ/), C₂ = any consonant except /z, ʒ, ð/; /lg/ non-existent. <em>e.g.</em> <em>belt</em> /bɛlt/, <em>arm</em> /ɑɹm/, <em>sharp</em> /ʃɑɹp/.</li>
+      <li><strong>(d)</strong> If C₁ = voiceless non-alveolar stop (/p, k/), then C₂ = voiceless alveolar obstruent (/t, s/). <em>e.g.</em> <em>apt</em> /æpt/, <em>act</em> /ækt/, <em>tax</em> /tæks/. Also <em>/ft/</em> (<em>lift</em>).</li>
+    </ol>
+    <div class="def-box" style="padding:0.25em 0.7em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;">
+      <p style="margin:0.1em 0;"><strong>Additional patterns:</strong> Two-stop sequences are <em>never homorganic</em> (<em>apt</em>, <em>act</em>); stop + /s/ <em>always agree in voicing</em> (<em>lapse</em>, <em>tax</em>).</p>
+    </div>
+  </div>
+  <aside class="notes">교재 §6.5.5 (pp.165–166). 비접미사 double coda의 4가지 일반화: (a) 비음 + 폐쇄음 (homorganic, 유성 폐쇄음은 /d, z, dʒ/ 외 불가) — jump, sink, land. (b) /s/ + 무성 폐쇄음 — ask, list. (c) 유음(/l, ɹ/) + 거의 모든 자음 (/z, ʒ, ð/ 제외; /lg/ 없음) — belt, arm, sharp. (d) 무성 비치경 폐쇄음(/p, k/) + 무성 치경 obstruent(/t, s/) — apt, act, tax. 추가 패턴: 두 폐쇄음 sequence는 절대 동기관 아님 (apt, act); 폐쇄음 + /s/는 항상 voicing 일치 (lapse, tax). Table 6.2 (p.166)에 모든 occurring pair 정리.</aside>
+</section>
+
+<!-- §6.5.6 Triple Codas -->
+<section>
+  <h2>§6.5.6 Triple codas <span style="font-size:0.65em;color:#666;font-weight:400;">— Non-suffixed CCC Combinations</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.78em;">
+    <div class="term">Most are liquid/nasal + 2 obstruents (with one all-obstruent exception)</div>
+    <p style="margin:0.1em 0;">English triple codas are tightly restricted compared to onsets.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1em;align-items:start;">
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
+        <div class="term" style="font-size:0.95em;">Non-suffixed triple codas (Yavaş §6.5.6)</div>
+        <table style="font-size:0.92em;width:100%;line-height:1.4;">
+          <thead><tr><th>Category</th><th>Pattern</th><th>Examples</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>stop + fric + stop</td><td>/dst/ <em>midst</em>, /kst/ <em>next</em></td></tr>
+            <tr><td>2(a)</td><td>nasal + stop + stop</td><td>/mpt/ <em>exempt</em>, /ŋkt/ <em>sacrosanct</em></td></tr>
+            <tr><td>2(b)</td><td>nasal + stop + fric</td><td>/mps/ <em>mumps</em>, /ŋks/ <em>jinx</em></td></tr>
+            <tr><td>2(c)</td><td>nasal + fric + stop</td><td>/nst/ <em>against</em>, /ŋst/ <em>amongst</em></td></tr>
+            <tr><td>4(a–e)</td><td>/ɹ/ + various</td><td>/ɹkt/ <em>infarct</em>, /ɹps/ <em>corpse</em>, /ɹst/ <em>first</em>, /ɹld/ <em>world</em>, /ɹlz/ <em>Charles</em></td></tr>
+          </tbody>
+        </table>
+        <p style="margin:0.2em 0 0;font-size:0.88em;color:#6c757d;"><em>Controversial</em>: <em>midst</em>, <em>against</em>, <em>whilst</em> (may be analyzed as suffixed).</p>
+      </div>
+    </div>
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#e8f4fd;border-left-color:#0077b6;">
+        <div class="term" style="font-size:0.95em;color:#0077b6;">Suffixed triple codas (much more common)</div>
+        <p style="margin:0.1em 0;">Suffixes /t, d, s, z, θ/ create many more triples — e.g., <em>laments</em>, <em>lisped</em>, <em>gulped</em>, <em>filmed</em>, <em>wharfs</em>, <em>curls</em>, <em>turned</em>, <em>lifts</em>.</p>
+      </div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;margin-top:0.4em;">
+        <div class="term" style="font-size:0.95em;color:#c77b2e;">Gaps — English lacks</div>
+        <p style="margin:0.1em 0;">/lk/, /mp/, /ɹk/, /lmp/, /nsk/ as triple codas. Obstruent clusters always agree in voicing (e.g., /spt/ <em>lisped</em>).</p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">교재 §6.5.6 (pp.165–167). 비접미사 triple coda 5개 카테고리: (1) 폐쇄음+마찰음+폐쇄음 (midst, next), (2)(a) 비음+폐쇄음+폐쇄음 (exempt, sacrosanct), (2)(b) 비음+폐쇄음+마찰음 (mumps, jinx), (2)(c) 비음+마찰음+폐쇄음 (against, amongst), (3) /l/ 시작 — sculpt, waltz, whilst, (4) /ɹ/ 시작 — infarct, excerpt, corpse, quartz, first, world, Charles. 논쟁적: midst, against, whilst는 접미사 형태로 분석되기도. 접미사 /t,d,s,z,θ/는 훨씬 많은 triple coda 생성 (laments, lisped, gulped, filmed, wharfs, curls, turned, lifts). 영어가 LACK하는 조합: /lk/, /mp/, /ɹk/, /lmp/, /nsk/. Obstruent cluster는 항상 voicing 일치.</aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
      SLIDE 10 — CLUSTER SIMPLIFICATION
 ══════════════════════════════════════════════ -->
+<!-- Slide 12a: Word-boundary cluster simplification -->
 <section>
-  <h2>Cluster Simplification in Connected Speech</h2>
-  <div class="def-box" style="padding:0.15em 0.8em;">
-    <div class="term">Final /nd/, /st/, /ft/ may delete before another consonant</div>
-    <p>In rapid connected speech, the final stop in a word-final cluster tends to drop when the next word begins with a consonant.</p>
+  <h2>§6.5 English Syllable Phonotactics <span style="font-size:0.65em;color:#666;font-weight:400;">— Cluster Simplification (1/2): Word-boundary Deletion</span></h2>
+  <div class="def-box" style="padding:0.15em 0.8em;font-size:0.78em;">
+    <div class="term">Word-final /nd/, /st/, /ft/ delete before another consonant</div>
+    <p style="margin:0.1em 0;">In rapid connected speech the final stop drops when the next word begins with a consonant. Same pattern applies in suffixes/compounds.</p>
   </div>
-  <div class="two-col" style="margin-top:0.3em;font-size:0.7em;gap:1em;">
+  <div class="two-col" style="margin-top:0.3em;font-size:0.68em;gap:1em;align-items:start;">
     <div>
-      <h3>Deletion applies</h3>
-      <div class="example-box" style="grid-template-columns:1fr;font-size:0.92em;">
-        <div class="ex-item"><span class="word">hand made</span><span class="trans"><span class="ipa alp">[hæn med]</span></span></div>
-        <div class="ex-item"><span class="word">next class</span><span class="trans"><span class="ipa alp">[nɛks klæs]</span></span></div>
-        <div class="ex-item"><span class="word">just now</span><span class="trans"><span class="ipa alp">[dʒʌs naʊ]</span></span></div>
-        <div class="ex-item"><span class="word">left street</span><span class="trans"><span class="ipa alp">[lɛf stɹ̣it]</span></span></div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
+        <div class="term" style="font-size:0.95em;">Deletion across word boundary</div>
+        <ul style="margin:0.1em 0;padding-left:1.3em;line-height:1.55;">
+          <li><em>hand made</em> <span class="ipa alp">[hæn med]</span></li>
+          <li><em>spend money</em> <span class="ipa alp">[spɛn mʌni]</span></li>
+          <li><em>next class</em> <span class="ipa alp">[nɛks klæs]</span></li>
+          <li><em>just now</em> <span class="ipa alp">[dʒʌs naʊ]</span></li>
+          <li><em>left street</em> <span class="ipa alp">[lɛf stɹ̣it]</span></li>
+        </ul>
+        <p style="margin:0.25em 0 0;font-size:0.92em;color:#6c757d;"><strong>Within words too</strong>: <em>handsome</em> [hænsəm], <em>textless</em> [tɛksləs], <em>softness</em> [sɔfnəs].</p>
       </div>
     </div>
     <div>
-      <h3>Constraints</h3>
-      <ul style="font-size:0.92em;line-height:1.6;">
-        <li><strong>Blocked by /h/</strong>: <em>wild horse</em> <span class="ipa alp">[waild hɔɹ̣s]</span> (NOT *<span class="ipa alp">[wail hɔɹ̣s]</span>)</li>
-        <li><strong>Optional before liquids</strong>: <em>hand luggage</em> <span class="ipa alp">[hæn(d) lʌɡədʒ]</span></li>
-        <li><strong>Less likely with grammatical endings</strong>: <em>planned trip</em> <span class="ipa alp">[plænd tɹ̣ɪp]</span></li>
-      </ul>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;">
+        <div class="term" style="font-size:0.95em;color:#c77b2e;">Three constraints (Yavaş p. 168)</div>
+        <ul style="margin:0.1em 0;padding-left:1.3em;line-height:1.55;">
+          <li><strong>Blocked by /h/</strong>: <em>wild horse</em> <span class="ipa alp">[waɪld hɔɹ̣s]</span>, <em>guest house</em> <span class="ipa alp">[gɛst haʊs]</span></li>
+          <li><strong>Optional before liquid</strong>: <em>hand luggage</em> <span class="ipa alp">[hæn(d) lʌgədʒ]</span>, <em>guest list</em></li>
+          <li><strong>Grammatical endings preserved</strong>: <em>planned trip</em>, <em>fixed game</em>, <em>autographed book</em></li>
+        </ul>
+      </div>
     </div>
   </div>
-  <aside class="notes">
-    교재 §6.5 (pp.167–168). Connected speech에서 자음군 단순화는 매우 흔한 음운 현상. 어말 /nd/, /st/, /ft/ 등의 마지막 자음이 다음 단어 첫 자음 앞에서 탈락. 예: "hand made" → [hæn med], "next class" → [nɛks klæs]. 제약: (1) 다음 자음이 /h/이면 차단됨 (wild horse, guest house); (2) 다음이 유음(/l, r/)이면 선택적 (hand list, hand luggage); (3) 형태론적 어미로 형성된 cluster는 단순화 가능성 ↓ (planned trip은 [plænd]로 유지). 빠른 발화일수록 단순화 빈도 ↑. L2 학습자가 듣기에서 가장 어려워하는 부분.
-  </aside>
+  <aside class="notes">교재 §6.5 (pp.167–168) cluster simplification 1부. Word-boundary deletion: 어말 /nd/(hand made, spend money, grand bargain), /st/(next class, just now, best thing), /ft/(left street) 마지막 자음이 다음 단어 첫 자음 앞에서 탈락. 동일 패턴이 suffix/compound 내에서도 (handsome, textless, softness). 3가지 제약: (1) /h/ 차단(wild horse, guest house), (2) 유음 앞 선택적(hand luggage), (3) grammatical ending 보존(planned trip, fixed game). 빠른 발화일수록 단순화 빈도 증가. 다음 슬라이드: fast-speech reduced vowel deletion + AAVE 방언 변이.</aside>
+</section>
+
+<!-- Slide 12b: Reduced-vowel deletion + AAVE -->
+<section>
+  <h2>§6.5 English Syllable Phonotactics <span style="font-size:0.65em;color:#666;font-weight:400;">— Cluster Simplification (2/2): Fast Speech &amp; AAVE</span></h2>
+  <div class="def-box" style="padding:0.15em 0.8em;font-size:0.78em;">
+    <div class="term">Reduced-vowel deletion creates "impermissible" clusters; AAVE adds dialectal variation</div>
+    <p style="margin:0.1em 0;">Fast-speech reduction of unstressed vowels yields onset clusters disallowed in citation form. AAVE shows additional simplification + reordering patterns.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.25em;font-size:0.62em;gap:1em;align-items:start;">
+    <div>
+      <div class="def-box" style="padding:0.25em 0.7em;font-size:0.95em;background:#e8f4fd;border-left-color:#0077b6;">
+        <div class="term" style="font-size:0.95em;color:#0077b6;">Reduced-vowel deletion in fast speech</div>
+        <table style="font-size:0.92em;width:100%;line-height:1.4;">
+          <thead><tr><th>Word</th><th>Slow</th><th>Fast</th><th>Resulting C₁C₂</th></tr></thead>
+          <tbody>
+            <tr><td><em>Topeka</em></td><td>[təˈpikə]</td><td>[tpikə]</td><td>vs+vs stop</td></tr>
+            <tr><td><em>tobacco</em></td><td>[təbæko]</td><td>[tbæko]</td><td>vs+vd stop</td></tr>
+            <tr><td><em>because</em></td><td>[bəkʌz]</td><td>[bkʌz]</td><td>vd+vs stop</td></tr>
+            <tr><td><em>cassette</em></td><td>[kəsɛt]</td><td>[ksɛt]</td><td>stop+fric</td></tr>
+            <tr><td><em>fanatic</em></td><td>[fənætɪk]</td><td>[fnætɪk]</td><td>fric+nasal</td></tr>
+            <tr><td><em>suppose</em></td><td>[səˈpoz]</td><td>[spoz]</td><td>fric+stop</td></tr>
+          </tbody>
+        </table>
+        <p style="margin:0.2em 0 0;font-size:0.9em;color:#6c757d;"><strong>"suppose" reveals aspiration cue:</strong> slow [səˈpoz] /p/ aspirated (stressed σ-initial); fast [spoz] /p/ unaspirated (not σ-initial).</p>
+      </div>
+    </div>
+    <div>
+      <div class="def-box" style="padding:0.25em 0.7em;font-size:0.95em;background:#fce4ec;border-left-color:#c2185b;">
+        <div class="term" style="font-size:0.95em;color:#c2185b;">AAVE dialectal variations (Yavaş p. 169)</div>
+        <ul style="margin:0.1em 0;padding-left:1.3em;line-height:1.55;">
+          <li><strong>Same-voicing final cluster deletion</strong>: <em>send</em> → [sɛn], <em>gold</em> → [gol], <em>act</em> → [æk], <em>fist</em> → [fɪs]</li>
+          <li>Applies across morpheme boundaries: <em>sipped</em> → [sɪp], <em>dressed</em> → [dɹɛs]</li>
+          <li><strong>/s/+stop transposition</strong>: <em>ask</em> → [æks], <em>grasp</em> → [gɹæps]</li>
+          <li><strong>/stɹ-/ → [skɹ-]</strong>: <em>street</em> → [skɹɪt]</li>
+          <li>Deep South extension: /tɹ-/ → [kɹ-] (<em>tree</em> → [kɹi])</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">교재 §6.5 (pp.168–169) cluster simplification 2부. (1) Reduced-vowel deletion: fast speech에서 reduced V(schwa)가 탈락하여 정상적으로 허용되지 않는 cluster 생성 — Topeka→[tpikə], tobacco→[tbæko], because→[bkʌz], debate→[dbet], cassette→[ksɛt], fanatic→[fnætɪk], suppose→[spoz]. "suppose"는 aspiration test 좋은 예: slow [səˈpoz]에서 /p/ aspirated (강세음절 시작); fast [spoz]에서 /p/ unaspirated (cluster 내 두 번째 = 음절 초 아님). (2) AAVE 방언 변이 — 같은 voicing cluster 최종자 탈락(send→sɛn, act→æk), 형태소 경계 너머도 적용(sipped→sɪp, dressed→dɹɛs), /s/+stop 전치(ask→æks, grasp→gɹæps), /stɹ-/→[skɹ-](street→skɹɪt), 남부에서는 /tɹ-/→[kɹ-](tree→kɹi).</aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
      SLIDE 11 — ACCIDENTAL vs SYSTEMATIC GAPS
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>Accidental vs. Systematic Gaps</h2>
+  <h2>§6.5 English Syllable Phonotactics <span style="font-size:0.65em;color:#666;font-weight:400;">— Accidental vs. Systematic Gaps <span style="color:#0077b6;">(supplementary)</span></span></h2>
   <div class="two-col" style="font-size:0.72em;margin-top:0.3em;">
     <div class="card" style="border-top: 4px solid #2d6a4f">
       <h3>Accidental Gap</h3>
@@ -352,11 +489,11 @@
 ══════════════════════════════════════════════ -->
 <section>
   <h2>§6.6 Written Syllabification <span style="font-size:0.65em;color:#666;font-weight:400;">— Two Principles</span></h2>
-  <div class="def-box" style="padding:0.15em 0.8em;font-size:0.7em;">
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.78em;">
     <div class="term">Written breaks ≠ spoken syllabification</div>
     <p style="margin:0.1em 0;">Dictionary hyphenation follows <strong>two written principles</strong>, often differing from phonological (MOP-based) syllabification.</p>
   </div>
-  <div class="two-col" style="margin-top:0.3em;font-size:0.6em;gap:1em;">
+  <div class="two-col" style="margin-top:0.25em;font-size:0.58em;gap:1em;">
     <div>
       <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
         <div class="term" style="font-size:0.95em;">Two principles of written syllabification</div>
@@ -387,12 +524,8 @@
       </div>
     </div>
   </div>
-  <div class="def-box" style="margin-top:0.3em;font-size:0.6em;background:#e8f4fd;border-left-color:#0077b6;padding:0.25em 0.7em;">
-    <strong>Morphological pairs reveal the principles:</strong>
-    <em>pe·nal</em> [pi.nəl] (long /i/) vs. <em>pen·al·ty</em> [pɛ.nəl.ti] (short /ɛ/);
-    <em>mi·ner</em> [maɪ.nɚ] (diphthong) vs. <em>min·er·al</em> [mɪ.nə.ɹəl] (short /ɪ/);
-    <em>pu·ni·tive</em> vs. <em>pun·ish</em>;
-    <em>gra·di·ent</em> [ɡɹe.di.ənt] vs. <em>grad·u·al</em> [ɡɹæ.dʒu.əl]
+  <div class="def-box" style="margin-top:0.25em;font-size:0.58em;background:#e8f4fd;border-left-color:#0077b6;padding:0.2em 0.7em;">
+    <p style="margin:0.05em 0;"><strong>Principle (a) is stronger</strong>: morpheme integrity overrides the vowel rule — <em>boat·ers</em>, <em>sav·ing</em>, <em>un·able</em>. <strong>Morph. pairs</strong>: <em>pe·nal</em> vs <em>pen·al·ty</em>; <em>mi·ner</em> vs <em>min·er·al</em>; <em>pu·ni·tive</em> vs <em>pun·ish</em>; <em>gra·di·ent</em> vs <em>grad·u·al</em>.</p>
   </div>
   <aside class="notes">교재 §6.6 (pp.169–171). 사전 하이픈 위치는 음성학적 음절 경계와 다름. 두 가지 written principle: (a) 접두사·접미사 분리 불가 (boat-ers, sav-ing, un-able 같은 단어의 형태소 경계 유지); (b) 모음 길이 기반 — orthographic letter가 long V/diphthong 표시하면 다음 자음은 다음 음절로 (pe-nal), short V 표시하면 다음 자음은 같은 음절에 남음 (pen-al-ty). 이 원칙이 형태론적 페어에서 명확히 드러남: penal/penalty, miner/mineral, punitive/punish, gradient/gradual. 핵심 메시지: written syllabification은 발화 음절과 무관 — 영어 강세 규칙은 spoken syllable에 기반. 학생들에게 사전 하이픈을 신뢰하지 말라고 강조.</aside>
 </section>
@@ -401,75 +534,67 @@
      SLIDE — §6.7 SYLLABLE WEIGHT
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§6.7 Syllable Weight <span style="font-size:0.65em;color:#666;font-weight:400;">— Light vs. Heavy</span></h2>
-  <div class="def-box" style="padding:0.15em 0.8em;">
-    <div class="term">Weight is determined by rhyme structure</div>
-    <p><strong>Light</strong>: non-branching rhyme (short V, no coda) → e.g., <em>a</em>·mong</p>
-    <p><strong>Heavy</strong>: branching rhyme — short V + coda <em>or</em> long V/diphthong (± coda)</p>
+  <h2>§6.7 Syllable Weight and Ambisyllabicity <span style="font-size:0.65em;color:#666;font-weight:400;">— Light vs. Heavy Syllables</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.78em;">
+    <div class="term">Weight is determined by rhyme structure (Yavaş p. 172)</div>
+    <p style="margin:0.1em 0;"><strong>Light</strong>: non-branching rhyme — short V, no coda (e.g., first σ of <em>around</em>). <strong>Heavy</strong>: branching rhyme — short V + coda <em>or</em> long V/diphthong (± coda).</p>
   </div>
   <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1em;">
     <div>
-      <h3 style="font-size:1em;">Light vs. Heavy rhymes (textbook §6.7)</h3>
-      <pre style="font-family:'Fira Code',monospace;font-size:0.95em;line-height:1.45;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.6em;border-left:4px solid #2d6a4f;margin:0;">
-(a) light       (b) heavy        (c) heavy        (d) heavy
-   σ              σ                σ                σ
-  / \            / \              / \              / \
- O   R          O   R            O   R            O   R
- |   |          |  /\            |   |            |  /\
- |   N          |  N C           |   N            |  N C
- |   |          |  | |           |  / \           |  | |
- n   ɛ          n  ɛ st          s  i             s  aɪ d
-"a·mong"        "nest"          "sea"            "side"
+      <h3 style="font-size:1em;margin:0 0 0.2em 0;">Light vs. Heavy rhymes (Yavaş p. 172)</h3>
+      <pre style="font-family:'Fira Code',monospace;font-size:0.78em;line-height:1.3;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.4em 0.5em;border-left:4px solid #2d6a4f;margin:0;">
+(a) light     (b) heavy     (c) heavy     (d) heavy
+   σ             σ             σ             σ
+  / \           / \           / \           / \
+ O   R         O   R         O   R         O   R
+ |   |         |  /\         |   |         |  /\
+ |   N         |  N  C       |   N         |  N  C
+ |   |         |  | /\       |  /\         |  /\ |
+ n   ɛ         n  ɛ s t      s  i          s aɪ d
+"a·mong"      "nest"        "sea"         "side"
       </pre>
     </div>
     <div>
-      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
-        <div class="term" style="font-size:0.95em;">Weight types</div>
-        <table style="font-size:0.92em;width:100%;">
-          <thead><tr><th>Type</th><th>Structure</th><th>Example</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Light</strong></td><td>CV (short V, open)</td><td><em>a</em> in "among"</td></tr>
-            <tr><td><strong>Heavy</strong></td><td>CVC (short V + coda)</td><td><em>net</em>, <em>nest</em></td></tr>
-            <tr><td><strong>Heavy</strong></td><td>CVV (long V or diphthong)</td><td><em>sea</em>, <em>side</em></td></tr>
-            <tr><td><strong>Superheavy</strong></td><td>CVVC / CVCC</td><td><em>seed</em>, <em>belts</em></td></tr>
-          </tbody>
-        </table>
-        <p style="margin-top:0.3em;font-size:0.92em;color:#6c757d;">Stress in English tends to fall on <strong>heavy syllables</strong>. Stressed rhymes prefer to be <em>branching</em>.</p>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;">
+        <div class="term" style="font-size:0.95em;color:#c77b2e;">Three heavy patterns</div>
+        <ul style="margin:0.1em 0;padding-left:1.3em;line-height:1.6;">
+          <li><strong>Short V + coda</strong> (CVC, CVCC): <em>net</em>, <em>nest</em></li>
+          <li><strong>Long V/diphthong, no coda</strong> (CVV): <em>sea</em></li>
+          <li><strong>Long V/diphthong + coda</strong> (CVVC): <em>side</em>, <em>seed</em></li>
+        </ul>
+      </div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#e8f4fd;border-left-color:#0077b6;margin-top:0.4em;">
+        <p style="margin:0.1em 0;"><strong>Heavy syllables attract stress.</strong> In English, "no stressed syllable is light" — leading to the ambisyllabicity solution (next slide).</p>
       </div>
     </div>
   </div>
-  <aside class="notes">교재 §6.7. 음절 무게는 rhyme 구조로 결정됨: light = non-branching rhyme (짧은 모음 + 코다 없음), heavy = branching rhyme (짧은 모음 + 코다 OR 장모음/이중모음 ± 코다). (a) among의 첫 음절 [ə] = light; (b) nest = heavy (branching coda); (c) sea = heavy (branching nucleus); (d) side = heavy (branching nucleus + coda). 영어 강세는 heavy 음절을 선호 — 다음 슬라이드에서 다룰 ambisyllabicity의 동기 (강세를 받은 light 음절은 conflict → ambisyllabicity로 해결).</aside>
+  <aside class="notes">교재 §6.7 (p. 172). 음절 무게는 rhyme 구조로 결정. Light = non-branching rhyme (short V + no coda) — 예: <em>around</em>의 첫 음절 [ə]. Heavy = branching rhyme 세 가지 패턴: (1) short V + coda — net, nest; (2) long V/diphthong + no coda — sea; (3) long V/diphthong + coda — side, seed. 트리 4개: (a) among = light, (b) nest = heavy (branching coda), (c) sea = heavy (branching nucleus), (d) side = heavy (branching nucleus + coda). 핵심 원리: heavy 음절이 강세를 끌어들임. 영어에서 "강세를 받은 음절은 light일 수 없다" — 이 원리가 다음 슬라이드의 ambisyllabicity 동기.</aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
      SLIDE — §6.7 AMBISYLLABICITY
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§6.7 Ambisyllabicity <span style="font-size:0.65em;color:#666;font-weight:400;">— Resolving the Light-Stress Conflict</span></h2>
-  <div class="def-box" style="padding:0.15em 0.8em;">
+  <h2>§6.7 Syllable Weight and Ambisyllabicity <span style="font-size:0.65em;color:#666;font-weight:400;">— Ambisyllabicity (Light-Stress Conflict)</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.78em;">
     <div class="term">When stress falls on a light syllable → conflict</div>
-    <p>MOP makes the first syllable of <em>medicine, happen, finish</em> light, but stress falls on it. <strong>No stressed syllable in English is light</strong>. <em>Solution</em>: the consonant becomes <strong>ambisyllabic</strong> — both coda of σ₁ and onset of σ₂.</p>
+    <p style="margin:0.1em 0;">MOP makes σ₁ of <em>medicine, happen, finish</em> light, but stress falls on it. <strong>No stressed syllable in English is light</strong>. <em>Solution</em>: the C becomes <strong>ambisyllabic</strong> — both coda of σ₁ and onset of σ₂.</p>
   </div>
-  <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1em;">
+  <div class="two-col" style="margin-top:0.25em;font-size:0.6em;gap:1em;">
     <div>
-      <h3 style="font-size:1em;">Ambisyllabic words (textbook §6.7)</h3>
-      <div class="example-box" style="grid-template-columns:1fr 1fr;font-size:0.95em;">
-        <div class="ex-item"><span class="word">medicine</span></div>
-        <div class="ex-item"><span class="word">federal</span></div>
-        <div class="ex-item"><span class="word">origin</span></div>
-        <div class="ex-item"><span class="word">positive</span></div>
-        <div class="ex-item"><span class="word">happen</span></div>
-        <div class="ex-item"><span class="word">Canada</span></div>
-        <div class="ex-item"><span class="word">finish</span></div>
-        <div class="ex-item"><span class="word">river</span></div>
-        <div class="ex-item"><span class="word">funny</span></div>
-        <div class="ex-item"><span class="word">punish</span></div>
+      <h3 style="font-size:1em;margin:0 0 0.2em 0;">Ambisyllabic words (textbook §6.7)</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.15em 0.6em;font-size:0.95em;line-height:1.5;text-align:center;padding:0.3em 0.6em;background:#fafafa;border-radius:6px;border:1px solid #ddd;">
+        <span><em>medicine</em></span><span><em>federal</em></span>
+        <span><em>origin</em></span><span><em>positive</em></span>
+        <span><em>happen</em></span><span><em>Canada</em></span>
+        <span><em>finish</em></span><span><em>river</em> (cf. <em>rival</em>)</span>
+        <span><em>funny</em></span><span><em>punish</em> (cf. <em>punitive</em>)</span>
       </div>
-      <p style="margin-top:0.3em;font-size:0.95em;color:#6c757d;">All have stressed lax vowel (/ɛ, ɔ, æ, ʌ, ɪ/) followed by a single intervocalic consonant.</p>
+      <p style="margin:0.3em 0 0;font-size:0.95em;color:#6c757d;">All have stressed lax vowel (/ɛ, ɔ, æ, ʌ, ɪ/) + single intervocalic C.</p>
     </div>
     <div>
       <h3 style="font-size:1em;">happen [hæpən] — ambisyllabic /p/</h3>
-      <pre style="font-family:'Fira Code',monospace;font-size:0.92em;line-height:1.4;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.6em;border-left:4px solid #c77b2e;margin:0;">
+      <pre style="font-family:'Fira Code',monospace;font-size:0.92em;line-height:1.25;background:#1e1e2e;color:#cdd6f4;border-radius:8px;padding:0.4em 0.6em;border-left:4px solid #c77b2e;margin:0;">
        σ                σ
        |  \             | \
        O   R            O  R
@@ -477,12 +602,10 @@
        |  N C           |  N
        |  | |           |  |
        h  æ p     ←→    p  ə n
-        first syll     second syll
-        </pre>
-      <div class="def-box" style="margin-top:0.3em;padding:0.3em 0.7em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;">
-        <p style="margin:0;"><strong>Rule</strong>: A consonant is ambisyllabic if it occurs immediately after a <strong>short (lax) vowel</strong> /ɪ, ɛ, æ, ʌ, ʊ, ɔ/ɑ/ that forms the nucleus of a <strong>stressed syllable</strong>.</p>
+      </pre>
+      <div class="def-box" style="margin-top:0.25em;padding:0.2em 0.6em;font-size:0.92em;background:#fff3cd;border-left-color:#c77b2e;">
+        <p style="margin:0.05em 0;"><strong>Rule</strong>: A C is ambisyllabic when it follows a <strong>stressed lax vowel</strong> /ɪ ɛ æ ʌ ʊ ɔ/ɑ/. → Stressed rhyme becomes heavy (branching).</p>
       </div>
-      <p style="margin-top:0.3em;font-size:0.95em;color:#6c757d;">→ Result of the tendency for stressed rhymes to be heavy (branching).</p>
     </div>
   </div>
   <aside class="notes">
@@ -491,28 +614,28 @@
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE — §6.8 SONORITY-DRIVEN CLUSTER REDUCTION
+     SLIDE 17a — §6.8 SONORITY-DRIVEN CLUSTER REDUCTION (CONCEPT)
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§6.8 Practical Applications <span style="font-size:0.65em;color:#666;font-weight:400;">— Sonority-driven Cluster Reduction</span></h2>
-  <div class="def-box" style="padding:0.15em 0.8em;font-size:0.7em;">
+  <h2>§6.8 Practical Applications <span style="font-size:0.65em;color:#666;font-weight:400;">— Sonority-driven Cluster Reduction (1/2): Concept</span></h2>
+  <div class="def-box" style="padding:0.2em 0.8em;font-size:0.78em;">
     <div class="term">Cluster reduction prefers <strong>greater sonority jumps</strong></div>
-    <p style="margin:0.1em 0;">Across child language acquisition, clinical populations, and L2 learning, when consonant clusters are reduced, the result tends to maximize sonority distance from onset to nucleus.</p>
+    <p style="margin:0.15em 0;">When clusters are reduced, the result maximizes sonority distance from onset to nucleus. The largest C→V rise is most "CV-like" — and <strong>CV is universally unmarked</strong>.</p>
   </div>
-  <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1em;align-items:start;">
+  <div class="two-col" style="margin-top:0.4em;font-size:0.7em;gap:1em;align-items:start;">
     <div>
-      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
+      <div class="def-box" style="padding:0.4em 0.8em;font-size:0.95em;">
         <div class="term" style="font-size:0.95em;">Example: <em>play</em> [ple]</div>
-        <p style="margin:0.1em 0;">Target: <span class="ipa alp">[ple]</span> (onset /pl/ + /e/)</p>
-        <ul style="margin:0.1em 0;padding-left:1.3em;line-height:1.5;">
-          <li>If reduced to <strong>[ple]</strong>: /p/(1) → /e/(9) — jump of <strong>8</strong> ✓</li>
+        <p style="margin:0.15em 0;">Target: <span class="ipa alp">[ple]</span> (onset /pl/ + /e/)</p>
+        <ul style="margin:0.15em 0;padding-left:1.3em;line-height:1.55;">
+          <li>If reduced to <strong>[pe]</strong>: /p/(1) → /e/(9) — jump of <strong>8</strong> ✓</li>
           <li>If reduced to <strong>*[le]</strong>: /l/(6) → /e/(9) — jump of only <strong>3</strong> ✗</li>
         </ul>
-        <p style="margin:0.15em 0;">→ <strong>[ple]</strong> is preferred because the larger sonority jump is more "CV-like" (universally unmarked).</p>
+        <p style="margin:0.2em 0 0;">→ <strong>[pe]</strong> is preferred because the larger sonority jump is more "CV-like" (universally unmarked).</p>
       </div>
     </div>
     <div>
-      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="def-box" style="padding:0.4em 0.8em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;">
         <div class="term" style="font-size:0.95em;">/sC/ cluster reduction difficulty</div>
         <table style="font-size:0.92em;width:100%;">
           <thead><tr><th>Cluster</th><th>C₂ class</th><th>Sonority jump</th><th>Easier?</th></tr></thead>
@@ -523,93 +646,102 @@
             <tr><td>/st-/</td><td>stop (1)</td><td>3 → 1 = <strong>−2</strong></td><td>❌ hardest</td></tr>
           </tbody>
         </table>
-        <p style="margin:0.2em 0 0;font-size:0.92em;color:#6c757d;">Yavaş & Someillan (2005), Yavaş & Barlow (2006), Yavaş & McLeod (2010): higher sonority jump = higher correct production rate.</p>
+        <p style="margin:0.25em 0 0;font-size:0.92em;color:#6c757d;">Jump size predicts production accuracy (Yavaş et al. 2005–2010).</p>
       </div>
     </div>
   </div>
-  <div class="def-box" style="margin-top:0.3em;font-size:0.6em;background:#e8f4fd;border-left-color:#0077b6;padding:0.25em 0.7em;">
-    <strong>Cross-population evidence:</strong> Chin (1996, phonological disorders) — children reduce clusters with sonority distance &lt; 3, preserve those with distance ≥ 3.
-    Aphasia (Blumstein 1978; Beland et al. 1990; Christman 1992; Romani &amp; Calabrese 1998): cluster errors follow sonority sequencing.
-    Coda reduction (Ohala 1999): /maɹp/ → [maɹ] (smaller descent from nucleus preferred).
-  </div>
   <aside class="notes">
-    교재 §6.8 (pp.173–176). 자음군 단순화는 정상 음운 발달, 임상 집단, 외국어 학습 모두에서 sonority-driven 패턴을 보임. 핵심 원리: CV가 가장 unmarked한 음절 구조 → C-V 사이 sonority jump가 클수록 "CV-like"하므로 선호. 예: target [ple]를 [le]로 줄이는 것보다 [pe]로 보존(또는 [ple] 유지)하는 것이 일반적. 이유: [ple]의 /p/(1)→/e/(9)=8 vs [le]의 /l/(6)→/e/(9)=3. /sC/ 군: /sw/(jump 5) > /sl/(3) > /sn/(2) > /st/(−2 = SSP 위반). 빈도와 별개로 sonority distance가 정확률 예측. 연구: Chin (1996) — 음운장애 아동, sonority distance &lt; 3인 cluster만 reduce, ≥ 3은 보존; Yavaş 시리즈 (2005, 2006, 2010) — bilingual/monolingual 데이터 일관; Ohala (1999) — coda에서도 minimum descent 선호. Aphasia 연구도 동일 패턴 (Blumstein, Beland, Christman, Romani &amp; Calabrese).
+    교재 §6.8 (pp.173–176) 핵심 개념. CV가 가장 unmarked한 음절 구조 → C-V 사이 sonority jump가 클수록 "CV-like"하므로 선호. 예: target <em>play</em>를 [le]로 줄이는 것보다 [pe]로 보존하는 것이 일반적. 이유: [pe]의 /p/(1)→/e/(9)=8 vs [le]의 /l/(6)→/e/(9)=3. /sC/ 군에서도 동일 패턴: /sw/(jump 5) > /sl/(3) > /sn/(2) > /st/(−2 = SSP 위반). 빈도와 별개로 sonority distance가 정확률을 예측한다는 것이 본 슬라이드의 핵심. 다음 슬라이드에서 cross-population 증거 (아동 음운장애, aphasia, 정상 습득) 제시.
   </aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE — L2 LEARNER SYLLABLE ERRORS
+     SLIDE 17b — §6.8 SONORITY-DRIVEN CLUSTER REDUCTION (CROSS-POPULATION EVIDENCE)
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>L2 Learner Syllable Errors</h2>
-  <p>When L2 learners encounter illegal phonotactic sequences, they apply <em>repair strategies</em>:</p>
-  <table class="data-table" style="font-size:0.72em">
-    <thead>
-      <tr><th>Strategy</th><th>Definition</th><th>Example (Korean→English)</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Epenthesis</strong></td>
-        <td>Insert a vowel to break up cluster</td>
-        <td><em>strike</em> → <span class="ipa">[sɨtɨraɪkɨ]</span></td>
-      </tr>
-      <tr>
-        <td><strong>Deletion</strong></td>
-        <td>Delete one consonant of cluster</td>
-        <td><em>texts</em> → <span class="ipa">[tɛkt]</span></td>
-      </tr>
-      <tr>
-        <td><strong>Substitution</strong></td>
-        <td>Replace illegal segment with legal one</td>
-        <td><em>this</em> → <span class="ipa">[dɪs]</span> (/ð/→/d/)</td>
-      </tr>
-      <tr>
-        <td><strong>Resyllabification</strong></td>
-        <td>Reparse syllable structure</td>
-        <td><em>spring</em> → <span class="ipa">[spɨ.rɪŋ]</span></td>
-      </tr>
-    </tbody>
-  </table>
+  <h2>§6.8 Practical Applications <span style="font-size:0.65em;color:#666;font-weight:400;">— Sonority-driven Cluster Reduction (2/2): Cross-population evidence</span></h2>
+  <div class="def-box" style="padding:0.15em 0.8em;font-size:0.72em;">
+    <div class="term">Same sonority-driven pattern across populations</div>
+    <p style="margin:0.1em 0;">L1 acquisition, clinical populations, and L2 learning all show: <strong>bigger sonority jump = easier production</strong>.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1em;align-items:start;">
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
+        <div class="term" style="font-size:0.95em;">Child phonological disorders (Chin 1996)</div>
+        <p style="margin:0.1em 0;">Cluster reduction applied only when sonority distance C₁→C₂ &lt; 3; distance ≥ 3 is preserved.</p>
+        <p style="margin:0.15em 0 0;color:#6c757d;font-size:0.92em;">Surviving consonant produces the maximum jump to the nucleus.</p>
+      </div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;margin-top:0.4em;">
+        <div class="term" style="font-size:0.95em;">Aphasia studies</div>
+        <p style="margin:0.1em 0;">Same sonority preference in aphasic cluster simplification:</p>
+        <ul style="margin:0.1em 0;padding-left:1.2em;line-height:1.5;font-size:0.92em;">
+          <li>Blumstein (1978)</li>
+          <li>Beland et al. (1990)</li>
+          <li>Christman (1992)</li>
+          <li>Romani &amp; Calabrese (1998)</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#e8f4fd;border-left-color:#0077b6;">
+        <div class="term" style="font-size:0.95em;color:#0077b6;">Normal acquisition — coda reduction (Ohala 1999)</div>
+        <p style="margin:0.1em 0;">Children (1;9 – 3;2) reducing CVCC keep the higher-sonority C, preserving <strong>minimum descent</strong> from nucleus to coda.</p>
+        <p style="margin:0.15em 0;font-size:0.95em;"><em>e.g.</em> <span class="ipa alp">[maɹp]</span> → <span class="ipa alp">[maɹ]</span> (10→7) ✓ preferred over *<span class="ipa alp">[map]</span> (10→1) ✗.</p>
+      </div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;margin-top:0.4em;">
+        <div class="term" style="font-size:0.95em;color:#c77b2e;">Frequency exception (Yavaş &amp; Core; Yavaş &amp; Beaubrun 2006)</div>
+        <p style="margin:0.1em 0;">/st/ shows the <strong>highest</strong> correct realization despite violating SSP; /sn/ the lowest.</p>
+        <p style="margin:0.1em 0;color:#6c757d;font-size:0.92em;">Lexical frequency may override sonority distance for /sC/. Topic needs further investigation.</p>
+      </div>
+    </div>
+  </div>
   <aside class="notes">
-    L2 학습자의 음절 오류는 모국어의 음소배열론 제약이 제2언어에 전이(transfer)된 결과입니다.
-    한국어는 자음군 시작부를 허용하지 않으므로, 한국인 학습자는 영어 자음군에 모음을 삽입(epenthesis)하는 경향이 강합니다.
-    영어 교육 현장에서는 이러한 오류 패턴을 이해하고, 명시적인 phonotactics 교수법을 적용하면 효과적입니다.
-    참고: Broselow (1992), Hancin-Bhatt (1994) 등 L2 음절 연구.
+    교재 §6.8 (pp.173–176) cross-population 증거. (1) <strong>Chin (1996)</strong>: 음운장애 아동, sonority distance &lt; 3인 cluster만 reduce; ≥ 3은 보존. (2) <strong>Aphasia</strong>: Blumstein 1978, Beland et al. 1990, Christman 1992, Romani &amp; Calabrese 1998 — 동일한 sonority 선호 패턴. (3) <strong>Ohala (1999)</strong>: 정상 아동 1;9–3;2, CCVC뿐 아니라 coda에서도 minimum descent 선호 — [maɹp]→[maɹ] (10→7) preferred, *[map] (10→1) avoided. (4) <strong>Yavaş &amp; Core, Yavaş &amp; Beaubrun (2006)</strong>: /sC/ frequency exception — /st/는 SSP 위반에도 정확률 최고, /sn/은 최저. 빈도 효과가 sonority distance를 override할 수 있음 (교재 명시: topic needs further investigation). 핵심 결론: sonority sequencing은 보편적 — 정상 acquisition, 음운장애, aphasia 모두 같은 원리.
   </aside>
 </section>
+
+<!-- L2 Learner Syllable Errors slide removed — content not in textbook §6.8.
+     Textbook explicitly states: "Behavioral evidence regarding the principles of
+     sonority in second language phonology is given in Chapter 9." (p. 175) -->
 
 <!-- ══════════════════════════════════════════════
      SLIDE 12 — CHILD LANGUAGE & SYLLABLES
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>Syllables in Child Language Acquisition</h2>
-  <p>Children simplify complex syllable structures as they acquire phonotactics:</p>
-  <div class="two-col" style="align-items:start">
-    <div class="card">
-      <h3>Common Simplification Processes</h3>
-      <ul style="font-size:0.85em">
-        <li><strong>Cluster reduction:</strong> <em>truck</em> → <span class="ipa">[tʌk]</span></li>
-        <li><strong>Final consonant deletion:</strong> <em>dog</em> → <span class="ipa">[dɒ]</span></li>
-        <li><strong>Reduplication:</strong> <em>water</em> → <span class="ipa">[wawa]</span></li>
-        <li><strong>Consonant harmony:</strong> <em>dog</em> → <span class="ipa">[ɡɒɡ]</span></li>
-      </ul>
+  <h2>§6.8 Practical Applications <span style="font-size:0.65em;color:#666;font-weight:400;">— Sonority in Children's Developing Phonologies</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.78em;">
+    <div class="term">Sonority-driven cluster reduction in normal and disordered acquisition</div>
+    <p style="margin:0.1em 0;">Children's cluster simplifications follow the <strong>maximum sonority jump</strong> principle — the same constraint at work in adult phonology and clinical populations.</p>
+  </div>
+  <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1em;align-items:start;">
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;">
+        <div class="term" style="font-size:0.95em;">Chin (1996) — children with phonological disorders</div>
+        <p style="margin:0.1em 0;">Cluster reduction applied only when sonority distance C₁→C₂ &lt; 3.</p>
+        <p style="margin:0.15em 0 0.1em;"><strong>Patterns observed:</strong></p>
+        <ul style="margin:0.05em 0;padding-left:1.2em;line-height:1.5;font-size:0.92em;">
+          <li>(a) stop+approx → stop: <em>twin</em> → <span class="ipa alp">[dɪn]</span>, <em>drum</em> → <span class="ipa alp">[dʌm]</span>, <em>play</em> → <span class="ipa alp">[pe]</span></li>
+          <li>(b) fricative+sonorant → fricative: <em>few</em> → <span class="ipa alp">[fu]</span>, <em>swim</em> → <span class="ipa alp">[sɪm]</span>, <em>shrub</em> → <span class="ipa alp">[ʃʌb]</span></li>
+          <li>(c) fricative+stop → stop: <em>spoon</em> → <span class="ipa alp">[bun]</span>, <em>stove</em> → <span class="ipa alp">[dov]</span>, <em>sky</em> → <span class="ipa alp">[daɪ]</span></li>
+        </ul>
+        <p style="margin:0.2em 0 0;font-size:0.9em;color:#6c757d;">Surviving C produces the <strong>maximum sonority jump</strong> to the nucleus.</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>Acquisition Order</h3>
-      <ul style="font-size:0.85em">
-        <li><strong>CV</strong> syllables emerge first</li>
-        <li><strong>CVC</strong> next (codas added)</li>
-        <li><strong>Onset clusters</strong> late (by age 5–6)</li>
-        <li>Complex codas last</li>
-      </ul>
-      <p style="font-size:0.8em; color:#555; margin-top:0.5em">Mirrors cross-linguistic markedness: CV is the most basic syllable type universally.</p>
+    <div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#e8f4fd;border-left-color:#0077b6;">
+        <div class="term" style="font-size:0.95em;color:#0077b6;">Ohala (1999) — normal children (1;9 – 3;2)</div>
+        <p style="margin:0.1em 0;">CCVC targets reduced to CVC: children deleted the <strong>more sonorous</strong> member, preserving max sonority rise to nucleus.</p>
+        <p style="margin:0.2em 0 0.1em;"><strong>CVCC coda reduction</strong>: kept higher-sonority C, preserving minimum descent.</p>
+        <p style="margin:0.1em 0;font-size:0.9em;color:#6c757d;"><em>e.g.</em> [maɹp] → [maɹ] (10→7) preferred over *[map] (10→1).</p>
+      </div>
+      <div class="def-box" style="padding:0.3em 0.7em;font-size:0.95em;background:#fff3cd;border-left-color:#c77b2e;margin-top:0.4em;">
+        <div class="term" style="font-size:0.95em;color:#c77b2e;">Bilingual evidence (Yavaş studies)</div>
+        <p style="margin:0.1em 0;">Yavaş & Someillan (2005, Sp-Eng), Yavaş & Barlow (2006), Yavaş & McLeod (2010): #sC cluster success ordered by sonority jump — /sw/ (3→8) ≫ /sl/ (3→6).</p>
+      </div>
     </div>
   </div>
   <aside class="notes">
-    아동 언어 발달에서 음절 단순화는 보편적 패턴을 따릅니다.
-    가장 먼저 습득되는 것은 CV(자음+모음) 구조이며, 이는 전 세계 언어에서 가장 비유표적(unmarked) 음절형입니다.
-    자음군은 늦게 습득되며, 단순화 과정(cluster reduction, final consonant deletion)은 정상 발달의 일부입니다.
-    이 지식은 언어 치료(speech-language pathology) 현장에서도 중요하게 활용됩니다.
+    교재 §6.8 (pp.173–175). 아동 언어 발달의 cluster reduction은 sonority-driven 원리를 따름. (1) Chin (1996): 음운장애 아동 — sonority distance &lt; 3인 cluster만 reduce. 구체 패턴 (a) stop+approx→stop (twin→dɪn, drum→dʌm, play→pe), (b) fric+sonorant→fric (few→fu, swim→sɪm, shrub→ʃʌb), (c) fric+stop→stop (spoon→bun, stove→dov, sky→daɪ). 살아남는 C는 maximum jump를 생성. (2) Ohala (1999): 1;9–3;2 정상 아동, CCVC→CVC에서 더 sonorous한 C 삭제 (max rise to nucleus). CVCC→CVC에서는 [maɹp]→[maɹ] (10→7) 선호, *[map] (10→1) 회피. (3) Yavaş 시리즈 (2005, 2006, 2010): bilingual 아동 #sC cluster 정확률은 sonority jump 순 — /sw/ ≫ /sl/ ≫ /sn/, /sp/ (단 C2가 continuant일 때만 유의). 핵심 메시지: sonority sequencing은 보편적 — 정상·장애 acquisition 모두에서 동일한 원리 작동.
   </aside>
 </section>
 
