@@ -237,6 +237,36 @@
   background: #e8f4fd;
 }
 
+/* ── Table row color coding (generalization-mapped) ─────────
+   Applies to td only so first-column <th> row labels keep the
+   default dark-green accent. Used in matrices (Tables 6.1/6.2)
+   and the Four-Generalizations rule table. */
+.reveal table tr.row-cream  td { background: #fff3cd !important; }
+.reveal table tr.row-blue   td { background: #e8f4fd !important; }
+.reveal table tr.row-yellow td { background: #fff8e1 !important; }
+.reveal table tr.row-green  td { background: #e8f5e9 !important; }
+.reveal table tr.row-pink   td { background: #fce4ec !important; }
+
+/* ── Practice answer reveal (button-toggled) ─────────────────
+   Each .practice-q has a .reveal-btn that toggles .revealed
+   on the parent .practice-q, showing/hiding all .answer cells. */
+.reveal .practice-q .reveal-btn {
+  display: inline-block;
+  padding: 0.25em 0.9em;
+  margin: 0.1em 0 0.4em;
+  font: 600 0.78em inherit;
+  background: var(--slide-accent, var(--color-ot));
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: filter 0.15s, transform 0.1s;
+}
+.reveal .practice-q .reveal-btn:hover { filter: brightness(1.15); }
+.reveal .practice-q .reveal-btn:active { transform: translateY(1px); }
+.reveal .practice-q .answer { visibility: hidden; }
+.reveal .practice-q.revealed .answer { visibility: visible; }
+
 /* ── Two-column Layout ────────────────────────────────────── */
 .two-col {
   display: grid;
