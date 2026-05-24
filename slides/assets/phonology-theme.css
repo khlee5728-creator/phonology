@@ -247,6 +247,9 @@
 .reveal table tr.row-green  td { background: #e8f5e9 !important; }
 .reveal table tr.row-pink   td { background: #fce4ec !important; }
 
+/* ── Disable audio buttons on specific sections ── */
+.reveal section.no-audio .ipa-audio-btn { display: none; }
+
 /* ── Practice answer reveal (button-toggled) ─────────────────
    Each .practice-q has a .reveal-btn that toggles .revealed
    on the parent .practice-q, showing/hiding all .answer cells. */
