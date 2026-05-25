@@ -70,6 +70,8 @@
 .reveal .title-slide {
   text-align: center;
   padding: 2em;
+  box-sizing: border-box;
+  width: 100%;
 }
 .reveal .title-slide h1 {
   font-size: 1.6em;
