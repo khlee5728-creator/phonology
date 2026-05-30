@@ -21,21 +21,9 @@
   <style>
     :root { --slide-accent: #c1121f; }  /* Stress — Crimson Red */
 
-    /* Intonation curve via CSS */
-    .intonation-box {
-      background: #1e1e2e;
-      color: #cdd6f4;
-      border-radius: 8px;
-      padding: 0.8em 1.2em;
-      font-family: var(--font-mono);
-      font-size: 0.88em;
-      border-left: 4px solid var(--slide-accent);
-    }
-    .pitch-high { color: #f38ba8; font-size: 0.9em; }
-    .pitch-low  { color: #89b4fa; font-size: 0.9em; }
-    .tonic      { background: rgba(243,139,168,0.25); border-radius:3px; padding:0 3px; }
+    .tonic      { background: rgba(193,18,31,0.18); border-radius:3px; padding:0 3px; font-weight:700; }
     .compound   { color: #c1121f; font-weight: 700; }
-    .phrase-stress { color: #0077b6; font-weight: 700; }
+    .pitch-arrow { color: #c1121f; font-weight:700; font-size:1.1em; }
   </style>
 </head>
 <body>
@@ -51,10 +39,7 @@
   <h2>Phrases &amp; Intonation</h2>
   <p class="subtitle">Applied English Phonology · Ch. 7.6–7.9</p>
   <aside class="notes">
-    지난 주에는 단어 수준의 강세 규칙(penult/ult rule, 명사-동사 쌍, 접미사 분류)을 다뤘습니다.
-    이번 주는 강세가 단어를 넘어 구(phrase)·문장(sentence) 수준에서 어떻게 작동하는지,
-    그리고 영어의 억양(intonation) 패턴을 살펴봅니다.
-    이번 주로 강세 단원이 마무리되며, 다음 주(15주)는 기말 시험입니다.
+    지난 주(13주)는 단어 수준 강세 (Penult/Ult Rule, N–V pairs, affix 분류). 이번 주는 강세가 단어를 넘어 compound, phrase, intonation 수준에서 어떻게 작동하는지. 학기 마지막 콘텐츠 주이며 다음 주(15주)는 기말 시험.
   </aside>
 </section>
 
@@ -64,495 +49,545 @@
 <section>
   <h2>Today's Agenda</h2>
   <ol class="agenda-list">
-    <li>§7.6 Stress in Compounds: noun, adjective, verb compounds &amp; complex compounds</li>
-    <li>§7.7 AmE vs. BrE Stress Differences (5 groups)</li>
-    <li>§7.8 Intonation: tone groups, tonic accent, falling/rising/combined patterns</li>
-    <li>§7.9 Variations among the Varieties (Hawaii, Welsh, Southern AmE, Australian, BrE)</li>
-    <li>Course Summary &amp; Final Exam Preview</li>
+    <li>§7.6 Stress in Compounds (noun / adjective / verb / complex)</li>
+    <li>§7.7 AmE vs. BrE Stress Differences — 5 groups (a)–(e)</li>
+    <li>§7.8 Intonation — tone groups, tonic accent, falling/rising/combined</li>
+    <li>§7.9 Variations among Varieties (Hawaii, Welsh, Southern AmE, Bailey 1983)</li>
+    <li>Practice (Yavaš Ex. 4 &amp; 5) + Course Summary + Final Exam Preview</li>
   </ol>
   <aside class="notes">
-    오늘 수업은 구·문장 강세(compound vs. phrase, 핵 강세, 리듬 규칙)부터 시작하여
-    AmE/BrE 강세 차이, 문장 강세(신정보 초점), 억양 패턴(하강조·상승조)과 화용론적 의미까지 다룹니다.
-    마지막에 기말 시험 범위와 형식을 안내합니다.
+    교재 §7.6–§7.9 순서 그대로 진행. 마지막에 학기 전체 summary와 기말 시험 안내.
   </aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE 3 — COMPOUNDS vs PHRASES
+     SLIDE 3 — §7.6 (1/2): COMPOUNDS 도입 + NOUN/ADJ COMPOUNDS
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§7.6 Stress in Compounds <span style="font-size:0.65em;color:#666;font-weight:400;">— Compounds vs. Phrases</span></h2>
-  <p style="font-size:0.82em; margin:0.1em 0;">English distinguishes <strong>compounds</strong> from <strong>noun phrases</strong> by stress:</p>
-  <table class="data-table" style="font-size:0.70em; margin-bottom:0.15em">
+  <h2>§7.6 Stress in Compounds <span style="font-size:0.65em;color:#666;font-weight:400;">— (1/2) Noun &amp; Adjective Compounds</span></h2>
+  <div class="def-box" style="padding:0.13em 0.85em;font-size:0.7em;">
+    <p style="margin:0.06em 0;">A <strong>compound</strong> consists of more than one root morpheme (usually two free morphemes) but functions like a single word. Written as one word (<em>blueprint</em>), with hyphen (<em>fail-safe</em>), or with space (<em>flower girl</em>). Tendency: first-element stress → written joined / hyphenated; second-element stress → written with space. (Yavaš p. 191)</p>
+  </div>
+  <div class="two-col" style="margin-top:0.3em;gap:1em;align-items:start;font-size:0.65em;">
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
+      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.15em;">Noun compounds (90% of all compounds)</div>
+      <p style="margin:0.05em 0;">All receive stress on the <strong>first element</strong>:</p>
+      <table style="font-size:0.95em;width:100%;line-height:1.5;margin-top:0.15em;">
+        <tbody>
+          <tr><td><strong>N + N</strong></td><td><em>phónecard, mátchbox, téapot, póstman</em></td></tr>
+          <tr><td><strong>Adj + N</strong></td><td><em>whíte house</em></td></tr>
+          <tr><td><strong>V + N</strong></td><td><em>stóp watch</em></td></tr>
+          <tr><td><strong>Part/Adv + N</strong></td><td><em>óverdose, únderwear</em></td></tr>
+        </tbody>
+      </table>
+      <p style="margin:0.2em 0 0;font-size:0.92em;color:#6c757d;">Exceptions (mostly names): <em>Lake Érie, Mount Sínai, Great Brítain</em>.</p>
+    </div>
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">Adjective compounds</div>
+      <p style="margin:0.05em 0;">Stress on the <strong>first element</strong>:</p>
+      <table style="font-size:0.95em;width:100%;line-height:1.5;margin-top:0.15em;">
+        <tbody>
+          <tr><td><strong>N + Adj</strong></td><td><em>nátionwide, séasick, bédridden</em></td></tr>
+          <tr><td><strong>Adj + Adj</strong></td><td><em>réd hot</em></td></tr>
+          <tr><td><strong>Prep + Adj</strong></td><td><em>óverripe</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">
+    교재 §7.6 ¶1-3 (p. 191). Compound 정의 + 표기 convention. Noun compounds가 90%로 압도적. 모두 첫 요소 강세. 예외는 거의 항상 names. Adjective compounds도 동일 (첫 요소).
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 4 — §7.6 (2/2): VERB COMPOUNDS + 3+ ELEMENT + COMPLEX
+══════════════════════════════════════════════ -->
+<section>
+  <h2>§7.6 Stress in Compounds <span style="font-size:0.65em;color:#666;font-weight:400;">— (2/2) Verb / 3+ Element / Complex</span></h2>
+
+  <!-- Verb compounds -->
+  <div class="def-box" style="padding:0.25em 0.8em;font-size:0.65em;margin-top:0.15em;">
+    <div class="term" style="font-size:0.98em;margin-bottom:0.15em;">Verb compounds — most first-element, one exception</div>
+    <table style="font-size:0.95em;width:100%;line-height:1.45;border-collapse:collapse;">
+      <thead>
+        <tr>
+          <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;width:25%;text-align:center;">Combination</th>
+          <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;width:25%;text-align:center;">Stress</th>
+          <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;text-align:left;">Examples</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>N + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;">First element</td><td style="padding:0.15em 0.5em;border:1px solid #ddd;"><em>báby-sit, spóon-feed, cár wash</em></td></tr>
+        <tr><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>Adj + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;">First element</td><td style="padding:0.15em 0.5em;border:1px solid #ddd;"><em>drý-clean</em></td></tr>
+        <tr><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>V + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;">First element</td><td style="padding:0.15em 0.5em;border:1px solid #ddd;"><em>dróp-kick</em></td></tr>
+        <tr style="background:#fff8e1;"><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>Part/Adv + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong style="color:#c1121f;">Second element ⚠</strong></td><td style="padding:0.15em 0.5em;border:1px solid #ddd;"><em>undertáke, oversléep</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3+ element + Complex -->
+  <div class="two-col" style="margin-top:0.25em;gap:1em;align-items:start;font-size:0.62em;">
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
+      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.15em;">3+ element compounds</div>
+      <p style="margin:0.05em 0;">Almost always stressed on the <strong>first element</strong>:</p>
+      <p style="margin:0.1em 0;font-style:italic;line-height:1.55;"><em>flý-by-night, forgét-me-not, jáck-in-the-box, móther-in-law</em></p>
+    </div>
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">Complex compounds (N compound + N)</div>
+      <p style="margin:0.05em 0;">Stress on the <strong>first element</strong> of the original noun compound:</p>
+      <table style="font-size:0.95em;width:100%;line-height:1.5;margin-top:0.1em;">
+        <tbody>
+          <tr><td>(a) N+N</td><td><em>"asséembly line worker"</em></td></tr>
+          <tr><td>(b) Adj+N</td><td><em>"hígh school student"</em></td></tr>
+          <tr><td>(c) V+N</td><td><em>"píck up truck"</em></td></tr>
+        </tbody>
+      </table>
+      <p style="margin:0.15em 0 0;font-size:0.92em;color:#6c757d;">Nestable: <em>hígh school student essay</em>, <em>asséembly line worker dispute</em></p>
+    </div>
+  </div>
+
+  <aside class="notes">
+    교재 §7.6 ¶4-6 (pp. 191-192). Verb compounds: N+V, Adj+V, V+V는 첫 요소 강세 (다른 그룹과 동일). 단, Part/Adv+V는 둘째 요소 강세 (undertake, oversleep) — 핵심 예외.
+    3+ element compounds: 거의 항상 첫 요소 (fly-by-night, mother-in-law 등).
+    Complex compounds: 두 noun compound가 결합하여 형성, 첫 요소 강세 유지. Nested 가능 (high school student essay).
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 5 — §7.7 (1/2): GROUPS (a), (b), (c)
+══════════════════════════════════════════════ -->
+<section>
+  <h2>§7.7 AmE vs. BrE Stress Differences <span style="font-size:0.65em;color:#666;font-weight:400;">— (1/3) Groups (a) (b) (c)</span></h2>
+  <div class="def-box" style="padding:0.1em 0.8em;font-size:0.68em;">
+    <p style="margin:0.05em 0;">Several English words receive different stresses in AmE and BrE — patterns fall into <strong>5 groups</strong>. (Yavaš pp. 192–195)</p>
+  </div>
+  <table style="width:100%;font-size:0.6em;line-height:1.4;border-collapse:collapse;margin-top:0.25em;">
     <thead>
-      <tr><th>Type</th><th>Stress Pattern</th><th>Example</th><th>Meaning</th></tr>
+      <tr>
+        <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;width:14%;text-align:center;">Group</th>
+        <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;width:30%;text-align:left;">Pattern</th>
+        <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;text-align:left;">Examples</th>
+      </tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Compound</strong></td>
-        <td><span class="compound">ˈσσ</span> (stress on 1st element)</td>
-        <td><span class="ipa"><span class="compound">ˈblack</span>bird</span></td>
-        <td>a species of bird (Blackbird)</td>
+        <td style="text-align:center;padding:0.2em 0.4em;border:1px solid #ddd;"><strong>(a)</strong></td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;">2-syll <strong>N (French origin)</strong>: <span style="color:#c1121f;">AmE final</span> / <span style="color:#0077b6;">BE penult</span></td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;font-style:italic;">brochúre, ballét, café, chatéau, cliché, cornét, crochét, debrís, fillét, frontíer, garáge, plateáu, premíer, salón, soufflé, toupée, vermóuth, valét</td>
+      </tr>
+      <tr style="background:#fff8e1;">
+        <td style="text-align:center;padding:0.2em 0.4em;border:1px solid #ddd;"><strong>(b)</strong></td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;"><strong>Reverse</strong>: <span style="color:#0077b6;">BE final</span> / <span style="color:#c1121f;">AmE initial</span></td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;font-style:italic;">wéekend, pótluck, príncess, récess, résearch, áddress, ínquiry, móustache; (longer) ártisan, Pórtuguese, cígarette, mágazine, cóntroversy</td>
       </tr>
       <tr>
-        <td><strong>Noun Phrase</strong></td>
-        <td><span class="phrase-stress">σˈσ</span> (stress on head noun)</td>
-        <td><span class="ipa">ˌblack <span class="phrase-stress">ˈbird</span></span></td>
-        <td>any bird that is black</td>
+        <td style="text-align:center;padding:0.2em 0.4em;border:1px solid #ddd;"><strong>(c)</strong></td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;">2-syll <strong>V ending in -ate</strong>: <span style="color:#c1121f;">AmE initial</span> / <span style="color:#0077b6;">BE final</span></td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;font-style:italic;">cástrate, crémate, díctate, dónate, frústrate, gýrate, mígrate, púlsate, rótate, tránslate, vácate, víbrate, lócate, mútate<br><span style="font-style:normal;color:#6c757d;font-size:0.92em;">Exceptions (both final): confláte, creáte, debáte, defláte, eláte, reláte, abáte, infláte, negáte</span></td>
       </tr>
     </tbody>
   </table>
-  <div class="two-col" style="font-size:0.72em; margin-top:0.2em;">
-    <div class="example-box">
-      <p><span class="ipa"><span class="compound">ˈgreen</span>house</span> (a greenhouse)</p>
-      <p><span class="ipa">ˌgreen <span class="phrase-stress">ˈhouse</span></span> (a green house)</p>
-    </div>
-    <div class="example-box">
-      <p><span class="ipa"><span class="compound">ˈwhite</span>board</span> (a whiteboard)</p>
-      <p><span class="ipa">ˌwhite <span class="phrase-stress">ˈboard</span></span> (a white board)</p>
-    </div>
-  </div>
   <aside class="notes">
-    합성어와 명사구의 강세 차이는 영어에서 의미를 구분하는 중요한 기능을 합니다.
-    합성어: 전체가 하나의 개념을 나타내며, 첫 요소에 강세.
-    명사구: 수식어+핵 명사로, 핵 명사에 강세.
-    ˈblackbird (지빠귀 류의 새 이름) vs. ˌblack ˈbird (검은색인 새)
-    한국어에는 이런 강세에 의한 합성어/구 구별이 없으므로 학습자들이 어려워합니다.
+    교재 §7.7 (a)-(c) (pp. 192-193). Group (a): 2음절 N French origin — AmE는 final, BE는 penult. brochure, ballet 등. Group (b): 정반대 — BE final, AmE initial. weekend, princess 등. Group (c): 2음절 -ate V — AmE initial, BE final. castrate, dictate 등. 예외 (conflate 등은 둘 다 final).
   </aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE 4 — MORE COMPOUND EXAMPLES
+     SLIDE 6 — §7.7 (2/3): GROUP (d) -ary/-ery/-ory/-mony
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§7.6 Stress in Compounds <span style="font-size:0.65em;color:#666;font-weight:400;">— Compound Categories &amp; Contrasts</span></h2>
-  <div class="def-box" style="font-size:0.7em;padding:0.15em 0.7em;">
-    <p>Noun compounds account for <strong>~90% of all compounds</strong>. <strong>All noun compounds receive stress on the first element</strong> (exceptions: place-names like <em>Lake Érie, Mount Sínai, Great Brítain</em>).</p>
+  <h2>§7.7 AmE vs. BrE Stress Differences <span style="font-size:0.65em;color:#666;font-weight:400;">— (2/3) Group (d): -ary / -ery / -ory / -mony</span></h2>
+
+  <div class="def-box" style="padding:0.15em 0.85em;font-size:0.7em;margin-top:0.2em;">
+    <p style="margin:0.06em 0;"><strong>Group (d)</strong>: Forms ending in <em>-ary / -ery / -ory / -mony</em> receive a <strong>secondary stress</strong> on the penult in AmE, but the same syllable has a <strong>reduced vowel</strong> in BE. (Yavaš pp. 193–194)</p>
+    <p style="margin:0.06em 0;">Example: <em>secondary</em> <span class="ipa alp">[sékəndɛ̀ɹi]</span> (AmE) vs <span class="ipa alp">[sékəndəɹi]</span> (BE) → <span class="ipa alp">[sékəndɹi]</span> (3 syll)</p>
   </div>
-  <div class="two-col" style="margin-top:0.3em;font-size:0.6em;gap:1em;align-items:start;">
-    <div>
-      <h3 style="font-size:1em;margin-bottom:0.1em;">Noun compounds (4 types — first element stress)</h3>
-      <table class="data-table" style="font-size:0.95em;width:100%;">
-        <thead><tr><th>Type</th><th>Examples</th></tr></thead>
+
+  <div class="def-box" style="margin-top:0.25em;padding:0.3em 0.85em;font-size:0.62em;">
+    <table style="font-size:0.95em;width:100%;line-height:1.55;">
+      <tbody>
+        <tr><td style="width:14%;"><strong>-ary</strong></td><td><em>nécessàry, árbitràry, díctionàry, Fébruàry, líterary, mílitàry, órdinàry, prímàry, sécretàry, témporàry, mómentàry, légendàry, sédentàry, vísionàry, contémporàry</em></td></tr>
+        <tr><td><strong>-ery</strong></td><td><em>cémetèry, conféctionèry, dýsentèry, mónastèry, státionèry</em></td></tr>
+        <tr><td><strong>-ory</strong></td><td><em>állegòry, cátegòry, dórmitòry, mándatòry, obsérvatòry, térritòry, prómissòry, compénsatòry, explóratòry, consérvatòry</em></td></tr>
+        <tr><td><strong>-mony</strong></td><td><em>ácrimòny, álimòny, céremòny, mátrimòny, téstimòny</em></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="def-box" style="margin-top:0.25em;padding:0.2em 0.85em;font-size:0.65em;background:#fff3cd;border-left-color:#c77b2e;">
+    <strong>Exceptions</strong> (no secondary stress in AmE either — primary stress directly before the suffix): <em>salary, bravery, ivory, lottery, elementary, anniversary, documentary, complimentary, infirmary</em>
+  </div>
+
+  <aside class="notes">
+    교재 §7.7 (d) (pp. 193-194). -ary/-ery/-ory/-mony — AmE는 secondary stress, BE는 reduced vowel. secondary [sékəndɛ̀ɹi] (AmE) vs [sékəndəɹi] (BE). 예외: primary stress가 suffix 바로 앞이면 secondary 없음 (salary, bravery, lottery).
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 7 — §7.7 (3/3): GROUP (e) -ile + OTHER VARIETIES
+══════════════════════════════════════════════ -->
+<section>
+  <h2>§7.7 AmE vs. BrE Stress Differences <span style="font-size:0.65em;color:#666;font-weight:400;">— (3/3) Group (e): -ile + Other Varieties</span></h2>
+
+  <div class="def-box" style="padding:0.2em 0.85em;font-size:0.7em;margin-top:0.25em;background:#fff8e1;border-left-color:#c77b2e;">
+    <div class="term" style="font-size:1em;color:#c77b2e;margin-bottom:0.1em;">Group (e) — <em>-ile</em>: REVERSE pattern</div>
+    <p style="margin:0.06em 0;">AmE has a <strong>reduced vowel</strong>, BE has <strong>secondary stress</strong> (opposite of (d)).</p>
+    <p style="margin:0.1em 0;">Example: <em>agile</em> <span class="ipa alp">[ǽʤəl]</span> (AmE) / <span class="ipa alp">[ǽʤàɪl]</span> (BE)</p>
+    <p style="margin:0.08em 0;font-style:italic;line-height:1.5;">ágile, dócile, fértile, frágile, fútile, hóstile, móbile, míssile, stérile, vérsatile, vírile</p>
+    <p style="margin:0.1em 0 0;font-size:0.9em;color:#6c757d;"><strong>Exception</strong> ([aɪ] in BOTH varieties): <em>prófile, réptile, sénile</em></p>
+  </div>
+
+  <div class="def-box" style="margin-top:0.3em;padding:0.25em 0.85em;font-size:0.7em;background:#f4f4f8;border-left-color:#6c757d;">
+    <div class="term" style="font-size:1em;color:#444;margin-bottom:0.1em;">Other varieties (beyond AmE / BE)</div>
+    <ul style="margin:0.05em 0;padding-left:1.3em;line-height:1.55;">
+      <li><strong>Indian / Hong Kong / Singapore E.</strong>: <em>-ate</em>, <em>-ize</em> stressed on final syllable — <em>alternáte, educáte, homogeníze, terroríze</em></li>
+      <li><strong>Indian / Singapore E.</strong>: non-reduced vowels + non-initial stress on multisyllabic words (<em>economic, faculty, necessary</em>)</li>
+      <li>Fewer vowel reductions in <strong>Hawaii, Hong Kong, Singapore, India, Caribbean, African</strong> varieties → "<strong>syllable-timed</strong>" rhythm</li>
+    </ul>
+  </div>
+
+  <aside class="notes">
+    교재 §7.7 (e) + 후반 (pp. 194-195). Group (e): -ile — REVERSE pattern. AmE reduced, BE secondary. agile [ǽʤəl] vs [ǽʤàɪl]. 예외 [aɪ] (둘 다 secondary): profile, reptile, senile.
+    Other varieties: Indian/HK/Singapore — -ate, -ize final stress. Vowel reduction 적음 → syllable-timed rhythm.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 7 — §7.8 (1/5): TONE GROUP + TONIC ACCENT (도입)
+══════════════════════════════════════════════ -->
+<section>
+  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— (1/6) Tone Group &amp; Tonic Accent</span></h2>
+  <div class="def-box" style="padding:0.13em 0.85em;font-size:0.7em;">
+    <p style="margin:0.06em 0;"><strong>Intonation</strong> = pitch variations that occur over a phrase or sentence. (Yavaš p. 195, cf. Ch. 1)</p>
+  </div>
+  <div class="def-box" style="margin-top:0.3em;padding:0.3em 0.85em;font-size:0.68em;background:#e8f4fd;border-left-color:#0077b6;">
+    <div class="term" style="font-size:1em;color:#0077b6;margin-bottom:0.15em;">Tone group &amp; tonic syllable</div>
+    <ul style="margin:0.05em 0;padding-left:1.3em;line-height:1.55;">
+      <li><strong>Tone group</strong> (= intonational phrase) — a portion of a sentence over which an intonation contour extends</li>
+      <li>Within a tone group, each stressed syllable has a <em>minor</em> pitch increase, but <strong>one syllable</strong> has a <em>major</em> pitch change</li>
+      <li>The syllable with major pitch change = <strong>tonic syllable / tonic accent</strong></li>
+    </ul>
+  </div>
+  <div class="def-box" style="margin-top:0.25em;padding:0.3em 0.85em;font-size:0.66em;background:#fff3cd;border-left-color:#c77b2e;">
+    <div class="term" style="font-size:1em;color:#c77b2e;margin-bottom:0.15em;">Example (1) + default pattern</div>
+    <p style="margin:0.08em 0;text-align:center;font-size:1.05em;">The 'boy' gave the 'book to his <span class="tonic">*teacher</span>.</p>
+    <p style="margin:0.08em 0;">´ = stressed; <strong>*</strong> = tonic accent (major pitch change). <em>boy, book</em> are stressed; only <em>teacher</em> carries the tonic.</p>
+    <p style="margin:0.15em 0 0.05em;"><strong>Default pattern</strong>: utterance-initial = shared (old) information; utterance-final = new information. → <strong>Tonic accent on the last stressed lexical item</strong> (N, V, Adj, Adv).</p>
+  </div>
+  <aside class="notes">
+    교재 §7.8 ¶1-3 (pp. 195-196). Intonation 정의 (Ch.1 재인용). Tone group = pitch contour 적용 단위. Tonic syllable = major pitch change. 예시 (1) "The boy gave the book to his *teacher" — boy, book은 minor stress, teacher가 tonic. Default: tonic은 utterance-final 마지막 stressed lexical item (= new info). 다음 슬라이드에서 이 default 변경 케이스.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 8 — §7.8 (2/5): TONIC 위치 변경 (EMPHASIS + INFO UNIT + EXCEPTIONS)
+══════════════════════════════════════════════ -->
+<section>
+  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— (2/6) Shifting the Tonic Accent</span></h2>
+  <div class="def-box" style="padding:0.13em 0.85em;font-size:0.7em;">
+    <p style="margin:0.06em 0;">The tonic accent can shift forward from its default position. Not all shifts involve contrast — tone groups are units of <strong>information</strong>, not syntax. (Yavaš p. 196)</p>
+  </div>
+
+  <div class="two-col" style="margin-top:0.25em;gap:1em;align-items:start;font-size:0.66em;">
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">Emphasis / contrast</div>
+      <p style="margin:0.08em 0;">(2a) He was somewhat <span class="tonic">*discouraged</span>.</p>
+      <p style="margin:0.08em 0;">(2b) He was <span class="tonic">*somewhat</span> discouraged. <span style="color:#6c757d;">(emphasis)</span></p>
+    </div>
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
+      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.15em;">Information-unit shift (not always contrast)</div>
+      <p style="margin:0.08em 0;">(3) I have <span class="tonic">*a party</span> to plan / <span class="tonic">*letters</span> to write.</p>
+      <p style="margin:0.08em 0;">(4a) Spinach is a <span class="tonic">*vegetable</span>. <span style="color:#6c757d;">(neutral)</span></p>
+      <p style="margin:0.08em 0;">(4b) <span class="tonic">*Spinach</span> is a vegetable. <span style="color:#6c757d;">(in discussion of vegetables)</span></p>
+    </div>
+  </div>
+
+  <div class="def-box" style="margin-top:0.25em;padding:0.25em 0.85em;font-size:0.66em;background:#f4f4f8;border-left-color:#6c757d;">
+    <div class="term" style="font-size:1em;margin-bottom:0.1em;">Two exceptions to "last lexical item" default</div>
+    <p style="margin:0.05em 0;"><strong>(i) Intransitive V or VP with non-human subject:</strong></p>
+    <p style="margin:0.05em 0;padding-left:1em;">(5a) Our <span class="tonic">*town</span> is on an upswing. &nbsp;&nbsp; (5b) The <span class="tonic">*bird</span> flew away. (cf. the man <span class="tonic">*swore</span>)</p>
+    <p style="margin:0.1em 0 0.05em;"><strong>(ii) Sentential adverbials &amp; adverbials of time in final position:</strong></p>
+    <p style="margin:0.05em 0;padding-left:1em;">(6a) I don't watch <span class="tonic">*TV</span> typically. &nbsp;&nbsp; (6b) It wasn't a very nice <span class="tonic">*day</span> unfortunately.</p>
+  </div>
+
+  <aside class="notes">
+    교재 §7.8 ¶4-7 (p. 196). Tonic accent의 default(마지막 lexical item)에서 앞으로 shift 가능. (1) Emphasis/contrast — 2b "somewhat" 강조. (2) Information unit 변경 — 3, 4a/4b. spinach 예시: vegetable이 카테고리 명사면 neutral은 vegetable에 tonic, but vegetable 종류 논의 시 spinach에 tonic.
+    두 예외: (i) intransitive V + non-human subject — town, bird; (ii) sentential/time adverbials final — TV/typically, day/unfortunately.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 9 — §7.8 (3/5): FALLING INTONATION
+══════════════════════════════════════════════ -->
+<section>
+  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— (3/6) Falling Intonation <span class="pitch-arrow">↘</span></span></h2>
+  <div class="def-box" style="padding:0.13em 0.85em;font-size:0.7em;">
+    <p style="margin:0.06em 0;"><strong>Falling contour</strong> = expresses <em>finality</em> / completion. Two types: <strong>full (long) fall</strong> vs <strong>short (low) fall</strong>. (Yavaš pp. 196-197)</p>
+  </div>
+
+  <div class="two-col" style="margin-top:0.3em;gap:1em;align-items:start;font-size:0.66em;">
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">Full (long) fall <span class="pitch-arrow">↘↘</span></div>
+      <p style="margin:0.05em 0;">Unmarked for declaratives with <strong>clear finality</strong> (nothing more to be said):</p>
+      <p style="margin:0.05em 0;padding-left:0.8em;">(7) I am leaving the house right now.</p>
+      <p style="margin:0.15em 0 0.05em;">Common in <strong>emotional involvement</strong>:</p>
+      <p style="margin:0.05em 0;padding-left:0.8em;">(8) I'm so glad. <span style="color:#6c757d;">(genuine enthusiasm)</span></p>
+      <p style="margin:0.15em 0 0.05em;">Also typical of <strong>wh-questions</strong>:</p>
+      <p style="margin:0.05em 0;padding-left:0.8em;">(9) Which way did she go?</p>
+    </div>
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
+      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.15em;">Short (low) fall <span class="pitch-arrow">↘</span></div>
+      <p style="margin:0.05em 0;">Indicates a <strong>detached mood</strong> — neutral, perfunctory attitude:</p>
+      <p style="margin:0.2em 0;padding-left:0.8em;">(10) Whatever you say. <span style="color:#6c757d;">("I agree with it")</span></p>
+      <p style="margin:0.2em 0 0;color:#6c757d;font-size:0.92em;font-style:italic;">→ Contrast: long fall = involved/definitive; short fall = detached/neutral.</p>
+    </div>
+  </div>
+
+  <aside class="notes">
+    교재 §7.8 ¶8-10 (pp. 196-197). Falling intonation = finality. Full (long) fall = declarative finality + emotional involvement + wh-questions. Short (low) fall = detached, neutral mood. (10) "Whatever you say" — short fall로 "I agree with it" 의미.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 10 — §7.8 (4/5): RISING INTONATION
+══════════════════════════════════════════════ -->
+<section>
+  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— (4/6) Rising Intonation <span class="pitch-arrow">↗</span></span></h2>
+  <div class="def-box" style="padding:0.13em 0.85em;font-size:0.7em;">
+    <p style="margin:0.06em 0;"><strong>Rising contour</strong> = non-definiteness, lack of assurance, incompletion. Addressee-oriented; degree of rise matches degree of uncertainty. (Yavaš pp. 197-198)</p>
+  </div>
+
+  <div class="two-col" style="margin-top:0.25em;gap:1em;align-items:start;font-size:0.62em;">
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">High (long) rise <span class="pitch-arrow">↗↗</span></div>
+      <p style="margin:0.05em 0;">More marked — <strong>puzzlement, unbelieving</strong> attitude.</p>
+      <p style="margin:0.1em 0 0.05em;"><strong>Yes-no questions</strong> (typical or statement order):</p>
+      <p style="margin:0.05em 0;padding-left:0.8em;">(11a) Is this a joke?</p>
+      <p style="margin:0.05em 0;padding-left:0.8em;">(11b) This is a joke?</p>
+      <p style="margin:0.1em 0 0;color:#6c757d;font-size:0.92em;">"Are you sure?", "This is hard to believe."</p>
+    </div>
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
+      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.15em;">Low (short) rise <span class="pitch-arrow">↗</span> &nbsp;<small style="color:#666;">(more common)</small></div>
+      <table style="font-size:0.95em;width:100%;line-height:1.4;">
         <tbody>
-          <tr><td><strong>noun + noun</strong> (most common)</td><td><em>phónecard, mátchbox, téapot, póstman</em></td></tr>
-          <tr><td>adjective + noun</td><td><em>whíte house</em></td></tr>
-          <tr><td>verb + noun</td><td><em>stóp watch</em></td></tr>
-          <tr><td>particle/adverb + noun</td><td><em>óverdose, únderwear</em></td></tr>
+          <tr><td><strong>Yes-no Q</strong></td><td>(12) Has your uncle left already?</td></tr>
+          <tr><td><strong>Echo Q</strong></td><td>(13) Where will I work? <small>(I haven't thought yet)</small></td></tr>
+          <tr><td><strong>Repetition Q</strong></td><td>(14) What are you doing? <small>(I haven't heard you)</small></td></tr>
+          <tr><td><strong>Open-choice alt.</strong></td><td>(15) Would you like a paper or magazine? <small>(something to read)</small></td></tr>
+          <tr><td><strong>Tag Q (uncertain)</strong></td><td>(16) She usually comes at ten, doesn't she?</td></tr>
+          <tr><td><strong>List items</strong></td><td>(17) I need to buy a shirt, a jacket, and a tie.</td></tr>
+          <tr><td><strong>Readiness Q</strong></td><td>(18) Do you know when the first kidney transplant was?</td></tr>
         </tbody>
       </table>
-      <h3 style="font-size:1em;margin:0.3em 0 0.1em;">Adjective compounds (first element)</h3>
-      <p style="margin:0.1em 0;font-size:0.95em;">noun+adj: <em>nátionwide, séasick, bédridden</em> · adj+adj: <em>réd hot</em> · prep+adj: <em>óverripe</em></p>
-    </div>
-    <div>
-      <h3 style="font-size:1em;margin-bottom:0.1em;">Verb compounds — note the exception!</h3>
-      <table class="data-table" style="font-size:0.95em;width:100%;">
-        <thead><tr><th>Type</th><th>Examples</th><th>Stress</th></tr></thead>
-        <tbody>
-          <tr><td>noun + verb</td><td><em>báby-sit, spóon-feed, cár wash</em></td><td>1st</td></tr>
-          <tr><td>adj + verb</td><td><em>drý-clean</em></td><td>1st</td></tr>
-          <tr><td>verb + verb</td><td><em>drṕ-kick</em></td><td>1st</td></tr>
-          <tr><td><strong>particle + verb</strong> ⚠️</td><td><em>undertáke, overslép</em></td><td><strong>2nd</strong></td></tr>
-        </tbody>
-      </table>
-      <h3 style="font-size:1em;margin:0.3em 0 0.1em;">Complex &amp; multi-element compounds</h3>
-      <p style="margin:0.1em 0;font-size:0.95em;"><strong>Complex</strong>: noun-compound + noun → 1st element stress<br>
-      "ássembly line worker", "hígh school student", "píck up truck"</p>
-      <p style="margin:0.1em 0;font-size:0.95em;">Can extend: "<em>hígh school student essay</em>", "<em>ássembly line worker dispute</em>".</p>
-      <p style="margin:0.1em 0;font-size:0.95em;"><strong>3+ elements</strong>: <em>flý-by-night, forgét-me-not, jáck-in-the-box, móther-in-law</em> — almost always first element stress.</p>
     </div>
   </div>
+
   <aside class="notes">
-    교재 §7.6 (pp.191–192). 합성어 강세 패턴.
-    Noun compounds (90%): 모두 first element 강세. 4 types: noun+noun (가장 흔함, phonecard, matchbox, teapot, postman), adj+noun (white house), verb+noun (stop watch), particle+noun (overdose, underwear). 예외: place-names (Lake Erie, Mount Sinai, Great Britain).
-    Adjective compounds: first element 강세. noun+adj (nationwide, seasick, bedridden), adj+adj (red hot), prep+adj (overripe).
-    Verb compounds: 처음 3 type은 first element 강세 (baby-sit, dry-clean, drop-kick). **마지막 type (particle+verb)만 second element 강세** — undertake, oversleep — 중요한 예외.
-    Complex compounds: noun compound + noun → first 강세 유지. assembly line worker, high school student, pick up truck. 더 길게도 가능: high school student essay.
-    3+ element: fly-by-night, forget-me-not, jack-in-the-box, mother-in-law — almost always first 강세.
+    교재 §7.8 ¶11-14 (pp. 197-198). Rising = non-definiteness. High/long rise = puzzlement (11a/b "Is this a joke?"). Low/short rise = 더 common, 다양한 컨텍스트 — yes-no Q, echo Q, repetition Q, open-choice alternative (cf. closed choice = falling), tag Q (uncertainty), list items prior to last, readiness for new info.
   </aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE 5 — NUCLEAR/TONIC ACCENT
+     SLIDE 11 — §7.8 (5/6): COMBINED PATTERNS + LEVEL
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— Nuclear Stress / Tonic Accent</span></h2>
-  <p style="font-size:0.8em;">In a phrase or utterance, one syllable carries the <strong>most prominent stress</strong> — the <em>nuclear stress</em> (or tonic accent).</p>
-  <div class="intonation-box" style="padding:0.5em 0.9em;">
-    <p>"Anna <span class="tonic">BOUGHT</span> a new car."</p>
-    <p>→ Focus on the <strong>action</strong> (contrast: she didn't steal it)</p>
-    <p style="margin-top:0.4em;">"Anna bought a <span class="tonic">NEW</span> car."</p>
-    <p>→ Focus on <strong>newness</strong> (not used)</p>
-    <p style="margin-top:0.4em;">"Anna bought a new <span class="tonic">CAR</span>."</p>
-    <p>→ Focus on the <strong>object</strong> (not a bike)</p>
+  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— (5/6) Combined Patterns &amp; Level</span></h2>
+  <div class="def-box" style="padding:0.13em 0.85em;font-size:0.7em;">
+    <p style="margin:0.06em 0;">Beyond pure falling and rising, English uses three more patterns: <strong>fall-rise</strong>, <strong>rise-fall</strong>, and <strong>level</strong>. (Yavaš pp. 198–199)</p>
   </div>
+
+  <div class="def-box" style="margin-top:0.3em;padding:0.3em 0.85em;font-size:0.68em;background:#fff3cd;border-left-color:#c77b2e;">
+    <div class="term" style="font-size:1em;color:#c77b2e;margin-bottom:0.1em;">Fall–rise <span class="pitch-arrow">↘↗</span></div>
+    <p style="margin:0.06em 0;"><strong>Agreement with reservation / hesitation</strong> — speaker accepts but with caveat:</p>
+    <p style="margin:0.06em 0;padding-left:0.8em;">(19) You can do it that way. <span style="color:#6c757d;">("I don't think you should")</span></p>
+  </div>
+
+  <div class="def-box" style="margin-top:0.25em;padding:0.3em 0.85em;font-size:0.68em;background:#e8f4fd;border-left-color:#0077b6;">
+    <div class="term" style="font-size:1em;color:#0077b6;margin-bottom:0.1em;">Rise–fall <span class="pitch-arrow">↗↘</span></div>
+    <p style="margin:0.06em 0;"><strong>Dramatic equivalent of simple fall</strong> — strong feelings of approval or disapproval:</p>
+    <p style="margin:0.06em 0;padding-left:0.8em;">(20a) That's wonderful. &nbsp;&nbsp;(20b) You can't do that.</p>
+  </div>
+
+  <div class="def-box" style="margin-top:0.25em;padding:0.3em 0.85em;font-size:0.68em;background:#f4f4f8;border-left-color:#6c757d;">
+    <div class="term" style="font-size:1em;color:#444;margin-bottom:0.1em;">Level <span class="pitch-arrow" style="color:#666;">→</span></div>
+    <p style="margin:0.06em 0;"><strong>Bored or sarcastic</strong> attitude:</p>
+    <p style="margin:0.06em 0;padding-left:0.8em;">(21) A: John will be at the party. &nbsp; B: Great.</p>
+  </div>
+
   <aside class="notes">
-    핵 강세(nuclear stress) 또는 조성 강세(tonic accent)는 발화에서 가장 두드러진 강세입니다.
-    화자가 '새로운 정보'나 '대조'를 강조하고 싶은 부분에 핵 강세를 배치합니다.
-    이는 담화·화용론적 맥락과 밀접하게 연관되며, 같은 문장이라도 강세 위치에 따라 전달되는 의미가 달라집니다.
-    활동: 같은 문장을 다른 위치에 강세를 주어 읽고 의미 차이를 느껴보게 하세요.
+    교재 §7.8 ¶15-16 (pp. 198-199). 세 가지 combined/level patterns: (1) Fall-rise — agreement with reservation (19 "You can do it that way" = "but I don't think you should"). (2) Rise-fall — dramatic simple fall, 강한 approval/disapproval (20a/20b "That's wonderful" / "You can't do that"). (3) Level — bored/sarcastic (21 "Great"). 다음 슬라이드에서 "All right" 7가지 reading 종합.
   </aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE 6 — STRESS SHIFT (RHYTHM RULE)
+     SLIDE 12 — §7.8 (6/6): "ALL RIGHT" 7-PATTERN SUMMARY
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>Stress Shift <span style="font-size:0.65em;color:#666;font-weight:400;">— The Rhythm Rule (Supplementary)</span></h2>
-  <p style="font-size:0.8em;">When two primary stresses are adjacent (<em>stress clash</em>), English shifts one stress to avoid the clash:</p>
-  <div class="two-col" style="align-items:start; gap:0.8em; font-size:0.75em;">
-    <div>
-      <h3>Isolated word → Phrase</h3>
-      <div class="example-box" style="font-size:0.85em">
-        <p><em>thirteen</em> alone: <span class="ipa">ˌthirˈTEEN</span></p>
-        <p><em>thirteen men</em>: <span class="ipa">ˈTHIRteen ˌMEN</span> ← shift!</p>
-        <hr style="border:none; border-top:1px solid #ddd; margin:0.4em 0"/>
-        <p><em>Chinese</em> alone: <span class="ipa">ˌChinˈESE</span></p>
-        <p><em>Chinese food</em>: <span class="ipa">ˈCHInese ˌFOOD</span></p>
-      </div>
-    </div>
-    <div>
-      <h3>Why Shift?</h3>
-      <div class="rule-box" style="font-size:0.82em">
-        <pre>Stress Clash: *ˌthirˈTEEN ˈMEN
-               ↑      ↑ ↑ — clash!
-
-Rhythm Rule: ˈTHIRteen ˌMEN
-              ↑        ↑ — alternating ✓</pre>
-      </div>
-    </div>
+  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— (6/6) "All right": 7-Pattern Summary</span></h2>
+  <div class="def-box" style="padding:0.13em 0.85em;font-size:0.72em;">
+    <p style="margin:0.06em 0;">Putting all intonation patterns together — the same words "<strong>All right</strong>" convey <strong>seven different meanings</strong> depending on contour. (Yavaš p. 199)</p>
   </div>
+  <table style="width:100%;font-size:0.66em;line-height:1.5;border-collapse:collapse;margin-top:0.25em;">
+    <thead>
+      <tr>
+        <th style="background:#2d6a4f;color:white;padding:0.25em 0.4em;width:12%;text-align:center;">#</th>
+        <th style="background:#2d6a4f;color:white;padding:0.25em 0.4em;width:28%;text-align:center;">Pattern</th>
+        <th style="background:#2d6a4f;color:white;padding:0.25em 0.4em;text-align:left;">Interpretation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22a)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Short fall <span class="pitch-arrow">↘</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"I agree with it" (factual)</td></tr>
+      <tr style="background:#fafafa;"><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22b)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Long fall <span class="pitch-arrow">↘↘</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">Enthusiastic acceptance</td></tr>
+      <tr><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22c)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Sharp rise <span class="pitch-arrow">↗↗</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"No, that is not acceptable"</td></tr>
+      <tr style="background:#fafafa;"><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22d)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Low rise <span class="pitch-arrow">↗</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"I am listening, go on" / "Is it all right?"</td></tr>
+      <tr><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22e)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Fall–rise <span class="pitch-arrow">↘↗</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"Yes, but I am doubtful" (reservation)</td></tr>
+      <tr style="background:#fafafa;"><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22f)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Rise–fall <span class="pitch-arrow">↗↘</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">More dramatic than (22b); great enthusiasm, emphatic</td></tr>
+      <tr><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22g)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Level <span class="pitch-arrow" style="color:#666;">→</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"How uninspiring!"</td></tr>
+    </tbody>
+  </table>
+
   <aside class="notes">
-    강세 충돌 회피(stress clash avoidance)는 영어 운율론의 핵심 원칙 중 하나입니다.
-    'thirteen men'에서 thirteen의 2차 강세 음절 'thir-'이 앞으로 이동하여 1차 강세가 됩니다.
-    이는 영어의 리듬적 교대(iambic → trochaic 전환)를 보여주며,
-    Liberman & Prince (1977)의 Metrical Phonology에서 이론화되었습니다.
-    이 현상은 구어 영어에서 매우 자주 나타나므로 실용적으로 중요합니다.
+    교재 §7.8 ¶17 (p. 199). "All right" 7가지 reading 종합: short fall (factual agreement) / long fall (enthusiastic) / sharp rise (rejection) / low rise (continuing/check) / fall-rise (doubtful) / rise-fall (emphatic enthusiasm) / level (uninspiring). 강세는 같은 말이지만 intonation으로 7가지 다른 의미 전달 — intonation의 표현력 종합 예시.
   </aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE 7 — AmE vs BrE STRESS
+     SLIDE 12 — §7.9: VARIATIONS AMONG VARIETIES
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§7.7 Differences between AmE and BrE <span style="font-size:0.65em;color:#666;font-weight:400;">— Stress Differences (5 Groups)</span></h2>
-  <div class="two-col" style="font-size:0.6em;gap:1em;align-items:start;">
-    <div>
-      <div class="card" style="border-top:3px solid #c1121f;padding:0.3em 0.6em;font-size:0.95em;">
-        <h3 style="font-size:1em;margin:0.1em 0;">(a) Two-syllable French nouns: AmE = ult / BrE = penult</h3>
-        <p style="margin:0.1em 0;font-size:0.92em;"><em>brochúre, ballét, café, chatéau, cliché, cornét, garáge, premíer, salón, soufflé, valét, vermóuth</em></p>
-      </div>
-      <div class="card" style="margin-top:0.3em;border-top:3px solid #0077b6;padding:0.3em 0.6em;font-size:0.95em;">
-        <h3 style="font-size:1em;margin:0.1em 0;">(b) Reverse pattern: AmE initial / BrE final</h3>
-        <p style="margin:0.1em 0;font-size:0.92em;"><em>wéekend, pótluck, príncess, récess, résearch, áddress, ínquiry, móustache</em></p>
-        <p style="margin:0.1em 0;font-size:0.92em;color:#555;">Longer: <em>ártisan, Pórtuguese, cígarette, mágazine, cóntroversy</em></p>
-      </div>
-      <div class="card" style="margin-top:0.3em;border-top:3px solid #2d6a4f;padding:0.3em 0.6em;font-size:0.95em;">
-        <h3 style="font-size:1em;margin:0.1em 0;">(c) Two-syllable -ate verbs: AmE initial / BrE final</h3>
-        <p style="margin:0.1em 0;font-size:0.92em;"><em>cástrate, crémate, díctate, dónate, frústrate, mígrate, púlsate, rótate, tránslate, vácate, víbrate, lócate</em></p>
-        <p style="margin:0.1em 0;font-size:0.92em;color:#555;">Both final: <em>confláte, creáte, debáte, defláte, eláte, reláte</em></p>
-      </div>
-    </div>
-    <div>
-      <div class="card" style="border-top:3px solid #c77b2e;padding:0.3em 0.6em;font-size:0.95em;">
-        <h3 style="font-size:1em;margin:0.1em 0;">(d) -ary / -ery / -ory: AmE secondary / BrE reduced</h3>
-        <p style="margin:0.1em 0;font-size:0.92em;"><em>sécondary</em> [sɛ́kəndɛ̀ɹi] AmE / [sɛ́kəndɹi] BrE</p>
-        <p style="margin:0.1em 0;font-size:0.92em;"><em>nécessary, díctionary, mílitary, secrétary, ánniversary, dórmitory, mándatory, contémporary</em></p>
-        <p style="margin:0.1em 0;font-size:0.92em;color:#555;">Same with -mony: <em>ácrimony, álimony, céremony, mátrimony, téstimony</em></p>
-      </div>
-      <div class="card" style="margin-top:0.3em;border-top:3px solid #6a0572;padding:0.3em 0.6em;font-size:0.95em;">
-        <h3 style="font-size:1em;margin:0.1em 0;">(e) -ile: REVERSE — AmE reduced / BrE secondary</h3>
-        <p style="margin:0.1em 0;font-size:0.92em;"><em>ágile</em> [ǽdʒəl] AmE / [ǽdʒàɪl] BrE</p>
-        <p style="margin:0.1em 0;font-size:0.92em;"><em>dócile, fértile, frágile, fútile, hóstile, móbile, míssile, stérile, vérsatile, vírile</em></p>
-        <p style="margin:0.1em 0;font-size:0.92em;color:#555;">Both with [aɪ]: <em>profile, reptile, senile</em></p>
-      </div>
-      <div class="def-box" style="margin-top:0.3em;padding:0.25em 0.7em;background:#e8f4fd;border-left-color:#0077b6;font-size:0.9em;">
-        <strong>Beyond AmE/BrE</strong>: Indian, Hong Kong, Singapore English stress -ate, -ize on the final syllable (alternate, educate, terrorize). Indian/Singapore English also tends toward fewer vowel reductions ("syllable-timed" rhythm).
-      </div>
-    </div>
+  <h2>§7.9 Variations among the Varieties <span style="font-size:0.65em;color:#666;font-weight:400;">— Intonation across Englishes</span></h2>
+  <div class="def-box" style="padding:0.13em 0.85em;font-size:0.7em;">
+    <p style="margin:0.06em 0;">Significant intonation differences exist among varieties of English. (Yavaš pp. 199-200)</p>
   </div>
-  <aside class="notes">
-    교재 §7.7 (pp.192–195). AmE vs BrE 강세 차이 5개 체계적 그룹:
-    (a) 2음절 프랑스어 차용 명사: AmE는 ult, BrE는 penult — brochure, ballet, café, garage 등.
-    (b) 역방향: AmE initial, BrE final — weekend, princess, research, address 등; 긴 단어 — artisan, Portuguese, cigarette, magazine.
-    (c) -ate로 끝나는 2음절 동사: AmE initial, BrE final — castrate, dictate, donate, rotate, translate, vibrate. 단, conflate/create/debate 등은 양쪽 모두 final.
-    (d) -ary/-ery/-ory: AmE는 secondary stress on penult ([sékəndɛ̀ɹi]), BrE는 reduced vowel ([sékəndɹi]) — necessary, dictionary, military, secretary, dormitory, mandatory. 같은 패턴 -mony: acrimony, ceremony, testimony.
-    (e) -ile은 REVERSE: AmE는 reduced ([ǽdʒəl]), BrE는 secondary stress with [aɪ] — agile, docile, fertile, fragile, hostile, mobile, missile, sterile, versatile. 단 profile/reptile/senile은 양쪽 [aɪ].
-    추가: Indian/Hong Kong/Singapore English는 -ate/-ize 마지막 음절 강세 (alternate, educate, terrorize). 모음 약화도 적음 — "syllable-timed" 리듬 경향.
-    학생들에게: EFL 환경에서는 어느 변종을 표준으로 삼을지 명확히. 한국 교육은 대체로 AmE 중심.
-  </aside>
-</section>
 
-<!-- ══════════════════════════════════════════════
-     SLIDE 8 — SENTENCE STRESS: NEW vs. GIVEN
-══════════════════════════════════════════════ -->
-<section>
-  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— Sentence Stress: New vs. Given Information</span></h2>
-  <div class="two-col" style="align-items:start">
-    <div>
-      <h3>Default: Rightmost Content Word</h3>
-      <div class="intonation-box" style="font-size:0.82em">
-        <p>Q: "What happened?"</p>
-        <p>A: "Anna bought a new <span class="tonic">CAR</span>."</p>
-      </div>
-      <p style="font-size:0.82em; margin-top:0.4em">Rightmost new information = default nuclear stress position</p>
-    </div>
-    <div>
-      <h3>Contrastive Focus</h3>
-      <div class="intonation-box" style="font-size:0.82em">
-        <p>Q: "Did <em>John</em> buy a new car?"</p>
-        <p>A: "No, <span class="tonic">ANNA</span> bought a new car."</p>
-      </div>
-      <p style="font-size:0.82em; margin-top:0.4em">Given info is <em>deaccented</em>; new/contrasted info receives nucleus</p>
-    </div>
-  </div>
-  <div class="card" style="margin-top:0.6em; font-size:0.85em">
-    <strong>Given information</strong> (already mentioned in discourse) is typically <em>unstressed or deaccented</em>.<br/>
-    <strong>New information</strong> receives the <strong>nuclear stress</strong> (tonic accent).
-  </div>
-  <aside class="notes">
-    문장 강세는 담화 맥락에 따라 결정됩니다. 기본적으로 가장 오른쪽의 새로운 내용어에 핵 강세가 오지만,
-    대조·초점이 있을 때는 화자가 강조하고 싶은 부분에 핵 강세를 이동시킵니다.
-    이미 언급된 정보(given information)는 대개 약화(deaccentuation)됩니다.
-    이를 '정보 구조(information structure)' 또는 '초점-배경 구분(focus-background partition)'이라고 합니다.
-    실제 대화에서 강세 오배치는 의사소통 문제를 일으킬 수 있으므로 교육적으로 중요합니다.
-  </aside>
-</section>
-
-<!-- ══════════════════════════════════════════════
-     SLIDE 9 — INTONATION: FALLING TONE
-══════════════════════════════════════════════ -->
-<section>
-  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— Falling Tone (↘)</span></h2>
-  <p style="font-size:0.75em;">A <strong>falling tone</strong> (high-to-low pitch movement on the tonic syllable) is used for:</p>
-  <div class="two-col" style="align-items:start; font-size:0.72em;">
-    <div>
-      <h3>Uses of Falling Tone</h3>
-      <ul>
-        <li><strong>Statements</strong> — conveying finality, certainty</li>
-        <li><strong>WH-questions</strong> — genuine information-seeking</li>
-        <li><strong>Commands/Imperatives</strong></li>
-        <li><strong>Exclamations</strong></li>
+  <div class="two-col" style="margin-top:0.2em;gap:0.8em;align-items:start;font-size:0.58em;">
+    <div class="def-box" style="padding:0.25em 0.6em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
+      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.1em;">Specific varieties</div>
+      <ul style="margin:0.05em 0;padding-left:1.2em;line-height:1.5;">
+        <li><strong>Hawaii</strong>: yes-no Q typical terminal high rise → <em>earlier rise + fall</em> ("Would you like some tea?")</li>
+        <li><strong>Welsh E.</strong>: tag Q with <em>rise-fall</em> (more emphatic)</li>
+        <li><strong>Southern AmE</strong>: rising pitches frequency — "We played <em>gámes</em> and went for <em>híkes</em> and had the most <em>wónderful tíme</em>." (Bolinger 1998)<br><span style="color:#6c757d;font-size:0.92em;">→ Asking for reassurance ("Are you paying attention?"). Extended to routines ("From Texas"). <strong>Australian E.</strong> shows the same.</span></li>
       </ul>
     </div>
-    <div>
-      <div class="intonation-box" style="padding:0.4em 0.8em;">
-        <p>"She's LEAVing tomorrow. ↘"</p>
-        <p class="pitch-high">HIGH ↘ low</p>
-        <p style="margin-top:0.3em;">"WHERE are you going? ↘"</p>
-        <p class="pitch-high">HIGH ↘ low</p>
-        <p style="margin-top:0.3em;">"SIT down! ↘"</p>
-        <p class="pitch-high">HIGH ↘ low</p>
-      </div>
+    <div class="def-box" style="padding:0.25em 0.6em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.1em;">AmE vs BE — main difference</div>
+      <p style="margin:0.05em 0;">BE: less use of high initial pitches, more use of <strong>final ones</strong> in yes-no questions.</p>
+      <p style="margin:0.1em 0;"><em>"Would you like some coffee?"</em></p>
+      <p style="margin:0.05em 0;padding-left:0.8em;">AmE: <span class="pitch-arrow">↗</span> (rising)</p>
+      <p style="margin:0.05em 0;padding-left:0.8em;">BE: different contour / no final rise</p>
+      <p style="margin:0.15em 0 0;color:#6c757d;font-size:0.92em;"><strong>Cross-cultural misimpressions</strong>: AmE rising → BE sees as "too businesslike"; BE → AmE sees as "over-cordial", "unduly concerned" (Bolinger 1998).</p>
     </div>
   </div>
-  <p style="font-size:0.75em; color:#555; margin-top:0.1em">Falling tone signals the speaker has <em>completed</em> the thought and expects no elaboration from the listener.</p>
+
+  <div class="def-box" style="margin-top:0.2em;padding:0.2em 0.85em;font-size:0.56em;background:#f4f4f8;border-left-color:#6c757d;">
+    <div class="term" style="font-size:1em;margin-bottom:0.08em;">Bailey (1983) four-variety contrast — "Is your mother feeling all right?"</div>
+    <table style="font-size:0.95em;width:100%;line-height:1.5;">
+      <tbody>
+        <tr><td style="width:22%;"><strong>(1) British E.</strong></td><td>condescending</td></tr>
+        <tr><td><strong>(2) Irish E.</strong></td><td>insultingly incredulous</td></tr>
+        <tr><td><strong>(3) Northern US</strong></td><td>repetitive</td></tr>
+        <tr><td><strong>(4) Southern US</strong></td><td>unaccountably surprised</td></tr>
+      </tbody>
+    </table>
+    <p style="margin:0.15em 0 0;color:#6c757d;font-size:0.92em;">Same words, different intonation contours → very different impressions on outsiders. (For details: Bolinger 1989)</p>
+  </div>
+
   <aside class="notes">
-    하강조(falling tone)는 영어의 가장 기본적인 억양 패턴입니다.
-    평서문: 정보를 완결적으로 전달 ("She's leaving tomorrow.")
-    WH 의문문: 정보를 묻지만 완결적 답을 기대 ("Where are you going?")
-    명령문: 지시를 내림 ("Sit down!")
-    감탄문: 강한 감정 표현 ("What a surprise!")
-    핵 강세 음절에서 음고가 높게 시작하여 뒤로 갈수록 낮아집니다.
+    교재 §7.9 ¶1-5 (pp. 199-200). Variety별 intonation 차이.
+    - Hawaii: yes-no Q terminal high rise → earlier rise + fall.
+    - Welsh E.: tag Q rise-fall (emphatic).
+    - Southern AmE: rising pitches 빈도 ↑ (Bolinger 1998). reassurance 요청. Routine utterances로 확장 ("From Texas"). Australian E.도 동일.
+    - AmE vs BE: BE는 high initial pitches 덜 사용, final ones (yes-no Q) 더. Cross-cultural misimpressions — AmE rising "too businesslike", BE "over-cordial".
+    - Bailey 1983: 4 varieties (British/Irish/Northern US/Southern US)의 같은 sentence 다른 contour → outsider impressions: condescending/incredulous/repetitive/surprised.
   </aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE 10 — INTONATION: RISING TONE
+     SLIDE 13 — PRACTICE (1/2): YAVAŠ EX. 4 — TONIC ACCENT
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— Rising Tone (↗)</span></h2>
-  <p style="font-size:0.75em;">A <strong>rising tone</strong> (low-to-high pitch movement) signals <em>incompleteness</em> or <em>uncertainty</em>:</p>
-  <div class="two-col" style="align-items:start; font-size:0.72em;">
-    <div>
-      <h3>Uses of Rising Tone</h3>
-      <ul>
-        <li><strong>Yes/No questions</strong></li>
-        <li><strong>Non-final list items</strong></li>
-        <li><strong>Non-final clauses</strong> (more to come)</li>
-        <li><strong>Polite requests</strong></li>
-        <li><strong>Tag questions</strong> (genuine uncertainty)</li>
-      </ul>
-    </div>
-    <div>
-      <div class="intonation-box" style="padding:0.4em 0.8em;">
-        <p>"Are you COming? ↗"</p>
-        <p class="pitch-low">low ↗ HIGH</p>
-        <p style="margin-top:0.3em;">"I'll have coffee ↗, tea ↗, and juice. ↘"</p>
-        <p style="margin-top:0.3em;">"When you arRIVE ↗, call me. ↘"</p>
-      </div>
-    </div>
+  <h2>Practice <span style="font-size:0.65em;color:#666;font-weight:400;">— (1/2) Yavaš Ex. 4: Tonic Accent</span></h2>
+
+  <div class="practice-q" style="font-size:0.72em;margin-top:0.3em;">
+    <div class="practice-header" style="font-size:1em;margin-bottom:0.2em;">Ex. 4 (p. 203) — Where is the tonic accent in each (neutral, non-contrastive)?</div>
+    <button class="reveal-btn" onclick="toggleAnswers(this)">Show Answers</button>
+    <table style="font-size:0.85em;line-height:1.5;width:100%;margin-top:0.2em;">
+      <thead>
+        <tr>
+          <th style="width:38%;">Utterance</th>
+          <th style="width:15%;">Tonic accent</th>
+          <th style="width:47%;text-align:left;">Why?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>(a) A: Are you coming to the movie? B: I have exams to <i>grade</i>.</td>
+          <td class="answer"><strong>grade</strong></td>
+          <td class="answer" style="text-align:left;">Default — last stressed lexical item (V)</td>
+        </tr>
+        <tr>
+          <td>(b) The dog <i>barked</i>.</td>
+          <td class="answer"><strong>dog</strong></td>
+          <td class="answer" style="text-align:left;"><strong>Exception (i)</strong> — intransitive V + non-human subject → tonic on subject (cf. (5a/b))</td>
+        </tr>
+        <tr>
+          <td>(c) The building's falling <i>down</i>.</td>
+          <td class="answer"><strong>building</strong></td>
+          <td class="answer" style="text-align:left;"><strong>Exception (i)</strong> — intransitive VP + non-human subject (cf. "Our *town is on an upswing")</td>
+        </tr>
+        <tr>
+          <td>(d) I go to <i>Boston</i>, usually.</td>
+          <td class="answer"><strong>Boston</strong></td>
+          <td class="answer" style="text-align:left;"><strong>Exception (ii)</strong> — sentential adverbial "usually" skipped → tonic on last lexical (Boston)</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <p style="font-size:0.75em; color:#555; margin-top:0.1em">Rising tone invites a response or signals the utterance is not yet complete.</p>
+
   <aside class="notes">
-    상승조(rising tone)는 발화가 완결되지 않았거나 답변을 요구하는 신호입니다.
-    Yes/No 의문문: "Are you coming?" — 청자의 반응을 기대
-    비완결적 목록 항목: 더 나올 것이 있음을 신호
-    비완결 절: "When you arrive [↗], call me [↘]" — 조건절은 상승, 주절은 하강
-    주의: 영어 방언에 따라 상승조·하강조 사용 패턴이 다릅니다.
-    특히 일부 영어 변종(New Zealand English, 젊은 세대의 AmE "uptalking")에서 평서문에도 상승조를 씁니다.
+    교재 Yavaš (2020) Ch. 7 Ex. 4 (p. 203). Tonic accent 위치 — default (a: 마지막 lexical item; d: sentential adverbial "usually" 제외) vs 예외 (b, c: intransitive V + non-human subject → tonic on subject).
   </aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE 11 — PRAGMATICS OF INTONATION
+     SLIDE 14 — PRACTICE (2/2): YAVAŠ EX. 5 — INTONATION MATCHING
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— Pragmatics &amp; Combined Patterns</span></h2>
-  <div class="def-box" style="font-size:0.7em;padding:0.15em 0.7em;">
-    <p style="margin:0.1em 0;">Beyond simple falling/rising tones, English uses <strong>combined patterns</strong> (falling-rising, rising-falling) and <strong>level</strong> intonation. The <em>same words</em> with different intonation can convey radically different attitudes.</p>
+  <h2>Practice <span style="font-size:0.65em;color:#666;font-weight:400;">— (2/2) Yavaš Ex. 5: Intonation Patterns</span></h2>
+
+  <div class="practice-q" style="font-size:0.6em;margin-top:0.15em;">
+    <div class="practice-header" style="font-size:1em;margin-bottom:0.15em;">Ex. 5 (p. 203) — Match each utterance with one of: (a) low rise, (b) high long rise, (c) low fall, (d) long full fall, (e) fall–rise, (f) rise–fall</div>
+    <button class="reveal-btn" onclick="toggleAnswers(this)">Show Answers</button>
+    <table style="font-size:0.82em;line-height:1.32;width:100%;margin-top:0.15em;">
+      <thead>
+        <tr>
+          <th style="width:48%;">Utterance</th>
+          <th style="width:14%;">Answer</th>
+          <th style="width:38%;text-align:left;">Why?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>(i) I am so happy for you.</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Emotional involvement (cf. (8))</td></tr>
+        <tr><td>(ii) Would you like coffee or tea? (open choice)</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Open-choice alternative (cf. (15))</td></tr>
+        <tr><td>(iii) Would you like coffee or tea? (closed choice)</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Closed choice = falling</td></tr>
+        <tr><td>(iv) Where will the meeting be held? (info-seeking)</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">wh-Q, info-seeking (cf. (9))</td></tr>
+        <tr><td>(v) Where will the meeting be held? (I couldn't hear)</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Repetition Q (cf. (14))</td></tr>
+        <tr><td>(vi) What am I doing? I am trying to fix the TV.</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Rhetorical / finality</td></tr>
+        <tr><td>(vii) Her predictions came true. (clear finality)</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Clear finality (cf. (7))</td></tr>
+        <tr><td>(viii) Who was at the meeting?</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">wh-Q (cf. (9))</td></tr>
+        <tr><td>(ix) Whatever you say.</td><td class="answer"><strong>(c) low fall</strong></td><td class="answer" style="text-align:left;">Detached / perfunctory (cf. (10))</td></tr>
+        <tr><td>(x) We should look for him, shouldn't we?</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Tag Q with uncertainty (cf. (16))</td></tr>
+        <tr><td>(xi) You can take the old route. (agree with reservation)</td><td class="answer"><strong>(e) fall–rise</strong></td><td class="answer" style="text-align:left;">Agreement with reservation (cf. (19))</td></tr>
+        <tr><td>(xii) Are you out of your mind?</td><td class="answer"><strong>(b) high long rise</strong></td><td class="answer" style="text-align:left;">Puzzlement / unbelieving (cf. (11a/b))</td></tr>
+        <tr><td>(xiii) Did you wash the car yet?</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Yes-no Q (cf. (12a/b))</td></tr>
+        <tr><td>(xiv) I would have done it the same way, wouldn't you?</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Tag Q (cf. (16))</td></tr>
+      </tbody>
+    </table>
   </div>
-  <div class="two-col" style="margin-top:0.3em;font-size:0.62em;gap:1em;align-items:start;">
-    <div>
-      <h3 style="font-size:1em;">Combined patterns</h3>
-      <table class="data-table" style="font-size:0.95em;">
-        <thead><tr><th>Tone</th><th>Pragmatic meaning</th></tr></thead>
-        <tbody>
-          <tr><td>↘ Full / long fall</td><td>Definitive, complete (declaratives)</td></tr>
-          <tr><td>↘ Short / low fall</td><td>Detached, neutral, perfunctory</td></tr>
-          <tr><td>↗ High / long rise</td><td>Puzzlement, unbelieving</td></tr>
-          <tr><td>↗ Low / short rise</td><td>Continuation, polite question</td></tr>
-          <tr><td>↘↗ Falling-rising</td><td>Agreement <em>with reservation</em> ("Yes, but…")</td></tr>
-          <tr><td>↗↘ Rising-falling</td><td>Strong approval / disapproval (emphatic)</td></tr>
-          <tr><td>— Level</td><td>Bored, sarcastic, disinterested</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <h3 style="font-size:1em;">"All right" — 7 ways (Yavaš §7.8)</h3>
-      <table class="data-table" style="font-size:0.95em;">
-        <thead><tr><th>Tone</th><th>Meaning</th></tr></thead>
-        <tbody>
-          <tr><td><em>All right</em> (short fall)</td><td>"I agree with it" (factual)</td></tr>
-          <tr><td><em>All right</em> (long fall)</td><td>Enthusiastic acceptance</td></tr>
-          <tr><td><em>All right</em> (sharp rise)</td><td>"No, that is not acceptable"</td></tr>
-          <tr><td><em>All right</em> (low rise)</td><td>"I am listening, go on"</td></tr>
-          <tr><td><em>All right</em> (fall-rise)</td><td>"Yes, but I am doubtful"</td></tr>
-          <tr><td><em>All right</em> (rise-fall)</td><td>Great enthusiasm, emphatic</td></tr>
-          <tr><td><em>All right</em> (level)</td><td>"How uninspiring!"</td></tr>
-        </tbody>
-      </table>
-      <p style="margin-top:0.2em;font-size:0.92em;color:#6c757d;">→ Same words, 7 different attitudes — purely from intonation.</p>
-    </div>
-  </div>
+
   <aside class="notes">
-    억양의 화용론적 기능: 동일한 세그먼트 내용이라도 억양에 따라 완전히 다른 의미를 전달합니다.
-    특히 '비꼼(sarcasm)'은 영어에서 종종 억양(특히 지연 하강이나 상승-하강 복합 패턴)으로 표시됩니다.
-    이는 외국어 학습자들이 가장 어려워하는 부분 중 하나입니다.
-    억양은 모국어 화자들이 무의식적으로 처리하지만, L2 학습자에게는 명시적 교수가 필요합니다.
-    참고: Halliday(1967), Cruttenden(1997) 등 억양 연구의 고전적 문헌.
+    교재 Yavaš (2020) Ch. 7 Ex. 5 (p. 203). 14개 sentence를 6 intonation patterns에 matching. Falling (vi, vii, viii — finality; iv — wh-Q; iii — closed choice). Rising (ii — open-choice; v — repetition; x/xiii/xiv — yes-no/tag; xii — puzzlement high rise). Detached fall (ix). Combined (xi — fall-rise; i — long fall, emotional).
   </aside>
-</section>
-
-<!-- ══════════════════════════════════════════════
-     SLIDE 12 — TAG QUESTIONS INTONATION
-══════════════════════════════════════════════ -->
-<section>
-  <h2>§7.8 Intonation <span style="font-size:0.65em;color:#666;font-weight:400;">— Tag Questions</span></h2>
-  <p>Tag question intonation reveals the speaker's <em>epistemic stance</em>:</p>
-  <div class="two-col" style="align-items:start; gap:1.5em">
-    <div class="card" style="border-top:4px solid #c1121f">
-      <h3>Falling tag ↘ — <em>rhetorical</em></h3>
-      <div class="intonation-box" style="font-size:0.85em">
-        <p>"It's a beautiful day, isn't it? ↘"</p>
-      </div>
-      <p style="font-size:0.82em; margin-top:0.4em">Speaker <strong>knows</strong> the answer; expects agreement. The question is rhetorical.</p>
-    </div>
-    <div class="card" style="border-top:4px solid #0077b6">
-      <h3>Rising tag ↗ — <em>genuine question</em></h3>
-      <div class="intonation-box" style="font-size:0.85em">
-        <p>"She left already, didn't she? ↗"</p>
-      </div>
-      <p style="font-size:0.82em; margin-top:0.4em">Speaker is <strong>uncertain</strong>; genuinely seeking confirmation from the listener.</p>
-    </div>
-  </div>
-  <aside class="notes">
-    부가 의문문(tag question)의 억양이 의미를 결정짓는 좋은 예입니다.
-    하강 태그: 화자가 이미 알고 있으며 동의를 구함 (수사적)
-    상승 태그: 화자가 정말로 모르며 확인을 구함 (진정한 질문)
-    이 구별은 모국어 화자들이 자동적으로 처리하지만, L2 학습자들에게는 명시적으로 가르칠 필요가 있습니다.
-    역할극(role play) 활동: 두 사람이 대화를 나누며 태그 의문문을 연습하면 효과적입니다.
-  </aside>
-</section>
-
-<!-- ══════════════════════════════════════════════
-     SLIDE 13 — INTONATION ACROSS VARIETIES
-══════════════════════════════════════════════ -->
-<section>
-  <h2>§7.9 Variations among the Varieties <span style="font-size:0.65em;color:#666;font-weight:400;">— Intonation Across Varieties</span></h2>
-  <p style="font-size:0.58em;color:#6c757d;margin-bottom:0.3em;">Intonation patterns differ across dialects and varieties — and the same pattern may carry different social meanings (§7.9)</p>
-  <div class="two-col" style="font-size:0.56em;">
-    <div>
-      <h3>Regional Variation (AmE)</h3>
-      <div class="def-box" style="margin-bottom:0.4em;">
-        <p><b>Hawaiian English:</b> Terminal rise replaced by an earlier rise-fall pattern; high pitch arrives before the final syllable, giving a distinctively "musical" quality</p>
-      </div>
-      <div class="def-box" style="margin-bottom:0.4em;">
-        <p><b>Southern AmE:</b> Rising pitches used for <b>reassurance or solidarity</b> — what sounds like a question to Northern speakers may be a statement of comfort in the South</p>
-      </div>
-      <div class="def-box">
-        <p><b>AmE vs. BrE yes-no questions:</b> BrE RP — less frequent high initial pitch, more frequent final rise; AmE — high initial pitch more common</p>
-      </div>
-    </div>
-    <div>
-      <h3>Cross-Cultural Misinterpretation</h3>
-      <div class="def-box" style="margin-bottom:0.5em;">
-        <p><b>Welsh English:</b> Tag questions use a rise-fall contour (emphatic) — may sound sarcastic or over-insistent to other speakers</p>
-      </div>
-      <div class="def-box" style="margin-bottom:0.5em;">
-        <p><b>Bailey (1983)</b> — Listeners interpreted the same intonation pattern differently across varieties:</p>
-        <table style="font-size:0.9em;width:100%;border-collapse:collapse;margin-top:0.3em;">
-          <thead><tr style="background:#c1121f;color:#fff;">
-            <th style="padding:0.2em 0.4em;">Variety</th><th style="padding:0.2em 0.4em;">Interpretation</th>
-          </tr></thead>
-          <tbody>
-            <tr><td style="padding:0.2em 0.4em;">British</td><td style="padding:0.2em 0.4em;">Condescending</td></tr>
-            <tr><td style="padding:0.2em 0.4em;">Irish</td><td style="padding:0.2em 0.4em;">Insulting</td></tr>
-            <tr><td style="padding:0.2em 0.4em;">Northern US</td><td style="padding:0.2em 0.4em;">Repetitive</td></tr>
-            <tr><td style="padding:0.2em 0.4em;">Southern US</td><td style="padding:0.2em 0.4em;">Unaccountably surprised</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p style="font-size:0.88em;color:#6c757d;margin-top:0.3em;">Yavaş (2020) §7.9, p. 260–262</p>
-    </div>
-  </div>
-  <aside class="notes">억양은 방언마다 다르며, 같은 패턴이 다른 사회적 의미를 가질 수 있습니다. Bailey(1983)의 연구는 같은 억양 패턴이 듣는 사람의 문화적 배경에 따라 전혀 다르게 해석된다는 것을 보여줍니다. 이는 언어 간 의사소통에서 억양의 오해가 얼마나 흔한지를 설명합니다. 특히 한국어 화자들이 영어 억양을 잘못 해석하는 경우를 예로 들어 설명하면 효과적입니다.</aside>
-</section>
-
-<!-- ══════════════════════════════════════════════
-     SLIDE 14 — PRACTICE
-══════════════════════════════════════════════ -->
-<section>
-  <h2>Practice</h2>
-  <div class="two-col" style="font-size:0.59em;gap:1.2em;margin-top:0.1em;">
-    <div>
-      <div class="practice-header" style="font-size:1em;margin-bottom:0.3em;">Ex. 4 — Where is the tonic accent? (neutral reading)</div>
-      <table style="font-size:0.9em;width:100%;">
-        <thead><tr><th>Utterance</th><th>Tonic accent</th></tr></thead>
-        <tbody>
-          <tr><td>(a) "The dog barked."</td><td class="fragment"><strong>BARKED</strong> — new info, final content word</td></tr>
-          <tr><td>(b) "The building's falling down."</td><td class="fragment"><strong>DOWN</strong> — final new element</td></tr>
-          <tr><td>(c) "I go to Boston, usually."</td><td class="fragment"><strong>BOSTON</strong> — topic; <em>usually</em> is given info</td></tr>
-          <tr><td>(d) A: "Are you coming to the movie?" B: "I have exams to grade."</td><td class="fragment"><strong>GRADE</strong> — new info that explains absence</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div>
-      <div class="practice-header" style="font-size:1em;margin-bottom:0.3em;">Ex. 5 — Match the intonation pattern</div>
-      <p style="margin-bottom:0.3em;">Patterns: (a) low rise &nbsp;(b) high rise &nbsp;(c) low fall &nbsp;(d) long fall &nbsp;(e) fall-rise &nbsp;(f) rise-fall</p>
-      <table style="font-size:0.88em;width:100%;">
-        <thead><tr><th>Utterance</th><th>Pattern</th></tr></thead>
-        <tbody>
-          <tr><td>"I am so happy for you."</td><td class="fragment">(d) long fall — sincere</td></tr>
-          <tr><td>"Is this your book?" (neutral yes-no Q)</td><td class="fragment">(b) high rise</td></tr>
-          <tr><td>"That's... interesting." (reservation)</td><td class="fragment">(e) fall-rise — implied doubt</td></tr>
-          <tr><td>"Oh, really!" (sarcastic)</td><td class="fragment">(f) rise-fall — irony</td></tr>
-          <tr><td>"You can take the old route." (agree but…)</td><td class="fragment">(e) fall-rise</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <aside class="notes">교재 Yavaş(2020) Ch.7 Ex.4-5에서 선별한 문항들입니다. Ex.4: 핵 강세(tonic accent)는 보통 발화의 새로운 정보(new information)를 나타내는 마지막 내용어에 위치합니다. Ex.5: 하강 억양은 진술·명령에, 상승 억양은 의문에 주로 쓰입니다. Fall-rise는 유보적 동의나 함의(implication)를 나타냅니다. Rise-fall은 과장이나 아이러니에 사용됩니다. 학생들이 실제로 발화해보게 하세요.</aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
@@ -617,13 +652,12 @@ Rhythm Rule: ˈTHIRteen ˌMEN
     </div>
   </div>
   <aside class="notes">
-    한 학기 전체 내용을 색상별 카드로 정리했습니다. 기말 시험 전 총 복습 슬라이드로 활용하세요.
-    각 영역에서 가장 핵심적인 개념들을 강조하고, 학생들이 자신의 약점 영역을 파악할 수 있도록 돕습니다.
+    한 학기 전체 내용을 색상별 카드로 정리. 기말 시험 전 총 복습 슬라이드. 각 영역에서 가장 핵심적인 개념들을 강조.
   </aside>
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE 14 — FINAL EXAM PREVIEW
+     SLIDE 15 — FINAL EXAM PREVIEW
 ══════════════════════════════════════════════ -->
 <section>
   <h2>Final Exam Preview</h2>
@@ -644,56 +678,16 @@ Rhythm Rule: ˈTHIRteen ˌMEN
       <ul style="font-size:0.85em">
         <li>Review IPA chart (consonants &amp; vowels)</li>
         <li>Practice complementary distribution analysis</li>
-        <li>Know the Aspiration, Flapping, Nasalization, Tense/Lax distribution rules</li>
+        <li>Know Aspiration, Flapping, Nasalization, Tense/Lax rules</li>
         <li>Practice MOP syllabification with multi-syllable words</li>
         <li>Penult/Ult rule: know when each applies</li>
         <li>Review compound vs. phrase stress contrasts</li>
+        <li>Intonation patterns (falling/rising/combined)</li>
       </ul>
     </div>
   </div>
   <aside class="notes">
-    기말 시험 안내를 명확하게 해주세요. 시험 형식, 배점, 시험 범위를 학생들이 명확히 알 수 있도록 합니다.
-    LMS에 기말 시험 정보를 올려두고, 오피스아워를 공지하는 것도 좋습니다.
-    학습 조언: IPA 차트 암기, 상보적 분포 분석 연습, 규칙 쓰기 연습이 핵심입니다.
-  </aside>
-</section>
-
-<!-- ══════════════════════════════════════════════
-     SLIDE 15 — CLOSING
-══════════════════════════════════════════════ -->
-<section class="final-slide">
-  <h2>Thank You &amp; Good Luck!</h2>
-  <div style="text-align:center; margin:1em 0">
-    <p style="font-size:1.4em; font-family:'Fira Code', monospace; color: var(--slide-accent)">
-      /ˌæp.laɪd ˌɪŋ.ɡlɪʃ fəˈnɒl.ə.dʒi/
-    </p>
-    <p style="font-size:1em; color:#555; margin-top:0.3em"><em>Applied English Phonology</em></p>
-  </div>
-  <div class="two-col" style="align-items:start; margin-top:1em; font-size:0.88em">
-    <div class="card">
-      <h3>Before the Final Exam</h3>
-      <ul>
-        <li>Review all lecture slides (S key for notes)</li>
-        <li>Re-read Yavaş Ch. 1–4, 6–7</li>
-        <li>Practice IPA transcription daily</li>
-        <li>Office hours: [확인 후 기재]</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>After This Course</h3>
-      <ul>
-        <li>Every English sound has a <strong>systematic reason</strong></li>
-        <li>Language variation is <strong>rule-governed</strong></li>
-        <li>Phonological knowledge → better <strong>teaching &amp; learning</strong></li>
-        <li>Congratulations on completing the course!</li>
-      </ul>
-    </div>
-  </div>
-  <aside class="notes">
-    마지막 수업입니다. 한 학기 동안의 노고에 감사하며 학생들을 격려해 주세요.
-    기말 시험 준비를 위한 실용적 조언(매일 IPA 연습, 교재 재독)을 강조합니다.
-    오피스아워 일정을 LMS에 공지하고, 시험 전 질문을 적극 받도록 안내합니다.
-    '모든 영어 소리에는 체계적인 이유가 있다'는 메시지로 마무리하면 의미 있는 마무리가 됩니다.
+    기말 시험 안내. 시험 형식, 배점, 시험 범위 명확화. LMS에 기말 시험 정보 안내, 오피스아워 공지.
   </aside>
 </section>
 
@@ -718,5 +712,15 @@ Rhythm Rule: ˈTHIRteen ˌMEN
 <a class="home-btn" href="../index.html" title="강의 목록으로">← 목록</a>
 <script src="assets/phonology-print.js"></script>
 <script src="assets/phonology-audio.js"></script>
+<script>
+  // Practice answer reveal helper — toggles .revealed on the
+  // enclosing .practice-q (matches phonology-theme.css selector).
+  function toggleAnswers(btn) {
+    const q = btn.closest('.practice-q');
+    if (!q) return;
+    q.classList.toggle('revealed');
+    btn.textContent = q.classList.contains('revealed') ? 'Hide Answers' : 'Show Answers';
+  }
+</script>
 </body>
 </html>
