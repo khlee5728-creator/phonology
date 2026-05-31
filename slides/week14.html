@@ -24,6 +24,77 @@
     .tonic      { background: rgba(193,18,31,0.18); border-radius:3px; padding:0 3px; font-weight:700; }
     .compound   { color: #c1121f; font-weight: 700; }
     .pitch-arrow { color: #c1121f; font-weight:700; font-size:1.1em; }
+
+    /* Intonation contour visualization (textbook-style wavy line above sentence) */
+    .contour {
+      display: block;
+      width: 100%;
+      height: 12px;
+      margin: 0 0 -0.1em;
+    }
+    .contour path {
+      stroke: #c1121f;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+    }
+    .intonation-example {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      margin: 0.25em auto;
+    }
+    .intonation-example p {
+      margin: 0;
+      line-height: 1.3;
+      text-align: center;
+      white-space: nowrap;
+    }
+    /* Compact contour for use inside table cells (e.g., "All right" summary) */
+    .contour--inline {
+      max-width: 140px;
+      height: 12px;
+      margin: 0 auto;
+    }
+
+    /* Image-based intonation contour (textbook capture, sentence + contour combined) */
+    .contour-img {
+      display: block;
+      margin: 0.3em auto;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Word-level pitch overlay: contour curve attached to specific syllable/word */
+    .utterance {
+      display: inline-block;
+      position: relative;
+      padding-top: 1.4em;
+      white-space: nowrap;
+    }
+    .pitch-word {
+      position: relative;
+      display: inline-block;
+    }
+    .pitch-mark {
+      position: absolute;
+      bottom: 100%;
+      left: -0.05em;
+      width: calc(100% + 0.1em);
+      height: 0.95em;
+      margin-bottom: 0.1em;
+      pointer-events: none;
+      overflow: visible;
+    }
+    .pitch-mark path {
+      stroke: #c1121f;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+    }
+    /* Three pitch curve shapes */
+    .pitch-mark--rise path { /* small minor pitch peak on stressed (non-tonic) syllable */ }
+    .pitch-mark--fall path { /* major pitch fall for tonic accent */ }
   </style>
 </head>
 <body>
@@ -72,9 +143,9 @@
     <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
       <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.15em;">Noun compounds (90% of all compounds)</div>
       <p style="margin:0.05em 0;">All receive stress on the <strong>first element</strong>:</p>
-      <table style="font-size:0.95em;width:100%;line-height:1.5;margin-top:0.15em;">
+      <table style="font-size:0.95em;width:100%;line-height:1.5;margin-top:0.15em;text-align:left;">
         <tbody>
-          <tr><td><strong>N + N</strong></td><td><em>phónecard, mátchbox, téapot, póstman</em></td></tr>
+          <tr><td style="width:38%;"><strong>N + N</strong></td><td><em>phónecard, mátchbox, téapot, póstman</em></td></tr>
           <tr><td><strong>Adj + N</strong></td><td><em>whíte house</em></td></tr>
           <tr><td><strong>V + N</strong></td><td><em>stóp watch</em></td></tr>
           <tr><td><strong>Part/Adv + N</strong></td><td><em>óverdose, únderwear</em></td></tr>
@@ -85,9 +156,9 @@
     <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
       <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">Adjective compounds</div>
       <p style="margin:0.05em 0;">Stress on the <strong>first element</strong>:</p>
-      <table style="font-size:0.95em;width:100%;line-height:1.5;margin-top:0.15em;">
+      <table style="font-size:0.95em;width:100%;line-height:1.5;margin-top:0.15em;text-align:left;">
         <tbody>
-          <tr><td><strong>N + Adj</strong></td><td><em>nátionwide, séasick, bédridden</em></td></tr>
+          <tr><td style="width:38%;"><strong>N + Adj</strong></td><td><em>nátionwide, séasick, bédridden</em></td></tr>
           <tr><td><strong>Adj + Adj</strong></td><td><em>réd hot</em></td></tr>
           <tr><td><strong>Prep + Adj</strong></td><td><em>óverripe</em></td></tr>
         </tbody>
@@ -117,10 +188,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>N + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;">First element</td><td style="padding:0.15em 0.5em;border:1px solid #ddd;"><em>báby-sit, spóon-feed, cár wash</em></td></tr>
-        <tr><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>Adj + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;">First element</td><td style="padding:0.15em 0.5em;border:1px solid #ddd;"><em>drý-clean</em></td></tr>
-        <tr><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>V + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;">First element</td><td style="padding:0.15em 0.5em;border:1px solid #ddd;"><em>dróp-kick</em></td></tr>
-        <tr style="background:#fff8e1;"><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>Part/Adv + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong style="color:#c1121f;">Second element ⚠</strong></td><td style="padding:0.15em 0.5em;border:1px solid #ddd;"><em>undertáke, oversléep</em></td></tr>
+        <tr><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>N + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;">First element</td><td style="padding:0.15em 0.5em;border:1px solid #ddd;text-align:left;"><em>báby-sit, spóon-feed, cár wash</em></td></tr>
+        <tr><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>Adj + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;">First element</td><td style="padding:0.15em 0.5em;border:1px solid #ddd;text-align:left;"><em>drý-clean</em></td></tr>
+        <tr><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>V + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;">First element</td><td style="padding:0.15em 0.5em;border:1px solid #ddd;text-align:left;"><em>dróp-kick</em></td></tr>
+        <tr style="background:#fff8e1;"><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong>Part/Adv + V</strong></td><td style="text-align:center;padding:0.15em 0.4em;border:1px solid #ddd;"><strong style="color:#c1121f;">Second element ⚠</strong></td><td style="padding:0.15em 0.5em;border:1px solid #ddd;text-align:left;"><em>undertáke, oversléep</em></td></tr>
       </tbody>
     </table>
   </div>
@@ -135,9 +206,9 @@
     <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
       <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">Complex compounds (N compound + N)</div>
       <p style="margin:0.05em 0;">Stress on the <strong>first element</strong> of the original noun compound:</p>
-      <table style="font-size:0.95em;width:100%;line-height:1.5;margin-top:0.1em;">
+      <table style="font-size:0.95em;width:100%;line-height:1.5;margin-top:0.1em;text-align:left;">
         <tbody>
-          <tr><td>(a) N+N</td><td><em>"asséembly line worker"</em></td></tr>
+          <tr><td style="width:30%;">(a) N+N</td><td><em>"asséembly line worker"</em></td></tr>
           <tr><td>(b) Adj+N</td><td><em>"hígh school student"</em></td></tr>
           <tr><td>(c) V+N</td><td><em>"píck up truck"</em></td></tr>
         </tbody>
@@ -164,7 +235,7 @@
   <table style="width:100%;font-size:0.6em;line-height:1.4;border-collapse:collapse;margin-top:0.25em;">
     <thead>
       <tr>
-        <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;width:14%;text-align:center;">Group</th>
+        <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;width:8%;text-align:center;">Group</th>
         <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;width:30%;text-align:left;">Pattern</th>
         <th style="background:#2d6a4f;color:white;padding:0.2em 0.4em;text-align:left;">Examples</th>
       </tr>
@@ -172,18 +243,18 @@
     <tbody>
       <tr>
         <td style="text-align:center;padding:0.2em 0.4em;border:1px solid #ddd;"><strong>(a)</strong></td>
-        <td style="padding:0.2em 0.5em;border:1px solid #ddd;">2-syll <strong>N (French origin)</strong>: <span style="color:#c1121f;">AmE final</span> / <span style="color:#0077b6;">BE penult</span></td>
-        <td style="padding:0.2em 0.5em;border:1px solid #ddd;font-style:italic;">brochúre, ballét, café, chatéau, cliché, cornét, crochét, debrís, fillét, frontíer, garáge, plateáu, premíer, salón, soufflé, toupée, vermóuth, valét</td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;line-height:1.5;">2-syll <strong>N (French origin)</strong><br><span style="color:#c1121f;">AmE&nbsp;final</span> / <span style="color:#0077b6;">BE&nbsp;penult</span></td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;font-style:italic;text-align:left;">brochúre, ballét, café, chatéau, cliché, cornét, crochét, debrís, fillét, frontíer, garáge, plateáu, premíer, salón, soufflé, toupée, vermóuth, valét</td>
       </tr>
       <tr style="background:#fff8e1;">
         <td style="text-align:center;padding:0.2em 0.4em;border:1px solid #ddd;"><strong>(b)</strong></td>
         <td style="padding:0.2em 0.5em;border:1px solid #ddd;"><strong>Reverse</strong>: <span style="color:#0077b6;">BE final</span> / <span style="color:#c1121f;">AmE initial</span></td>
-        <td style="padding:0.2em 0.5em;border:1px solid #ddd;font-style:italic;">wéekend, pótluck, príncess, récess, résearch, áddress, ínquiry, móustache; (longer) ártisan, Pórtuguese, cígarette, mágazine, cóntroversy</td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;font-style:italic;text-align:left;">wéekend, pótluck, príncess, récess, résearch, áddress, ínquiry, móustache; (longer) ártisan, Pórtuguese, cígarette, mágazine, cóntroversy</td>
       </tr>
       <tr>
         <td style="text-align:center;padding:0.2em 0.4em;border:1px solid #ddd;"><strong>(c)</strong></td>
-        <td style="padding:0.2em 0.5em;border:1px solid #ddd;">2-syll <strong>V ending in -ate</strong>: <span style="color:#c1121f;">AmE initial</span> / <span style="color:#0077b6;">BE final</span></td>
-        <td style="padding:0.2em 0.5em;border:1px solid #ddd;font-style:italic;">cástrate, crémate, díctate, dónate, frústrate, gýrate, mígrate, púlsate, rótate, tránslate, vácate, víbrate, lócate, mútate<br><span style="font-style:normal;color:#6c757d;font-size:0.92em;">Exceptions (both final): confláte, creáte, debáte, defláte, eláte, reláte, abáte, infláte, negáte</span></td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;line-height:1.5;">2-syll <strong>V ending in -ate</strong><br><span style="color:#c1121f;">AmE&nbsp;initial</span> / <span style="color:#0077b6;">BE&nbsp;final</span></td>
+        <td style="padding:0.2em 0.5em;border:1px solid #ddd;font-style:italic;text-align:left;">cástrate, crémate, díctate, dónate, frústrate, gýrate, mígrate, púlsate, rótate, tránslate, vácate, víbrate, lócate, mútate<br><span style="font-style:normal;color:#6c757d;font-size:0.92em;">Exceptions (both final): confláte, creáte, debáte, defláte, eláte, reláte, abáte, infláte, negáte</span></td>
       </tr>
     </tbody>
   </table>
@@ -204,12 +275,12 @@
   </div>
 
   <div class="def-box" style="margin-top:0.25em;padding:0.3em 0.85em;font-size:0.62em;">
-    <table style="font-size:0.95em;width:100%;line-height:1.55;">
+    <table style="font-size:0.95em;width:100%;line-height:1.55;text-align:left;">
       <tbody>
-        <tr><td style="width:14%;"><strong>-ary</strong></td><td><em>nécessàry, árbitràry, díctionàry, Fébruàry, líterary, mílitàry, órdinàry, prímàry, sécretàry, témporàry, mómentàry, légendàry, sédentàry, vísionàry, contémporàry</em></td></tr>
-        <tr><td><strong>-ery</strong></td><td><em>cémetèry, conféctionèry, dýsentèry, mónastèry, státionèry</em></td></tr>
-        <tr><td><strong>-ory</strong></td><td><em>állegòry, cátegòry, dórmitòry, mándatòry, obsérvatòry, térritòry, prómissòry, compénsatòry, explóratòry, consérvatòry</em></td></tr>
-        <tr><td><strong>-mony</strong></td><td><em>ácrimòny, álimòny, céremòny, mátrimòny, téstimòny</em></td></tr>
+        <tr><td style="width:14%;vertical-align:top;"><strong>-ary</strong></td><td><em>nécessàry, árbitràry, díctionàry, Fébruàry, líterary, mílitàry, órdinàry, prímàry, sécretàry, témporàry, mómentàry, légendàry, sédentàry, vísionàry, contémporàry</em></td></tr>
+        <tr><td style="vertical-align:top;"><strong>-ery</strong></td><td><em>cémetèry, conféctionèry, dýsentèry, mónastèry, státionèry</em></td></tr>
+        <tr><td style="vertical-align:top;"><strong>-ory</strong></td><td><em>állegòry, cátegòry, dórmitòry, mándatòry, obsérvatòry, térritòry, prómissòry, compénsatòry, explóratòry, consérvatòry</em></td></tr>
+        <tr><td style="vertical-align:top;"><strong>-mony</strong></td><td><em>ácrimòny, álimòny, céremòny, mátrimòny, téstimòny</em></td></tr>
       </tbody>
     </table>
   </div>
@@ -270,8 +341,11 @@
   </div>
   <div class="def-box" style="margin-top:0.25em;padding:0.3em 0.85em;font-size:0.66em;background:#fff3cd;border-left-color:#c77b2e;">
     <div class="term" style="font-size:1em;color:#c77b2e;margin-bottom:0.15em;">Example (1) + default pattern</div>
-    <p style="margin:0.08em 0;text-align:center;font-size:1.05em;">The 'boy' gave the 'book to his <span class="tonic">*teacher</span>.</p>
-    <p style="margin:0.08em 0;">´ = stressed; <strong>*</strong> = tonic accent (major pitch change). <em>boy, book</em> are stressed; only <em>teacher</em> carries the tonic.</p>
+    <img src="assets/img/intonation/intonation_1.png"
+         alt="(1) The 'boy' gave the 'book to his *teacher — 3 minor peaks + tonic fall"
+         class="contour-img"
+         style="max-width:520px;">
+    <p style="margin:0.1em 0;">´ = stressed; <strong>*</strong> = tonic accent (major pitch change). <em>boy, book</em> are stressed; only <em>teacher</em> carries the tonic.</p>
     <p style="margin:0.15em 0 0.05em;"><strong>Default pattern</strong>: utterance-initial = shared (old) information; utterance-final = new information. → <strong>Tonic accent on the last stressed lexical item</strong> (N, V, Adj, Adv).</p>
   </div>
   <aside class="notes">
@@ -291,8 +365,8 @@
   <div class="two-col" style="margin-top:0.25em;gap:1em;align-items:start;font-size:0.66em;">
     <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
       <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">Emphasis / contrast</div>
-      <p style="margin:0.08em 0;">(2a) He was somewhat <span class="tonic">*discouraged</span>.</p>
-      <p style="margin:0.08em 0;">(2b) He was <span class="tonic">*somewhat</span> discouraged. <span style="color:#6c757d;">(emphasis)</span></p>
+      <img src="assets/img/intonation/intonation_2a.png" alt="(2a) He was somewhat *discouraged" class="contour-img" style="max-width:340px;">
+      <img src="assets/img/intonation/intonation_2b.png" alt="(2b) He was *somewhat discouraged (emphasis)" class="contour-img" style="max-width:340px;">
     </div>
     <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
       <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.15em;">Information-unit shift (not always contrast)</div>
@@ -325,21 +399,21 @@
     <p style="margin:0.06em 0;"><strong>Falling contour</strong> = expresses <em>finality</em> / completion. Two types: <strong>full (long) fall</strong> vs <strong>short (low) fall</strong>. (Yavaš pp. 196-197)</p>
   </div>
 
-  <div class="two-col" style="margin-top:0.3em;gap:1em;align-items:start;font-size:0.66em;">
-    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
-      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">Full (long) fall <span class="pitch-arrow">↘↘</span></div>
-      <p style="margin:0.05em 0;">Unmarked for declaratives with <strong>clear finality</strong> (nothing more to be said):</p>
-      <p style="margin:0.05em 0;padding-left:0.8em;">(7) I am leaving the house right now.</p>
-      <p style="margin:0.15em 0 0.05em;">Common in <strong>emotional involvement</strong>:</p>
-      <p style="margin:0.05em 0;padding-left:0.8em;">(8) I'm so glad. <span style="color:#6c757d;">(genuine enthusiasm)</span></p>
-      <p style="margin:0.15em 0 0.05em;">Also typical of <strong>wh-questions</strong>:</p>
-      <p style="margin:0.05em 0;padding-left:0.8em;">(9) Which way did she go?</p>
+  <div class="two-col" style="margin-top:0.25em;gap:1em;align-items:start;font-size:0.64em;">
+    <div class="def-box" style="padding:0.25em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.1em;">Full (long) fall <span class="pitch-arrow">↘↘</span></div>
+      <p style="margin:0.05em 0;">Declarative <strong>finality</strong>:</p>
+      <img src="assets/img/intonation/intonation_7.png" alt="(7) I am leaving the house right now." class="contour-img" style="max-width:340px;">
+      <p style="margin:0.1em 0 0.05em;"><strong>Emotional involvement</strong>:</p>
+      <img src="assets/img/intonation/intonation_8.png" alt="(8) I'm so glad. (enthusiasm)" class="contour-img" style="height:64px;width:auto;max-width:100%;">
+      <p style="margin:0.1em 0 0.05em;"><strong>wh-questions</strong>:</p>
+      <div class="intonation-example" style="margin:0.25em 0;"><svg class="contour" viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M 5,5 L 130,5 Q 165,5 195,15"/></svg><p style="text-align:left;">(9) Which way did she go?</p></div>
     </div>
-    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
-      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.15em;">Short (low) fall <span class="pitch-arrow">↘</span></div>
-      <p style="margin:0.05em 0;">Indicates a <strong>detached mood</strong> — neutral, perfunctory attitude:</p>
-      <p style="margin:0.2em 0;padding-left:0.8em;">(10) Whatever you say. <span style="color:#6c757d;">("I agree with it")</span></p>
-      <p style="margin:0.2em 0 0;color:#6c757d;font-size:0.92em;font-style:italic;">→ Contrast: long fall = involved/definitive; short fall = detached/neutral.</p>
+    <div class="def-box" style="padding:0.25em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
+      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.1em;">Short (low) fall <span class="pitch-arrow">↘</span></div>
+      <p style="margin:0.05em 0;"><strong>Detached mood</strong> — neutral, perfunctory:</p>
+      <img src="assets/img/intonation/intonation_10.png" alt="(10) Whatever you say." class="contour-img" style="height:67px;width:auto;max-width:100%;">
+      <p style="margin:0.2em 0 0;color:#6c757d;font-size:0.92em;font-style:italic;">→ Long fall = involved/definitive; short fall = detached/neutral.</p>
     </div>
   </div>
 
@@ -358,25 +432,23 @@
   </div>
 
   <div class="two-col" style="margin-top:0.25em;gap:1em;align-items:start;font-size:0.62em;">
-    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
-      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.15em;">High (long) rise <span class="pitch-arrow">↗↗</span></div>
-      <p style="margin:0.05em 0;">More marked — <strong>puzzlement, unbelieving</strong> attitude.</p>
-      <p style="margin:0.1em 0 0.05em;"><strong>Yes-no questions</strong> (typical or statement order):</p>
-      <p style="margin:0.05em 0;padding-left:0.8em;">(11a) Is this a joke?</p>
-      <p style="margin:0.05em 0;padding-left:0.8em;">(11b) This is a joke?</p>
-      <p style="margin:0.1em 0 0;color:#6c757d;font-size:0.92em;">"Are you sure?", "This is hard to believe."</p>
+    <div class="def-box" style="padding:0.25em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.1em;">High (long) rise <span class="pitch-arrow">↗↗</span></div>
+      <p style="margin:0.05em 0;"><strong>Puzzlement, unbelieving</strong> attitude. <strong>Yes-no questions</strong>:</p>
+      <img src="assets/img/intonation/intonation_11.png" alt="(11a) Is this a joke? / (11b) This is a joke?" class="contour-img" style="max-width:240px;">
+      <p style="margin:0.15em 0 0;color:#6c757d;font-size:0.9em;">"Are you sure?", "This is hard to believe."</p>
     </div>
-    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
-      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.15em;">Low (short) rise <span class="pitch-arrow">↗</span> &nbsp;<small style="color:#666;">(more common)</small></div>
-      <table style="font-size:0.95em;width:100%;line-height:1.4;">
+    <div class="def-box" style="padding:0.12em 0.6em;font-size:0.98em;background:#ffffff;border-left-color:#0077b6;">
+      <div class="term" style="font-size:0.95em;color:#0077b6;margin-bottom:0.05em;">Low (short) rise <span class="pitch-arrow">↗</span> &nbsp;<small style="color:#666;">(more common)</small></div>
+      <table style="font-size:0.92em;width:100%;line-height:1.25;background:#ffffff;">
         <tbody>
-          <tr><td><strong>Yes-no Q</strong></td><td>(12) Has your uncle left already?</td></tr>
-          <tr><td><strong>Echo Q</strong></td><td>(13) Where will I work? <small>(I haven't thought yet)</small></td></tr>
-          <tr><td><strong>Repetition Q</strong></td><td>(14) What are you doing? <small>(I haven't heard you)</small></td></tr>
-          <tr><td><strong>Open-choice alt.</strong></td><td>(15) Would you like a paper or magazine? <small>(something to read)</small></td></tr>
-          <tr><td><strong>Tag Q (uncertain)</strong></td><td>(16) She usually comes at ten, doesn't she?</td></tr>
-          <tr><td><strong>List items</strong></td><td>(17) I need to buy a shirt, a jacket, and a tie.</td></tr>
-          <tr><td><strong>Readiness Q</strong></td><td>(18) Do you know when the first kidney transplant was?</td></tr>
+          <tr><td style="vertical-align:middle;padding:0 0.3em;width:22%;font-size:0.85em;"><strong>Yes-no Q</strong></td><td style="text-align:left;padding:0 0.3em;"><img src="assets/img/intonation/intoantion_12.png" alt="(12a/12b) Has your uncle / Your uncle has left already?" class="contour-img" style="height:98px;width:auto;display:block;margin:0;"></td></tr>
+          <tr><td style="vertical-align:middle;padding:0 0.3em;font-size:0.85em;"><strong>Echo Q</strong></td><td style="text-align:left;padding:0 0.3em;"><img src="assets/img/intonation/intonation_13.png" alt="(13) Where will I work?" class="contour-img" style="height:55px;width:auto;display:block;margin:0;"></td></tr>
+          <tr><td style="vertical-align:middle;padding:0 0.3em;font-size:0.85em;"><strong>Repetition Q</strong></td><td style="text-align:left;padding:0 0.3em;"><img src="assets/img/intonation/intonation_14.png" alt="(14) What are you doing?" class="contour-img" style="height:50px;width:auto;display:block;margin:0;"></td></tr>
+          <tr><td style="vertical-align:middle;padding:0 0.3em;font-size:0.85em;"><strong>Open-choice</strong></td><td style="text-align:left;padding:0 0.3em;"><img src="assets/img/intonation/intonation_15.png" alt="(15) Would you like a paper or magazine? (open)" class="contour-img" style="height:60px;width:auto;display:block;margin:0;"><div style="display:flex;align-items:center;gap:0.5em;margin-top:0.05em;"><img src="assets/img/intonation/intonation_15_closedchoice.png" alt="Paper or magazine? (closed choice = falling)" class="contour-img" style="height:54px;width:auto;display:block;margin:0;"><span style="color:#6c757d;font-size:0.85em;white-space:nowrap;">← closed-choice (falling)</span></div></td></tr>
+          <tr><td style="vertical-align:middle;padding:0 0.3em;font-size:0.85em;"><strong>Tag Q</strong></td><td style="text-align:left;padding:0 0.3em;"><img src="assets/img/intonation/intonation_16.png" alt="(16) She usually comes at ten, doesn't she?" class="contour-img" style="height:60px;width:auto;display:block;margin:0;"></td></tr>
+          <tr><td style="vertical-align:middle;padding:0 0.3em;font-size:0.85em;"><strong>List items</strong></td><td style="text-align:left;padding:0 0.3em;"><img src="assets/img/intonation/intonation_17.png" alt="(17) I need to buy a shirt, a jacket, and a tie." class="contour-img" style="height:48px;width:auto;display:block;margin:0;"></td></tr>
+          <tr><td style="vertical-align:middle;padding:0 0.3em;font-size:0.85em;"><strong>Readiness Q</strong></td><td style="text-align:left;padding:0 0.3em;"><img src="assets/img/intonation/intonation_18.png" alt="(18) Do you know when the first kidney transplant was?" class="contour-img" style="height:60px;width:auto;display:block;margin:0;"></td></tr>
         </tbody>
       </table>
     </div>
@@ -396,22 +468,22 @@
     <p style="margin:0.06em 0;">Beyond pure falling and rising, English uses three more patterns: <strong>fall-rise</strong>, <strong>rise-fall</strong>, and <strong>level</strong>. (Yavaš pp. 198–199)</p>
   </div>
 
-  <div class="def-box" style="margin-top:0.3em;padding:0.3em 0.85em;font-size:0.68em;background:#fff3cd;border-left-color:#c77b2e;">
-    <div class="term" style="font-size:1em;color:#c77b2e;margin-bottom:0.1em;">Fall–rise <span class="pitch-arrow">↘↗</span></div>
-    <p style="margin:0.06em 0;"><strong>Agreement with reservation / hesitation</strong> — speaker accepts but with caveat:</p>
-    <p style="margin:0.06em 0;padding-left:0.8em;">(19) You can do it that way. <span style="color:#6c757d;">("I don't think you should")</span></p>
+  <div class="def-box" style="margin-top:0.25em;padding:0.25em 0.85em;font-size:0.66em;background:#fff3cd;border-left-color:#c77b2e;">
+    <div class="term" style="font-size:1em;color:#c77b2e;margin-bottom:0.08em;">Fall–rise <span class="pitch-arrow">↘↗</span></div>
+    <p style="margin:0.05em 0;"><strong>Agreement with reservation / hesitation</strong> — accepts but with caveat:</p>
+    <img src="assets/img/intonation/intonation_19.png" alt="(19) You can do it that way. (with reservation)" class="contour-img" style="max-width:280px;margin:0.15em 0;">
   </div>
 
-  <div class="def-box" style="margin-top:0.25em;padding:0.3em 0.85em;font-size:0.68em;background:#e8f4fd;border-left-color:#0077b6;">
-    <div class="term" style="font-size:1em;color:#0077b6;margin-bottom:0.1em;">Rise–fall <span class="pitch-arrow">↗↘</span></div>
-    <p style="margin:0.06em 0;"><strong>Dramatic equivalent of simple fall</strong> — strong feelings of approval or disapproval:</p>
-    <p style="margin:0.06em 0;padding-left:0.8em;">(20a) That's wonderful. &nbsp;&nbsp;(20b) You can't do that.</p>
+  <div class="def-box" style="margin-top:0.15em;padding:0.2em 0.85em;font-size:0.66em;background:#e8f4fd;border-left-color:#0077b6;">
+    <div class="term" style="font-size:1em;color:#0077b6;margin-bottom:0.05em;">Rise–fall <span class="pitch-arrow">↗↘</span></div>
+    <p style="margin:0.04em 0;"><strong>Dramatic equivalent of simple fall</strong> — strong approval / disapproval:</p>
+    <img src="assets/img/intonation/intonation_20.png" alt="(20a) That's wonderful. / (20b) You can't do that." class="contour-img" style="height:135px;width:auto;max-width:100%;margin:0.1em 0;">
   </div>
 
-  <div class="def-box" style="margin-top:0.25em;padding:0.3em 0.85em;font-size:0.68em;background:#f4f4f8;border-left-color:#6c757d;">
-    <div class="term" style="font-size:1em;color:#444;margin-bottom:0.1em;">Level <span class="pitch-arrow" style="color:#666;">→</span></div>
-    <p style="margin:0.06em 0;"><strong>Bored or sarcastic</strong> attitude:</p>
-    <p style="margin:0.06em 0;padding-left:0.8em;">(21) A: John will be at the party. &nbsp; B: Great.</p>
+  <div class="def-box" style="margin-top:0.2em;padding:0.25em 0.85em;font-size:0.66em;background:#f4f4f8;border-left-color:#6c757d;">
+    <div class="term" style="font-size:1em;color:#444;margin-bottom:0.08em;">Level <span class="pitch-arrow" style="color:#666;">→</span></div>
+    <p style="margin:0.05em 0;"><strong>Bored or sarcastic</strong> attitude:</p>
+    <div class="intonation-example" style="margin:0.25em 0;"><svg class="contour" viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M 5,8 L 195,8"/></svg><p style="text-align:left;">(21) A: John will be at the party. &nbsp; B: Great.</p></div>
   </div>
 
   <aside class="notes">
@@ -427,24 +499,9 @@
   <div class="def-box" style="padding:0.13em 0.85em;font-size:0.72em;">
     <p style="margin:0.06em 0;">Putting all intonation patterns together — the same words "<strong>All right</strong>" convey <strong>seven different meanings</strong> depending on contour. (Yavaš p. 199)</p>
   </div>
-  <table style="width:100%;font-size:0.66em;line-height:1.5;border-collapse:collapse;margin-top:0.25em;">
-    <thead>
-      <tr>
-        <th style="background:#2d6a4f;color:white;padding:0.25em 0.4em;width:12%;text-align:center;">#</th>
-        <th style="background:#2d6a4f;color:white;padding:0.25em 0.4em;width:28%;text-align:center;">Pattern</th>
-        <th style="background:#2d6a4f;color:white;padding:0.25em 0.4em;text-align:left;">Interpretation</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22a)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Short fall <span class="pitch-arrow">↘</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"I agree with it" (factual)</td></tr>
-      <tr style="background:#fafafa;"><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22b)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Long fall <span class="pitch-arrow">↘↘</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">Enthusiastic acceptance</td></tr>
-      <tr><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22c)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Sharp rise <span class="pitch-arrow">↗↗</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"No, that is not acceptable"</td></tr>
-      <tr style="background:#fafafa;"><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22d)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Low rise <span class="pitch-arrow">↗</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"I am listening, go on" / "Is it all right?"</td></tr>
-      <tr><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22e)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Fall–rise <span class="pitch-arrow">↘↗</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"Yes, but I am doubtful" (reservation)</td></tr>
-      <tr style="background:#fafafa;"><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22f)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Rise–fall <span class="pitch-arrow">↗↘</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">More dramatic than (22b); great enthusiasm, emphatic</td></tr>
-      <tr><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">(22g)</td><td style="text-align:center;padding:0.18em 0.4em;border:1px solid #ddd;">Level <span class="pitch-arrow" style="color:#666;">→</span></td><td style="padding:0.18em 0.5em;border:1px solid #ddd;">"How uninspiring!"</td></tr>
-    </tbody>
-  </table>
+  <div style="text-align:center;margin-top:0.2em;">
+    <img src="assets/img/intonation/intonation_22.png" alt="(22a-g) All right — 7 intonation patterns and interpretations" class="contour-img" style="max-width:640px;margin:0.15em auto;">
+  </div>
 
   <aside class="notes">
     교재 §7.8 ¶17 (p. 199). "All right" 7가지 reading 종합: short fall (factual agreement) / long fall (enthusiastic) / sharp rise (rejection) / low rise (continuing/check) / fall-rise (doubtful) / rise-fall (emphatic enthusiasm) / level (uninspiring). 강세는 같은 말이지만 intonation으로 7가지 다른 의미 전달 — intonation의 표현력 종합 예시.
@@ -452,44 +509,71 @@
 </section>
 
 <!-- ══════════════════════════════════════════════
-     SLIDE 12 — §7.9: VARIATIONS AMONG VARIETIES
+     SLIDE 14a — §7.9 (1/2): SPECIFIC VARIETIES + AmE vs BE
 ══════════════════════════════════════════════ -->
 <section>
-  <h2>§7.9 Variations among the Varieties <span style="font-size:0.65em;color:#666;font-weight:400;">— Intonation across Englishes</span></h2>
-  <div class="def-box" style="padding:0.13em 0.85em;font-size:0.7em;">
+  <h2>§7.9 Variations among the Varieties <span style="font-size:0.65em;color:#666;font-weight:400;">— (1/2) Specific Varieties &amp; AmE vs BE</span></h2>
+  <div class="def-box" style="padding:0.15em 0.85em;font-size:0.72em;">
     <p style="margin:0.06em 0;">Significant intonation differences exist among varieties of English. (Yavaš pp. 199-200)</p>
   </div>
 
-  <div class="two-col" style="margin-top:0.2em;gap:0.8em;align-items:start;font-size:0.58em;">
-    <div class="def-box" style="padding:0.25em 0.6em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
-      <div class="term" style="font-size:0.98em;color:#0077b6;margin-bottom:0.1em;">Specific varieties</div>
-      <ul style="margin:0.05em 0;padding-left:1.2em;line-height:1.5;">
+  <div class="two-col" style="margin-top:0.3em;gap:1em;align-items:start;font-size:0.7em;">
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#e8f4fd;border-left-color:#0077b6;">
+      <div class="term" style="font-size:1em;color:#0077b6;margin-bottom:0.15em;">Specific varieties</div>
+      <ul style="margin:0.05em 0;padding-left:1.3em;line-height:1.55;">
         <li><strong>Hawaii</strong>: yes-no Q typical terminal high rise → <em>earlier rise + fall</em> ("Would you like some tea?")</li>
         <li><strong>Welsh E.</strong>: tag Q with <em>rise-fall</em> (more emphatic)</li>
         <li><strong>Southern AmE</strong>: rising pitches frequency — "We played <em>gámes</em> and went for <em>híkes</em> and had the most <em>wónderful tíme</em>." (Bolinger 1998)<br><span style="color:#6c757d;font-size:0.92em;">→ Asking for reassurance ("Are you paying attention?"). Extended to routines ("From Texas"). <strong>Australian E.</strong> shows the same.</span></li>
       </ul>
     </div>
-    <div class="def-box" style="padding:0.25em 0.6em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
-      <div class="term" style="font-size:0.98em;color:#c77b2e;margin-bottom:0.1em;">AmE vs BE — main difference</div>
-      <p style="margin:0.05em 0;">BE: less use of high initial pitches, more use of <strong>final ones</strong> in yes-no questions.</p>
-      <p style="margin:0.1em 0;"><em>"Would you like some coffee?"</em></p>
-      <p style="margin:0.05em 0;padding-left:0.8em;">AmE: <span class="pitch-arrow">↗</span> (rising)</p>
-      <p style="margin:0.05em 0;padding-left:0.8em;">BE: different contour / no final rise</p>
-      <p style="margin:0.15em 0 0;color:#6c757d;font-size:0.92em;"><strong>Cross-cultural misimpressions</strong>: AmE rising → BE sees as "too businesslike"; BE → AmE sees as "over-cordial", "unduly concerned" (Bolinger 1998).</p>
+    <div class="def-box" style="padding:0.3em 0.7em;font-size:0.98em;background:#fff3cd;border-left-color:#c77b2e;">
+      <div class="term" style="font-size:1em;color:#c77b2e;margin-bottom:0.15em;">AmE vs BE — main difference</div>
+      <p style="margin:0.06em 0;">BE: less use of high initial pitches, more use of <strong>final ones</strong> in yes-no questions.</p>
+      <p style="margin:0.15em 0;"><em>"Would you like some coffee?"</em></p>
+      <p style="margin:0.06em 0;padding-left:0.8em;">AmE: <span class="pitch-arrow">↗</span> (rising)</p>
+      <p style="margin:0.06em 0;padding-left:0.8em;">BE: different contour / no final rise</p>
+      <p style="margin:0.2em 0 0;color:#6c757d;font-size:0.92em;"><strong>Cross-cultural misimpressions</strong>: AmE rising → BE sees as "too businesslike"; BE → AmE sees as "over-cordial", "unduly concerned" (Bolinger 1998).</p>
     </div>
   </div>
 
-  <div class="def-box" style="margin-top:0.2em;padding:0.2em 0.85em;font-size:0.56em;background:#f4f4f8;border-left-color:#6c757d;">
-    <div class="term" style="font-size:1em;margin-bottom:0.08em;">Bailey (1983) four-variety contrast — "Is your mother feeling all right?"</div>
-    <table style="font-size:0.95em;width:100%;line-height:1.5;">
-      <tbody>
-        <tr><td style="width:22%;"><strong>(1) British E.</strong></td><td>condescending</td></tr>
-        <tr><td><strong>(2) Irish E.</strong></td><td>insultingly incredulous</td></tr>
-        <tr><td><strong>(3) Northern US</strong></td><td>repetitive</td></tr>
-        <tr><td><strong>(4) Southern US</strong></td><td>unaccountably surprised</td></tr>
-      </tbody>
-    </table>
-    <p style="margin:0.15em 0 0;color:#6c757d;font-size:0.92em;">Same words, different intonation contours → very different impressions on outsiders. (For details: Bolinger 1989)</p>
+  <aside class="notes">
+    교재 §7.9 ¶1-4 (pp. 199-200). 다양한 variety의 intonation 차이.
+    - Hawaii: yes-no Q terminal high rise → earlier rise + fall.
+    - Welsh E.: tag Q rise-fall (emphatic).
+    - Southern AmE: rising pitches 빈도 ↑ (Bolinger 1998). reassurance 요청. Routine utterances로 확장 ("From Texas"). Australian E.도 동일.
+    - AmE vs BE: BE는 high initial pitches 덜 사용, final ones (yes-no Q) 더. Cross-cultural misimpressions — AmE rising "too businesslike", BE "over-cordial".
+    다음 슬라이드: Bailey 1983 4-variety 종합 비교.
+  </aside>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 14b — §7.9 (2/2): BAILEY 1983 4-VARIETY CONTRAST
+══════════════════════════════════════════════ -->
+<section>
+  <h2>§7.9 Variations among the Varieties <span style="font-size:0.65em;color:#666;font-weight:400;">— (2/2) Bailey (1983) Four-Variety Contrast</span></h2>
+  <div class="def-box" style="padding:0.15em 0.85em;font-size:0.72em;">
+    <p style="margin:0.06em 0;">Bailey (1983) shows how the <strong>same sentence</strong> spoken in four English varieties creates <strong>four different impressions</strong> on outsiders. (Yavaš p. 200)</p>
+  </div>
+
+  <div class="def-box" style="margin-top:0.4em;padding:0.4em 1em;font-size:0.72em;background:#f4f4f8;border-left-color:#6c757d;">
+    <div class="term" style="font-size:1em;margin-bottom:0.25em;text-align:center;">"Is your mother feeling all right?" — four varieties</div>
+    <div class="two-col" style="gap:1.2em;align-items:center;">
+      <div style="text-align:center;">
+        <img src="assets/img/intonation/intonation_Bailey.png" alt="Bailey 4-variety: British / Irish / Northern US / Southern US" class="contour-img" style="max-height:280px;width:auto;max-width:100%;display:block;margin:0 auto;">
+      </div>
+      <div>
+        <div style="font-size:1.05em;font-weight:bold;margin-bottom:0.25em;color:#444;">Outsider impressions</div>
+        <table style="font-size:1em;width:100%;line-height:1.7;">
+          <tbody>
+            <tr><td style="width:42%;padding:0.15em 0.3em;font-size:0.85em;text-align:left;"><strong>(1) British E.</strong></td><td style="color:#6c757d;padding:0.15em 0.3em;">condescending</td></tr>
+            <tr><td style="padding:0.15em 0.3em;font-size:0.85em;text-align:left;"><strong>(2) Irish E.</strong></td><td style="color:#6c757d;padding:0.15em 0.3em;">insultingly incredulous</td></tr>
+            <tr><td style="padding:0.15em 0.3em;font-size:0.85em;text-align:left;"><strong>(3) Northern US</strong></td><td style="color:#6c757d;padding:0.15em 0.3em;">repetitive</td></tr>
+            <tr><td style="padding:0.15em 0.3em;font-size:0.85em;text-align:left;"><strong>(4) Southern US</strong></td><td style="color:#6c757d;padding:0.15em 0.3em;">unaccountably surprised</td></tr>
+          </tbody>
+        </table>
+        <p style="margin:0.3em 0 0;color:#6c757d;font-size:0.85em;font-style:italic;">Same words, different intonation contours → very different impressions. (For details: Bolinger 1989)</p>
+      </div>
+    </div>
   </div>
 
   <aside class="notes">
@@ -521,22 +605,22 @@
       </thead>
       <tbody>
         <tr>
-          <td>(a) A: Are you coming to the movie? B: I have exams to <i>grade</i>.</td>
+          <td style="text-align:left;">(a) A: Are you coming to the movie? B: I have exams to <i>grade</i>.</td>
           <td class="answer"><strong>grade</strong></td>
           <td class="answer" style="text-align:left;">Default — last stressed lexical item (V)</td>
         </tr>
         <tr>
-          <td>(b) The dog <i>barked</i>.</td>
+          <td style="text-align:left;">(b) The dog <i>barked</i>.</td>
           <td class="answer"><strong>dog</strong></td>
           <td class="answer" style="text-align:left;"><strong>Exception (i)</strong> — intransitive V + non-human subject → tonic on subject (cf. (5a/b))</td>
         </tr>
         <tr>
-          <td>(c) The building's falling <i>down</i>.</td>
+          <td style="text-align:left;">(c) The building's falling <i>down</i>.</td>
           <td class="answer"><strong>building</strong></td>
           <td class="answer" style="text-align:left;"><strong>Exception (i)</strong> — intransitive VP + non-human subject (cf. "Our *town is on an upswing")</td>
         </tr>
         <tr>
-          <td>(d) I go to <i>Boston</i>, usually.</td>
+          <td style="text-align:left;">(d) I go to <i>Boston</i>, usually.</td>
           <td class="answer"><strong>Boston</strong></td>
           <td class="answer" style="text-align:left;"><strong>Exception (ii)</strong> — sentential adverbial "usually" skipped → tonic on last lexical (Boston)</td>
         </tr>
@@ -567,20 +651,20 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>(i) I am so happy for you.</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Emotional involvement (cf. (8))</td></tr>
-        <tr><td>(ii) Would you like coffee or tea? (open choice)</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Open-choice alternative (cf. (15))</td></tr>
-        <tr><td>(iii) Would you like coffee or tea? (closed choice)</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Closed choice = falling</td></tr>
-        <tr><td>(iv) Where will the meeting be held? (info-seeking)</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">wh-Q, info-seeking (cf. (9))</td></tr>
-        <tr><td>(v) Where will the meeting be held? (I couldn't hear)</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Repetition Q (cf. (14))</td></tr>
-        <tr><td>(vi) What am I doing? I am trying to fix the TV.</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Rhetorical / finality</td></tr>
-        <tr><td>(vii) Her predictions came true. (clear finality)</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Clear finality (cf. (7))</td></tr>
-        <tr><td>(viii) Who was at the meeting?</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">wh-Q (cf. (9))</td></tr>
-        <tr><td>(ix) Whatever you say.</td><td class="answer"><strong>(c) low fall</strong></td><td class="answer" style="text-align:left;">Detached / perfunctory (cf. (10))</td></tr>
-        <tr><td>(x) We should look for him, shouldn't we?</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Tag Q with uncertainty (cf. (16))</td></tr>
-        <tr><td>(xi) You can take the old route. (agree with reservation)</td><td class="answer"><strong>(e) fall–rise</strong></td><td class="answer" style="text-align:left;">Agreement with reservation (cf. (19))</td></tr>
-        <tr><td>(xii) Are you out of your mind?</td><td class="answer"><strong>(b) high long rise</strong></td><td class="answer" style="text-align:left;">Puzzlement / unbelieving (cf. (11a/b))</td></tr>
-        <tr><td>(xiii) Did you wash the car yet?</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Yes-no Q (cf. (12a/b))</td></tr>
-        <tr><td>(xiv) I would have done it the same way, wouldn't you?</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Tag Q (cf. (16))</td></tr>
+        <tr><td style="text-align:left;">(i) I am so happy for you.</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Emotional involvement (cf. (8))</td></tr>
+        <tr><td style="text-align:left;">(ii) Would you like coffee or tea? (open choice)</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Open-choice alternative (cf. (15))</td></tr>
+        <tr><td style="text-align:left;">(iii) Would you like coffee or tea? (closed choice)</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Closed choice = falling</td></tr>
+        <tr><td style="text-align:left;">(iv) Where will the meeting be held? (info-seeking)</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">wh-Q, info-seeking (cf. (9))</td></tr>
+        <tr><td style="text-align:left;">(v) Where will the meeting be held? (I couldn't hear)</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Repetition Q (cf. (14))</td></tr>
+        <tr><td style="text-align:left;">(vi) What am I doing? I am trying to fix the TV.</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Rhetorical / finality</td></tr>
+        <tr><td style="text-align:left;">(vii) Her predictions came true. (clear finality)</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">Clear finality (cf. (7))</td></tr>
+        <tr><td style="text-align:left;">(viii) Who was at the meeting?</td><td class="answer"><strong>(d) long fall</strong></td><td class="answer" style="text-align:left;">wh-Q (cf. (9))</td></tr>
+        <tr><td style="text-align:left;">(ix) Whatever you say.</td><td class="answer"><strong>(c) low fall</strong></td><td class="answer" style="text-align:left;">Detached / perfunctory (cf. (10))</td></tr>
+        <tr><td style="text-align:left;">(x) We should look for him, shouldn't we?</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Tag Q with uncertainty (cf. (16))</td></tr>
+        <tr><td style="text-align:left;">(xi) You can take the old route. (agree with reservation)</td><td class="answer"><strong>(e) fall–rise</strong></td><td class="answer" style="text-align:left;">Agreement with reservation (cf. (19))</td></tr>
+        <tr><td style="text-align:left;">(xii) Are you out of your mind?</td><td class="answer"><strong>(b) high long rise</strong></td><td class="answer" style="text-align:left;">Puzzlement / unbelieving (cf. (11a/b))</td></tr>
+        <tr><td style="text-align:left;">(xiii) Did you wash the car yet?</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Yes-no Q (cf. (12a/b))</td></tr>
+        <tr><td style="text-align:left;">(xiv) I would have done it the same way, wouldn't you?</td><td class="answer"><strong>(a) low rise</strong></td><td class="answer" style="text-align:left;">Tag Q (cf. (16))</td></tr>
       </tbody>
     </table>
   </div>
