@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>학생 포트폴리오 — 2026학년도 1학기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Noto+Serif:ital,wght@0,400;0,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-ot:         #1a1a2e;
+      --color-phonetics:  #0077b6;
+      --color-phonology:  #6a0572;
+      --color-consonants: #1b7f5e;
+      --color-vowels:     #c77b2e;
+      --color-syllables:  #2d6a4f;
+      --color-stress:     #c1121f;
+      --font: 'Noto Sans', 'Segoe UI', sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: white;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+    header .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    header .subtitle {
+      font-size: 0.9rem;
+      opacity: 0.75;
+      margin-bottom: 1rem;
+    }
+    header .meta {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      font-size: 0.78rem;
+      opacity: 0.7;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.78rem;
+      margin-top: 0.8rem;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .back-link:hover { background: rgba(255,255,255,0.12); }
+
+    /* ── Main layout ── */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    section.section-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6c757d;
+      margin: 1.5rem 0 0.8rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    /* ── Week group ── */
+    .week-group {
+      margin-bottom: 1.4rem;
+    }
+    .week-group__header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+      padding: 0.3rem 0.7rem;
+      background: white;
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .week-group__week {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .week-group__title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+    .week-group__topic {
+      font-size: 0.72rem;
+      color: #6c757d;
+      font-style: italic;
+      margin-left: auto;
+    }
+
+    /* ── Portfolio grid ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.7rem;
+    }
+
+    .portfolio-card {
+      background: white;
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      border-top: 3px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .portfolio-card:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      transform: translateY(-2px);
+    }
+    .portfolio-card__student {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+    .portfolio-card__title {
+      font-size: 0.82rem;
+      color: #495057;
+      line-height: 1.4;
+      min-height: 2.3em;
+    }
+    .portfolio-card__meta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-top: 0.2rem;
+    }
+    .portfolio-card__platform {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      color: white;
+    }
+    .platform-gemini   { background: #4285f4; }
+    .platform-chatgpt  { background: #10a37f; }
+    .platform-claude   { background: #cc7858; }
+    .platform-aistudio { background: #ea4335; }
+    .platform-netlify  { background: #00ad9f; }
+    .platform-local    { background: #6c757d; }
+
+    .portfolio-card__link {
+      display: inline-block;
+      margin-top: 0.4rem;
+      padding: 0.35rem 0.8rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-decoration: none;
+      align-self: flex-start;
+      letter-spacing: 0.02em;
+      transition: opacity 0.15s;
+    }
+    .portfolio-card__link:hover { opacity: 0.85; }
+
+    /* ── Stats box ── */
+    .stats-box {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem 1.4rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .stats-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .stats-item__value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+    .stats-item__label {
+      font-size: 0.7rem;
+      color: #6c757d;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.72rem;
+      color: #adb5bd;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">2026학년도 1학기 · STUDENT PORTFOLIO</div>
+  <h1>학생 포트폴리오</h1>
+  <p class="subtitle">AI 도구 활용 창의적 학습 프로젝트 — 학생 제출 자료</p>
+  <div class="meta">
+    <span>응용 영어 음운론</span>
+    <span>Applied English Phonology</span>
+  </div>
+  <a class="back-link" href="../../index.html">← 강의허브로 돌아가기</a>
+</header>
+
+<main>
+
+  <!-- ── Stats Summary ── -->
+  <div class="stats-box">
+    <div class="stats-item">
+      <span class="stats-item__value">11</span>
+      <span class="stats-item__label">총 제출작</span>
+    </div>
+    <div class="stats-item">
+      <span class="stats-item__value">8</span>
+      <span class="stats-item__label">참여 주차</span>
+    </div>
+    <div class="stats-item">
+      <span class="stats-item__value">5</span>
+      <span class="stats-item__label">사용 플랫폼</span>
+    </div>
+  </div>
+
+  <!-- ── W3: Phonetics ── -->
+  <div class="week-group" style="--accent: var(--color-phonetics)">
+    <div class="week-group__header">
+      <span class="week-group__week">Week 3</span>
+      <span class="week-group__title">Phonetics (2): Manners, Vowels &amp; Suprasegmentals</span>
+      <span class="week-group__topic">Ch. 1.3.4 – 1.6</span>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" style="--accent: var(--color-phonetics)">
+        <div class="portfolio-card__student">김보겸</div>
+        <div class="portfolio-card__title">Road to A+</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-gemini">Gemini</span>
+        </div>
+        <a class="portfolio-card__link" href="https://gemini.google.com/share/fb2e942f328d" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+      <div class="portfolio-card" style="--accent: var(--color-phonetics)">
+        <div class="portfolio-card__student">권재인</div>
+        <div class="portfolio-card__title">조음 방법, 위치 확인</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-gemini">Gemini</span>
+        </div>
+        <a class="portfolio-card__link" href="https://gemini.google.com/share/ff1ecf296506" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── W4: Phonology ── -->
+  <div class="week-group" style="--accent: var(--color-phonology)">
+    <div class="week-group__header">
+      <span class="week-group__week">Week 4</span>
+      <span class="week-group__title">Phonology (1): Contrast &amp; Distribution</span>
+      <span class="week-group__topic">Ch. 2.1 – 2.3</span>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" style="--accent: var(--color-phonology)">
+        <div class="portfolio-card__student">박지수</div>
+        <div class="portfolio-card__title">AI Coach (말하기 녹음)</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-gemini">Gemini</span>
+        </div>
+        <a class="portfolio-card__link" href="https://gemini.google.com/share/b6aadf50c2fb" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── W6: Consonants ── -->
+  <div class="week-group" style="--accent: var(--color-consonants)">
+    <div class="week-group__header">
+      <span class="week-group__week">Week 6</span>
+      <span class="week-group__title">English Consonants (1): Obstruents</span>
+      <span class="week-group__topic">Ch. 3.1 – 3.2</span>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" style="--accent: var(--color-consonants)">
+        <div class="portfolio-card__student">홍혜나</div>
+        <div class="portfolio-card__title">오목</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-gemini">Gemini</span>
+        </div>
+        <a class="portfolio-card__link" href="https://gemini.google.com/share/8d55536b610d" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+      <div class="portfolio-card" style="--accent: var(--color-consonants)">
+        <div class="portfolio-card__student">최재현</div>
+        <div class="portfolio-card__title">냥냥 음운론 과외</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-gemini">Gemini</span>
+        </div>
+        <a class="portfolio-card__link" href="https://gemini.google.com/share/ede1a39886d1" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── W7: Consonants (2) ── -->
+  <div class="week-group" style="--accent: var(--color-consonants)">
+    <div class="week-group__header">
+      <span class="week-group__week">Week 7</span>
+      <span class="week-group__title">English Consonants (2): Sonorants &amp; Variation</span>
+      <span class="week-group__topic">Ch. 3.3 – 3.6</span>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" style="--accent: var(--color-consonants)">
+        <div class="portfolio-card__student">이동원</div>
+        <div class="portfolio-card__title">English Phonology Quiz</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-chatgpt">ChatGPT</span>
+        </div>
+        <a class="portfolio-card__link" href="https://chatgpt.com/canvas/shared/69db8f0b4d4881918a25bdd3a7a84d48" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+      <div class="portfolio-card" style="--accent: var(--color-consonants)">
+        <div class="portfolio-card__student">김현영</div>
+        <div class="portfolio-card__title">Linguistic X-ray</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-gemini">Gemini</span>
+        </div>
+        <a class="portfolio-card__link" href="https://gemini.google.com/share/ce254deaba80" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+      <div class="portfolio-card" style="--accent: var(--color-consonants)">
+        <div class="portfolio-card__student">김서연</div>
+        <div class="portfolio-card__title">The Dialect Player</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-gemini">Gemini</span>
+        </div>
+        <a class="portfolio-card__link" href="https://gemini.google.com/share/a56e39c1e538" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── W11: Syllables ── -->
+  <div class="week-group" style="--accent: var(--color-syllables)">
+    <div class="week-group__header">
+      <span class="week-group__week">Week 11</span>
+      <span class="week-group__title">Syllables (1): Structure &amp; Sonority</span>
+      <span class="week-group__topic">Ch. 6.1 – 6.4</span>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" style="--accent: var(--color-syllables)">
+        <div class="portfolio-card__student">이효민</div>
+        <div class="portfolio-card__title">Sonority Peak Explorer</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-aistudio">AI Studio</span>
+        </div>
+        <a class="portfolio-card__link" href="https://ai.studio/apps/bfba95a9-3b4f-4c4d-8bab-a94777aacb59" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── W12: Syllables (2) ── -->
+  <div class="week-group" style="--accent: var(--color-syllables)">
+    <div class="week-group__header">
+      <span class="week-group__week">Week 12</span>
+      <span class="week-group__title">Syllables (2): Phonotactics &amp; Application</span>
+      <span class="week-group__topic">Ch. 6.5 – 6.8</span>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" style="--accent: var(--color-syllables)">
+        <div class="portfolio-card__student">김보배</div>
+        <div class="portfolio-card__title">영어 음절 구조 학습기</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-gemini">Gemini</span>
+        </div>
+        <a class="portfolio-card__link" href="https://gemini.google.com/share/b09c31f9a3ef" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── W13: Stress ── -->
+  <div class="week-group" style="--accent: var(--color-stress)">
+    <div class="week-group__header">
+      <span class="week-group__week">Week 13</span>
+      <span class="week-group__title">Stress (1): Word-Level Patterns</span>
+      <span class="week-group__topic">Ch. 7.1 – 7.5</span>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" style="--accent: var(--color-stress)">
+        <div class="portfolio-card__student">강선하</div>
+        <div class="portfolio-card__title">강세슛 게임</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-claude">Claude</span>
+        </div>
+        <a class="portfolio-card__link" href="https://claude.ai/public/artifacts/7710060a-95ef-4ad8-9a2a-5a4eb20445f2" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── W14: Stress (2) ── -->
+  <div class="week-group" style="--accent: var(--color-stress)">
+    <div class="week-group__header">
+      <span class="week-group__week">Week 14</span>
+      <span class="week-group__title">Stress (2): Phrases &amp; Intonation</span>
+      <span class="week-group__topic">Ch. 7.6 – 7.9</span>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card" style="--accent: var(--color-stress)">
+        <div class="portfolio-card__student">김현준</div>
+        <div class="portfolio-card__title">Intonation Analyzer</div>
+        <div class="portfolio-card__meta">
+          <span class="portfolio-card__platform platform-netlify">Netlify</span>
+        </div>
+        <a class="portfolio-card__link" href="https://intonationa.netlify.app/" target="_blank" rel="noopener">열어보기 →</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  Applied English Phonology · 2026학년도 1학기 · 학생 포트폴리오 · AI 도구 활용 창의적 학습 프로젝트
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>응용 영어 음운론 기말고사 — 학생용</title>
+<link href="https://fonts.googleapis.com/css2?family=Gentium+Plus:wght@400;700&family=Noto+Sans:wght@400;600;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --color-main:#1b7f5e;
+    --color-main-dark:#155f47;
+  }
+  body{font-family:'Noto Sans','Segoe UI',sans-serif;background:#f0f2f5;color:#1a1a2e;min-height:100vh;line-height:1.5}
+
+  /* Top bar */
+  .top-bar{background:#1a1a2e;color:#fff;padding:0.7rem 1.5rem;display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:100}
+  .top-bar .badge{background:var(--color-main);color:#fff;border-radius:999px;padding:0.2rem 0.8rem;font-size:0.75rem;font-weight:700}
+  .top-bar .label{font-size:0.85rem}
+  .top-bar .spacer{flex:1}
+  .pdf-btn{background:#fff;color:#1a1a2e;border:none;padding:0.4rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:0.4rem}
+  .pdf-btn:hover{background:#f0f0f0}
+
+  /* Header */
+  header{background:linear-gradient(135deg,var(--color-main) 0%,var(--color-main-dark) 100%);color:#fff;padding:2rem 1.5rem 1.7rem}
+  header h1{font-size:1.6rem;font-weight:700;margin-bottom:0.4rem;text-align:center}
+  header .subtitle{font-size:0.9rem;opacity:0.85;text-align:center;margin-bottom:1rem}
+  .info-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;font-size:0.78rem}
+  .info-card{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:6px;padding:0.5rem 0.7rem}
+  .info-card .lab{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.05em;opacity:0.7;display:block;margin-bottom:0.15rem}
+  .info-card .val{font-weight:600}
+
+  main{max-width:900px;margin:0 auto;padding:1.5rem}
+
+  /* Notation guide box */
+  .guide-box{background:#fff3cd;border-left:4px solid #c77b2e;border-radius:6px;padding:0.8rem 1rem;margin-bottom:1.2rem;font-size:0.83rem}
+  .guide-box h3{color:#854d0e;font-size:0.92rem;margin-bottom:0.4rem}
+  .guide-box code{background:#fff;padding:0.05rem 0.3rem;border-radius:3px;font-family:'Charis SIL','Doulos SIL','Gentium Plus','Noto Serif',serif;font-feature-settings:"ccmp" 1,"mark" 1,"mkmk" 1;color:var(--color-main-dark);font-weight:600}
+
+  /* Student info */
+  .student-info{background:#fff;border-radius:8px;padding:0.9rem 1.1rem;margin-bottom:1.2rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0.6rem;font-size:0.82rem;border-top:3px solid var(--color-main)}
+  .student-info label{font-size:0.7rem;color:#6c757d;display:block;margin-bottom:0.15rem;font-weight:600}
+  .student-info .field{border-bottom:1.5px solid #ced4da;min-height:1.4rem;padding:0.05rem 0.2rem}
+
+  /* Section header */
+  .section-header{background:var(--color-main);color:#fff;padding:0.55rem 1rem;border-radius:6px;margin:1.5rem 0 0.8rem;display:flex;align-items:center;justify-content:space-between}
+  .section-header h2{font-size:1.05rem;font-weight:700}
+  .section-header .pts{font-size:0.78rem;background:rgba(255,255,255,0.2);padding:0.15rem 0.6rem;border-radius:999px}
+
+  /* Question block */
+  .q-block{background:#fff;border-radius:8px;padding:1rem 1.2rem;margin-bottom:0.9rem;box-shadow:0 1px 3px rgba(0,0,0,0.06);page-break-inside:avoid}
+  .q-block .q-head{display:flex;align-items:flex-start;gap:0.6rem;margin-bottom:0.5rem}
+  .q-num{background:var(--color-main);color:#fff;font-weight:700;font-size:0.78rem;padding:0.18rem 0.55rem;border-radius:4px;flex-shrink:0;min-width:2.4rem;text-align:center}
+  .q-text{flex:1;font-size:0.9rem;color:#212529;line-height:1.55}
+  .q-text .ipa{font-family:'Charis SIL','Doulos SIL','Gentium Plus','Noto Serif',serif;font-feature-settings:"ccmp" 1,"mark" 1,"mkmk" 1;font-style:normal;background:#e7f3ff;padding:0.05rem 0.25rem;border-radius:3px;color:#0050b3;font-size:0.92em}
+  .q-text .ipa-alp{font-family:'Charis SIL','Doulos SIL','Gentium Plus','Noto Serif',serif;font-feature-settings:"ccmp" 1,"mark" 1,"mkmk" 1;font-style:normal;background:#fff4e6;padding:0.05rem 0.25rem;border-radius:3px;color:#c77b2e;font-size:0.92em}
+  .q-pts{font-size:0.7rem;color:#6c757d;font-weight:600;flex-shrink:0;align-self:center}
+
+  /* Options for MCQ */
+  .options{margin-left:3rem;margin-top:0.4rem;display:grid;grid-template-columns:1fr 1fr;gap:0.25rem 1rem;font-size:0.85rem}
+  .options.full{grid-template-columns:1fr}
+  .opt{padding:0.15rem 0;color:#495057}
+  .opt-label{font-weight:600;color:#495057;margin-right:0.4rem}
+
+  /* Answer field */
+  .ans-field{margin-left:3rem;margin-top:0.5rem;border-bottom:1.5px solid #ced4da;min-height:1.6rem;padding-bottom:0.15rem}
+  .ans-field.long{min-height:3.5rem;border:1.5px solid #e2e6ea;border-radius:4px;padding:0.4rem 0.6rem}
+  .ans-field.box{display:inline-block;min-width:5rem;border-bottom:1.5px solid #495057;padding:0.05rem 0.3rem;margin:0 0.15rem}
+
+  /* T/F field */
+  .tf-field{margin-left:3rem;margin-top:0.4rem;display:flex;gap:1.2rem;font-size:0.92rem}
+  .tf-opt{display:inline-flex;align-items:center;gap:0.4rem}
+  .tf-circle{display:inline-block;width:1.1rem;height:1.1rem;border:1.5px solid #495057;border-radius:50%}
+
+  /* Long answer field for SA */
+  .sa-field{margin-left:3rem;margin-top:0.6rem;border:1.5px solid #ced4da;border-radius:4px;min-height:5rem;padding:0.5rem 0.7rem;background:#fcfcfd}
+  .sa-field.short{min-height:3rem}
+
+  /* Placeholder for student-submitted questions */
+  .placeholder-block{background:#f8f9fa;border:2px dashed #adb5bd;border-radius:8px;padding:1rem 1.2rem;margin-bottom:0.9rem;font-size:0.88rem;color:#495057}
+  .placeholder-block .ph-num{background:#6c757d;color:#fff;font-weight:700;font-size:0.78rem;padding:0.18rem 0.55rem;border-radius:4px;margin-right:0.6rem}
+
+  /* Footer */
+  footer{text-align:center;padding:1.5rem;font-size:0.75rem;color:#6c757d;margin-top:1rem;border-top:1px solid #dee2e6}
+
+  /* Retroflex r with explicit dot below — text character (·) for PDF rendering reliability */
+  .retroflex-r{display:inline-flex;flex-direction:column;align-items:center;line-height:1;vertical-align:baseline}
+  .retroflex-r::after{content:"\B7";display:block;font-size:0.85em;line-height:0.3;margin-top:-0.1em;pointer-events:none}
+  /* Make IPA containers inline-block so padding fully extends the box */
+  .q-text .ipa,.q-text .ipa-alp,.answer-key .ipa,.answer-key .ipa-alp{display:inline-block;padding-bottom:0.15em;vertical-align:baseline}
+  .guide-box code{display:inline-block;padding-bottom:0.15em;vertical-align:baseline}
+
+  /* Print styles */
+  @media print{
+    body{background:#fff}
+    .top-bar{display:none}
+    header{padding:1rem 1rem 0.8rem;background:none !important;color:#000 !important;border-bottom:3px solid #000}
+    header h1{color:#000;font-size:1.4rem}
+    header .subtitle{color:#444}
+    .info-card{background:#f5f5f5 !important;color:#000;border:1px solid #ccc}
+    .info-card .lab,.info-card .val{color:#000}
+    main{max-width:100%;padding:0.6rem 0.8rem}
+    .q-block{box-shadow:none;border:1px solid #d1d5db;page-break-inside:avoid;margin-bottom:0.6rem;padding:0.7rem 0.9rem}
+    .q-num{background:#000 !important;color:#fff !important}
+    .section-header{background:#000 !important;color:#fff !important;page-break-after:avoid}
+    .ipa,.ipa-alp{background:transparent !important;color:#000 !important;border:1px solid #999;font-family:'Charis SIL','Doulos SIL','Gentium Plus','Noto Serif',serif !important;font-feature-settings:"ccmp" 1,"mark" 1,"mkmk" 1 !important}
+    .guide-box code{font-family:'Charis SIL','Doulos SIL','Gentium Plus','Noto Serif',serif !important;font-feature-settings:"ccmp" 1,"mark" 1,"mkmk" 1 !important}
+    @page{margin:1.5cm 1.2cm}
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar no-print">
+  <span class="badge">기말고사</span>
+  <span class="label">학생용</span>
+  <span class="spacer"></span>
+  <button class="pdf-btn" onclick="window.print()">💾 PDF 다운로드 / 인쇄</button>
+</div>
+
+<header>
+  <h1>응용 영어 음운론 — 기말고사 (Final Exam)</h1>
+  <p class="subtitle">Applied English Phonology · 2026학년도 1학기 · 교재 Ch. 4 / Ch. 6 / Ch. 7</p>
+  <div class="info-grid">
+    <div class="info-card"><span class="lab">Date</span><span class="val">Week 15</span></div>
+    <div class="info-card"><span class="lab">Duration</span><span class="val">60 minutes</span></div>
+    <div class="info-card"><span class="lab">Total Questions</span><span class="val">37</span></div>
+    <div class="info-card"><span class="lab">Total Points</span><span class="val">100</span></div>
+  </div>
+</header>
+
+<main>
+
+<div class="student-info">
+  <div><label>학번 (ID)</label><div class="field"></div></div>
+  <div><label>이름 (Name)</label><div class="field"></div></div>
+  <div><label>전공 (Major)</label><div class="field"></div></div>
+  <div><label>점수 (Score)</label><div class="field"></div></div>
+</div>
+
+<div class="guide-box">
+  <h3>📌 답안 작성 안내 (Notation Guide)</h3>
+  <p>음소(phoneme)는 슬래시로 표기합니다: <code>/p/</code>, <code>/<span class="retroflex-r">ɹ</span>/</code>, <code>/ŋ/</code>. <br>
+  이음(allophone) 또는 음성 전사(phonetic transcription)는 대괄호로 표기합니다: <code>[pʰ]</code>, <code>[ɫ]</code>, <code>[ɾ]</code>. <br>
+  표기 규칙을 지키지 않으면 부분 감점됩니다. 시험 범위는 <strong>Vowels (Ch. 4), Syllables (Ch. 6), Stress &amp; Intonation (Ch. 7)</strong>입니다.</p>
+</div>
+
+<!-- ═════════════════ SECTION I: Multiple Choice ═════════════════ -->
+<div class="section-header">
+  <h2>I. 객관식 (Multiple Choice)</h2>
+  <span class="pts">9문항 × 2점 = 18점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q1</div>
+    <div class="q-text">Which of the following is the <strong>tense</strong> counterpart of the lax vowel <span class="ipa">/ɪ/</span>?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> <span class="ipa">/e/</span></div>
+    <div class="opt"><span class="opt-label">b)</span> <span class="ipa">/i/</span></div>
+    <div class="opt"><span class="opt-label">c)</span> <span class="ipa">/ε/</span></div>
+    <div class="opt"><span class="opt-label">d)</span> <span class="ipa">/æ/</span></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q2</div>
+    <div class="q-text">The phonetic effect of <strong>R-coloring</strong> on English vowels is best described as:</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> nasalization</div>
+    <div class="opt"><span class="opt-label">b)</span> centralization + retroflexion</div>
+    <div class="opt"><span class="opt-label">c)</span> shortening</div>
+    <div class="opt"><span class="opt-label">d)</span> diphthongization</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q3</div>
+    <div class="q-text">Which English word undergoes <strong>vowel reduction</strong> in its unstressed syllable?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> <em>sofa</em></div>
+    <div class="opt"><span class="opt-label">b)</span> <em>baseball</em></div>
+    <div class="opt"><span class="opt-label">c)</span> <em>Sunday</em></div>
+    <div class="opt"><span class="opt-label">d)</span> <em>cocktail</em></div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q4</div>
+    <div class="q-text">The internal structure of an English syllable is best represented as:</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> Onset + Coda</div>
+    <div class="opt"><span class="opt-label">b)</span> Onset + Rhyme (Nucleus + Coda)</div>
+    <div class="opt"><span class="opt-label">c)</span> Nucleus + Coda</div>
+    <div class="opt"><span class="opt-label">d)</span> Onset + Nucleus</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q5</div>
+    <div class="q-text">According to the <strong>Sonority Hierarchy</strong>, which sound has the <strong>highest</strong> sonority value?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> <span class="ipa">/p/</span> (voiceless stop)</div>
+    <div class="opt"><span class="opt-label">b)</span> <span class="ipa">/s/</span> (voiceless fricative)</div>
+    <div class="opt"><span class="opt-label">c)</span> <span class="ipa">/n/</span> (nasal)</div>
+    <div class="opt"><span class="opt-label">d)</span> <span class="ipa">/a/</span> (low vowel)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q6</div>
+    <div class="q-text">Which is the correct syllabification of <strong><em>publicity</em></strong>?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> pub.li.ci.ty</div>
+    <div class="opt"><span class="opt-label">b)</span> pu.bli.ci.ty</div>
+    <div class="opt"><span class="opt-label">c)</span> pub.lic.i.ty</div>
+    <div class="opt"><span class="opt-label">d)</span> publi.ci.ty</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q7</div>
+    <div class="q-text">Which onset cluster is <strong>not</strong> a well-formed English onset (i.e., violates English phonotactic constraints)?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> <span class="ipa">/pl/</span> (as in <em>play</em>)</div>
+    <div class="opt"><span class="opt-label">b)</span> <span class="ipa">/t<span class="retroflex-r">ɹ</span>/</span> (as in <em>tree</em>)</div>
+    <div class="opt"><span class="opt-label">c)</span> <span class="ipa">/kn/</span> (as in <em>acne</em>)</div>
+    <div class="opt"><span class="opt-label">d)</span> <span class="ipa">/sp/</span> (as in <em>spin</em>)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q8</div>
+    <div class="q-text">Which stress pattern is <strong>typical</strong> for English two-syllable <strong>nouns</strong>?</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> Penult</div>
+    <div class="opt"><span class="opt-label">b)</span> Ult</div>
+    <div class="opt"><span class="opt-label">c)</span> Antepenult</div>
+    <div class="opt"><span class="opt-label">d)</span> Variable depending on the speaker's dialect</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q9</div>
+    <div class="q-text">In English <strong>noun compounds</strong>, the primary stress typically falls on the:</div>
+    <div class="q-pts">2pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> first element</div>
+    <div class="opt"><span class="opt-label">b)</span> last element</div>
+    <div class="opt"><span class="opt-label">c)</span> both elements equally</div>
+    <div class="opt"><span class="opt-label">d)</span> variable depending on syllable count</div>
+  </div>
+</div>
+
+<!-- ═════════════════ SECTION II: True/False ═════════════════ -->
+<div class="section-header">
+  <h2>II. O / X (True or False)</h2>
+  <span class="pts">4문항 × 1점 = 4점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q10</div>
+    <div class="q-text">Lax vowels in English can freely occur in stressed open syllables (e.g., word-final position).</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q11</div>
+    <div class="q-text">In a <strong>non-rhotic</strong> dialect such as RP, the <span class="ipa">/<span class="retroflex-r">ɹ</span>/</span> in the word <em>car</em> is fully pronounced as <span class="ipa-alp">[<span class="retroflex-r">ɹ</span>]</span> in word-final position.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q12</div>
+    <div class="q-text">The non-occurrence of the hypothetical English word <em>*</em><span class="ipa">/blɪk/</span> is an example of a <strong>systematic</strong> phonotactic gap.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q13</div>
+    <div class="q-text">In AmE, the word <strong><em>secondary</em></strong> has secondary stress on the <strong>penult</strong> with vowel <span class="ipa-alp">[ɛ̀]</span>; in BE, the same syllable contains a reduced vowel <span class="ipa-alp">[ə]</span>.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="tf-field">
+    <span class="tf-opt"><span class="tf-circle"></span> True</span>
+    <span class="tf-opt"><span class="tf-circle"></span> False</span>
+  </div>
+</div>
+
+<!-- ═════════════════ SECTION III: Fill in the Blank ═════════════════ -->
+<div class="section-header">
+  <h2>III. 빈칸 채우기 (Fill in the Blank)</h2>
+  <span class="pts">6문항 × 2점 = 12점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q14</div>
+    <div class="q-text">The English Vowel Nasalization rule is formalized as <strong>V → Ṽ / __ [+<span class="ans-field box"></span>]</strong>.</div>
+
+    <div class="q-pts">2pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q15</div>
+    <div class="q-text">The stressed vowel in the word <strong><em>bird</em></strong> is transcribed in IPA as <span class="ans-field box"></span> in American English (use the r-colored vowel symbol).<br>
+    <span style="display:inline-block;margin:0.3em 0;padding:0.4em 0.7em;background:#f0f4f8;border-radius:4px;font-size:0.92em;">
+      <strong>[보기]</strong> &nbsp; ① <span class="ipa-alp">[ɝ]</span> &nbsp;|&nbsp; ② <span class="ipa-alp">[ɜː]</span> &nbsp;|&nbsp; ③ <span class="ipa-alp">[ɚ]</span> &nbsp;|&nbsp; ④ <span class="ipa-alp">[ɛ<span class="retroflex-r">ɹ</span>]</span>
+    </span></div>
+    <div class="q-pts">2pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q16</div>
+    <div class="q-text">In English unstressed syllables, vowels undergo <strong>vowel reduction</strong>, typically producing the central vowel <span class="ans-field box"></span> (as in the unstressed syllables of <strong><em>banana</em></strong> and <strong><em>about</em></strong>).</div>
+    <div class="q-pts">2pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q17</div>
+    <div class="q-text">English has three <strong>diphthongs</strong>: <span class="ipa">/aɪ/</span> (as in <em>buy</em>), <span class="ipa">/aʊ/</span> (as in <em>cow</em>), and <span class="ans-field box"></span> (as in <em>boy</em>).</div>
+    <div class="q-pts">2pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q18</div>
+    <div class="q-text">The principle stating that a consonant <strong>between two vowels</strong> is assigned to the <strong>onset</strong> of the following syllable rather than the coda of the preceding one is called the <span class="ans-field box"></span> Principle.</div>
+    <div class="q-pts">2pt</div>
+  </div>
+</div>
+
+<!-- ═════════════════ SECTION IV: Short Answer ═════════════════ -->
+<div class="section-header">
+  <h2>IV. 단답형 주관식 (Short Answer)</h2>
+  <span class="pts">14문항 = 63점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q19</div>
+    <div class="q-text">다음 영어 모음 <span class="ipa">/æ/</span> (as in <em>cat</em>)의 음운 자질을 분석하시오:<br>
+      &nbsp;&nbsp;(a) Height (high / mid / low): <span class="ans-field box" style="min-width:5rem"></span><br>
+      &nbsp;&nbsp;(b) Backness (front / central / back): <span class="ans-field box" style="min-width:5rem"></span><br>
+      &nbsp;&nbsp;(c) Rounding (rounded / unrounded): <span class="ans-field box" style="min-width:6rem"></span><br>
+      &nbsp;&nbsp;(d) Tense / Lax: <span class="ans-field box" style="min-width:4rem"></span><br>
+      &nbsp;&nbsp;(e) Stressed open syllable에 출현 가능한가? (yes / no): <span class="ans-field box" style="min-width:4rem"></span></div>
+    <div class="q-pts">5pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q20</div>
+    <div class="q-text">다음 단어 쌍에서 첫 번째 단어의 모음이 더 길게 발음되는 이유를 (a)~(d) 중 고르시오 (4 vowel length rules):<br>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.4rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;line-height:1.7;">
+      <strong>[보기]</strong> &nbsp;
+      <strong>(a)</strong> Before voiced &gt; before voiceless &nbsp;|&nbsp;
+      <strong>(b)</strong> Before sonorant &gt; before obstruent &nbsp;|&nbsp;
+      <strong>(c)</strong> Open syllable &gt; closed syllable &nbsp;|&nbsp;
+      <strong>(d)</strong> Stressed syllable &gt; unstressed syllable
+    </span>
+      <table style="width:100%;margin-top:0.4em;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#f0f4f8;">
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:75%;">단어 쌍</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:25%;">답 (a~d)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(1) <em>appreciate</em>의 첫 <span class="ipa">/i/</span> &gt; 두 번째 <span class="ipa">/i/</span> <span style="color:#6c757d;font-size:0.9em;">([ə.p<span class="retroflex-r">ɹ</span>ˈi.ʃi.et])</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(2) <em>cab</em> <span class="ipa-alp">[kæb]</span> &gt; <em>cap</em> <span class="ipa-alp">[kæp]</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(3) <em>bay</em> <span class="ipa-alp">[be]</span> &gt; <em>bait</em> <span class="ipa-alp">[bet]</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(4) <em>goal</em> <span class="ipa-alp">[gol]</span> &gt; <em>goad</em> <span class="ipa-alp">[god]</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+    <div class="q-pts">4pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q21</div>
+    <div class="q-text">영어의 function words는 일반적으로 약한(reduced/weak) 형태로 발음되지만, 특정 조건에서는 강한(strong/full) 형태로 발음된다. 다음 발화에서 굵게 표시된 function word가 strong form으로 발음되는 이유를 (a)~(e) 중 고르시오:<br>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.4rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;line-height:1.7;">
+      <strong>[보기]</strong> &nbsp;
+      <strong>(a)</strong> Focal point / special emphasis &nbsp;|&nbsp;
+      <strong>(b)</strong> Contrast / assertion &nbsp;|&nbsp;
+      <strong>(c)</strong> Preposition separated from NP &nbsp;|&nbsp;
+      <strong>(d)</strong> Auxiliary without main verb &nbsp;|&nbsp;
+      <strong>(e)</strong> Slow / deliberate speech
+    </span>
+      <table style="width:100%;margin-top:0.4em;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#f0f4f8;">
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:78%;">발화 (굵은 글씨 = strong form)</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:22%;">답 (a~e)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(1) "What are you looking <strong>AT</strong>?"</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(2) "<strong>CAN</strong> you say that again?" <span style="color:#6c757d;font-size:0.9em;">(천천히, 비원어민에게)</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(3) A: "I can't finish this job by Tuesday." &nbsp; B: "Yes you <strong>CAN</strong>."</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(4) "You can drive, and I <strong>CAN</strong> too."</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(5) A: "We can serve strawberries or grapes." &nbsp; B: "I think we should serve strawberries <strong>AND</strong> grapes."</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+    <div class="q-pts">5pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q22</div>
+    <div class="q-text">단어 <em>blue</em> <span class="ipa">/bluː/</span>의 <strong>Skeletal Tier (X-tier)</strong> 표상을 분석하시오:<br>
+      &nbsp;&nbsp;(a) <span class="ipa">/bl/</span> onset cluster의 X-slot 수: <span class="ans-field box" style="min-width:3rem"></span><br>
+      &nbsp;&nbsp;(b) 장모음 <span class="ipa">/uː/</span> nucleus의 X-slot 수: <span class="ans-field box" style="min-width:3rem"></span><br>
+      &nbsp;&nbsp;(c) <em>blue</em>는 <strong>heavy</strong> syllable인가 <strong>light</strong> syllable인가? <span class="ans-field box" style="min-width:5rem"></span></div>
+    <div class="q-pts">3pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q23</div>
+    <div class="q-text"><em>sudden</em> <span class="ipa-alp">[ˈsʌd.n̩]</span>을 다음 형식으로 분석하시오:<br>
+      &nbsp;&nbsp;(a) 음절 수 <span style="color:#6c757d;font-size:0.9em;">(sonority peak 기준)</span>: <span class="ans-field box"></span> syllable(s)<br>
+      &nbsp;&nbsp;(b) 두 번째 음절의 nucleus 역할을 하는 분절 (IPA 기호): <span class="ans-field box" style="min-width:5rem"></span><br>
+      &nbsp;&nbsp;(c) (b)와 같이 자음이 nucleus 역할을 하는 현상의 명칭: <span class="ans-field box" style="min-width:9rem"></span> consonant</div>
+    <div class="q-pts">3pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q24</div>
+    <div class="q-text"><em>extra</em> <span class="ipa-alp">[ˈɛk.st<span class="retroflex-r">ɹ</span>ə]</span>의 syllable tree (음절 분배 원칙 적용)를 분석하시오:<br>
+<pre style="font-family:'Consolas','Courier New',monospace;font-size:0.82em;line-height:1.35;background:#f8f9fa;padding:0.6em 0.9em;border-radius:4px;margin:0.4em 0;border:1px solid #dee2e6;display:inline-block;">
+        σ1                           σ2
+       /  \                         /  \
+      O    R                       O    R
+      |   / \                      |   / \
+      ∅  N   C                     ?  N   C
+         |   |                        |   |
+        /ɛ/  ?                        ?   ∅
+
+  (O = Onset, R = Rhyme, N = Nucleus, C = Coda, ∅ = empty)
+</pre><br>
+      다음 빈칸을 채우시오:<br>
+      &nbsp;&nbsp;(a) σ1 coda (IPA): <span class="ans-field box" style="min-width:4rem"></span><br>
+      &nbsp;&nbsp;(b) σ2 onset cluster (IPA): <span class="ans-field box" style="min-width:5rem"></span><br>
+      &nbsp;&nbsp;(c) σ2 nucleus (IPA): <span class="ans-field box" style="min-width:4rem"></span><br>
+      &nbsp;&nbsp;(d) σ1의 weight (heavy/light): <span class="ans-field box" style="min-width:5rem"></span><br>
+      &nbsp;&nbsp;(e) σ2의 weight (heavy/light): <span class="ans-field box" style="min-width:5rem"></span></div>
+    <div class="q-pts">5pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q25</div>
+    <div class="q-text">Read the following passage:
+      <blockquote style="margin:0.6em 0;padding:0.6em 0.9em;background:#fff4e6;border-left:3px solid #c77b2e;font-size:0.93em;line-height:1.6;font-style:italic;color:#495057;">
+        As given by Selkirk (1984: 116), the [____] Principle states that:<br><br>
+        "In any syllable, there is a segment constituting a sonority peak that is preceded and/or followed by a sequence of segments with progressively decreasing sonority values."
+      </blockquote>
+      Answer the following:<br>
+      &nbsp;&nbsp;(a) Name of the principle: <span class="ans-field box" style="min-width:14rem"></span><br>
+      &nbsp;&nbsp;(b) The "segment constituting a sonority peak" corresponds to the syllable's <span class="ans-field box" style="min-width:6rem"></span> (English, 1 word).</div>
+    <div class="q-pts">4pt (a: 2pt / b: 2pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q26</div>
+    <div class="q-text">Read the following passage on <strong>triple onsets</strong>:
+      <blockquote style="margin:0.6em 0;padding:0.6em 0.9em;background:#fff4e6;border-left:3px solid #c77b2e;font-size:0.93em;line-height:1.6;font-style:italic;color:#495057;">
+        "Triple onsets can be described as an addition of /s/ as C₁ to voiceless stop + approximant double onsets. Thus, we have: C₁ = /s/, C₂ = voiceless stop, C₃ = approximant. Although the combinations can give us 12 logical possibilities, only seven of these occur. The regularities can be summarized as <strong>3 systematic constraints</strong> on which C₂–C₃ combinations are permitted."
+      </blockquote>
+      Answer the following:<br>
+      &nbsp;&nbsp;(a) <strong>Recall</strong> the 3 summary constraints from §6.5.3 (fill in the IPA segment):<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Rule 1: If C₂ is <span class="ipa">/p/</span>, then C₃ <strong>cannot be</strong> <span class="ans-field box" style="min-width:4rem"></span> (IPA)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Rule 2: If C₂ is <span class="ipa">/t/</span>, then C₃ <strong>is</strong> <span class="ans-field box" style="min-width:4rem"></span> (IPA)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;Rule 3: If C₂ is <span class="ipa">/k/</span>, then C₃ <strong>cannot be</strong> <span class="ans-field box" style="min-width:4rem"></span> (IPA)<br>
+      &nbsp;&nbsp;(b) <strong>Apply</strong> your rules — decide <strong>WELL-FORMED</strong> or <strong>ILL-FORMED</strong>:<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="ipa">/spl/</span>: <span class="ans-field box" style="min-width:5rem"></span> &nbsp;
+      <span class="ipa">/stw/</span>: <span class="ans-field box" style="min-width:5rem"></span> &nbsp;
+      <span class="ipa">/skw/</span>: <span class="ans-field box" style="min-width:5rem"></span><br>
+      &nbsp;&nbsp;(c) Provide one English word containing a <strong>well-formed</strong> triple onset: <span class="ans-field box" style="min-width:7rem"></span></div>
+    <div class="q-pts">7pt (각 blank 1pt × 7)</div>
+
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q27</div>
+    <div class="q-text">Read the following passage on <strong>syllable weight</strong>:
+      <blockquote style="margin:0.6em 0;padding:0.6em 0.9em;background:#fff4e6;border-left:3px solid #c77b2e;font-size:0.93em;line-height:1.6;font-style:italic;color:#495057;">
+        "No stressed syllable in English is light. When MOP-based syllabification makes σ₁ of words like <em>medicine</em>, <em>happen</em>, <em>finish</em> light but stress falls on σ₁, the intervocalic consonant is analyzed as belonging to BOTH the coda of σ₁ AND the onset of σ₂. <br><br>
+        <strong>Rule</strong>: A consonant becomes [____] when it follows a stressed lax vowel (/ɪ ɛ æ ʌ ʊ ɔ ɑ/) and is the single intervocalic consonant. → The stressed rhyme thereby becomes heavy (branching)."
+      </blockquote>
+      Answer the following:<br>
+      &nbsp;&nbsp;(a) The term that fills the [____] above (영단어 1개): <span class="ans-field box" style="min-width:9rem"></span><br>
+      &nbsp;&nbsp;(b) Compare <em>river</em> vs <em>rival</em>: Which word has the intervocalic consonant affected by this rule? <span class="ans-field box" style="min-width:5rem"></span><br>
+      &nbsp;&nbsp;(c) Briefly state why the OTHER word does NOT undergo this analysis: <span class="ans-field box" style="min-width:16rem"></span></div>
+    <div class="q-pts">4pt (a: 1pt / b: 1pt / c: 2pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q28</div>
+    <div class="q-text"><em>permit</em>의 verb와 noun 발음을 비교하시오. <strong>단어의 강세 받는 음절의 모음 위에 ´를 직접 표시</strong>하시오 (예: <em>ápple</em>, <em>banána</em>).<br>
+      <table style="width:100%;margin-top:0.5em;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#f0f4f8;">
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:15%;">품사</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:45%;">강세 표시한 단어</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:40%;">적용 규칙</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><strong>Verb</strong></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;"><span style="display:inline-block;min-width:10rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;"><span style="display:inline-block;min-width:8rem;border-bottom:1px solid #495057;">&nbsp;</span> Rule</td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><strong>Noun</strong></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;"><span style="display:inline-block;min-width:10rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;"><span style="display:inline-block;min-width:8rem;border-bottom:1px solid #495057;">&nbsp;</span> Rule</td>
+          </tr>
+        </tbody>
+      </table></div>
+    <div class="q-pts">4pt (셀당 1pt × 4)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q29</div>
+    <div class="q-text">다음 음절 유형 분류 framework에 따라 분석하시오 (Secondary Stress):
+      <blockquote style="margin:0.6em 0;padding:0.6em 0.9em;background:#fff4e6;border-left:3px solid #c77b2e;font-size:0.93em;line-height:1.6;font-style:italic;color:#495057;">
+        <strong>3 features</strong>: ±stress · ±tonic accent · ±full V<br>
+        • Primary stressed = +stress, <strong>+tonic accent</strong>, +full V (3 pluses → <strong>1</strong>)<br>
+        • Secondary stressed = +stress, −tonic accent, +full V (2 pluses → <strong>2</strong>)<br>
+        • Unstressed but +full V (1 plus → <strong>3</strong>) / Reduced [ə] (0 pluses → <strong>4</strong>)
+      </blockquote>
+      For each syllable of <em>pronunciation</em> <span class="ipa-alp">[p<span class="retroflex-r">ɹ</span>ə.nʌn.si.eɪ.ʃən]</span>, first mark the 3 features (+/−), then derive the <strong>Ladefoged number (1/2/3/4)</strong>:
+      <table style="width:100%;margin-top:0.4em;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#f0f4f8;">
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:18%;">Syllable</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:18%;">±stress</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:20%;">±tonic accent</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:18%;">±full V</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:26%;">Ladefoged #</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;">(a) <span class="ipa-alp">[p<span class="retroflex-r">ɹ</span>ə]</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2.5rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;">(b) <span class="ipa-alp">[nʌn]</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2.5rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;">(c) <span class="ipa-alp">[si]</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2.5rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;">(d) <span class="ipa-alp">[eɪ]</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2.5rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;">(e) <span class="ipa-alp">[ʃən]</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:2.5rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+    <div class="q-pts">5pt (각 cell 0.25pt × 20)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q30</div>
+    <div class="q-text">다음 영어 접미사들을 강세 영향에 따라 분류하시오. 각 접미사에 대해 보기에서 가장 알맞은 분류를 골라 알파벳을 적으시오.<br>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.4rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;line-height:1.7;">
+      <strong>[보기]</strong> &nbsp;
+      <strong>A.</strong> Stress-bearing (suffix 자신이 강세를 받음) &nbsp;|&nbsp;
+      <strong>B.</strong> Stress-neutral (어근 강세 유지) &nbsp;|&nbsp;
+      <strong>C.</strong> Stress-shifting (접미사 직전 음절로 강세 이동)
+    </span>
+      <table style="width:100%;margin-top:0.5em;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#f0f4f8;">
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:25%;">접미사</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:20%;">분류 (A/B/C)</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:55%;">예시 단어 (참고용)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><strong>(1) <em>-ee</em></strong></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;"><em>absent</em> → <em>absentee</em></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><strong>(2) <em>-ic</em></strong></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;"><em>period</em> → <em>periodic</em></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><strong>(3) <em>-ness</em></strong></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;"><em>happy</em> → <em>happiness</em></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><strong>(4) <em>-ation</em></strong></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;"><em>realize</em> → <em>realization</em></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><strong>(5) <em>-ity</em></strong></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;"><em>humid</em> → <em>humidity</em></td>
+          </tr>
+        </tbody>
+      </table></div>
+    <div class="q-pts">5pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q31</div>
+    <div class="q-text">다음 발화에 가장 알맞은 intonation 패턴을 보기에서 골라 알파벳을 적으시오.<br>
+    <span style="font-size:0.88em;color:#6c757d;">※ 동일 문장이 화용 상황에 따라 다른 intonation을 가질 수 있음에 주의.</span>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.4rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;line-height:1.7;">
+      <strong>[보기]</strong> &nbsp;
+      A. low rise &nbsp;|&nbsp;
+      B. high (long) rise &nbsp;|&nbsp;
+      C. low fall &nbsp;|&nbsp;
+      D. long (full) fall &nbsp;|&nbsp;
+      E. fall–rise &nbsp;|&nbsp;
+      F. rise–fall
+    </span>
+      <table style="width:100%;margin-top:0.4em;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#f0f4f8;">
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:78%;">발화</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:22%;">답 (A~F)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(1) "I am so happy for you."</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(2) "Would you like coffee or tea?" <span style="color:#6c757d;font-size:0.9em;">(open choice / 개방형)</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(3) "Would you like coffee or tea?" <span style="color:#6c757d;font-size:0.9em;">(closed choice / 폐쇄형)</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(4) "Whatever you say."</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(5) "Is this a joke?"</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+    <div class="q-pts">5pt (각 1pt)</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q32</div>
+    <div class="q-text">다음 4개 문장에서 <strong>nuclear (tonic) stress</strong>가 위치하는 단어를 적고, 적용된 규칙을 보기에서 고르시오:<br>
+    <span style="display:inline-block;margin:0.4rem 0;padding:0.4rem 0.7rem;background:#f0f4f8;border-radius:4px;font-size:0.92em;line-height:1.7;">
+      <strong>[보기]</strong> &nbsp;
+      <strong>A.</strong> Default ("last lexical item" rule) &nbsp;|&nbsp;
+      <strong>B.</strong> Exception (i): Intransitive V/VP with <strong>non-human subject</strong> &nbsp;|&nbsp;
+      <strong>C.</strong> Exception (ii): <strong>Sentential adverbials &amp; adverbials of time</strong> in final position
+    </span>
+      <table style="width:100%;margin-top:0.4em;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#f0f4f8;">
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:55%;">문장</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:25%;">Stress 받는 단어</th>
+            <th style="border:1px solid #ced4da;padding:0.35em 0.5em;width:20%;">규칙 (A/B/C)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(1) Our town is on an upswing.</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:5rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(2) The bird flew away.</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:5rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(3) I don't watch TV typically.</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:5rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+          <tr>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;">(4) It wasn't a very nice day unfortunately.</td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:5rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+            <td style="border:1px solid #ced4da;padding:0.4em 0.5em;text-align:center;"><span style="display:inline-block;min-width:3rem;border-bottom:1px solid #495057;">&nbsp;</span></td>
+          </tr>
+        </tbody>
+      </table></div>
+    <div class="q-pts">4pt (각 1pt)</div>
+  </div>
+</div>
+
+<!-- ═════════════════ SECTION V: Student-Submitted Questions ═════════════════ -->
+<div class="section-header">
+  <h2>V. 학생 출제 문항 (Student-Submitted)</h2>
+  <span class="pts">5문항 × 1점 = 5점</span>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q33</div>
+    <div class="q-text">According to the textbook, how are affricates like <span class="ipa">/tʃ/</span> in the word <em>chart</em> represented on the skeletal tier?</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options full">
+    <div class="opt"><span class="opt-label">a)</span> They branch into two timing slots because they are phonetically complex.</div>
+    <div class="opt"><span class="opt-label">b)</span> They take a single timing slot because they are phonologically simple.</div>
+    <div class="opt"><span class="opt-label">c)</span> They take up three timing slots due to their slow articulation.</div>
+    <div class="opt"><span class="opt-label">d)</span> They are not represented on the skeletal tier as they lack sonority.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q34</div>
+    <div class="q-text">다음 동사 복합어들 중 강세의 위치가 다른 하나를 고르시오.</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options">
+    <div class="opt"><span class="opt-label">a)</span> baby-sit</div>
+    <div class="opt"><span class="opt-label">b)</span> dry-clean</div>
+    <div class="opt"><span class="opt-label">c)</span> drop-kick</div>
+    <div class="opt"><span class="opt-label">d)</span> oversleep</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q35</div>
+    <div class="q-text">다음 단어들의 모음 길이를 <strong>긴 것부터 짧은 순서로</strong> 배열하시오: <em>kneel, need, neat, knee</em><br>
+      &nbsp;&nbsp;답: <span class="ans-field box" style="min-width:20rem"></span></div>
+    <div class="q-pts">1pt</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q36</div>
+    <div class="q-text">다음 중 Secondary Stress의 위치에 대한 설명으로 <strong>옳지 않은</strong> 것은?</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options full">
+    <div class="opt"><span class="opt-label">①</span> 일반적으로 Secondary Stress는 Primary Stress 앞에 온다.</div>
+    <div class="opt"><span class="opt-label">②</span> Primary Stress는 주요 pitch 변화가 일어나는 위치이다.</div>
+    <div class="opt"><span class="opt-label">③</span> 일반적으로 Secondary Stress는 Primary Stress 뒤에 온다.</div>
+    <div class="opt"><span class="opt-label">④</span> 마지막 stressed syllable이 Primary Stress가 되는 경향이 있다.</div>
+  </div>
+</div>
+
+<div class="q-block">
+  <div class="q-head">
+    <div class="q-num">Q37</div>
+    <div class="q-text">다음 중 수업에서 설명한 <strong>Tonic Accent</strong>의 특징으로 <strong>옳지 않은</strong> 것은?</div>
+    <div class="q-pts">1pt</div>
+  </div>
+  <div class="options full">
+    <div class="opt"><span class="opt-label">①</span> Pitch와 관련된다.</div>
+    <div class="opt"><span class="opt-label">②</span> Secondary Stress를 표시하는 핵심 기준이다.</div>
+    <div class="opt"><span class="opt-label">③</span> Primary Stress를 결정하는 중요한 기준이다.</div>
+    <div class="opt"><span class="opt-label">④</span> 단어 안에서 가장 두드러진 강세와 관련된다.</div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  Applied English Phonology · 2026학년도 1학기 · 기말고사 (학생용) · 정규 32문항 + 학생출제 5문항 = 총 37문항 100점
+</footer>
+
+</body>
+</html>

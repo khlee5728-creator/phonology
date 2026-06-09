@@ -4,6 +4,16 @@ docs/
 # Claude Code 설정 (개인 환경, 공유 불필요)
 .claude/
 
+# Obsidian 에디터 메타데이터
+.obsidian/
+
+# Obsidian 클립보드 붙여넣기 이미지 (교재 스크린샷 가능성 — 공개 저장소 업로드 금지)
+**/Pasted image*.png
+
+# 시험 출제 작업 노트 (정답·해설 포함 — 학생 노출 방지)
+final exam/기말고사_출제_작업서.md
+final exam/음운론 학생 출제 문제.md
+
 # OS 임시 파일
 .DS_Store
 Thumbs.db
