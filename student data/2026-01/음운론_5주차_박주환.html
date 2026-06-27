@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Phonology Analyzer v1.8</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 550px; text-align: center; }
+        h2 { color: #1a73e8; margin-bottom: 10px; }
+        p.subtitle { color: #666; font-size: 0.9em; margin-bottom: 20px; }
+        .input-group { display: flex; gap: 10px; margin-bottom: 20px; }
+        input { flex: 1; padding: 12px; border: 2px solid #ddd; border-radius: 8px; outline: none; transition: 0.3s; }
+        input:focus { border-color: #1a73e8; }
+        button { background: #1a73e8; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.2s; }
+        button:hover { background: #1557b0; transform: translateY(-1px); }
+        
+        #result-box { margin-top: 20px; padding: 20px; border-radius: 8px; display: none; text-align: left; background: #f8f9fa; border-left: 5px solid #1a73e8; animation: fadeIn 0.4s ease-out; }
+        .word-clickable { color: #1a73e8; cursor: pointer; text-decoration: underline; font-weight: bold; }
+        .status-o { color: #28a745; font-weight: bold; }
+        .status-x { color: #dc3545; font-weight: bold; }
+        .ipa { font-family: 'Lucida Sans Unicode', sans-serif; color: #e91e63; font-weight: bold; background: #fff1f5; padding: 2px 4px; border-radius: 4px; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Phonology Analyzer v1.8</h2>
+    <p class="subtitle">교재 및 학술 예시 통합 분석기 (Neutralization Focus)</p>
+    <div class="input-group">
+        <input type="text" id="word1" placeholder="첫 번째 단어">
+        <input type="text" id="word2" placeholder="두 번째 단어">
+    </div>
+    <button onclick="analyze()">분석 및 발음 듣기</button>
+
+    <div id="result-box">
+        <p><strong>결과:</strong> <span id="res-status"></span></p>
+        <p><strong>발음 비교 (클릭 시 재생):</strong> <br>
+           <span id="speaker-area"></span>
+        </p>
+        <p><strong>유형:</strong> <span id="res-type" style="font-weight: bold; color: #555;"></span></p>
+        <p><strong>음성학적 상세 분석:</strong> <br><span id="res-comment" style="font-size: 0.95em; color: #333; line-height: 1.7; display: block; margin-top: 8px;"></span></p>
+    </div>
+</div>
+
+<script>
+function speak(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = 0.75; 
+    window.speechSynthesis.speak(utterance);
+}
+
+function analyze() {
+    const w1 = document.getElementById('word1').value.toLowerCase().trim();
+    const w2 = document.getElementById('word2').value.toLowerCase().trim();
+    const box = document.getElementById('result-box');
+    
+    if (!w1 || !w2) { alert("두 단어를 모두 입력해주세요."); return; }
+    if (w1 === w2) { alert("서로 다른 단어를 입력하세요."); return; }
+
+    const pair = [w1, w2].sort().join('/'); 
+    
+    let isNeutralized = false;
+    let type = "해당 없음";
+    let comment = "입력하신 단어 조합에서는 주요 음운 현상이 발견되지 않았습니다.";
+
+    const flaps = ['medal/metal', 'rider/writer', 'wading/waiting', 'bidder/bitter', 'adam/atom', 'kitty/kiddie', 'paddy/patty', 'title/tidal', 'matter/madder', 'waiter/wader', 'native/nadive', 'letter/ledder', 'beauty/beaudy', 'city/cidy', 'data/dada'];
+    const nasalMergers = ['pen/pin', 'hem/him', 'bend/bind', 'send/sinned', 'gem/gym', 'ten/tin', 'went/wint', 'ment/mint', 'length/lingth', 'him/hymn'];
+    const liquidMergers = ['mary/merry', 'fairy/ferry', 'dairy/derry', 'marry/merry', 'bury/berry', 'feel/fill', 'peel/pill', 'pool/pull', 'fool/full', 'heal/hill', 'pill/peel'];
+    const deasps = ['pin/spin', 'top/stop', 'kill/skill', 'pant/span', 'tack/stack', 'pool/spool', 'team/steam', 'cold/scold', 'peak/speak', 'tale/stale', 'pot/spot', 'pit/spit', 'tick/stick', 'kin/skin', 'port/sport'];
+
+    if (flaps.includes(pair)) {
+        isNeutralized = true;
+        type = "Neutralization: Flapping (탄음화)";
+        comment = `모음 사이(Intervocalic) 환경에서 /t/와 /d/의 음소적 대조가 사라지고 탄음 <span class="ipa">[ɾ]</span>로 동일하게 실현되는 중화 현상입니다.`;
+    } else if (nasalMergers.includes(pair)) {
+        isNeutralized = true;
+        type = "Neutralization: Pre-nasal Merger (비음 앞 모음 중화)";
+        comment = `비음 앞에서 /ɪ/와 /ɛ/의 변별적 특징이 사라져 <span class="ipa">[ɪ]</span>로 통합되는 중화 현상입니다. (Pin-Pen Merger)`;
+    } else if (liquidMergers.includes(pair)) {
+        isNeutralized = true;
+        type = "Neutralization: Pre-liquid Merger (공명음 앞 모음 중화)";
+        comment = `/r, l/ 앞에서 Tense 모음과 Lax 모음의 구분이 약화되어 동일한 음가로 수렴되는 중화 현상입니다.`;
+    } else if (deasps.includes(pair)) {
+        isNeutralized = true;
+        type = "Neutralization: De-aspiration (무기음화)";
+        comment = `무성 폐쇄음 /p, t, k/가 /s/ 뒤에 위치할 때 기음(Aspiration)이 억제되어 무기음으로 실현되는 현상입니다. 특정 환경에서 기음의 유무에 따른 대조가 약화되는 양상을 보입니다.`;
+    }
+
+    box.style.display = "block";
+    document.getElementById('res-status').innerHTML = isNeutralized ? "<span class='status-o'>O (Neutralized)</span>" : "<span class='status-x'>X (Contrastive)</span>";
+    document.getElementById('res-type').innerText = type;
+    document.getElementById('res-comment').innerHTML = comment;
+    document.getElementById('speaker-area').innerHTML = `
+        <span class="word-clickable" onclick="speak('${w1}')">${w1}</span> vs 
+        <span class="word-clickable" onclick="speak('${w2}')">${w2}</span>
+    `;
+    
+    speak(w1);
+}
+</script>
+
+</body>
+</html>

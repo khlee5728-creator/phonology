@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>독립형 영어 Onset 분석기</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+        .container { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 400px; text-align: center; }
+        input { width: 80%; padding: 10px; margin-bottom: 10px; font-size: 16px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        #result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>영어 초성(Onset) 분석기</h2>
+    <input type="text" id="wordInput" placeholder="단어 입력 (예: spring, cat)">
+    <button onclick="analyze()">분석하기</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    // 내장 발음 사전 (주요 단어 예시)
+    const dict = {
+        "spring": ["S", "P", "R", "IH1", "NG"],
+        "strike": ["S", "T", "R", "AY1", "K"],
+        "cat": ["K", "AE1", "T"],
+        "apple": ["AE1", "P", "AH0", "L"],
+        "knight": ["N", "AY1", "T"],
+        "blue": ["B", "L", "UW1"],
+        "tree": ["T", "R", "IY1"],
+        "splash": ["S", "P", "L", "AE1", "SH"],
+        "go": ["G", "OW1"]
+    };
+
+    function analyze() {
+        const word = document.getElementById('wordInput').value.toLowerCase();
+        const res = document.getElementById('result');
+        
+        if (!dict[word]) {
+            res.innerHTML = "죄송합니다. 내장된 예시 단어 목록에 없습니다.<br>(spring, strike, cat, apple, knight, blue, tree, splash, go 등을 시도해보세요.)";
+            return;
+        }
+
+        const phonemes = dict[word];
+        let onsetCount = 0;
+        let onsetConsonants = [];
+
+        for (let p of phonemes) {
+            // Arpabet 표기에서 숫자가 없으면 자음(Onset)으로 간주
+            if (/\d/.test(p)) break; 
+            onsetConsonants.push(p);
+            onsetCount++;
+        }
+
+        let type = onsetCount === 0 ? "Zero Onset" : 
+                   onsetCount === 1 ? "Single Onset" : 
+                   onsetCount === 2 ? "Double Onset" : "Triple Onset";
+
+        res.innerHTML = `입력 단어: ${word}<br>분석 결과: <b>${type}</b><br>초성: ${onsetConsonants.join(', ')}`;
+    }
+</script>
+
+</body>
+</html>

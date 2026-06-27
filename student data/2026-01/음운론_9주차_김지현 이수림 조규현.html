@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Lab 🧪 | 통합 영어 음성학 플랫폼</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4a90e2;      --success: #A2D5AB;
+            --secondary: #FFD384;    --fail: #FF8D8D;
+            --quest-p: #FF8AB4;      --bg: #FDF6EC;
+            --nav-h: 70px;
+        }
+
+        body { font-family: 'Nanum Gothic', sans-serif; margin: 0; padding: 0; background: var(--bg); color: #5D5D5D; overflow-x: hidden; }
+
+        /* --- [Common Navigation] --- */
+        nav {
+            height: var(--nav-h); background: #fff; display: flex; justify-content: space-between; align-items: center;
+            padding: 0 30px; position: fixed; top: 0; width: 100%; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); box-sizing: border-box;
+        }
+        .nav-logo { font-family: 'Gaegu'; font-size: 2rem; font-weight: bold; color: var(--primary); cursor: pointer; }
+        .nav-links { display: flex; gap: 10px; }
+        .nav-btn { padding: 8px 15px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 0.9rem; border: none; background: none; }
+        .nav-btn:hover { background: #f0f4ff; }
+        .nav-btn.active { background: var(--primary); color: white; }
+
+        .app-section {
+            margin-top: var(--nav-h); display: none; padding: 30px 20px; min-height: calc(100vh - var(--nav-h));
+            max-width: 1200px; margin-left: auto; margin-right: auto; box-sizing: border-box;
+        }
+        .app-section.active { display: block; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .exit-to-main {
+            display: inline-flex; align-items: center; gap: 8px; background: white; border: 2px solid #5D5D5D;
+            padding: 8px 15px; border-radius: 12px; cursor: pointer; font-weight: bold; margin-bottom: 20px;
+            box-shadow: 0 3px 0 #5D5D5D; transition: 0.2s;
+        }
+
+        /* --- [MAIN DASHBOARD] --- */
+        #main-dash { text-align: center; padding-top: 50px; }
+        .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 40px auto; }
+        .dash-card { background: white; border-radius: 25px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s; border: 3px solid transparent; text-align: center; }
+        .dash-card:hover { transform: translateY(-10px); }
+        .dash-card.c1:hover { border-color: var(--primary); }
+        .dash-card.c2:hover { border-color: #2ecc71; }
+        .dash-card.c3:hover { border-color: var(--quest-p); }
+        .dash-icon { font-size: 4rem; margin-bottom: 15px; }
+
+        /* --- [1. Simulator Section - STAYS UNCHANGED] --- */
+        #sim-layout { display: flex; gap: 20px; align-items: flex-start; }
+        #sim-sidebar {
+            width: 240px; background: white; border-radius: 20px; border: 3px solid #5D5D5D;
+            transition: 0.3s; overflow: hidden; display: flex; flex-direction: column; height: 600px;
+        }
+        #sim-sidebar.collapsed { width: 0; border: none; margin: 0; }
+        .sidebar-header { padding: 15px; background: var(--primary); color: white; font-weight: bold; text-align: center; }
+        #history-list { flex: 1; overflow-y: auto; padding: 10px; list-style: none; margin: 0; }
+        .history-item { padding: 10px; border-bottom: 1px solid #eee; cursor: pointer; border-radius: 8px; font-size: 0.9rem; }
+        .history-item:hover { background: #f0f4ff; }
+
+        .vowel-grid-container {
+            position: relative; width: 100%; max-width: 500px; height: 350px; 
+            margin: 20px auto; border: 4px solid #5D5D5D; background: white; border-radius: 10px;
+        }
+        .grid-line-v { position: absolute; top: 0; bottom: 0; border-left: 2px dashed #ddd; width: 0; }
+        .grid-line-h { position: absolute; left: 0; right: 0; border-top: 2px dashed #ddd; height: 0; }
+        .grid-label { position: absolute; font-size: 0.75rem; font-weight: bold; color: #888; text-transform: uppercase; }
+
+        #tongue-point { 
+            position: absolute; width: 22px; height: 22px; background: #FF4D4D; 
+            border: 3px solid white; border-radius: 50%; transform: translate(-50%, -50%); 
+            transition: all 0.5s; z-index: 10; box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
+        }
+        #sim-lip-view { 
+            width: 100px; height: 35px; border: 5px solid #FF4D4D; border-radius: 50px; 
+            margin: 0 auto 10px; transition: 0.4s;
+        }
+        .phoneme-card {
+            background: #f0f4ff; border: 2px solid #d0dfff; padding: 8px 12px; border-radius: 8px;
+            font-weight: bold; cursor: pointer; color: var(--primary);
+        }
+        .phoneme-card.active { background: var(--primary); color: white; transform: translateY(-3px); }
+
+        /* --- [2. Analyzer Section - ADVANCED] --- */
+        .ana-ipa-large { font-size: 4.5rem; font-weight: 900; color: #2ecc71; margin: 20px 0; font-family: 'Times New Roman', serif; letter-spacing: 2px; }
+        .ana-section-title { font-size: 1.8rem; font-weight: 800; border-bottom: 3px solid #ddd; padding-bottom: 10px; margin: 40px 0 20px; color: #2c3e50; }
+        .ana-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+        .ana-card { background: white; border-radius: 20px; padding: 25px; border: 1px solid #e2e8f0; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .ana-table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        .ana-table td { padding: 8px; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; }
+        .ana-label { color: #64748b; font-weight: bold; width: 40%; }
+        .ana-value { font-weight: 800; color: #1e293b; text-align: right; }
+        .vowel-chart-mini { background: #f8fafc; border-radius: 10px; padding: 10px; text-align: center; border: 1px solid #edf2f7; }
+        .rule-box { background: #fff8e1; border-left: 5px solid #ffc107; padding: 15px; border-radius: 8px; margin: 20px 0; font-size: 0.95rem; line-height: 1.6; }
+
+        /* --- [3. Vowel Quest - STAYS UNCHANGED] --- */
+        #game-box { background: white; width: 95%; max-width: 600px; margin: 0 auto; padding: 30px; border-radius: 30px; box-shadow: 0 15px 0px #EBD9B4; text-align: center; position: relative; border: 4px solid #5D5D5D; min-height: 600px; overflow: hidden; }
+        .q-home-icon { position: absolute; top: 20px; left: 20px; font-size: 1.5rem; cursor: pointer; background: white; border: 2px solid #5D5D5D; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 0 #5D5D5D; z-index: 150; }
+        .level-tag { display: inline-block; background: #9AD0EC; color: white; padding: 5px 20px; border-radius: 20px; font-weight: bold; border: 2px solid #5D5D5D; margin-bottom: 10px; font-family: 'Gaegu'; }
+        .btn-diff { padding: 15px; border-radius: 15px; border: 3px solid #5D5D5D; cursor: pointer; font-size: 1.1rem; font-weight: bold; box-shadow: 0 5px 0 #5D5D5D; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; margin-bottom: 12px; }
+        .diff-easy { background: var(--success); color: white; }
+        .diff-normal { background: var(--secondary); color: white; }
+        .diff-hard { background: var(--fail); color: white; }
+        .is-cleared { border-style: dashed; opacity: 0.8; }
+        .progress-container { width: 100%; height: 18px; background: #EEE; border-radius: 10px; margin: 20px 0; border: 2px solid #5D5D5D; overflow: hidden; }
+        #progress-fill { width: 0%; height: 100%; background: var(--quest-p); transition: 0.4s; }
+        .option-card { background: white; border: 3px solid #5D5D5D; padding: 15px; border-radius: 15px; cursor: pointer; font-weight: bold; margin-bottom: 12px; box-shadow: 0 5px 0 #5D5D5D; transition: 0.2s; }
+        #quest-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.98); z-index: 500; flex-direction: column; justify-content: center; align-items: center; padding: 25px; box-sizing: border-box; }
+        #certificate, #collection-screen { display: none; border: 12px double #9AD0EC; padding: 40px; background: #fff; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box; z-index: 200; }
+        .collection-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-top: 20px; }
+        .collection-item { padding: 20px; border: 3px solid #ddd; border-radius: 15px; font-size: 2.5rem; opacity: 0.2; background: #fafafa; text-align: center; }
+        .collection-item.unlocked { opacity: 1; border-color: #9AD0EC; background: #f0f9ff; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-logo" onclick="switchApp('main')">Vowel Lab 🧪</div>
+    <div class="nav-links">
+        <button class="nav-btn" id="nav-simulator" onclick="switchApp('simulator')">👅 Simulator</button>
+        <button class="nav-btn" id="nav-analyzer" onclick="switchApp('analyzer')">🔍 Analyzer</button>
+        <button class="nav-btn" id="nav-quest" onclick="switchApp('quest')">🌈 Quest</button>
+    </div>
+</nav>
+
+<!-- [Main Dashboard] -->
+<section id="main" class="app-section active">
+    <div id="main-dash">
+        <h1 style="font-family:'Gaegu'; font-size:4.5rem; margin-bottom:10px;">Vowel Lab</h1>
+        <p style="font-size:1.2rem; color:#888;">조음 시뮬레이터 및 퀴즈 챌린지</p>
+        <div class="dash-grid">
+            <div class="dash-card c1" onclick="switchApp('simulator')">
+                <div class="dash-icon">👅</div>
+                <h3>Simulator</h3>
+                <p>발음 속도 조절 및 시각화</p>
+            </div>
+            <div class="dash-card c2" onclick="switchApp('analyzer')">
+                <div class="dash-icon">🔍</div>
+                <h3>IPA Analyzer</h3>
+                <p>모든 자음/모음 정밀 분석</p>
+            </div>
+            <div class="dash-card c3" onclick="switchApp('quest')">
+                <div class="dash-icon">🌈</div>
+                <h3>Quest</h3>
+                <p>단계별 마스터 챌린지</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- [1. Simulator] -->
+<section id="simulator" class="app-section">
+    <div style="display:flex; justify-content:space-between; margin-bottom:15px;">
+        <button onclick="toggleSimSidebar()" style="background:white; border:2px solid #5D5D5D; padding:8px 15px; border-radius:10px; cursor:pointer; font-weight:bold;">☰ History</button>
+        <div style="display:flex; align-items:center; gap:10px;">
+            <span style="font-size: 0.8rem; font-weight: bold;">Speed:</span>
+            <select id="sim-speed" style="padding: 5px; border-radius: 5px; border: 2px solid #5D5D5D;">
+                <option value="1600">0.25x</option>
+                <option value="1200">0.5x</option>
+                <option value="800" selected>1.0x</option>
+            </select>
+        </div>
+        <button onclick="switchApp('main')" style="background:white; border:2px solid #5D5D5D; padding:8px 15px; border-radius:10px; cursor:pointer; font-weight:bold;">🏠 Home</button>
+    </div>
+
+    <div id="sim-layout">
+        <div id="sim-sidebar">
+            <div class="sidebar-header">Word History</div>
+            <ul id="history-list"></ul>
+            <button onclick="clearSimHistory()" style="padding:10px; border:none; background:#eee; cursor:pointer; font-size:0.8rem;">Clear All</button>
+        </div>
+        <div style="flex:1; background:white; padding:30px; border-radius:30px; border:3px solid #5D5D5D;">
+            <div style="display:flex; flex-direction:column; gap:5px; margin-bottom:10px;">
+                <div style="display:flex; gap:10px;">
+                    <input type="text" id="sim-word-input" placeholder="Type word..." style="flex:1; padding:15px; border:2px solid #ddd; border-radius:15px; font-size:1.1rem;">
+                    <button onclick="analyzeAndSimulate()" style="background:var(--primary); color:white; border:none; padding:0 30px; border-radius:15px; cursor:pointer; font-weight:bold;">Visualize</button>
+                </div>
+                <div id="sim-suggestion" style="font-size: 0.85rem; color: var(--fail); padding-left: 10px; min-height: 20px;"></div>
+            </div>
+            <div id="sim-phoneme-list" style="display:flex; justify-content:center; gap:8px; margin-bottom:20px; min-height:45px; flex-wrap:wrap;"></div>
+            <div class="vowel-grid-container">
+                <div class="grid-line-v" style="left: 33.3%;"></div><div class="grid-line-v" style="left: 66.6%;"></div>
+                <div class="grid-line-h" style="top: 33.3%;"></div><div class="grid-line-h" style="top: 66.6%;"></div>
+                <div class="grid-label" style="top: -25px; left: 10%;">Front</div><div class="grid-label" style="top: -25px; left: 42%;">Central</div><div class="grid-label" style="top: -25px; left: 85%;">Back</div>
+                <div class="grid-label" style="left: -45px; top: 15%;">High</div><div class="grid-label" style="left: -45px; top: 48%;">Mid</div><div class="grid-label" style="left: -45px; top: 82%;">Low</div>
+                <div id="tongue-point" style="left: 50%; top: 50%;"></div>
+            </div>
+            <div style="text-align:center;"><div id="sim-lip-view"></div><div id="sim-display-ipa" style="font-size:3rem; font-weight:bold; color:var(--primary);">-</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- [2. Advanced Analyzer] -->
+<section id="analyzer" class="app-section">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <button onclick="switchApp('main')" style="background:white; border:2px solid #5D5D5D; padding:8px 15px; border-radius:10px; cursor:pointer; font-weight:bold; float:left;">🏠 Home</button>
+        <h2 style="font-weight: 800; font-size: 2.2rem; color: #2ecc71;">English IPA Analyzer</h2>
+        <div style="display:flex; gap:10px; max-width:600px; margin: 30px auto;">
+            <input type="text" id="ana-in" placeholder="Enter any English word..." style="flex:1; padding:18px; border:2px solid #2ecc71; border-radius:15px; font-size:1.1rem; outline:none;">
+            <button onclick="runDetailedAnalysis()" style="background:#2ecc71; color:white; border:none; padding:0 30px; border-radius:15px; cursor:pointer; font-weight:bold;">ANALYZE</button>
+        </div>
+    </div>
+
+    <div id="ana-result-view" style="display:none;">
+        <div id="ana-ipa-main" class="ana-ipa-large" style="text-align:center;">/ipa/</div>
+        <div id="ana-phonology-rules" class="rule-box" style="display:none;"></div>
+
+        <div class="ana-section-title">1. Vowel Analysis</div>
+        <div id="ana-v-grid" class="ana-grid"></div>
+
+        <div class="ana-section-title">2. Consonant Analysis</div>
+        <div id="ana-c-grid" class="ana-grid"></div>
+    </div>
+</section>
+
+<!-- [3. Vowel Quest] -->
+<section id="quest" class="app-section">
+    <div id="game-box">
+        <div class="q-home-icon" onclick="switchApp('main')">🏠</div>
+        <div id="q-start">
+            <div style="font-size: 4rem; margin-bottom: 10px;">🌟</div>
+            <h1 style="font-family: 'Gaegu'; font-size: 2.8rem; color: var(--quest-p); margin-top: 0;">Vowel Master Quest</h1>
+            <p>모든 상장을 수집해 보세요!</p>
+            <div id="q-diff-container" style="margin-top:20px;"></div>
+            <button onclick="qOpenColl()" style="background:white; border:3px solid #9AD0EC; color:#9AD0EC; padding:10px; border-radius:15px; cursor:pointer; width:100%; margin-top:15px; font-family:'Gaegu'; font-size:1.4rem;">상장 보관함 🏆</button>
+            <button onclick="qReset()" style="margin-top: 25px; background: none; border: none; color: #bbb; cursor: pointer; text-decoration: underline; font-size: 0.8rem;">기록 초기화</button>
+        </div>
+        <div id="q-quiz" style="display: none;">
+            <div id="q-lvl-tag" class="level-tag">Level 1</div>
+            <div class="progress-container"><div id="progress-fill"></div></div>
+            <div id="q-status" style="font-weight: bold; color: #888;">Question 1/3</div>
+            <div id="q-text" style="font-size: 1.3rem; font-weight: bold; margin: 25px 0; min-height: 60px;"></div>
+            <div id="q-area"></div>
+            <button id="q-submit" style="display:none; margin-top:10px; background: var(--quest-p); color: white; border: 3px solid #5D5D5D; padding: 12px 35px; border-radius: 50px; cursor: pointer; font-size: 1.3rem; font-family: 'Gaegu';">제출</button>
+        </div>
+        <div id="q-result" style="display: none;">
+            <div id="qr-icon" style="font-size: 4rem;"></div>
+            <h2 id="qr-title"></h2>
+            <div id="qr-report" style="display:none; text-align:left; background:#fff5f5; padding:15px; border-radius:15px; border:2px solid #ffc1c1; margin:15px 0; max-height:200px; overflow-y:auto;"></div>
+            <p id="qr-text"></p>
+            <button id="qr-btn" style="background: var(--quest-p); color: white; border: 3px solid #5D5D5D; padding: 12px 35px; border-radius: 50px; cursor: pointer; font-size: 1.3rem; font-family: 'Gaegu';"></button>
+        </div>
+        <div id="quest-overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.98); z-index: 500; flex-direction: column; justify-content: center; align-items: center; padding: 25px; box-sizing: border-box;">
+            <div id="qo-icon" style="font-size: 5rem;"></div>
+            <h2 id="qo-title"></h2>
+            <div id="qo-exp" style="margin: 15px 0; font-size: 1.1rem; line-height: 1.6;"></div>
+            <button onclick="qNext()" style="background: var(--quest-p); color: white; border: 3px solid #5D5D5D; padding: 12px 35px; border-radius: 50px; cursor: pointer; font-size: 1.3rem; font-family: 'Gaegu';">다음으로 ▶</button>
+        </div>
+        <div id="certificate">
+            <p style="letter-spacing: 2px; font-weight: bold; color: #aaa;">OFFICIAL CERTIFICATE</p>
+            <div id="cert-icon-box" style="font-size: 5rem; margin: 10px 0;">🐥</div>
+            <h1 style="color: var(--quest-p); font-size: 3.2rem; font-family: 'Gaegu'; margin: 5px 0;">Vowel Master</h1>
+            <p id="cert-msg" style="font-size: 1.1rem; line-height: 1.6;"></p>
+            <div style="margin: 20px 0;"><b>난이도:</b> <span id="cert-diff"></span><br><b>상태:</b> 마스터 인증 완료 ✅</div>
+            <button onclick="qGoBackToStart()" style="background: var(--quest-p); color: white; border: 3px solid #5D5D5D; padding: 12px 35px; border-radius: 50px; font-family: 'Gaegu'; cursor:pointer;">퀘스트 메인으로</button>
+        </div>
+        <div id="collection-screen">
+            <h2 style="font-family: 'Gaegu'; font-size: 2.2rem; color: #9AD0EC;">My Collection</h2>
+            <div class="collection-grid" id="coll-grid"></div>
+            <button onclick="qCloseColl()" style="background: var(--quest-p); color: white; border: 3px solid #5D5D5D; padding: 12px 35px; border-radius: 50px; font-family: 'Gaegu'; margin-top: 40px; cursor:pointer;">돌아가기</button>
+        </div>
+    </div>
+</section>
+
+<script>
+    // --- [Global Controller] ---
+    function switchApp(id) {
+        document.querySelectorAll('.app-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        if(id !== 'main') document.getElementById('nav-'+id).classList.add('active');
+        if(id === 'quest') qGoBackToStart();
+        window.scrollTo(0,0);
+    }
+
+    // --- [SIMULATOR Logic] ---
+    const simArticulationMap = {
+        'i': { x: 5, y: 10, lipW: 130, lipH: 10 }, 'ɪ': { x: 25, y: 22, lipW: 120, lipH: 15 }, 'u': { x: 95, y: 10, lipW: 60, lipH: 15 }, 'ʊ': { x: 75, y: 25, lipW: 80, lipH: 20 },
+        'e': { x: 10, y: 45, lipW: 120, lipH: 20 }, 'ɛ': { x: 15, y: 55, lipW: 125, lipH: 25 }, 'ə': { x: 50, y: 50, lipW: 100, lipH: 20 }, 'ʌ': { x: 65, y: 75, lipW: 105, lipH: 35 }, 
+        'o': { x: 90, y: 45, lipW: 70, lipH: 15 }, 'ɔ': { x: 90, y: 65, lipW: 75, lipH: 30 }, 'æ': { x: 10, y: 90, lipW: 140, lipH: 45 }, 'ɑ': { x: 90, y: 90, lipW: 110, lipH: 55 },
+        'p': { x: 10, y: 50, lipW: 100, lipH: 2, bilabial: true }, 'b': { x: 10, y: 50, lipW: 100, lipH: 2, bilabial: true }, 'm': { x: 10, y: 50, lipW: 100, lipH: 2, bilabial: true },
+        't': { x: 25, y: 5, lipW: 110, lipH: 10 }, 'd': { x: 25, y: 5, lipW: 110, lipH: 10 }, 'n': { x: 25, y: 5, lipW: 110, lipH: 10 },
+        'k': { x: 85, y: 15, lipW: 110, lipH: 10 }, 'ɡ': { x: 85, y: 15, lipW: 110, lipH: 10 }, 's': { x: 25, y: 15, lipW: 120, lipH: 5 }, 'default': { x: 50, y: 50, lipW: 100, lipH: 20 }
+    };
+    let simHistory = JSON.parse(localStorage.getItem('vowel_lab_history') || '[]');
+    function toggleSimSidebar() { document.getElementById('sim-sidebar').classList.toggle('collapsed'); }
+    function updateHistoryUI() {
+        const list = document.getElementById('history-list'); list.innerHTML = "";
+        simHistory.forEach(word => {
+            const li = document.createElement('li'); li.className = "history-item";
+            li.innerHTML = `<span>${word}</span>`;
+            li.onclick = () => { document.getElementById('sim-word-input').value = word; analyzeAndSimulate(); };
+            list.appendChild(li);
+        });
+    }
+    function clearSimHistory() { simHistory = []; localStorage.setItem('vowel_lab_history', '[]'); updateHistoryUI(); }
+    async function analyzeAndSimulate() {
+        const wordInput = document.getElementById('sim-word-input').value.trim();
+        const suggestionBox = document.getElementById('sim-suggestion');
+        if(!wordInput) return;
+        suggestionBox.innerText = "";
+        try {
+            const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${wordInput}`);
+            const data = await res.json();
+            if (data.title === "No Definitions Found") { suggestionBox.innerText = "Word not found. Check spelling."; return; }
+            const word = data[0].word;
+            if(!simHistory.includes(word)) { simHistory.unshift(word); localStorage.setItem('vowel_lab_history', JSON.stringify(simHistory.slice(0,20))); updateHistoryUI(); }
+            const ipaRaw = data[0].phonetics.find(p => p.text)?.text.replace(/[\/\[\]ˈˌ]/g, "") || "";
+            const phonemes = ipaRaw.split("");
+            renderPhonemeCards(phonemes); playSequence(phonemes);
+        } catch(e) { suggestionBox.innerText = "Error fetching data."; }
+    }
+    function renderPhonemeCards(phonemes) {
+        const list = document.getElementById('sim-phoneme-list'); list.innerHTML = "";
+        phonemes.forEach((p, idx) => {
+            const card = document.createElement('div'); card.className = "phoneme-card";
+            card.innerText = p; card.onclick = () => { highlightSimCard(idx); moveTongue(p); };
+            list.appendChild(card);
+        });
+    }
+    function moveTongue(phoneme) {
+        const pos = simArticulationMap[phoneme] || simArticulationMap['default'];
+        const dot = document.getElementById('tongue-point');
+        const lip = document.getElementById('sim-lip-view');
+        dot.style.left = pos.x + "%"; dot.style.top = pos.y + "%";
+        lip.style.width = pos.lipW + "px"; lip.style.height = pos.lipH + "px";
+        lip.style.borderWidth = pos.bilabial ? "10px 5px" : "5px";
+        document.getElementById('sim-display-ipa').innerText = phoneme;
+    }
+    function highlightSimCard(idx) {
+        const cards = document.querySelectorAll('#sim-phoneme-list .phoneme-card');
+        cards.forEach(c => c.classList.remove('active'));
+        if(cards[idx]) cards[idx].classList.add('active');
+    }
+    async function playSequence(phonemes) {
+        const speed = parseInt(document.getElementById('sim-speed').value);
+        for(let i=0; i<phonemes.length; i++) { highlightSimCard(i); moveTongue(phonemes[i]); await new Promise(r => setTimeout(r, speed)); }
+    }
+
+    // --- [ANALYZER Logic - Expanded Detailed Database] ---
+    const anaDetailedDb = {
+        // Vowels
+        'i': { type: 'V', h: 'High', b: 'Front', tl: 'Tense', r: 'Unrounded', cx: 15, cy: 15 },
+        'ɪ': { type: 'V', h: 'Near-High', b: 'Near-Front', tl: 'Lax', r: 'Unrounded', cx: 35, cy: 30 },
+        'eɪ': { type: 'V', h: 'Mid-High', b: 'Front', tl: 'Diphthong', r: 'Unrounded', cx: 25, cy: 45 },
+        'ɛ': { type: 'V', h: 'Mid-Low', b: 'Front', tl: 'Lax', r: 'Unrounded', cx: 30, cy: 65 },
+        'æ': { type: 'V', h: 'Low', b: 'Front', tl: 'Lax', r: 'Unrounded', cx: 15, cy: 85 },
+        'u': { type: 'V', h: 'High', b: 'Back', tl: 'Tense', r: 'Rounded', cx: 85, cy: 15 },
+        'ʊ': { type: 'V', h: 'Near-High', b: 'Near-Back', tl: 'Lax', r: 'Rounded', cx: 65, cy: 30 },
+        'oʊ': { type: 'V', h: 'Mid-High', b: 'Back', tl: 'Diphthong', r: 'Rounded', cx: 75, cy: 45 },
+        'ɔ': { type: 'V', h: 'Mid-Low', b: 'Back', tl: 'Tense', r: 'Rounded', cx: 85, cy: 65 },
+        'ɑ': { type: 'V', h: 'Low', b: 'Back', tl: 'Tense', r: 'Unrounded', cx: 85, cy: 85 },
+        'ʌ': { type: 'V', h: 'Mid-Low', b: 'Central', tl: 'Lax', r: 'Unrounded', cx: 60, cy: 75 },
+        'ə': { type: 'V', h: 'Mid', b: 'Central', tl: 'Lax', r: 'Unrounded', cx: 50, cy: 50 },
+        'ɜ': { type: 'V', h: 'Mid-Low', b: 'Central', tl: 'Tense', r: 'Unrounded', cx: 50, cy: 65 },
+        'aɪ': { type: 'V', h: 'Low to High', b: 'Front', tl: 'Diphthong', r: 'Unrounded', cx: 35, cy: 85 },
+        'aʊ': { type: 'V', h: 'Low to High', b: 'Back', tl: 'Diphthong', r: 'Rounded', cx: 65, cy: 85 },
+        'ɔɪ': { type: 'V', h: 'Mid to High', b: 'Front', tl: 'Diphthong', r: 'Unrounded', cx: 45, cy: 65 },
+
+        // Consonants
+        'p': { type: 'C', p: 'Bilabial', m: 'Plosive', v: 'Voiceless', map: 'lips' },
+        'b': { type: 'C', p: 'Bilabial', m: 'Plosive', v: 'Voiced', map: 'lips' },
+        't': { type: 'C', p: 'Alveolar', m: 'Plosive', v: 'Voiceless', map: 'alveolar' },
+        'd': { type: 'C', p: 'Alveolar', m: 'Plosive', v: 'Voiced', map: 'alveolar' },
+        'k': { type: 'C', p: 'Velar', m: 'Plosive', v: 'Voiceless', map: 'velar' },
+        'ɡ': { type: 'C', p: 'Velar', m: 'Plosive', v: 'Voiced', map: 'velar' },
+        'f': { type: 'C', p: 'Labiodental', m: 'Fricative', v: 'Voiceless', map: 'dentallip' },
+        'v': { type: 'C', p: 'Labiodental', m: 'Fricative', v: 'Voiced', map: 'dentallip' },
+        'θ': { type: 'C', p: 'Dental', m: 'Fricative', v: 'Voiceless', map: 'teeth' },
+        'ð': { type: 'C', p: 'Dental', m: 'Fricative', v: 'Voiced', map: 'teeth' },
+        's': { type: 'C', p: 'Alveolar', m: 'Fricative', v: 'Voiceless', map: 'alveolar' },
+        'z': { type: 'C', p: 'Alveolar', m: 'Fricative', v: 'Voiced', map: 'alveolar' },
+        'ʃ': { type: 'C', p: 'Post-alveolar', m: 'Fricative', v: 'Voiceless', map: 'palatal' },
+        'ʒ': { type: 'C', p: 'Post-alveolar', m: 'Fricative', v: 'Voiced', map: 'palatal' },
+        'tʃ': { type: 'C', p: 'Post-alveolar', m: 'Affricate', v: 'Voiceless', map: 'palatal' },
+        'dʒ': { type: 'C', p: 'Post-alveolar', m: 'Affricate', v: 'Voiced', map: 'palatal' },
+        'm': { type: 'C', p: 'Bilabial', m: 'Nasal', v: 'Voiced', map: 'lips' },
+        'n': { type: 'C', p: 'Alveolar', m: 'Nasal', v: 'Voiced', map: 'alveolar' },
+        'ŋ': { type: 'C', p: 'Velar', m: 'Nasal', v: 'Voiced', map: 'velar' },
+        'l': { type: 'C', p: 'Alveolar', m: 'Lateral Approx.', v: 'Voiced', map: 'alveolar' },
+        'r': { type: 'C', p: 'Post-alveolar', m: 'Approximant', v: 'Voiced', map: 'palatal' },
+        'j': { type: 'C', p: 'Palatal', m: 'Approximant', v: 'Voiced', map: 'palatal' },
+        'w': { type: 'C', p: 'Bilabial/Velar', m: 'Approximant', v: 'Voiced', map: 'velar' },
+        'h': { type: 'C', p: 'Glottal', m: 'Fricative', v: 'Voiceless', map: 'glottal' }
+    };
+
+    function getVowelSVG(x, y) {
+        return `<svg viewBox="0 0 100 100" width="120" height="100" style="background:#fff; border:1px solid #ddd; border-radius:8px;">
+            <path d="M15,10 L90,10 L80,90 L35,90 Z" fill="none" stroke="#cbd5e1" stroke-width="2"/>
+            <line x1="15" y1="10" x2="35" y2="90" stroke="#f1f5f9" stroke-dasharray="2"/>
+            <line x1="50" y1="10" x2="57" y2="90" stroke="#f1f5f9" stroke-dasharray="2"/>
+            <circle cx="${x}" cy="${y}" r="6" fill="#ef4444" filter="drop-shadow(0 0 2px rgba(239, 68, 68, 0.5))"/>
+        </svg>`;
+    }
+
+    function getConsonantSVG(key) {
+        const config = {
+            'lips': { t: "M80,140 Q100,140 140,140", dot: "M40,90 A8,15 0 0,1 40,110" },
+            'alveolar': { t: "M55,60 Q70,110 140,140", dot: "M65,42 A10,10 0 1,1 85,42" },
+            'velar': { t: "M70,140 Q130,55 140,140", dot: "M135,48 A12,12 0 1,1 159,48" },
+            'palatal': { t: "M60,95 Q100,60 140,140", dot: "M95,42 A15,10 0 1,1 125,42" },
+            'dentallip': { t: "M80,140 Q100,140 140,140", dot: "M45,75 A10,5 0 0,1 55,75" },
+            'teeth': { t: "M50,95 Q80,110 140,140", dot: "M45,80 A5,12 0 0,1 45,110" },
+            'glottal': { t: "M80,140 Q100,140 140,140", dot: "M135,130 A10,10 0 1,1 155,130" }
+        };
+        const c = config[key] || config['glottal'];
+        return `<svg viewBox="0 0 200 180" width="120" height="100">
+            <path d="M40,40 Q40,20 160,20 L160,160" fill="none" stroke="#94a3b8" stroke-width="2" />
+            <path d="M40,40 Q100,30 160,50" fill="none" stroke="#94a3b8" stroke-width="2" />
+            <path d="${c.t} L140,160 L80,160 Z" fill="#fee2e2" stroke="#ef4444" stroke-width="3" />
+            <path d="${c.dot}" fill="#ef4444" opacity="0.7" />
+        </svg>`;
+    }
+
+    async function runDetailedAnalysis() {
+        const word = document.getElementById('ana-in').value.trim();
+        if(!word) return;
+        try {
+            const res = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+            const data = await res.json();
+            let ipa = data[0].phonetics.find(p => p.text)?.text.replace(/[\/\[\]ˈˌ]/g, "") || "";
+            if(!ipa && data[0].phonetics[1]) ipa = data[0].phonetics[1].text.replace(/[\/\[\]ˈˌ]/g, "");
+
+            document.getElementById('ana-ipa-main').innerText = `/${ipa}/`;
+            document.getElementById('ana-result-view').style.display = 'block';
+            
+            const vGrid = document.getElementById('ana-v-grid');
+            const cGrid = document.getElementById('ana-c-grid');
+            vGrid.innerHTML = ''; cGrid.innerHTML = '';
+
+            const rules = [];
+            const phonemes = [];
+            
+            // Phoneme Tokenizer (Handle 2-char symbols like tʃ, aɪ)
+            for(let i=0; i<ipa.length; i++) {
+                let double = ipa[i] + ipa[i+1];
+                if(anaDetailedDb[double]) { phonemes.push(double); i++; }
+                else if(anaDetailedDb[ipa[i]]) { phonemes.push(ipa[i]); }
+            }
+
+            phonemes.forEach((p, i) => {
+                const info = anaDetailedDb[p];
+                if(!info) return;
+
+                const next = phonemes[i+1];
+                const nextInfo = next ? anaDetailedDb[next] : null;
+
+                if(info.type === 'V') {
+                    // Phonological Rule Detection
+                    if(nextInfo) {
+                        if(nextInfo.v === 'Voiceless' && nextInfo.m === 'Plosive') rules.push(`[${p}]은 무성 파열음 [${next}] 앞에서 길이가 짧아집니다 (Pre-fortis clipping).`);
+                        if(nextInfo.v === 'Voiced') rules.push(`[${p}]은 유성음 [${next}] 앞에서 길이가 길게 유지됩니다.`);
+                        if(nextInfo.m === 'Nasal') rules.push(`[${p}]은 비음 [${next}]의 영향으로 비음화(Nasalization)됩니다.`);
+                        if(next === 'l') rules.push(`[${p}]은 음절 말 'l'(Dark L) 앞에서 혀 뒤쪽이 당겨지는 영향을 받습니다.`);
+                        if(next === 'r') rules.push(`[${p}]은 [r]음의 영향으로 R-coloring(권설음화) 성질을 띱니다.`);
+                    }
+
+                    const card = document.createElement('div'); card.className = 'ana-card';
+                    card.innerHTML = `<h3 style="color:#e67e22; margin:0 0 15px 0;">Vowel: ${p}</h3>
+                        <table class="ana-table">
+                            <tr><td class="ana-label">Height</td><td class="ana-value">${info.h}</td></tr>
+                            <tr><td class="ana-label">Backness</td><td class="ana-value">${info.b}</td></tr>
+                            <tr><td class="ana-label">Tense/Lax</td><td class="ana-value">${info.tl}</td></tr>
+                            <tr><td class="ana-label">Rounded</td><td class="ana-value">${info.r}</td></tr>
+                        </table>
+                        <div class="vowel-chart-mini">${getVowelSVG(info.cx, info.cy)}</div>`;
+                    vGrid.appendChild(card);
+                } else {
+                    const card = document.createElement('div'); card.className = 'ana-card';
+                    card.innerHTML = `<h3 style="color:#2980b9; margin:0 0 15px 0;">Consonant: ${p}</h3>
+                        <table class="ana-table">
+                            <tr><td class="ana-label">Place</td><td class="ana-value">${info.p}</td></tr>
+                            <tr><td class="ana-label">Manner</td><td class="ana-value">${info.m}</td></tr>
+                            <tr><td class="ana-label">Voicing</td><td class="ana-value">${info.v}</td></tr>
+                        </table>
+                        <div class="schematic-box">${getConsonantSVG(info.map)}</div>`;
+                    cGrid.appendChild(card);
+                }
+            });
+
+            const ruleBox = document.getElementById('ana-phonology-rules');
+            if(rules.length > 0) {
+                ruleBox.style.display = 'block';
+                ruleBox.innerHTML = "<strong>💡 음운론적 특징 분석:</strong><br>" + Array.from(new Set(rules)).map(r => "• " + r).join('<br>');
+            } else { ruleBox.style.display = 'none'; }
+
+        } catch(e) { alert("상세 분석 중 오류가 발생했습니다."); }
+    }
+
+    // --- [QUEST Logic - Final Fixed] ---
+    const qDiffConfig = {
+        easy: { name: "Easy (초급)", icon: "🐥", levels: 3, class: "diff-easy", msg: "기초를 마스터한 병아리!" },
+        normal: { name: "Normal (중급)", icon: "🦊", levels: 4, class: "diff-normal", msg: "영리한 여우 학습자!" },
+        hard: { name: "Hard (고급)", icon: "🎓", levels: 5, class: "diff-hard", msg: "진정한 모음 마스터!" }
+    };
+    const qPool = {
+        easy: [
+            { level: 1, pool: [{ q: "Which is a 'High Vowel'?", opts: ["/i/ (see)", "/æ/ (cat)", "/ɑ/ (hot)"], a: "/i/ (see)", exp: "/i/는 고모음입니다." }, { q: "Identify the 'Back Vowel':", opts: ["/ɑ/ (hot)", "/i/ (see)", "/e/ (bet)"], a: "/ɑ/ (hot)", exp: "/ɑ/는 후설 모음입니다." }, { q: "Is /u/ Rounded?", opts: ["Rounded", "Unrounded"], a: "Rounded", exp: "/u/는 원순 모음입니다." }] },
+            { level: 2, pool: [{ q: "Is /ɪ/ (bit) Tense or Lax?", opts: ["Tense", "Lax"], a: "Lax", exp: "/ɪ/는 Lax Vowel입니다." }, { q: "Which is shorter?", opts: ["/i/", "/ɪ/"], a: "/ɪ/", exp: "이완 모음은 짧습니다." }, { q: "Vowel in 'sit' is:", opts: ["Lax", "Tense"], a: "Lax", exp: "sit은 /ɪ/입니다." }] },
+            { level: 3, pool: [{ q: "Vowel before /m/ is:", opts: ["Nasalized", "Fricative"], a: "Nasalized", exp: "비음화가 일어납니다." }, { q: "Dark L makes vowels:", opts: ["Backer", "Fronter"], a: "Backer", exp: "뒤로 당겨집니다." }, { q: "Pre-rhotic refers to:", opts: ["/r/", "/l/"], a: "/r/", exp: "/r/ 앞 환경입니다." }] }
+        ],
+        normal: [
+            { level: 1, pool: [{ q: "Select High Vowels:", opts: ["/i, u/", "/æ, ɑ/"], a: "/i, u/", exp: "대표적 고모음입니다." }, { q: "Schwa is:", opts: ["Central", "Back"], a: "Central", exp: "중설 모음입니다." }, { q: "Low Front vowel:", opts: ["/æ/", "/ɑ/"], a: "/æ/", exp: "/æ/입니다." }] },
+            { level: 2, pool: [{ q: "Lax vowels cannot be in stressed:", opts: ["Open Syllables", "Closed Syllables"], a: "Open Syllables", exp: "이완 모음 제약입니다." }, { q: "Which word ends with Tense?", opts: ["Bee /i/", "Bit /ɪ/"], a: "Bee /i/", exp: "단어 끝은 긴장 모음입니다." }, { q: "Checked vowels are:", opts: ["Lax", "Tense"], a: "Lax", exp: "이완 모음의 별칭입니다." }] },
+            { level: 3, pool: [{ q: "Vowels are longer before ______ consonants.", opts: ["Voiced", "Voiceless"], a: "Voiced", exp: "유성음 앞에서 깁니다." }, { q: "Nasalization is:", opts: ["Predictable", "Phonemic"], a: "Predictable", exp: "규칙적입니다." }, { q: "Vowel in 'Seed' is:", opts: ["Long", "Short"], a: "Long", exp: "유성음 앞입니다." }] },
+            { level: 4, pool: [{ q: "Length order: Sea, Seed, Seat", opts: ["Sea > Seed > Seat", "Seat > Seed > Sea"], a: "Sea > Seed > Seat", exp: "개음절이 가장 깁니다." }, { q: "Stressed vowel is:", opts: ["Longer", "Shorter"], a: "Longer", exp: "강세는 길어집니다." }, { q: "Shortest /i/ is in:", opts: ["Seat", "Seed"], a: "Seat", exp: "무성음 앞입니다." }] }
+        ],
+        hard: [
+            { level: 1, pool: [{ q: "Type the name of the mid-central reduced vowel.", type: "input", a: "Schwa", exp: "/ə/입니다." }] },
+            { level: 2, pool: [{ q: "Lax vowels are also called ______ vowels.", type: "input", a: "Checked", exp: "폐음절 제약입니다." }] },
+            { level: 3, pool: [{ q: "The loss of phonemic contrast is ______.", type: "input", a: "Neutralization", exp: "중화 현상입니다." }] },
+            { level: 4, pool: [{ q: "Vowel shortening before voiceless is Pre-fortis ______.", type: "input", a: "Clipping", exp: "Clipping입니다." }] },
+            { level: 5, pool: [{ q: "Number of targets in a Monophthong?", type: "input", a: "1", exp: "1개입니다." }] }
+        ]
+    };
+
+    let qCurDiff = '', qCurLvl = 0, qCurIdx = 0, qScore = 0, qCorrectFlag = false, qQuests = [], qWrong = [];
+    function qGoBackToStart() { document.querySelectorAll('#game-box > div').forEach(d => d.style.display = 'none'); document.getElementById('q-start').style.display = 'block'; qInit(); }
+    function qInit() {
+        const container = document.getElementById('q-diff-container'); container.innerHTML = '';
+        Object.entries(qDiffConfig).forEach(([key, conf]) => {
+            const cleared = localStorage.getItem('cleared_' + key) === 'true';
+            const btn = document.createElement('button'); btn.className = `btn-diff ${conf.class} ${cleared ? 'is-cleared' : ''}`;
+            btn.innerHTML = `<span>${conf.icon} ${conf.name}</span>${cleared ? '<span style="margin-left:auto;">✅</span>' : ''}`;
+            btn.onclick = () => qStart(key); container.appendChild(btn);
+        });
+    }
+    function qStart(diff) { qCurDiff = diff; qCurLvl = 0; document.getElementById('q-start').style.display = 'none'; document.getElementById('q-quiz').style.display = 'block'; qLoadLevel(); }
+    function qLoadLevel() {
+        qCurIdx = 0; qScore = 0; qWrong = []; const pool = qPool[qCurDiff][qCurLvl].pool;
+        qQuests = [...pool].sort(() => Math.random() - 0.5).slice(0, 3);
+        document.getElementById('q-lvl-tag').innerText = `${qDiffConfig[qCurDiff].icon} Level ${qCurLvl + 1}`;
+        qLoadQuest();
+    }
+    function qLoadQuest() {
+        const q = qQuests[qCurIdx]; document.getElementById('q-status').innerText = `Question ${qCurIdx + 1}/${qQuests.length}`;
+        document.getElementById('q-text').innerText = q.q; const area = document.getElementById('q-area'); area.innerHTML = '';
+        if(q.type === 'input') {
+            const input = document.createElement('input'); input.type = 'text'; input.id = 'q-input'; input.style = "width:80%; padding:12px; border:3px solid #5D5D5D; border-radius:15px; text-align:center;";
+            area.appendChild(input); document.getElementById('q-submit').style.display = 'inline-block';
+            document.getElementById('q-submit').onclick = () => qCheck(input.value);
+            input.onkeypress = (e) => { if(e.key==='Enter') qCheck(input.value); }; input.focus();
+        } else {
+            document.getElementById('q-submit').style.display = 'none';
+            q.opts.forEach(opt => { const btn = document.createElement('div'); btn.className = 'option-card'; btn.innerText = opt; btn.onclick = () => qCheck(opt); area.appendChild(btn); });
+        }
+        document.getElementById('progress-fill').style.width = ((qCurLvl * 3 + qCurIdx) / (qDiffConfig[qCurDiff].levels * 3)) * 100 + "%";
+    }
+    function qCheck(ans) {
+        const q = qQuests[qCurIdx]; const isCorrect = q.type === 'input' ? ans.trim().toLowerCase() === q.a.toLowerCase() : ans.trim() === q.a.trim();
+        qCorrectFlag = isCorrect;
+        if(qCurDiff === 'hard' && !isCorrect) { alert(`틀렸습니다! 하드 모드 리셋. (정답: ${q.a})`); qGoBackToStart(); return; }
+        const overlay = document.getElementById('quest-overlay'); overlay.style.display = 'flex';
+        if(isCorrect) { qScore++; document.getElementById('qo-icon').innerText = "✅"; document.getElementById('qo-title').innerText = "Correct!"; }
+        else { document.getElementById('qo-icon').innerText = "❌"; document.getElementById('qo-title').innerText = "Incorrect"; qWrong.push({ q: q.q, a: q.a, exp: q.exp }); }
+        document.getElementById('qo-exp').innerHTML = `<b>정답: ${q.a}</b><br>${q.exp}`;
+    }
+    function qNext() { document.getElementById('quest-overlay').style.display = 'none'; qCurIdx++; if(qCurIdx < qQuests.length) qLoadQuest(); else qFinishLevel(); }
+    function qFinishLevel() {
+        document.getElementById('q-quiz').style.display = 'none'; document.getElementById('q-result').style.display = 'block';
+        const passed = qScore >= 2;
+        document.getElementById('qr-icon').innerText = passed ? "🌟" : "🥺"; document.getElementById('qr-title').innerText = passed ? "Level Passed!" : "Failed";
+        document.getElementById('qr-text').innerText = `${qScore}/${qQuests.length} Correct!`;
+        if(!passed) {
+            const report = document.getElementById('qr-report'); report.style.display = 'block';
+            report.innerHTML = "<h3>📝 오답 리포트</h3>" + qWrong.map(w => `<div style="margin-bottom:10px;"><b>Q: ${w.q}</b><br><span style="color:red">정답: ${w.a}</span><br><small>${w.exp}</small></div>`).join('');
+            document.getElementById('qr-btn').innerText = "Retry Level";
+            document.getElementById('qr-btn').onclick = () => { document.getElementById('q-result').style.display='none'; document.getElementById('q-quiz').style.display='block'; qLoadLevel(); };
+        } else {
+            const isFinal = (qCurLvl + 1 === qDiffConfig[qCurDiff].levels);
+            document.getElementById('qr-btn').innerText = isFinal ? "상장 받기 🏆" : "다음 레벨";
+            document.getElementById('qr-btn').onclick = () => { if(isFinal) qShowCert(qCurDiff); else { qCurLvl++; document.getElementById('q-result').style.display='none'; document.getElementById('q-quiz').style.display='block'; qLoadLevel(); } };
+        }
+    }
+    function qShowCert(diff) {
+        const target = diff || qCurDiff; const config = qDiffConfig[target]; localStorage.setItem('cleared_' + target, 'true');
+        document.querySelectorAll('#game-box > div').forEach(d => d.style.display = 'none');
+        document.getElementById('certificate').style.display = 'block'; document.getElementById('cert-icon-box').innerText = config.icon;
+        document.getElementById('cert-diff').innerText = config.name; document.getElementById('cert-msg').innerText = config.msg;
+    }
+    function qOpenColl() {
+        document.getElementById('q-start').style.display = 'none'; document.getElementById('collection-screen').style.display = 'block';
+        const grid = document.getElementById('coll-grid'); grid.innerHTML = '';
+        Object.keys(qDiffConfig).forEach(key => {
+            const cleared = localStorage.getItem('cleared_' + key) === 'true';
+            const item = document.createElement('div'); item.className = `collection-item ${cleared ? 'unlocked' : ''}`;
+            item.innerText = cleared ? qDiffConfig[key].icon : '❓'; if(cleared) item.onclick = () => qShowCert(key); grid.appendChild(item);
+        });
+    }
+    function qCloseColl() { document.getElementById('collection-screen').style.display = 'none'; document.getElementById('q-start').style.display = 'block'; }
+    function qReset() { if(confirm("초기화할까요?")) { localStorage.clear(); location.reload(); } }
+
+    // Init
+    qInit(); updateHistoryUI();
+</script>
+</body>
+</html>

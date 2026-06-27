@@ -1,0 +1,277 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phonology Diagnostic Quiz</title>
+    <style>
+        body { font-family: 'Pretendard', -apple-system, sans-serif; background-color: #f0f4f8; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 90vh; margin: 0; }
+        
+        /* 언어 선택 버튼 스타일 */
+        .lang-switcher { margin-bottom: 20px; display: flex; gap: 10px; }
+        .lang-btn { padding: 8px 16px; border-radius: 20px; border: 1px solid #4a90e2; background: white; color: #4a90e2; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .lang-btn.active { background: #4a90e2; color: white; }
+
+        .quiz-app { background: white; width: 100%; max-width: 550px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.08); overflow: hidden; }
+        .progress-container { background-color: #e9ecef; height: 8px; width: 100%; }
+        .progress-bar { background-color: #4a90e2; height: 100%; width: 0%; transition: width 0.3s ease; }
+        .content { padding: 30px; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; color: #6c757d; font-size: 0.9em; font-weight: bold; }
+        .question-text { font-size: 1.2em; font-weight: 700; color: #2d3748; margin-bottom: 25px; line-height: 1.5; }
+        .options-list { display: flex; flex-direction: column; gap: 12px; }
+        .option-btn { background-color: #f8f9fa; border: 2px solid #e2e8f0; border-radius: 10px; padding: 15px; font-size: 1em; text-align: left; cursor: pointer; transition: all 0.2s; color: #4a5568; }
+        .option-btn:hover:not(:disabled) { background-color: #edf2f7; border-color: #cbd5e0; }
+        .option-btn.correct { background-color: #d1fae5; border-color: #34d399; color: #065f46; font-weight: bold; }
+        .option-btn.wrong { background-color: #fee2e2; border-color: #f87171; color: #991b1b; opacity: 0.7; }
+        .feedback { display: none; margin-top: 20px; padding: 15px; border-radius: 8px; font-size: 0.95em; line-height: 1.5; }
+        .feedback.show { display: block; animation: fadeIn 0.5s; }
+        .feedback.correct-feedback { background-color: #ecfdf5; color: #065f46; border-left: 4px solid #34d399; }
+        .feedback.wrong-feedback { background-color: #fef2f2; color: #991b1b; border-left: 4px solid #f87171; }
+        .next-btn { display: none; width: 100%; padding: 15px; margin-top: 20px; background-color: #4a90e2; color: white; border: none; border-radius: 10px; font-size: 1.05em; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .next-btn:hover { background-color: #357abd; }
+        .result-screen { display: none; text-align: center; }
+        .score-circle { width: 100px; height: 100px; border-radius: 50%; background-color: #4a90e2; color: white; display: flex; align-items: center; justify-content: center; font-size: 2em; font-weight: bold; margin: 0 auto 20px; }
+        .diagnosis-box { text-align: left; background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 25px; border: 1px solid #e2e8f0; }
+        .diagnosis-title { font-weight: bold; color: #e53e3e; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
+        .weak-concept { background: white; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #e53e3e; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .weak-concept strong { color: #2d3748; display: block; margin-bottom: 5px; }
+        .weak-concept p { margin: 0; font-size: 0.9em; color: #4a5568; line-height: 1.4; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<div class="lang-switcher">
+    <button class="lang-btn active" onclick="switchLang('ko')">한국어</button>
+    <button class="lang-btn" onclick="switchLang('en')">English</button>
+</div>
+
+<div class="quiz-app">
+    <div class="progress-container"><div class="progress-bar" id="progressBar"></div></div>
+    <div class="content">
+        <div id="quizScreen">
+            <div class="header">
+                <span id="questionCount">Q 1 / 10</span>
+                <span id="conceptTag" style="color:#4a90e2; background:#ebf8ff; padding:3px 8px; border-radius:12px; font-size:0.85em;">개념</span>
+            </div>
+            <div class="question-text" id="questionText">질문이 여기에 표시됩니다.</div>
+            <div class="options-list" id="optionsContainer"></div>
+            <div id="feedbackBox" class="feedback">해설이 여기에 표시됩니다.</div>
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">다음 문제 ➔</button>
+        </div>
+
+        <div id="resultScreen" class="result-screen">
+            <h2 id="resultTitle">학습 진단 결과</h2>
+            <div class="score-circle" id="scoreDisplay">100</div>
+            <p id="resultMessage" style="color: #4a5568; margin-bottom: 30px;"></p>
+            <div id="diagnosisArea" class="diagnosis-box">
+                <div class="diagnosis-title" id="diagTitle">💡 집중 보완이 필요한 개념</div>
+                <div id="weakConceptsList"></div>
+            </div>
+            <button class="next-btn" id="restartBtn" style="display:block; margin-top:30px;" onclick="location.reload()">다시 풀기 ↺</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentLang = 'ko';
+
+    const i18n = {
+        ko: {
+            concept: "개념", next: "다음 문제 ➔", result: "학습 진단 결과", diag: "💡 집중 보완이 필요한 개념", restart: "다시 풀기 ↺",
+            correct: "정답입니다! 🎉", wrong: "오답입니다! 😢", scoreSuffix: "점",
+            msg100: "완벽합니다! 음운론 분포 개념을 마스터하셨네요. 🏆",
+            msg80: "훌륭합니다! 헷갈리는 몇 가지만 다시 보면 완벽하겠어요. 👍",
+            msgLow: "기초 개념을 조금 더 단단하게 다지면 훨씬 좋아질 거예요. 💪"
+        },
+        en: {
+            concept: "Concept", next: "Next Question ➔", result: "Diagnostic Result", diag: "💡 Concepts to Review", restart: "Restart ↺",
+            correct: "Correct! 🎉", wrong: "Incorrect! 😢", scoreSuffix: "pts",
+            msg100: "Perfect! You've mastered Phonemic Distribution. 🏆",
+            msg80: "Great job! Just a few more reviews for perfection. 👍",
+            msgLow: "You've got the basics, keep building your knowledge! 💪"
+        }
+    };
+
+    const questions = [
+        {
+            concept: { ko: "자유 변이의 기본 정의", en: "Definition of Free Variation" },
+            q: { ko: "\"동일한 환경\"에서 두 개 이상의 소리가 교체되어 나타나지만, 단어의 뜻은 변하지 않는 현상은?", en: "Which phenomenon occurs when two or more sounds occur in the \"same environment\" without changing the meaning?" },
+            options: { ko: ["상보적 분포", "자유 변이"], en: ["Complementary Distribution", "Free Variation"] },
+            answer: 1,
+            exp: { ko: "뜻이 변하지 않는 것이 자유 변이의 핵심 조건입니다.", en: "No change in meaning is the key condition for free variation." },
+            studyTip: { ko: "자유 변이는 '동일 환경 + 의미 변화 없음'이라는 공식을 외우세요.", en: "Remember: Free variation = Same environment + No meaning change." }
+        },
+        {
+            concept: { ko: "대조적 분포의 이해", en: "Understanding Contrastive Distribution" },
+            q: { ko: "pin [pɪn]과 bin [bɪn]처럼 같은 환경에서 소리가 바뀌어 뜻이 달라지는 경우는?", en: "What is it called when a sound change in the same environment (like pin vs. bin) changes the word's meaning?" },
+            options: { ko: ["대조적 분포", "자유 변이"], en: ["Contrastive Distribution", "Free Variation"] },
+            answer: 0,
+            exp: { ko: "뜻이 변하므로 대조적 분포이며, [p]와 [b]는 별개의 음소입니다.", en: "Since the meaning changes, it is contrastive distribution. [p] and [b] are separate phonemes." },
+            studyTip: { ko: "대조적 분포는 '의미가 변한다'는 점에서 자유 변이와 반대됩니다.", en: "Contrastive distribution is the opposite of free variation regarding meaning change." }
+        },
+        {
+            concept: { ko: "음소 내 자유 변이", en: "Allophonic Free Variation" },
+            q: { ko: "단어 bat의 끝소리를 터뜨리거나([tʰ]) 안 터뜨려도([t̚]) 뜻이 같은 현상은?", en: "In 'bat', pronouncing the final /t/ as released [tʰ] or unreleased [t̚] without changing meaning is:" },
+            options: { ko: ["음소 내 자유 변이", "음소 간 자유 변이"], en: ["Allophonic Free Variation", "Phonemic Free Variation"] },
+            answer: 0,
+            exp: { ko: "같은 음소 /t/의 변이음들끼리 교체되므로 음소 내 자유 변이입니다.", en: "It is allophonic variation because different realizations of the same phoneme /t/ are swapped." },
+            studyTip: { ko: "bat의 [t] 발음은 대표적인 Allophonic 예시입니다.", en: "Final /t/ in 'bat' is a classic example of allophonic variation." }
+        },
+        {
+            concept: { ko: "음소 간 자유 변이", en: "Phonemic Free Variation" },
+            q: { ko: "economics의 첫 모음을 [i]나 [ɛ] 중 골라 발음하는 현상은?", en: "The phenomenon of choosing either [i] or [ɛ] for the first vowel of 'economics' is:" },
+            options: { ko: ["음소 간 자유 변이", "음소 내 자유 변이"], en: ["Phonemic Free Variation", "Allophonic Free Variation"] },
+            answer: 0,
+            exp: { ko: "평소엔 다른 음소지만, 이 단어 안에서만 뜻 차이 없이 교체됩니다.", en: "They are separate phonemes normally, but swap here without changing the meaning." },
+            studyTip: { ko: "economics, either 등은 Phonemic Free Variation 사례입니다.", en: "Words like 'economics' and 'either' are examples of phonemic free variation." }
+        },
+        {
+            concept: { ko: "상보적 분포와 환경", en: "Complementary Dist. & Environment" },
+            q: { ko: "상보적 분포(Complementary Distribution)에서 '환경'의 특징은?", en: "What is the characteristic of 'environment' in Complementary Distribution?" },
+            options: { ko: ["환경을 공유한다", "환경이 절대 겹치지 않는다"], en: ["They share the same environment", "Environments never overlap"] },
+            answer: 1,
+            exp: { ko: "각 소리마다 자기만의 전용 구역이 있어 절대 겹치지 않습니다.", en: "Each sound has its own exclusive territory and they never overlap." },
+            studyTip: { ko: "상보적 분포는 '너가 나오는 곳엔 내가 안 나온다'는 구조입니다.", en: "Complementary distribution means: where one occurs, the other never does." }
+        },
+        {
+            concept: { ko: "예측 가능성", en: "Predictability" },
+            q: { ko: "영어 /p/가 /s/ 뒤에서 항상 [p=]가 되는 현상은 예측 가능한가요?", en: "Is the occurrence of [p=] after /s/ in English predictable?" },
+            options: { ko: ["예, 예측 가능합니다", "아니오, 예측 불가능합니다"], en: ["Yes, it is predictable", "No, it is unpredictable"] },
+            answer: 0,
+            exp: { ko: "환경이 소리를 100% 결정하므로 예측 가능합니다.", en: "It is predictable because the environment strictly determines the sound." },
+            studyTip: { ko: "상보적 분포는 규칙이 있으므로 Predictable 합니다.", en: "Complementary distribution is predictable because it follows a rule." }
+        },
+        {
+            concept: { ko: "예측 불가능성의 원인", en: "Causes of Unpredictability" },
+            q: { ko: "자유 변이에서 어떤 소리가 나타날지 예측 불가능한 이유는?", en: "Why is it unpredictable which sound will appear in free variation?" },
+            options: { ko: ["화자가 자유롭게 선택하기 때문", "환경이 억압하기 때문"], en: ["Because the speaker chooses freely", "Because the environment restricts it"] },
+            answer: 0,
+            exp: { ko: "화자가 습관이나 기분에 따라 자유롭게 선택하기 때문입니다.", en: "Because the speaker chooses based on habit or preference." },
+            studyTip: { ko: "자유 변이는 환경의 지배를 받지 않아 Unpredictable 합니다.", en: "Free variation is unpredictable as it's not restricted by environment." }
+        },
+        {
+            concept: { ko: "선택적 비음화", en: "Optional Nasalization" },
+            q: { ko: "/æ/를 콧소리를 섞어 [æ̃]로 발음해도 뜻이 같은 현상은?", en: "What is it called when pronouncing /æ/ as nasalized [æ̃] does not change the meaning?" },
+            options: { ko: ["대조적 분포", "자유 변이"], en: ["Contrastive Distribution", "Free Variation"] },
+            answer: 1,
+            exp: { ko: "뜻의 변화가 없으므로 전형적인 자유 변이입니다.", en: "Since there's no meaning change, it's a typical case of free variation." },
+            studyTip: { ko: "화자의 선택에 따른 소리 변화는 자유 변이입니다.", en: "Sound changes based on speaker choice are cases of free variation." }
+        },
+        {
+            concept: { ko: "분포 간의 핵심 차이", en: "Key Differences in Distribution" },
+            q: { ko: "두 소리가 '동일 환경'에 나타날 수 있다면, 절대 [ ? ]가 아닙니다.", en: "If two sounds can occur in the 'same environment', they are never [ ? ]." },
+            options: { ko: ["상보적 분포", "자유 변이"], en: ["Complementary Distribution", "Free Variation"] },
+            answer: 0,
+            exp: { ko: "상보적 분포는 환경이 겹치지 않아야 합니다.", en: "Complementary distribution requires that environments do not overlap." },
+            studyTip: { ko: "환경이 겹치면 상보적 분포 후보에서 즉시 탈락입니다.", en: "If environments overlap, it cannot be complementary distribution." }
+        },
+        {
+            concept: { ko: "음소 간 자유 변이 복습", en: "Review: Phonemic Free Variation" },
+            q: { ko: "either/neither의 모음을 마음대로 골라 쓰는 분포는?", en: "The distribution where either/neither vowels are chosen freely is:" },
+            options: { ko: ["상보적 분포", "음소 간 자유 변이"], en: ["Complementary Distribution", "Phonemic Free Variation"] },
+            answer: 1,
+            exp: { ko: "뜻 변화 없이 교체되므로 음소 간 자유 변이입니다.", en: "It is phonemic free variation as sounds swap without meaning change." },
+            studyTip: { ko: "economics와 either는 음소 간 자유 변이의 짝궁 예시입니다.", en: "'Economics' and 'either' are twin examples of phonemic free variation." }
+        }
+    ];
+
+    let currentQ = 0; let score = 0; let weakAreas = {};
+
+    function switchLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.innerText.toLowerCase().includes(lang === 'ko' ? '한국어' : 'english'));
+        });
+        updateUI();
+        loadQuestion();
+    }
+
+    function updateUI() {
+        const texts = i18n[currentLang];
+        document.getElementById('resultTitle').innerText = texts.result;
+        document.getElementById('diagTitle').innerText = texts.diag;
+        document.getElementById('restartBtn').innerText = texts.restart;
+    }
+
+    function loadQuestion() {
+        const q = questions[currentQ];
+        const texts = i18n[currentLang];
+        document.getElementById('questionCount').innerText = `Q ${currentQ + 1} / ${questions.length}`;
+        document.getElementById('conceptTag').innerText = q.concept[currentLang];
+        document.getElementById('questionText').innerHTML = q.q[currentLang];
+        optionsContainer.innerHTML = '';
+        feedbackBox.className = 'feedback';
+        nextBtn.style.display = 'none';
+        nextBtn.innerText = texts.next;
+        progressBar.style.width = `${(currentQ / questions.length) * 100}%`;
+        q.options[currentLang].forEach((opt, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = `${index + 1}. ${opt}`;
+            btn.onclick = () => checkAnswer(index, btn);
+            optionsContainer.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(selectedIndex, btnElement) {
+        const q = questions[currentQ];
+        const texts = i18n[currentLang];
+        const buttons = optionsContainer.querySelectorAll('.option-btn');
+        buttons.forEach(b => b.disabled = true);
+        if (selectedIndex === q.answer) {
+            btnElement.classList.add('correct');
+            feedbackBox.innerHTML = `<b>${texts.correct}</b><br>${q.exp[currentLang]}`;
+            feedbackBox.className = 'feedback show correct-feedback';
+            score += 10;
+        } else {
+            btnElement.classList.add('wrong');
+            buttons[q.answer].classList.add('correct');
+            feedbackBox.innerHTML = `<b>${texts.wrong}</b><br>${q.exp[currentLang]}`;
+            feedbackBox.className = 'feedback show wrong-feedback';
+            if(!weakAreas[q.concept.ko]) weakAreas[q.concept.ko] = { ko: q.studyTip.ko, en: q.studyTip.en, titleEn: q.concept.en };
+        }
+        nextBtn.style.display = 'block';
+    }
+
+    function nextQuestion() {
+        currentQ++;
+        if (currentQ < questions.length) loadQuestion();
+        else showResult();
+    }
+
+    function showResult() {
+        document.getElementById('quizScreen').style.display = 'none';
+        document.getElementById('resultScreen').style.display = 'block';
+        const texts = i18n[currentLang];
+        document.getElementById('scoreDisplay').innerText = `${score}${texts.scoreSuffix}`;
+        let msg = "";
+        if(score === 100) msg = texts.msg100;
+        else if(score >= 80) msg = texts.msg80;
+        else msg = texts.msgLow;
+        document.getElementById('resultMessage').innerText = msg;
+        const diagnosisList = document.getElementById('weakConceptsList');
+        if (Object.keys(weakAreas).length === 0) {
+            document.getElementById('diagnosisArea').style.display = 'none';
+        } else {
+            diagnosisList.innerHTML = '';
+            for (const [titleKo, data] of Object.entries(weakAreas)) {
+                diagnosisList.innerHTML += `
+                    <div class="weak-concept">
+                        <strong>📌 [ ${currentLang === 'ko' ? titleKo : data.titleEn} ]</strong>
+                        <p>${currentLang === 'ko' ? data.ko : data.en}</p>
+                    </div>`;
+            }
+        }
+    }
+
+    const optionsContainer = document.getElementById('optionsContainer');
+    const feedbackBox = document.getElementById('feedbackBox');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+    
+    updateUI();
+    loadQuestion();
+</script>
+</body>
+</html>

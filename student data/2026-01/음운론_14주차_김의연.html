@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied English Phonology Stage Quiz</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            padding: 40px 20px;
+            margin: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .quiz-container {
+            background-color: #1e293b;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 30px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        h1 {
+            color: #38bdf8;
+            font-size: 22px;
+            text-align: center;
+            margin-top: 0;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 15px;
+        }
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #94a3b8;
+            background: #0f172a;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .question-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option-btn {
+            background-color: #334155;
+            border: 2px solid #475569;
+            border-radius: 8px;
+            padding: 14px 20px;
+            font-size: 16px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #e2e8f0;
+        }
+        .option-btn:hover {
+            background-color: #475569;
+            border-color: #64748b;
+        }
+        .option-btn.correct {
+            background-color: #065f46;
+            border-color: #10b981;
+            color: #34d399;
+            font-weight: bold;
+        }
+        .option-btn.wrong {
+            background-color: #7f1d1d;
+            border-color: #ef4444;
+            color: #fca5a5;
+        }
+        .explanation-box {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0c4a6e;
+            border-left: 4px solid #0284c7;
+            border-radius: 4px;
+            color: #e0f2fe;
+            font-size: 14px;
+            line-height: 1.5;
+            display: none;
+        }
+        .timer-bar {
+            height: 4px;
+            background-color: #38bdf8;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-radius: 0 0 16px 16px;
+            transition: width 1.5s linear;
+            display: none;
+        }
+        .clear-screen {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .clear-title {
+            font-size: 28px;
+            color: #34d399;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .stage-btn {
+            background-color: #38bdf8;
+            color: #0f172a;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+        .stage-btn:hover {
+            background-color: #7dd3fc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container" id="quiz-card">
+    </div>
+
+<script>
+    // 풍부한 퀴즈 문제 풀 (Pool)
+    const questionPool = [
+        { section: "Compounds vs. Phrases", q: "복합어 강세 규칙(Compound Stress Rule)에 따라 앞 단어에 강세가 오는 것은?", a: "ˈgreenhouse (온실)", w: ["green ˈhouse (초록색 집)", "silk ˈshirt (실크 셔츠)", "apple ˈpie (사과 파이)"], exp: "일반적인 복합명사는 왼쪽에 강세가 옵니다." },
+        { section: "Compounds vs. Phrases", q: "명사 구(Noun Phrase)로 취급되어 뒤 단어에 주강세가 오는 구조는?", a: "paper ˈbag (종이 가방)", w: ["ˈpaperback (페이퍼백)", "ˈblackbird (검은 새)", "ˈtoy store (장난감 가게)"], exp: "재료로 만들어진 복합어나 일반 구는 우측 핵심어에 강세가 옵니다." },
+        { section: "AmE vs. BrE Stress", q: "미국 영어(AmE)에서는 뒤 음절에, 영국 영어(BrE)에서는 앞 음절에 강세를 두는 프랑스 차용어는?", a: "garage", w: ["dictionary", "laboratory", "secretary"], exp: "garage는 미국에서 /gəˈrɑːʒ/, 영국에서 /ˈgærɑːʒ/로 발음됩니다." },
+        { section: "AmE vs. BrE Stress", q: "미국 영어에서 4음절로 발음되나, 영국 영어에서는 축약되어 3음절처럼 들리는 단어는?", a: "dictionary", w: ["garage", "ballet", "café"], exp: "BrE는 Vowel Reduction으로 인해 /ˈdɪkʃənri/로 음절이 압축됩니다." },
+        { section: "Sentence Stress & Tonic Accent", q: "문장 'I didn't steal the money.'에서 '돈'이 아닌 '다른 것'을 훔쳤음을 반박할 때 Tonic Accent 위치는?", a: "money", w: ["I", "didn't", "steal"], exp: "문맥상 대조 단어인 'money'에 핵심 강세가 실립니다." },
+        { section: "Sentence Stress & Tonic Accent", q: "영어 문장 강세에서 특별한 강조가 없을 때 핵강세(Tonic Accent)가 위치하는 기본 자리는?", a: "문장 마지막 내용어 (Content word)", w: ["문장 첫 번째 대명사", "문장 속 모든 전치사", "문장 마지막 기능어"], exp: "기본 규칙(End-Focus Rule)에 의해 마지막 내용어에 핵강세가 옵니다." },
+        { section: "Intonation: Falling / Rising", q: "다음 문장 중 일반적으로 끝을 내려 읽는 하강조(Falling Intonation ➘)를 사용하는 것은?", a: "Where is the post office?", w: ["Are you hungry?", "Is she a teacher?", "Do you like coffee?"], exp: "의문사가 있는 Wh-의문문은 하강조(➘)가 기본입니다." },
+        { section: "Intonation: Falling / Rising", q: "다음 문장 중 끝을 올려 읽는 상승조(Rising Intonation ➚)를 사용하는 것은?", a: "Did you clear the room?", w: ["Shut the door.", "What a nice car!", "I love this track."], exp: "Yes/No 대답을 요구하는 일반 의문문은 상승조(➚)를 씁니다." }
+    ];
+
+    let currentStage = 1;
+    let questionIndexInStage = 0; // 스테이지 내에서 몇 번째 문제인지 (0~4)
+    let stageScore = 0;
+    let totalScore = 0;
+    let isTransitioning = false;
+    let stageQuestions = [];
+
+    const quizCard = document.getElementById('quiz-card');
+
+    // 현재 스테이지를 위한 5개 문제를 랜덤하게 세팅하는 함수
+    function prepareStage() {
+        questionIndexInStage = 0;
+        stageScore = 0;
+        
+        // 전체 문제 풀을 무작위로 섞음
+        const shuffled = [...questionPool].sort(() => Math.random() - 0.5);
+        // 그중 5개만 추출하여 이번 스테이지 문제로 지정
+        stageQuestions = shuffled.slice(0, 5);
+        
+        renderQuestion();
+    }
+
+    function renderQuestion() {
+        isTransitioning = false;
+        const currentQuiz = stageQuestions[questionIndexInStage];
+
+        // 보기 섞기
+        const optionsList = [{ text: currentQuiz.a, isCorrect: true }];
+        currentQuiz.w.forEach(wText => optionsList.push({ text: wText, isCorrect: false }));
+        optionsList.sort(() => Math.random() - 0.5);
+
+        quizCard.innerHTML = `
+            <h1>🎧 Applied English Phonology - STAGE ${currentStage}</h1>
+            <div class="meta-info">
+                <span>💡 ${currentQuiz.section}</span>
+                <span>진행도: ${questionIndexInStage + 1} / 5</span>
+            </div>
+            <div class="question-text">${currentQuiz.q}</div>
+            <div class="options-container" id="options-box"></div>
+            <div class="explanation-box" id="explanation-box"></div>
+            <div class="timer-bar" id="t-bar"></div>
+        `;
+
+        const box = document.getElementById('options-box');
+        optionsList.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerText = opt.text;
+            btn.onclick = () => handleOptionClick(btn, opt.isCorrect, currentQuiz.exp, currentQuiz.a);
+            box.appendChild(btn);
+        });
+    }
+
+    function handleOptionClick(btn, isCorrect, exp, correctText) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        const explanationBox = document.getElementById('explanation-box');
+        const tBar = document.getElementById('t-bar');
+        const box = document.getElementById('options-box');
+
+        if (isCorrect) {
+            btn.classList.add('correct');
+            stageScore++;
+            totalScore++;
+        } else {
+            btn.classList.add('wrong');
+            // 정답인 버튼 정체 밝히기
+            Array.from(box.children).forEach(b => {
+                if (b.innerText === correctText) b.classList.add('correct');
+            });
+        }
+
+        explanationBox.innerHTML = `<strong>💡 해설:</strong> ${exp}`;
+        explanationBox.style.display = 'block';
+
+        // 1.5초 타이머 바 시각화
+        tBar.style.display = 'block';
+        setTimeout(() => tBar.style.width = '0%', 10);
+
+        // 1.5초 후 다음 행동
+        setTimeout(() => {
+            questionIndexInStage++;
+            if (questionIndexInStage < 5) {
+                renderQuestion();
+            } else {
+                renderStageClear();
+            }
+        }, 1500);
+    }
+
+    function renderStageClear() {
+        quizCard.innerHTML = `
+            <div class="clear-screen">
+                <div class="clear-title">🎉 STAGE ${currentStage} CLEAR! 🎉</div>
+                <p style="font-size: 18px; color: #94a3b8; margin: 20px 0;">
+                    이번 스테이지 결과: <strong>${stageScore} / 5 문제 만족</strong><br>
+                    현재까지 누적 점수: ${totalScore}점
+                </p>
+                <button class="stage-btn" onclick="nextStage()">다음 스테이지 도전 (새로운 문제) ➡️</button>
+            </div>
+        `;
+    }
+
+    function nextStage() {
+        currentStage++;
+        prepareStage();
+    }
+
+    // 최초 게임 시작
+    prepareStage();
+</script>
+
+</body>
+</html>

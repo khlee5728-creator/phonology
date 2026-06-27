@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHONOLOGY: UNIQUE MOP MODULE</title>
+    <style>
+        body { background-color: #fff; color: #000; font-family: "Courier New", monospace; margin: 0; display: flex; justify-content: center; padding: 20px; }
+        #app { width: 100%; max-width: 750px; border: 4px solid #000; padding: 30px; }
+        h1 { text-align: center; border-bottom: 4px solid #000; padding-bottom: 10px; text-transform: uppercase; }
+        .hidden { display: none; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #000; font-family: inherit; }
+        button { background: #000; color: #fff; border: 2px solid #000; padding: 15px; width: 100%; cursor: pointer; text-transform: uppercase; font-weight: bold; margin-top: 10px; }
+        button:hover { background: #fff; color: #000; }
+        
+        .word-box { font-size: 2.5rem; letter-spacing: 8px; margin: 20px 0; text-align: center; border: 1px solid #eee; padding: 20px; }
+        .options-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 25px 0; }
+        .choice { border: 2px solid #000; padding: 15px 25px; cursor: pointer; font-size: 1.5rem; min-width: 50px; text-align: center; }
+        .choice.selected { background: #000; color: #fff; }
+        
+        .feedback-panel { border-left: 10px solid #000; padding: 20px; margin-top: 20px; background: #f0f0f0; }
+        .stat-bar { margin-top: 30px; display: flex; justify-content: space-around; border: 2px solid #000; padding: 10px; font-weight: bold; }
+        pre { background: #000; color: #fff; padding: 15px; overflow-x: auto; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div id="login-zone">
+        <h1>Student Login</h1>
+        <input type="text" id="name" placeholder="FULL NAME">
+        <input type="password" id="pin" placeholder="PIN (4-6 DIGITS)">
+        <button onclick="startApp()">Access Module</button>
+    </div>
+
+    <div id="quiz-zone" class="hidden">
+        <div style="text-align: right; font-size: 0.8rem;" id="user-display"></div>
+        <h2 id="instruction">Identify the Nuclei</h2>
+        <div class="word-box" id="target-word">WORD</div>
+        
+        <p style="text-align:center;">Select every unique sound that acts as a <strong>Nucleus</strong> in this word:</p>
+        <div class="options-container" id="choices-grid"></div>
+        
+        <button id="check-btn" onclick="checkAnswer()">SUBMIT SELECTION</button>
+        
+        <div id="result-area" class="hidden">
+            <div class="feedback-panel">
+                <h3 id="result-header"></h3>
+                <p id="explanation-text"></p>
+                <div id="visual-aid"></div>
+            </div>
+            <button onclick="moveNext()" style="background:#fff; color:#000;">NEXT CHALLENGE</button>
+        </div>
+
+        <div class="stat-bar">
+            <span>SESSION SCORE:</span>
+            <span style="color: green;">CORRECT: <span id="count-right">0</span></span>
+            <span style="color: red;">WRONG: <span id="count-wrong">0</span></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    const database = [
+        {
+            word: "EXPLAIN",
+            ipa: "[ɪk.splen]",
+            // Only unique sounds from the word, plus distractors
+            choices: ["ɪ", "k", "s", "p", "l", "e", "n", "u", "t"], 
+            correctIndices: [0, 5], // ɪ and e
+            explanation: "In 'Explain', the sounds [ɪ] and [e] are the sonority peaks. According to MOP, [spl] is a legal onset, so the boundary falls after the first vowel: [ɪ.splen].",
+            graph: "Syllable Structure:\n    σ         σ\n   / \\      /   \\\n  N   C    O     R\n  |   |   /|\\    |\n [ɪ] [k] [s p l][e n]"
+        },
+        {
+            word: "AGNOSTIC",
+            ipa: "[æg.nɑs.tɪk]",
+            choices: ["æ", "g", "n", "ɑ", "s", "t", "ɪ", "m", "o"],
+            correctIndices: [0, 3, 6], // æ, ɑ, ɪ
+            explanation: "For 'Agnostic', [gn] is an illegal onset in English. Therefore, the [g] must stay in the coda of the first syllable: [æg.nɑs.tɪk].",
+            graph: "Boundary Check:\n*[æ.gnɑs...] -> ILLEGAL (No 'gn' onset)\n[æg.nɑs.tɪk] -> LEGAL"
+        },
+        {
+            word: "INSTRUCT",
+            ipa: "[ɪn.strʌkt]",
+            choices: ["ɪ", "n", "s", "t", "r", "ʌ", "k", "æ", "p"],
+            correctIndices: [0, 5], // ɪ, ʌ
+            explanation: "[str] is a valid triple-consonant onset. MOP pushes all three to the second syllable: [ɪn.strʌkt].",
+            graph: "Sonority Hierarchy Peak Mapping:\n    (ɪ)         (ʌ)\n    Peak 1      Peak 2\n     |           |\n [ɪ n] . [s t r ʌ k t]"
+        }
+    ];
+
+    let currentQ = 0;
+    let scoreR = 0;
+    let scoreW = 0;
+    let userSelection = [];
+
+    function startApp() {
+        const n = document.getElementById('name').value;
+        const p = document.getElementById('pin').value;
+        if(n && p.length >= 4) {
+            document.getElementById('login-zone').classList.add('hidden');
+            document.getElementById('quiz-zone').classList.remove('hidden');
+            document.getElementById('user-display').innerText = "STUDENT: " + n.toUpperCase();
+            loadQ();
+        }
+    }
+
+    function loadQ() {
+        const data = database[currentQ];
+        document.getElementById('target-word').innerText = data.word;
+        document.getElementById('result-area').classList.add('hidden');
+        document.getElementById('check-btn').classList.remove('hidden');
+        userSelection = [];
+        
+        const grid = document.getElementById('choices-grid');
+        grid.innerHTML = "";
+
+        data.choices.forEach((char, idx) => {
+            const btn = document.createElement('div');
+            btn.className = 'choice';
+            btn.innerText = char;
+            btn.onclick = () => {
+                btn.classList.toggle('selected');
+                if(userSelection.includes(idx)) userSelection = userSelection.filter(x => x !== idx);
+                else userSelection.push(idx);
+            };
+            grid.appendChild(btn);
+        });
+    }
+
+    function checkAnswer() {
+        const data = database[currentQ];
+        const sortedUser = userSelection.sort((a,b) => a-b);
+        const sortedCorrect = data.correctIndices.sort((a,b) => a-b);
+        
+        const isRight = JSON.stringify(sortedUser) === JSON.stringify(sortedCorrect);
+        
+        if(isRight) scoreR++; else scoreW++;
+        
+        document.getElementById('count-right').innerText = scoreR;
+        document.getElementById('count-wrong').innerText = scoreW;
+        document.getElementById('check-btn').classList.add('hidden');
+        
+        const res = document.getElementById('result-area');
+        res.classList.remove('hidden');
+        document.getElementById('result-header').innerText = isRight ? "✓ CORRECT" : "✗ INCORRECT";
+        document.getElementById('explanation-text').innerText = data.explanation;
+        document.getElementById('visual-aid').innerHTML = `<pre>${data.graph}</pre>`;
+    }
+
+    function moveNext() {
+        currentQ++;
+        if(currentQ < database.length) loadQ();
+        else {
+            alert("End of module. Final Accuracy: " + Math.round((scoreR/(scoreR+scoreW))*100) + "%");
+            location.reload();
+        }
+    }
+</script>
+
+</body>
+</html>

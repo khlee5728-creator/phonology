@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morphophonology: Allomorph Explorer</title>
+    <style>
+        :root { --primary: #1a202c; --accent: #3182ce; --success: #38a169; --error: #e53e3e; --bg: #f7fafc; }
+        body { font-family: 'Pretendard', sans-serif; background: var(--bg); display: flex; justify-content: center; padding: 20px; margin: 0; min-height: 100vh; align-items: center; }
+        .container { background: white; width: 100%; max-width: 800px; padding: 2.5rem; border-radius: 20px; box-shadow: 0 20px 25px rgba(0,0,0,0.1); }
+        
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #edf2f7; padding-bottom: 15px; margin-bottom: 20px; }
+        .progress { color: #718096; font-weight: 600; }
+        .score-live { color: var(--accent); font-weight: bold; }
+
+        .word-card { background: #fff; padding: 2.5rem; border-radius: 15px; text-align: center; margin-bottom: 1.5rem; border: 2px solid #e2e8f0; cursor: pointer; transition: 0.3s; }
+        .word-card:hover { border-color: var(--accent); background: #f0f7ff; }
+        .word-text { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 0; }
+        .ipa-hint { color: var(--accent); font-family: "Courier New", monospace; font-size: 1.2rem; margin-top: 5px; }
+
+        .options-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .opt-btn { padding: 20px; border: 2px solid #e2e8f0; border-radius: 12px; background: white; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .opt-btn:hover:not(:disabled) { border-color: var(--accent); }
+        .opt-btn.correct { background: var(--success) !important; color: white !important; border-color: var(--success) !important; }
+        .opt-btn.wrong { background: var(--error) !important; color: white !important; border-color: var(--error) !important; }
+
+        .explanation { margin-top: 1.5rem; padding: 1.5rem; border-radius: 12px; display: none; line-height: 1.7; background: #f9fafb; border-left: 5px solid var(--accent); animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .timer-msg { font-size: 0.9rem; color: #718096; margin-top: 10px; font-style: italic; }
+        #next-btn { display: none; width: 100%; margin-top: 15px; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        
+        .result-screen { text-align: center; padding: 2rem; }
+        .final-score { font-size: 4rem; font-weight: 900; color: var(--accent); margin: 1rem 0; }
+    </style>
+</head>
+<body>
+
+<div class="container" id="main-container">
+    <div class="header">
+        <div class="progress" id="progress-text">Question 1/15</div>
+        <div class="score-live" id="score-live">Score: 0</div>
+    </div>
+    
+    <div id="quiz-area">
+        <div class="word-card" onclick="playCurrentWord()">
+            <p id="cat-label" style="margin:0; font-size:0.9rem; font-weight:bold; color:#a0aec0;"></p>
+            <h1 class="word-text" id="target-word">Cats</h1>
+            <div class="ipa-hint" id="ipa-info">/kæt/ + -s</div>
+            <p style="font-size: 0.8rem; color: #a0aec0; margin-top: 15px;">(단어를 클릭하면 소리가 재생됩니다)</p>
+        </div>
+
+        <div class="options-grid" id="options-box"></div>
+
+        <div class="explanation" id="exp-box">
+            <strong id="feedback-title" style="display:block; margin-bottom:10px; font-size:1.1rem;"></strong>
+            <div id="exp-content"></div>
+            <p class="timer-msg" id="timer-msg">10초 후 다음 문제로 자동 이동합니다...</p>
+            <button id="next-btn" onclick="goToNext()">기다리지 않고 다음 문제로 (Skip)</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const quizData = [
+        // Plural (7문항)
+        { word: "Cats", ipa: "/kæt/", cat: "Plural (-s)", ans: "/s/", exp: "무성 파열음 /t/ 뒤에서는 성대의 진동이 없는 상태를 유지하는 것이 조음적으로 경제적입니다. 따라서 기저형인 유성 마찰음 /z/가 무성음 /s/로 동화됩니다." },
+        { word: "Dogs", ipa: "/dɔːɡ/", cat: "Plural (-s)", ans: "/z/", exp: "유성 파열음 /ɡ/는 성대 진동을 수반합니다. 이 진동이 복수형 어미까지 자연스럽게 이어지며 기저형인 /z/가 그대로 실현되는 유성성 유지 현상입니다." },
+        { word: "Buses", ipa: "/bʌs/", cat: "Plural (-es)", ans: "/ɪz/", exp: "치찰음(Sibilant) /s/ 뒤에 또 다른 마찰음이 오면 소리가 뭉개집니다. 이를 방지하기 위해 중성 모음 /ɪ/를 삽입하여 음절을 분리함으로써 청각적 식별력을 높입니다." },
+        { word: "Pens", ipa: "/pɛn/", cat: "Plural (-s)", ans: "/z/", exp: "비음 /n/은 조음 시 성대가 떨리는 유성 자음입니다. 이 유성 환경이 후행하는 어미에 영향을 주어 유성 마찰음 /z/가 선택됩니다." },
+        { word: "Maps", ipa: "/mæp/", cat: "Plural (-s)", ans: "/s/", exp: "양순 파열음 /p/ 발음 시 성대가 열려 기류만 나가는 무성 상태가 어미까지 연장되어 무성음 /s/로 실현됩니다." },
+        { word: "Judges", ipa: "/dʒʌdʒ/", cat: "Plural (-es)", ans: "/ɪz/", exp: "파찰음 /dʒ/는 마찰 특성을 가집니다. 유사한 소리의 연속을 피하려는 음운론적 제약(OCP)에 의해 모음이 삽입되고 [ɪz]로 발음됩니다." },
+        { word: "Fans", ipa: "/fæn/", cat: "Plural (-s)", ans: "/z/", exp: "유성 공명음인 비음 /n/ 뒤에서는 성대 진동을 멈추지 않고 그대로 이어가 유성 이형태 /z/를 생성합니다." },
+        
+        // Past Tense (8문항)
+        { word: "Walked", ipa: "/wɔːk/", cat: "Past Tense (-ed)", ans: "/t/", exp: "무성 연구개 파열음 /k/ 뒤에서 유성음 /d/를 내는 것은 조음적 전환이 큽니다. 따라서 성대를 열어둔 무성 상태를 유지하여 /t/로 동화시킵니다." },
+        { word: "Played", ipa: "/pleɪ/", cat: "Past Tense (-ed)", ans: "/d/", exp: "모음은 성대가 가장 잘 울리는 유성음입니다. 이 진동이 과거형 어미 /d/까지 매끄럽게 연결되는 유성 동화 과정입니다." },
+        { word: "Wanted", ipa: "/wɒnt/", cat: "Past Tense (-ed)", ans: "/ɪd/", exp: "어간이 치경 파열음 /t/로 끝날 때, 동일 조음 위치인 /d/가 연속되면 파열을 구분하기 어렵습니다. 이 음성적 충돌을 해소하려 모음이 삽입됩니다." },
+        { word: "Robbed", ipa: "/rɒb/", cat: "Past Tense (-ed)", ans: "/d/", exp: "유성 양순 파열음 /b/의 성대 진동이 접미사까지 이어집니다. 무성음화할 동기가 없으므로 기저형 /d/가 그대로 유지됩니다." },
+        { word: "Missed", ipa: "/mɪs/", cat: "Past Tense (-ed)", ans: "/t/", exp: "무성 마찰음 /s/ 조음 시의 기류 특성이 어미까지 반영되어 무성 파열음 /t/로 실현됩니다. 성대 개방 상태의 지속입니다." },
+        { word: "Needed", ipa: "/niːd/", cat: "Past Tense (-ed)", ans: "/ɪd/", exp: "어간 말음 /d/와 접미사 /d/는 조음 위치와 방식이 같습니다. 두 소리를 물리적으로 분리하여 가청도를 확보하기 위해 이완 모음을 삽입합니다." },
+        { word: "Laughed", ipa: "/læf/", cat: "Past Tense (-ed)", ans: "/t/", exp: "철자는 gh이나 실제 발음은 무성 순치 마찰음 /f/입니다. 이 무성 환경에 의해 과거형 어미도 무성음인 /t/가 선택됩니다." },
+        { word: "Pushed", ipa: "/pʊʃ/", cat: "Past Tense (-ed)", ans: "/t/", exp: "무성 치찰음 /ʃ/ 발음 시의 강한 기류와 성대 무진동 상태가 후행하는 폐쇄음까지 영향을 주어 무성음 /t/를 형성합니다." }
+    ];
+
+    let currentIdx = 0;
+    let score = 0;
+    let timer;
+
+    function speakWord() {
+        const msg = new SpeechSynthesisUtterance(quizData[currentIdx].word);
+        msg.lang = 'en-US';
+        msg.rate = 0.85;
+        window.speechSynthesis.speak(msg);
+    }
+
+    function loadQuiz() {
+        const data = quizData[currentIdx];
+        document.getElementById('progress-text').innerText = `Question ${currentIdx + 1}/15`;
+        document.getElementById('cat-label').innerText = data.cat;
+        document.getElementById('target-word').innerText = data.word;
+        document.getElementById('ipa-info').innerText = `${data.ipa} + ${data.cat.includes('Plural') ? '-s/es' : '-ed'}`;
+        
+        const box = document.getElementById('options-box');
+        box.innerHTML = '';
+        const opts = data.cat.includes('Plural') ? ["/s/", "/z/", "/ɪz/"] : ["/t/", "/d/", "/ɪd/"];
+        
+        opts.forEach(o => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            btn.innerText = o;
+            btn.onclick = () => checkAnswer(o, btn);
+            box.appendChild(btn);
+        });
+
+        document.getElementById('exp-box').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function checkAnswer(selected, btn) {
+        const data = quizData[currentIdx];
+        const isCorrect = selected === data.ans;
+        const buttons = document.querySelectorAll('.opt-btn');
+        
+        buttons.forEach(b => {
+            b.disabled = true;
+            if (b.innerText === data.ans) b.classList.add('correct');
+        });
+
+        if (isCorrect) {
+            score++;
+            document.getElementById('score-live').innerText = `Score: ${score}`;
+            document.getElementById('feedback-title').innerText = "✅ 정답입니다!";
+            document.getElementById('feedback-title').style.color = "var(--success)";
+        } else {
+            btn.classList.add('wrong');
+            document.getElementById('feedback-title').innerText = "❌ 오답입니다.";
+            document.getElementById('feedback-title').style.color = "var(--error)";
+        }
+
+        document.getElementById('exp-content').innerHTML = `<strong>음성학적 분석:</strong> ${data.exp}`;
+        document.getElementById('exp-box').style.display = 'block';
+        document.getElementById('next-btn').style.display = 'block';
+
+        // 10초 후 다음 문제로 자동 이동
+        clearTimeout(timer);
+        timer = setTimeout(goToNext, 10000);
+    }
+
+    function goToNext() {
+        clearTimeout(timer);
+        currentIdx++;
+        if (currentIdx < quizData.length) {
+            loadQuiz();
+        } else {
+            showResult();
+        }
+    }
+
+    function showResult() {
+        const percent = Math.round((score / 15) * 100);
+        document.getElementById('main-container').innerHTML = `
+            <div class="result-screen">
+                <h1>학습 완료!</h1>
+                <p>총 15문제 중 <strong>${score}문제</strong>를 맞혔습니다.</p>
+                <div class="final-score">${percent}점</div>
+                <p>${percent >= 80 ? "훌륭합니다! 형태음운론의 대가이시군요!" : "조금 더 복습하면 완벽해질 거예요."}</p>
+                <button onclick="location.reload()" style="padding:15px 30px; background:var(--accent); color:white; border:none; border-radius:10px; cursor:pointer; font-weight:bold; margin-top:20px;">다시 도전하기</button>
+            </div>
+        `;
+    }
+
+    loadQuiz();
+</script>
+
+</body>
+</html>

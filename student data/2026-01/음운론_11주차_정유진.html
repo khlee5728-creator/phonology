@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonority Peak Visualizer</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1c2e;
+    --navy2: #162338;
+    --blue: #1a5fb4;
+    --sky: #4a90d9;
+    --gold: #e8a020;
+    --gold2: #f5c842;
+    --peak: #f5a623;
+    --low: #3a7bd5;
+    --mid: #5b9bd5;
+    --text: #e8edf5;
+    --muted: #7a8fa8;
+    --card: #1a2d45;
+    --border: #243650;
+    --green: #2ec27e;
+    --red: #e05c5c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    background: rgba(232,160,32,0.12);
+    border: 1px solid rgba(232,160,32,0.3);
+    border-radius: 4px;
+    padding: 4px 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 56px);
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  h1 span { color: var(--gold); font-style: italic; }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 15px;
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Scale reference card */
+  .scale-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+
+  .scale-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+  }
+
+  @media (max-width: 600px) {
+    .scale-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .scale-item {
+    background: var(--navy2);
+    border-radius: 8px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .scale-dot {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .scale-label { color: var(--muted); font-size: 11px; line-height: 1.3; }
+  .scale-label strong { color: var(--text); font-size: 12px; display: block; }
+
+  /* Input section */
+  .input-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 32px;
+  }
+
+  .input-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .word-input {
+    flex: 1;
+    background: var(--navy);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 20px;
+    padding: 14px 20px;
+    outline: none;
+    transition: border-color 0.2s;
+    letter-spacing: 2px;
+  }
+
+  .word-input:focus { border-color: var(--sky); }
+  .word-input::placeholder { color: var(--muted); font-size: 14px; letter-spacing: 0; }
+
+  .btn-analyze {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    border-radius: 10px;
+    padding: 14px 28px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .btn-analyze:hover { background: var(--gold2); transform: translateY(-1px); }
+  .btn-analyze:active { transform: translateY(0); }
+
+  .preset-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .preset-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-right: 4px;
+  }
+
+  .preset-btn {
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--sky);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .preset-btn:hover {
+    border-color: var(--sky);
+    background: rgba(74,144,217,0.08);
+  }
+
+  /* Visualization area */
+  #viz-area { display: none; }
+  #viz-area.visible { display: block; animation: fadeIn 0.4s ease; }
+
+  @keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+  .result-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .result-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .word-display {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--text);
+  }
+
+  .syllable-count {
+    background: rgba(232,160,32,0.15);
+    border: 1px solid rgba(232,160,32,0.4);
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+  }
+
+  .syllable-count .num {
+    font-family: 'Space Mono', monospace;
+    font-size: 32px;
+    color: var(--gold);
+    font-weight: 700;
+    line-height: 1;
+    display: block;
+  }
+
+  .syllable-count .lbl {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* Chart */
+  .chart-wrap {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .chart-inner {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    height: 240px;
+    padding-top: 20px;
+    min-width: 100%;
+    position: relative;
+  }
+
+  /* Axis line */
+  .chart-inner::before {
+    content: '';
+    position: absolute;
+    bottom: 36px;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Y-axis labels */
+  .y-axis {
+    position: absolute;
+    left: -28px; top: 0; bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .y-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+  }
+
+  .seg-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 48px;
+    height: 100%;
+    position: relative;
+    cursor: default;
+  }
+
+  .bar-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0 4px;
+    position: relative;
+  }
+
+  .peak-indicator {
+    position: absolute;
+    top: -2px;
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--gold);
+    opacity: 0;
+    transition: opacity 0.3s 0.5s;
+  }
+
+  .peak-indicator.show { opacity: 1; }
+
+  .bar {
+    width: 60%;
+    min-width: 20px;
+    max-width: 40px;
+    border-radius: 4px 4px 0 0;
+    transform-origin: bottom;
+    transform: scaleY(0);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .seg-phoneme {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    padding: 0 2px;
+    position: relative;
+  }
+
+  .seg-phoneme.is-peak { color: var(--gold); }
+
+  .seg-value {
+    position: absolute;
+    top: -22px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    opacity: 0;
+    transition: opacity 0.3s 0.6s;
+  }
+
+  .seg-value.show { opacity: 1; }
+
+  /* Syllable boundary */
+  .boundary-marker {
+    position: absolute;
+    top: 0; bottom: 36px;
+    width: 2px;
+    background: var(--gold);
+    right: -1px;
+    opacity: 0;
+    transition: opacity 0.3s 0.8s;
+  }
+
+  .boundary-marker.show { opacity: 1; }
+
+  .boundary-dot {
+    position: absolute;
+    bottom: -5px; left: -4px;
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+
+  /* Sonority line */
+  .line-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: calc(100% - 36px);
+    pointer-events: none;
+    overflow: visible;
+  }
+
+  .sono-path {
+    fill: none;
+    stroke: rgba(74,144,217,0.5);
+    stroke-width: 2;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 1s ease 0.3s;
+  }
+
+  .sono-path.draw { stroke-dashoffset: 0; }
+
+  /* Syllabification result */
+  .syl-result {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .syl-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .syl-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+  }
+
+  .syl-chunk {
+    color: var(--text);
+    transition: color 0.2s;
+  }
+
+  .syl-chunk:hover { color: var(--gold); }
+
+  .syl-dot {
+    color: var(--gold);
+    font-size: 28px;
+    line-height: 1;
+    margin: 0 1px;
+  }
+
+  /* Analysis breakdown */
+  .breakdown {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .breakdown-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .seg-table {
+    display: grid;
+    gap: 6px;
+  }
+
+  .seg-row {
+    display: grid;
+    grid-template-columns: 60px 1fr 60px 80px;
+    gap: 8px;
+    align-items: center;
+    background: var(--navy2);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 13px;
+    transition: background 0.15s;
+  }
+
+  .seg-row:hover { background: var(--navy); }
+
+  .seg-row.is-peak-row {
+    background: rgba(232,160,32,0.08);
+    border: 1px solid rgba(232,160,32,0.2);
+  }
+
+  .seg-ph {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .seg-ph.pk { color: var(--gold); }
+
+  .seg-class { color: var(--muted); font-size: 12px; }
+
+  .seg-val-cell {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: right;
+  }
+
+  .seg-peak-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 1px;
+  }
+
+  .peak-badge { background: rgba(232,160,32,0.2); color: var(--gold); }
+  .non-peak-badge { background: var(--navy); color: var(--muted); }
+
+  /* MOP explanation */
+  .mop-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+
+  .mop-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--sky);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .mop-step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 12px;
+    align-items: flex-start;
+  }
+
+  .mop-num {
+    width: 24px; height: 24px;
+    background: var(--blue);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .mop-text {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .mop-text strong { color: var(--text); }
+  .mop-text code {
+    font-family: 'Space Mono', monospace;
+    background: var(--navy);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--sky);
+  }
+
+  /* Segment structure viz */
+  .structure-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .syl-block {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    min-width: 80px;
+    flex: 1;
+  }
+
+  .syl-block-header {
+    background: var(--blue);
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 5px;
+    color: white;
+    letter-spacing: 1px;
+  }
+
+  .syl-block-inner {
+    padding: 10px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .syl-seg-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .tag-onset { background: rgba(74,144,217,0.15); color: var(--sky); border: 1px solid rgba(74,144,217,0.3); }
+  .tag-nucleus { background: rgba(232,160,32,0.15); color: var(--gold); border: 1px solid rgba(232,160,32,0.3); }
+  .tag-coda { background: rgba(46,194,126,0.12); color: var(--green); border: 1px solid rgba(46,194,126,0.25); }
+
+  .tag-label { font-size: 8px; opacity: 0.7; display: block; letter-spacing: 1px; }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 20px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+  /* Error */
+  .error-msg {
+    background: rgba(224,92,92,0.1);
+    border: 1px solid rgba(224,92,92,0.3);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: var(--red);
+    font-size: 13px;
+    display: none;
+    margin-top: 12px;
+  }
+
+  .error-msg.show { display: block; }
+
+  /* Responsive */
+  @media (max-width: 500px) {
+    .seg-row { grid-template-columns: 48px 1fr 40px; }
+    .seg-peak-badge { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="badge">Applied English Phonology · CH 6</div>
+    <h1>Sonority <span>Peak</span><br>Visualizer</h1>
+    <p class="subtitle">Enter any English word (in IPA or letters) to see its sonority profile, syllable peaks, and MOP-based syllabification.</p>
+  </header>
+
+  <!-- Sonority Scale Reference -->
+  <div class="scale-card">
+    <div class="scale-title">Sonority Scale — Hogg & McCully (1987)</div>
+    <div class="scale-grid" id="scale-grid"></div>
+    <div class="legend" style="margin-top:14px;">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div> Syllable peak (high sonority)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--sky)"></div> Mid-sonority</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--border)"></div> Low sonority</div>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div class="input-section">
+    <span class="input-label">Enter a word</span>
+    <div class="input-row">
+      <input id="word-input" class="word-input" type="text" placeholder="e.g.  publicity  /  spring  /  strength" spellcheck="false" autocomplete="off">
+      <button class="btn-analyze" onclick="analyze()">ANALYZE</button>
+    </div>
+    <div class="preset-row">
+      <span class="preset-label">Try:</span>
+      <button class="preset-btn" onclick="setWord('publicity')">publicity</button>
+      <button class="preset-btn" onclick="setWord('spring')">spring</button>
+      <button class="preset-btn" onclick="setWord('strength')">strength</button>
+      <button class="preset-btn" onclick="setWord('condemnation')">condemnation</button>
+      <button class="preset-btn" onclick="setWord('construction')">construction</button>
+      <button class="preset-btn" onclick="setWord('transportation')">transportation</button>
+      <button class="preset-btn" onclick="setWord('sudden')">sudden</button>
+      <button class="preset-btn" onclick="setWord('pickle')">pickle</button>
+    </div>
+    <div class="error-msg" id="error-msg"></div>
+  </div>
+
+  <!-- Visualization -->
+  <div id="viz-area">
+    <div class="result-card">
+      <div class="result-header">
+        <div>
+          <div style="font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;font-family:'Space Mono',monospace;">ANALYZING</div>
+          <div class="word-display" id="word-display"></div>
+        </div>
+        <div class="syllable-count">
+          <span class="num" id="syllable-num">0</span>
+          <span class="lbl">SYLLABLES</span>
+        </div>
+      </div>
+
+      <!-- Chart -->
+      <div class="chart-wrap">
+        <div class="chart-inner" id="chart-inner">
+          <svg class="line-svg" id="line-svg" viewBox="" preserveAspectRatio="none">
+            <path class="sono-path" id="sono-path" d=""/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Syllabification -->
+      <div class="syl-result">
+        <div class="syl-title">Syllabification (MOP)</div>
+        <div class="syl-display" id="syl-display"></div>
+      </div>
+    </div>
+
+    <!-- Segment breakdown table -->
+    <div class="breakdown">
+      <div class="breakdown-title">Segment Analysis</div>
+      <div class="seg-table" id="seg-table"></div>
+    </div>
+
+    <!-- MOP explanation -->
+    <div class="mop-card">
+      <div class="mop-title">Maximal Onset Principle — Applied</div>
+      <div id="mop-steps"></div>
+    </div>
+
+    <!-- Syllable structure blocks -->
+    <div class="result-card">
+      <div class="syl-title" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;">Onset · Nucleus · Coda Structure</div>
+      <div class="structure-row" id="structure-row"></div>
+      <div class="legend" style="margin-top:14px;">
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(74,144,217,0.4)"></div> Onset</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(232,160,32,0.4)"></div> Nucleus</div>
+        <div class="legend-item"><div class="legend-dot" style="background:rgba(46,194,126,0.3)"></div> Coda</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── Sonority data ──────────────────────────────────────────────
+const SONORITY_SCALE = [
+  { label: "Low vowels",          value: 10, examples: "/ɑ, æ/",  color: "#f5c842" },
+  { label: "Mid vowels",          value: 9,  examples: "/e, o/",   color: "#e8a020" },
+  { label: "High vowels & glides",value: 8,  examples: "/i, u, w, j/", color: "#d4880a" },
+  { label: "Flaps",               value: 7,  examples: "/r/",      color: "#4a90d9" },
+  { label: "Laterals",            value: 6,  examples: "/l/",      color: "#3a7bd5" },
+  { label: "Nasals",              value: 5,  examples: "/m, n, ŋ/",color: "#2a6abf" },
+  { label: "Voiced fricatives",   value: 4,  examples: "/v, ð, z/",color: "#546e8a" },
+  { label: "Voiceless fricatives",value: 3,  examples: "/f, θ, s/",color: "#445a72" },
+  { label: "Voiced stops",        value: 2,  examples: "/b, d, ɡ/",color: "#2e3d50" },
+  { label: "Voiceless stops",     value: 1,  examples: "/p, t, k/",color: "#1e2d3e" },
+];
+
+// Letter → IPA-ish phoneme mapping for common English words
+// Maps grapheme clusters to {phoneme, sonority, class}
+const LETTER_MAP = {
+  // Vowels
+  'a': { ph:'æ', s:10, cls:'Low vowel' },
+  'e': { ph:'ɛ', s:9, cls:'Mid vowel' },
+  'i': { ph:'ɪ', s:8, cls:'High vowel' },
+  'o': { ph:'ɒ', s:9, cls:'Mid vowel' },
+  'u': { ph:'ʌ', s:8, cls:'High vowel' },
+  // Consonants
+  'p': { ph:'p', s:1, cls:'Voiceless stop' },
+  'b': { ph:'b', s:2, cls:'Voiced stop' },
+  't': { ph:'t', s:1, cls:'Voiceless stop' },
+  'd': { ph:'d', s:2, cls:'Voiced stop' },
+  'k': { ph:'k', s:1, cls:'Voiceless stop' },
+  'g': { ph:'ɡ', s:2, cls:'Voiced stop' },
+  'c': { ph:'k', s:1, cls:'Voiceless stop' },
+  'q': { ph:'k', s:1, cls:'Voiceless stop' },
+  'f': { ph:'f', s:3, cls:'Voiceless fricative' },
+  'v': { ph:'v', s:4, cls:'Voiced fricative' },
+  's': { ph:'s', s:3, cls:'Voiceless fricative' },
+  'z': { ph:'z', s:4, cls:'Voiced fricative' },
+  'h': { ph:'h', s:3, cls:'Voiceless fricative' },
+  'x': { ph:'ks', s:1, cls:'Voiceless stop' },
+  'j': { ph:'dʒ', s:2, cls:'Voiced stop' },
+  'y': { ph:'j', s:8, cls:'Glide' },
+  'w': { ph:'w', s:8, cls:'Glide' },
+  'r': { ph:'r', s:7, cls:'Flap/Approximant' },
+  'l': { ph:'l', s:6, cls:'Lateral' },
+  'm': { ph:'m', s:5, cls:'Nasal' },
+  'n': { ph:'n', s:5, cls:'Nasal' },
+};
+
+// Known IPA sonority lookups
+const IPA_MAP = {
+  'æ':{s:10,cls:'Low vowel'},'ɑ':{s:10,cls:'Low vowel'},'a':{s:10,cls:'Low vowel'},
+  'e':{s:9,cls:'Mid vowel'},'ɛ':{s:9,cls:'Mid vowel'},'ə':{s:9,cls:'Mid vowel'},
+  'o':{s:9,cls:'Mid vowel'},'ɔ':{s:9,cls:'Mid vowel'},
+  'i':{s:8,cls:'High vowel'},'ɪ':{s:8,cls:'High vowel'},
+  'u':{s:8,cls:'High vowel'},'ʊ':{s:8,cls:'High vowel'},
+  'w':{s:8,cls:'Glide'},'j':{s:8,cls:'Glide'},
+  'r':{s:7,cls:'Approximant'},'ɹ':{s:7,cls:'Approximant'},'ɾ':{s:7,cls:'Flap'},
+  'l':{s:6,cls:'Lateral'},
+  'm':{s:5,cls:'Nasal'},'n':{s:5,cls:'Nasal'},'ŋ':{s:5,cls:'Nasal'},
+  'v':{s:4,cls:'Voiced fricative'},'ð':{s:4,cls:'Voiced fricative'},'z':{s:4,cls:'Voiced fricative'},'ʒ':{s:4,cls:'Voiced fricative'},
+  'f':{s:3,cls:'Voiceless fricative'},'θ':{s:3,cls:'Voiceless fricative'},'s':{s:3,cls:'Voiceless fricative'},'ʃ':{s:3,cls:'Voiceless fricative'},'h':{s:3,cls:'Voiceless fricative'},
+  'b':{s:2,cls:'Voiced stop'},'d':{s:2,cls:'Voiced stop'},'ɡ':{s:2,cls:'Voiced stop'},'g':{s:2,cls:'Voiced stop'},
+  'p':{s:1,cls:'Voiceless stop'},'t':{s:1,cls:'Voiceless stop'},'k':{s:1,cls:'Voiceless stop'},
+};
+
+// Curated word database for accurate analysis
+const WORD_DB = {
+  publicity: [
+    {ph:'p',s:1,cls:'Voiceless stop'},{ph:'ʌ',s:9,cls:'Mid vowel'},
+    {ph:'b',s:2,cls:'Voiced stop'},{ph:'l',s:6,cls:'Lateral'},
+    {ph:'ɪ',s:8,cls:'High vowel'},{ph:'s',s:3,cls:'Voiceless fricative'},
+    {ph:'ə',s:9,cls:'Mid vowel'},{ph:'t',s:1,cls:'Voiceless stop'},
+    {ph:'i',s:8,cls:'High vowel'}
+  ],
+  spring: [
+    {ph:'s',s:3,cls:'Voiceless fricative'},{ph:'p',s:1,cls:'Voiceless stop'},
+    {ph:'r',s:7,cls:'Approximant'},{ph:'ɪ',s:8,cls:'High vowel'},
+    {ph:'ŋ',s:5,cls:'Nasal'}
+  ],
+  strength: [
+    {ph:'s',s:3,cls:'Voiceless fricative'},{ph:'t',s:1,cls:'Voiceless stop'},
+    {ph:'r',s:7,cls:'Approximant'},{ph:'ɛ',s:9,cls:'Mid vowel'},
+    {ph:'ŋ',s:5,cls:'Nasal'},{ph:'θ',s:3,cls:'Voiceless fricative'}
+  ],
+  condemnation: [
+    {ph:'k',s:1,cls:'Voiceless stop'},{ph:'ɑ',s:10,cls:'Low vowel'},
+    {ph:'n',s:5,cls:'Nasal'},{ph:'d',s:2,cls:'Voiced stop'},
+    {ph:'ə',s:9,cls:'Mid vowel'},{ph:'m',s:5,cls:'Nasal'},
+    {ph:'n',s:5,cls:'Nasal'},{ph:'e',s:9,cls:'Mid vowel'},
+    {ph:'ʃ',s:3,cls:'Voiceless fricative'},{ph:'ə',s:9,cls:'Mid vowel'},
+    {ph:'n',s:5,cls:'Nasal'}
+  ],
+  construction: [
+    {ph:'k',s:1,cls:'Voiceless stop'},{ph:'ə',s:9,cls:'Mid vowel'},
+    {ph:'n',s:5,cls:'Nasal'},{ph:'s',s:3,cls:'Voiceless fricative'},
+    {ph:'t',s:1,cls:'Voiceless stop'},{ph:'r',s:7,cls:'Approximant'},
+    {ph:'ʌ',s:9,cls:'Mid vowel'},{ph:'k',s:1,cls:'Voiceless stop'},
+    {ph:'t',s:1,cls:'Voiceless stop'},{ph:'ɪ',s:8,cls:'High vowel'},
+    {ph:'v',s:4,cls:'Voiced fricative'}
+  ],
+  transportation: [
+    {ph:'t',s:1,cls:'Voiceless stop'},{ph:'r',s:7,cls:'Approximant'},
+    {ph:'æ',s:10,cls:'Low vowel'},{ph:'n',s:5,cls:'Nasal'},
+    {ph:'s',s:3,cls:'Voiceless fricative'},{ph:'p',s:1,cls:'Voiceless stop'},
+    {ph:'ɔ',s:9,cls:'Mid vowel'},{ph:'r',s:7,cls:'Approximant'},
+    {ph:'t',s:1,cls:'Voiceless stop'},{ph:'e',s:9,cls:'Mid vowel'},
+    {ph:'ɪ',s:8,cls:'High vowel'},{ph:'ʃ',s:3,cls:'Voiceless fricative'},
+    {ph:'ə',s:9,cls:'Mid vowel'},{ph:'n',s:5,cls:'Nasal'}
+  ],
+  sudden: [
+    {ph:'s',s:3,cls:'Voiceless fricative'},{ph:'ʌ',s:9,cls:'Mid vowel'},
+    {ph:'d',s:2,cls:'Voiced stop'},{ph:'n̩',s:5,cls:'Nasal (syllabic)'}
+  ],
+  pickle: [
+    {ph:'p',s:1,cls:'Voiceless stop'},{ph:'ɪ',s:8,cls:'High vowel'},
+    {ph:'k',s:1,cls:'Voiceless stop'},{ph:'l̩',s:6,cls:'Lateral (syllabic)'}
+  ],
+  complain: [
+    {ph:'k',s:1,cls:'Voiceless stop'},{ph:'ə',s:9,cls:'Mid vowel'},
+    {ph:'m',s:5,cls:'Nasal'},{ph:'p',s:1,cls:'Voiceless stop'},
+    {ph:'l',s:6,cls:'Lateral'},{ph:'e',s:9,cls:'Mid vowel'},
+    {ph:'n',s:5,cls:'Nasal'}
+  ],
+  temptation: [
+    {ph:'t',s:1,cls:'Voiceless stop'},{ph:'ɛ',s:9,cls:'Mid vowel'},
+    {ph:'m',s:5,cls:'Nasal'},{ph:'p',s:1,cls:'Voiceless stop'},
+    {ph:'t',s:1,cls:'Voiceless stop'},{ph:'e',s:9,cls:'Mid vowel'},
+    {ph:'ɪ',s:8,cls:'High vowel'},{ph:'ʃ',s:3,cls:'Voiceless fricative'},
+    {ph:'ə',s:9,cls:'Mid vowel'},{ph:'n',s:5,cls:'Nasal'}
+  ],
+};
+
+// Valid English onset clusters (for MOP)
+const VALID_ONSETS = new Set([
+  'p','b','t','d','k','ɡ','g','f','v','s','z','h','θ','ð','ʃ','ʒ','m','n','l','r','w','j',
+  'pl','bl','tl','kl','ɡl','gl','fl','sl','pr','br','tr','dr','kr','ɡr','gr','fr','sr','θr','ʃr',
+  'sp','st','sk','sm','sn','sl','sw','spl','spr','str','skr','skw','skl',
+  'tw','dw','kw','sw','θw',
+  'pj','bj','tj','dj','kj','mj','nj','fj','vj','sj','hj',
+]);
+
+// ── Build scale grid ──────────────────────────────────────────
+function buildScaleGrid() {
+  const grid = document.getElementById('scale-grid');
+  SONORITY_SCALE.forEach(item => {
+    const div = document.createElement('div');
+    div.className = 'scale-item';
+    div.innerHTML = `
+      <div class="scale-dot" style="background:${item.color};color:${item.value>=7?'#0f1c2e':'#e8edf5'}">
+        ${item.value}
+      </div>
+      <div class="scale-label">
+        <strong>${item.label}</strong>
+        ${item.examples}
+      </div>`;
+    grid.appendChild(div);
+  });
+}
+
+// ── Utility ───────────────────────────────────────────────────
+function getColor(s) {
+  if (s >= 8) return '#f5c842';
+  if (s >= 6) return '#4a90d9';
+  if (s >= 4) return '#3a7bd5';
+  if (s >= 2) return '#2e5080';
+  return '#243650';
+}
+
+function setWord(w) {
+  document.getElementById('word-input').value = w;
+  analyze();
+}
+
+function showError(msg) {
+  const el = document.getElementById('error-msg');
+  el.textContent = msg;
+  el.classList.add('show');
+}
+
+function hideError() {
+  document.getElementById('error-msg').classList.remove('show');
+}
+
+// ── Parse word to segments ─────────────────────────────────────
+function parseWord(raw) {
+  const word = raw.toLowerCase().trim();
+  if (WORD_DB[word]) return { segs: WORD_DB[word], source: 'curated' };
+
+  // Try letter-by-letter fallback
+  const segs = [];
+  for (let i = 0; i < word.length; i++) {
+    const ch = word[i];
+    // Handle digraphs
+    const digraph = word.slice(i, i+2);
+    if (digraph === 'th') { segs.push({ph:'θ',s:3,cls:'Voiceless fricative'}); i++; continue; }
+    if (digraph === 'sh') { segs.push({ph:'ʃ',s:3,cls:'Voiceless fricative'}); i++; continue; }
+    if (digraph === 'ch') { segs.push({ph:'tʃ',s:1,cls:'Affricate'}); i++; continue; }
+    if (digraph === 'ng') { segs.push({ph:'ŋ',s:5,cls:'Nasal'}); i++; continue; }
+    if (digraph === 'ck') { segs.push({ph:'k',s:1,cls:'Voiceless stop'}); i++; continue; }
+    if (digraph === 'ph') { segs.push({ph:'f',s:3,cls:'Voiceless fricative'}); i++; continue; }
+    if (ch === 'e' && i === word.length-1) continue; // silent e
+    if (LETTER_MAP[ch]) segs.push({ph: LETTER_MAP[ch].ph, s: LETTER_MAP[ch].s, cls: LETTER_MAP[ch].cls});
+    else if (/[a-z]/.test(ch)) segs.push({ph:ch,s:5,cls:'Unknown'});
+  }
+  return segs.length > 0 ? { segs, source: 'approximate' } : null;
+}
+
+// ── Find peaks ────────────────────────────────────────────────
+function findPeaks(segs) {
+  const peaks = [];
+  for (let i = 0; i < segs.length; i++) {
+    const v = segs[i].s;
+    const prev = i > 0 ? segs[i-1].s : -1;
+    const next = i < segs.length-1 ? segs[i+1].s : -1;
+    // Peak: higher than neighbors, or syllabic consonant
+    const isSyllabic = segs[i].cls && segs[i].cls.includes('syllabic');
+    if ((v > prev && v > next) || (v >= 8) || isSyllabic) {
+      // Ensure not a plateau that's not really a peak
+      if (v >= 5 || isSyllabic) peaks.push(i);
+    }
+  }
+  // Deduplicate adjacent peaks (take the higher one)
+  const filtered = [];
+  for (let i = 0; i < peaks.length; i++) {
+    if (i > 0 && peaks[i] - peaks[i-1] === 1) {
+      if (segs[peaks[i]].s >= segs[peaks[i-1]].s) {
+        filtered.pop();
+        filtered.push(peaks[i]);
+      }
+    } else {
+      filtered.push(peaks[i]);
+    }
+  }
+  return filtered;
+}
+
+// ── MOP syllabification ───────────────────────────────────────
+function syllabify(segs, peakIdxs) {
+  if (peakIdxs.length === 0) return [segs.map((_,i)=>i)];
+  if (peakIdxs.length === 1) return [segs.map((_,i)=>i)];
+
+  // Assign each segment to a syllable
+  const assignment = new Array(segs.length).fill(-1);
+  peakIdxs.forEach((pi, si) => assignment[pi] = si);
+
+  // For consonants between two vowels, apply MOP
+  const boundaries = []; // index just before which a syllable break occurs
+
+  for (let i = 1; i < peakIdxs.length; i++) {
+    const leftPeak = peakIdxs[i-1];
+    const rightPeak = peakIdxs[i];
+    const consonants = [];
+    for (let j = leftPeak+1; j < rightPeak; j++) consonants.push(j);
+
+    if (consonants.length === 0) continue;
+
+    // Try to assign as many consonants as possible to right onset (MOP)
+    let boundaryAt = consonants[0]; // default: first consonant goes left
+    for (let k = 0; k < consonants.length; k++) {
+      const candidate = consonants.slice(k).map(ci => segs[ci].ph).join('');
+      if (VALID_ONSETS.has(candidate)) {
+        boundaryAt = consonants[k];
+        break;
+      }
+    }
+    boundaries.push(boundaryAt);
+  }
+
+  // Build syllable groups
+  const syllables = [];
+  let syl = [];
+  let bIdx = 0;
+  for (let i = 0; i < segs.length; i++) {
+    if (bIdx < boundaries.length && i === boundaries[bIdx]) {
+      syllables.push(syl);
+      syl = [];
+      bIdx++;
+    }
+    syl.push(i);
+  }
+  syllables.push(syl);
+  return syllables;
+}
+
+// ── Get onset/nucleus/coda for a syllable ─────────────────────
+function getONC(segIdxs, segs, peakIdx) {
+  const relPeak = segIdxs.indexOf(peakIdx);
+  if (relPeak === -1) {
+    // Fallback: find the highest sonority
+    let maxS = -1, maxI = 0;
+    segIdxs.forEach((si,ri) => { if(segs[si].s > maxS){maxS=segs[si].s; maxI=ri;} });
+    return { onset: segIdxs.slice(0,maxI), nucleus:[segIdxs[maxI]], coda:segIdxs.slice(maxI+1) };
+  }
+  return {
+    onset: segIdxs.slice(0, relPeak),
+    nucleus: [segIdxs[relPeak]],
+    coda: segIdxs.slice(relPeak+1)
+  };
+}
+
+// ── Main analyze function ─────────────────────────────────────
+function analyze() {
+  hideError();
+  const raw = document.getElementById('word-input').value.trim();
+  if (!raw) { showError('Please enter a word to analyze.'); return; }
+
+  const parsed = parseWord(raw);
+  if (!parsed || parsed.segs.length === 0) { showError('Could not parse this word. Try one of the preset examples.'); return; }
+
+  const { segs, source } = parsed;
+  const peakIdxs = findPeaks(segs);
+  const syllables = syllabify(segs, peakIdxs);
+
+  renderViz(raw, segs, peakIdxs, syllables, source);
+}
+
+function renderViz(word, segs, peakIdxs, syllables, source) {
+  const vizArea = document.getElementById('viz-area');
+  vizArea.classList.remove('visible');
+  setTimeout(() => {
+    vizArea.classList.add('visible');
+  }, 50);
+
+  // Word display
+  document.getElementById('word-display').textContent = word.toLowerCase();
+  document.getElementById('syllable-num').textContent = syllables.length;
+
+  renderChart(segs, peakIdxs, syllables);
+  renderSyllabification(word, segs, syllables);
+  renderTable(segs, peakIdxs);
+  renderMOP(segs, peakIdxs, syllables);
+  renderStructure(segs, peakIdxs, syllables);
+}
+
+// ── Chart ─────────────────────────────────────────────────────
+function renderChart(segs, peakIdxs, syllables) {
+  const chart = document.getElementById('chart-inner');
+  // Clear old (keep svg)
+  const svg = document.getElementById('line-svg');
+  while (chart.firstChild && chart.firstChild !== svg) chart.removeChild(chart.firstChild);
+  while (chart.lastChild && chart.lastChild !== svg) chart.removeChild(chart.lastChild);
+  chart.innerHTML = '';
+  chart.appendChild(svg);
+
+  const chartH = 240;
+  const barAreaH = chartH - 36;
+  const peakSet = new Set(peakIdxs);
+
+  // Find syllable boundary indices
+  const boundaryAfter = new Set();
+  for (let s = 0; s < syllables.length - 1; s++) {
+    const lastOfSyl = syllables[s][syllables[s].length - 1];
+    boundaryAfter.add(lastOfSyl);
+  }
+
+  segs.forEach((seg, i) => {
+    const col = document.createElement('div');
+    col.className = 'seg-col';
+
+    const barArea = document.createElement('div');
+    barArea.className = 'bar-area';
+
+    const isPeak = peakSet.has(i);
+
+    // Peak dot
+    const dot = document.createElement('div');
+    dot.className = 'peak-indicator' + (isPeak ? ' show' : '');
+    barArea.appendChild(dot);
+
+    // Bar
+    const bar = document.createElement('div');
+    bar.className = 'bar';
+    const pct = seg.s / 10;
+    const barH = pct * (barAreaH - 20);
+    bar.style.height = barH + 'px';
+    bar.style.background = getColor(seg.s);
+    barArea.appendChild(bar);
+
+    // Value label
+    const val = document.createElement('div');
+    val.className = 'seg-value show';
+    val.style.top = `-${barH + 18}px`;
+    val.textContent = seg.s;
+    barArea.appendChild(val);
+
+    // Boundary marker
+    if (boundaryAfter.has(i) && i < segs.length - 1) {
+      const bm = document.createElement('div');
+      bm.className = 'boundary-marker show';
+      bm.innerHTML = '<div class="boundary-dot"></div>';
+      barArea.appendChild(bm);
+    }
+
+    col.appendChild(barArea);
+
+    // Phoneme label
+    const label = document.createElement('div');
+    label.className = 'seg-phoneme' + (isPeak ? ' is-peak' : '');
+    label.textContent = seg.ph;
+    col.appendChild(label);
+
+    chart.appendChild(col);
+  });
+
+  // Draw sonority line after layout
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      drawSonorityLine(segs, chartH, 36);
+      // Animate bars
+      document.querySelectorAll('.bar').forEach((b, i) => {
+        setTimeout(() => { b.style.transform = 'scaleY(1)'; }, i * 60);
+      });
+    });
+  });
+}
+
+function drawSonorityLine(segs, chartH, labelH) {
+  const chart = document.getElementById('chart-inner');
+  const svg = document.getElementById('line-svg');
+  const path = document.getElementById('sono-path');
+
+  const cols = chart.querySelectorAll('.seg-col');
+  if (cols.length === 0) return;
+
+  const chartRect = chart.getBoundingClientRect();
+  const areaH = chartH - labelH;
+
+  const points = [];
+  cols.forEach((col, i) => {
+    const barArea = col.querySelector('.bar-area');
+    const rect = barArea.getBoundingClientRect();
+    const x = rect.left - chartRect.left + rect.width / 2;
+    const pct = segs[i].s / 10;
+    const y = areaH * (1 - pct);
+    points.push({ x, y });
+  });
+
+  if (points.length < 2) return;
+
+  // Smooth path
+  let d = `M ${points[0].x} ${points[0].y}`;
+  for (let i = 1; i < points.length; i++) {
+    const cp1x = (points[i-1].x + points[i].x) / 2;
+    d += ` C ${cp1x} ${points[i-1].y}, ${cp1x} ${points[i].y}, ${points[i].x} ${points[i].y}`;
+  }
+
+  svg.setAttribute('viewBox', `0 0 ${chartRect.width} ${areaH}`);
+  svg.style.height = areaH + 'px';
+  path.setAttribute('d', d);
+  path.classList.remove('draw');
+  void path.offsetWidth;
+  path.classList.add('draw');
+}
+
+// ── Syllabification display ────────────────────────────────────
+function renderSyllabification(word, segs, syllables) {
+  const el = document.getElementById('syl-display');
+  el.innerHTML = '';
+
+  syllables.forEach((syl, si) => {
+    const chunk = document.createElement('span');
+    chunk.className = 'syl-chunk';
+    chunk.textContent = syl.map(i => segs[i].ph).join('');
+    el.appendChild(chunk);
+    if (si < syllables.length - 1) {
+      const dot = document.createElement('span');
+      dot.className = 'syl-dot';
+      dot.textContent = '·';
+      el.appendChild(dot);
+    }
+  });
+}
+
+// ── Segment table ─────────────────────────────────────────────
+function renderTable(segs, peakIdxs) {
+  const table = document.getElementById('seg-table');
+  table.innerHTML = '';
+  const peakSet = new Set(peakIdxs);
+
+  segs.forEach((seg, i) => {
+    const isPeak = peakSet.has(i);
+    const row = document.createElement('div');
+    row.className = 'seg-row' + (isPeak ? ' is-peak-row' : '');
+
+    const col = getColor(seg.s);
+    row.innerHTML = `
+      <div class="seg-ph ${isPeak ? 'pk' : ''}">${seg.ph}</div>
+      <div class="seg-class">${seg.cls}</div>
+      <div class="seg-val-cell" style="color:${col}">${seg.s}</div>
+      <div class="seg-peak-badge ${isPeak ? 'peak-badge' : 'non-peak-badge'}">${isPeak ? '★ PEAK' : '—'}</div>`;
+    table.appendChild(row);
+  });
+}
+
+// ── MOP steps ─────────────────────────────────────────────────
+function renderMOP(segs, peakIdxs, syllables) {
+  const el = document.getElementById('mop-steps');
+  el.innerHTML = '';
+
+  const steps = [];
+  steps.push({
+    n: '1',
+    text: `<strong>Identify sonority peaks</strong> — these mark the nuclei. Found <strong>${peakIdxs.length}</strong> peak(s): ${peakIdxs.map(i => `<code>${segs[i].ph}</code>`).join(', ')}`
+  });
+
+  steps.push({
+    n: '2',
+    text: `<strong>Count syllables</strong> — number of peaks = number of syllables → <strong>${syllables.length} syllable(s)</strong>`
+  });
+
+  steps.push({
+    n: '3',
+    text: `<strong>Apply Maximal Onset Principle</strong> — assign consonants between vowels to the <em>right</em> syllable as far as possible, as long as the resulting onset cluster is legal in English.`
+  });
+
+  syllables.forEach((syl, si) => {
+    const str = syl.map(i => segs[i].ph).join('');
+    steps.push({
+      n: `${si+1}`,
+      text: `Syllable ${si+1}: <code>${str}</code> — segments: ${syl.map(i => `<code>${segs[i].ph}</code>`).join(' + ')}`
+    });
+  });
+
+  steps.forEach(st => {
+    const div = document.createElement('div');
+    div.className = 'mop-step';
+    div.innerHTML = `<div class="mop-num">${st.n}</div><div class="mop-text">${st.text}</div>`;
+    el.appendChild(div);
+  });
+}
+
+// ── ONC structure blocks ──────────────────────────────────────
+function renderStructure(segs, peakIdxs, syllables) {
+  const el = document.getElementById('structure-row');
+  el.innerHTML = '';
+  const peakSet = new Set(peakIdxs);
+
+  syllables.forEach((syl, si) => {
+    // Find nucleus in this syllable
+    let nucleusIdx = syl.find(i => peakSet.has(i));
+    if (nucleusIdx === undefined) nucleusIdx = syl[Math.floor(syl.length/2)];
+
+    const onset = syl.slice(0, syl.indexOf(nucleusIdx));
+    const nucleus = [nucleusIdx];
+    const coda = syl.slice(syl.indexOf(nucleusIdx)+1);
+
+    const block = document.createElement('div');
+    block.className = 'syl-block';
+
+    let inner = `<div class="syl-block-header">σ${si+1}</div><div class="syl-block-inner">`;
+
+    if (onset.length === 0) {
+      inner += `<div class="syl-seg-tag tag-onset" style="opacity:0.4"><span class="tag-label">ONSET</span>∅</div>`;
+    } else {
+      onset.forEach(i => {
+        inner += `<div class="syl-seg-tag tag-onset"><span class="tag-label">ONSET</span>${segs[i].ph}</div>`;
+      });
+    }
+
+    nucleus.forEach(i => {
+      inner += `<div class="syl-seg-tag tag-nucleus"><span class="tag-label">NUCLEUS</span>${segs[i].ph}</div>`;
+    });
+
+    if (coda.length === 0) {
+      inner += `<div class="syl-seg-tag tag-coda" style="opacity:0.4"><span class="tag-label">CODA</span>∅</div>`;
+    } else {
+      coda.forEach(i => {
+        inner += `<div class="syl-seg-tag tag-coda"><span class="tag-label">CODA</span>${segs[i].ph}</div>`;
+      });
+    }
+
+    inner += '</div>';
+    block.innerHTML = inner;
+    el.appendChild(block);
+  });
+}
+
+// ── Init ──────────────────────────────────────────────────────
+buildScaleGrid();
+
+document.getElementById('word-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') analyze();
+});
+
+// Load a default example
+setTimeout(() => setWord('publicity'), 400);
+</script>
+</body>
+</html>
